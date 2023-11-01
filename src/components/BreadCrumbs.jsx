@@ -9,7 +9,7 @@ const BasicBreadcrumbs = ({active, inactive, fsize, mt}) => {
       <Breadcrumbs separator={<Separator fsize={fsize}/>} aria-label="breadcrumb">
         {
           inactive.map((item,index)=>(
-            <Link href={item.path} style={{color:"#B5B5B5", fontWeight:"600", margin:"0 10px", fontSize:fsize}}>{item.title}</Link>
+            <Link key={index} href={item.path} style={{color:"#B5B5B5", fontWeight:"600", margin:"0 10px", fontSize:fsize}}>{item.title}</Link>
           ))
         }
         <Typography color="text.primary" sx={{color:"#0D1A26", fontWeight:"600", margin:"0 10px", fontSize:fsize}}>{active}</Typography>
