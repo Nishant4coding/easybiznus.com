@@ -5,13 +5,14 @@ import styles from "./home.module.css";
 
 const Products = () => {
   return (
-    <Box direction={"row"} className={styles.products} gap={10}>
-      {cardArray.map((item, index) => (
-        <Box sx={{ flexShrink: 0 }} key={index}>
-          <Card key={index} data={item} />
-        </Box>
-      ))}
-    </Box>
+    // <Box direction={"row"} className={styles.products} gap={10}>
+    //   {cardArray.map((item, index) => (
+    //     <Box sx={{ flexShrink: 0 }} key={index}>
+    //       <Card key={index} data={item} />
+    //     </Box>
+    //   ))}
+    // </Box>
+    <></>
   );
 };
 
