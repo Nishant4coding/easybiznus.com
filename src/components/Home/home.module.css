@@ -1,0 +1,56 @@
+.container {
+    width: 100%;
+    margin:0;
+    margin-top: 20px;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    align-items: center;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.catTitle {
+    font-weight: 600;
+    border-bottom: 1.5px solid #000;
+}
+
+.products {
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    padding: 10px 70px;
+    overflow-x: auto;
+}
+
+.products::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.products::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.banner{
+    width:100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+.bannerimg{
+    object-fit: cover;
+}
+.bannertitle{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    font-weight: 700;
+    font-size: 50px;
+    color:#fff;
+    background-color: #0D1A26;
+    padding:37px 180px;
+    text-wrap: nowrap;
+}

@@ -1,0 +1,39 @@
+.card {
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px 10px 20px 20px ;
+    align-items: flex-start;
+}
+
+.title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-wrap: wrap;
+}
+
+.color {
+    color: #AAA5A5;
+    font-size: 14px;
+    margin: 0;
+    height: fit-content;
+    text-wrap: wrap;
+}
+
+.button,
+.button:hover {
+    border: 1px solid #000;
+    border-radius: 5px;
+    height: 25px;
+    font-size: 12px;
+    color: #000;
+    margin-top: 50px;
+    letter-spacing: 0;
+    font-weight: 500;
+}
+
+.iconTypo {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

@@ -1,0 +1,94 @@
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    width: fit-content;
+    margin-bottom: 150px;
+}
+
+.details {
+    margin: 10px auto 150px;
+    width: fit-content;
+}
+
+.heading {
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.help {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 13px;
+    gap: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.stepperIcon {
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.stepperActiveBg {
+    background-color: #A2F07B;
+}
+
+.stepperInactiveIcon {
+    background-color: #fff;
+    box-shadow: 0 0 15px#828181;
+}
+
+.activeStepperConnector {
+    background-color: #A2F07B;
+    height: 50%;
+    width: 1.6px;
+}
+.inactiveStepperConnector {
+    background-color: #D8D8D8;
+    height: 50%;
+    width: 1.6px;
+}
+.helpbar{
+    width:100%;
+    border-top:1px solid #0D1A26;
+    border-bottom:1px solid #0D1A26;
+    align-items: flex-start;
+    padding:10px 50px;
+    justify-content: center;
+    margin:30px 0;
+    padding-left: 200px;
+}
+
+.returnbox{
+    padding:8px 10px;
+    border:1px solid #0D1A26;
+    border-radius: 8px;
+    width:40%;
+    position: relative;
+    cursor: pointer;
+}
+.returnboxicon{
+    position: absolute;
+    right:10px;
+    top:40%;
+}
+.returnOptions{
+    border:1px solid #ECE6F0;
+    border-radius: 5px;
+    align-items: center;
+    padding:10px 30px;
+    justify-content: flex-start;
+    max-width: 500px;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+}
