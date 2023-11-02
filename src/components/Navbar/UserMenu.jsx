@@ -45,7 +45,7 @@ export default UserMenu;
 const menuArray = [
     {title:"My Account", path:"#"},
     {title:"My Orders",path:"/orders"},
-    {title:"Wallet",path:"#"},
+    {title:"Wallet",path:"/wallet"},
     {title:"Try & Buy",path:"/trynbuy"},
     {title:"Contact Us",path:"#"},
 ]

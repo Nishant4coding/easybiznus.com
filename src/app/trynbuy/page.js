@@ -8,13 +8,15 @@ import Summary from '@/components/Orders/OrderSummary';
 import { IonIcon } from '@ionic/react';
 import { helpCircleOutline } from 'ionicons/icons';
 import Button from '@/components/Try&buy/Button';
+import Footer from '@/components/Footer/Footer';
+import Link from 'next/link';
 
 const page = () => {
     return (
         <>
             <BasicBreadcrumbs inactive={inactive} active={"Bag"} fsize={"20px"} mt={"15px"} />
             <Filter filterArray={filterArray} sort={false} />
-            <Stack direction={"row"} style={{ justifyContent: 'space-around', padding: '0px 70px' }}>
+            <Stack direction={"row"} style={{ justifyContent: 'space-around', padding: '0px 70px', marginBottom: '100px' }}>
                 <Container />
                 <Stack style={{ width: '20%', alignItems: 'center', paddingTop: '20px' }}>
                     <Typography style={{ fontSize: '12px', display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '25px' }}>
@@ -22,9 +24,12 @@ const page = () => {
                         Need help?
                     </Typography>
                     <Summary width={"100%"} />
-                    <Button />
+                    <Link href="/trynbuy/buy">
+                        <Button />
+                    </Link>
                 </Stack>
             </Stack>
+            <Footer />
         </>
     )
 }

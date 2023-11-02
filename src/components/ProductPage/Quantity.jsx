@@ -49,7 +49,7 @@ const Quantity = ({handleOpen,setPopTitle }) => {
                     setPopTitle({
                         title:"Added to Try On",
                         button:"Go to Try On",
-                        path:"#"
+                        path:"/trynbuy"
                     });
                     handleOpen();
                 }}>

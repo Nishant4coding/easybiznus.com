@@ -11,9 +11,9 @@ import { IonIcon } from "@ionic/react";
 import { useState } from "react";
 import DeleteModal from "@/components/Cart/Delete";
 
-const Card = ({ data, edit = true }) => {
+const Card = ({ data }) => {
     const { title, color, size, sku_code, price } = data;
-    const [qty, setQty]=useState(1);
+    const [qty, setQty] = useState(1);
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -22,10 +22,6 @@ const Card = ({ data, edit = true }) => {
         <Stack direction={"row"} gap={2} className={styles.container}>
             <Stack direction={"column"}>
                 <Image src={CardD} width={200} />
-                <Typography className={styles.stock}>
-                    <IonIcon icon={checkmarkCircleOutline}></IonIcon>
-                    In-Stock
-                </Typography>
             </Stack>
             <Stack direction={"column"} gap={1}>
                 <Stack direction={"column"}>
@@ -40,7 +36,7 @@ const Card = ({ data, edit = true }) => {
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             value={qty}
-                            onChange={(e)=>setQty(e.target.value)}
+                            onChange={(e) => setQty(e.target.value)}
                         >
                             <MenuItem value={1}>1</MenuItem>
                             <MenuItem value={2}>2</MenuItem>
@@ -50,30 +46,22 @@ const Card = ({ data, edit = true }) => {
                 </Box>
             </Stack>
             <Stack direction={"column"} sx={{ width: "30%", alignItems: "flex-end" }}>
-                <Stack direction={"column"} gap={1}>
-                    <Typography className={styles.price}>{price}</Typography>
+                <Stack direction={"column"} style={{ justifyContent: 'space-between', height:'90%' }}>
+                    <Stack>
+                        <Typography className={styles.price}>{price}</Typography>
+                        <Typography className={styles.stock} style={{color:'#1BCFB4'}}>
+                            <IonIcon icon={checkmarkCircleOutline} style={{color:'#1BCFB4'}}></IonIcon>
+                            In-Stock
+                        </Typography>
+                    </Stack>
                     <Stack direction={"row"} gap={2} sx={{ justifyContent: "flex-end" }}>
-                        {edit && <Image src={Pen} style={{ cursor: "pointer" }} />}
-                        <Image src={Delete} style={{ cursor: "pointer" }} onClick={handleOpen}/>
+                        <Image src={Pen} style={{ cursor: "pointer" }} />
+                        <Image src={Delete} style={{ cursor: "pointer" }} onClick={handleOpen} />
                     </Stack>
                 </Stack>
 
-                {edit &&
-                    <Button variant="contained" className={styles.button}
-                        sx={{
-                            "&:hover": {
-                                backgroundColor: "#0D1A26",
-                            },
-                            marginTop: "40px"
-                        }}
-                    >
-                        ADD TO CART
-                    </Button>
-                }
-
-
+                <DeleteModal open={open} handleClose={handleClose} />
             </Stack>
-            <DeleteModal open={open} handleClose={handleClose} />
         </Stack>
     )
 }
