@@ -8,7 +8,7 @@ const Products = () => {
     <Box direction={"row"} className={styles.products} gap={10}>
       {cardArray.map((item) => (
         <Box sx={{ flexShrink: 0 }} key={item.title}>
-          <Card key={index} data={item} />
+          <Card data={item} />
         </Box>
       ))}
     </Box>
