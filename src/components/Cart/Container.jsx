@@ -5,9 +5,9 @@ import styles from '@/components/Wishlist/wishlist.module.css';
 import Delete from "./Delete";
 
 const Container = () => {
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    // const [open, setOpen] = useState(false);
+    // const handleOpen = () => setOpen(true);
+    // const handleClose = () => setOpen(false);
 
     return (
         <Stack direction={"column"} className={styles.container} gap={3} style={{ marginBottom: "30px" }}>
@@ -16,12 +16,12 @@ const Container = () => {
                 {
                     prodArray.map((item, index) => {
                         return (
-                            <Card data={item} key={index} edit={false} handleOpen={handleOpen} />
+                            <Card data={item} key={index} edit={false}/>
                         )
                     })
                 }
             </Stack>
-            <Delete open={open} handleClose={handleClose} />
+            {/* <Delete open={open} handleClose={handleClose} /> */}
 
         </Stack>
     )

@@ -20,7 +20,7 @@ const Specification = () => {
                     }
                 </Box>
                 <Box>
-                    <Typography className={styles.heading}>{"Manufacturer's Address"}</Typography>
+                    <Typography className={styles.heading}>Manufacturer's Address</Typography>
                     <Typography className={styles.subheading}>
                                 <IonIcon icon={ellipse} style={{ width: "4px" }}></IonIcon>
                                 Banglore, India

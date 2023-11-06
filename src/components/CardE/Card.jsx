@@ -13,7 +13,7 @@ const Card = ({data}) => {
         <Link href={`/orders/${id}`}>
             <Stack direction="row" className={styles.card}>
                 <Stack direction={"row"} sx={{ width: "60%", justifyContent: "flex-start" }} gap={1.5}>
-                    <Image src={image} width={170} />
+                    <Image src={image} alt={"product"} width={170} />
                     <Stack gap={1} style={{ margin: "15px 0px" }}>
                         <Typography className={styles.title}>{title}</Typography>
                         <Typography className={styles.color}>Color: {color}</Typography>
@@ -31,8 +31,8 @@ const Card = ({data}) => {
                     <Typography className={styles.status2}>{date}</Typography>
                     <Typography className={styles.status3}>
                         {status === 0 ?
-                            <Image src={YellowTick} width={12} /> :
-                            <Image src={GreenTick} width={12} />
+                            <Image src={YellowTick} alt={"check"} width={12} /> :
+                            <Image src={GreenTick} alt={"check"} width={12} />
                         }
                         {status === 0 ?"Your Item is on the way":"Your Item has been delivered"}
                     </Typography>

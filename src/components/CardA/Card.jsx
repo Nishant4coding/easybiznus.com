@@ -10,7 +10,7 @@ const Card = ({data})=>{
         <Box className={styles.container}>
             <Link href={link}>
             <Typography className={styles.discount}>{discount}</Typography>
-            <Image src={image} className={styles.image}/>
+            <Image src={image} alt={"product"} className={styles.image}/>
             <Stack direction={"row"} sx={{justifyContent:"space-between", marginTop:"20px", padding:"0 10px"}}>
                 <Stack direction={"column"}>
                     <Typography className={styles.title}>{title}</Typography>

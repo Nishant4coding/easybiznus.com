@@ -7,11 +7,11 @@ const Category = ({data}) => {
 
     return (
         <Stack direction={"row"} gap={10}>
-            {/* {data.map((title, index) => ( */}
-                <Typography onClick={()=>setSelect(index)} className={select===true?styles.catTitle:""} sx={{cursor: "pointer"}}>
-                    {data[0]}
+            {data.map((title, index) => (
+                <Typography key={index} onClick={()=>setSelect(index)} className={select===index?styles.catTitle:""} sx={{cursor: "pointer"}}>
+                    {title}
                 </Typography>
-            {/* ))} */}
+            ))}
         </Stack>
     )
 }

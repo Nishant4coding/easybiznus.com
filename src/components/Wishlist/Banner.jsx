@@ -6,7 +6,7 @@ import {Bg2} from '@/assets/svg/index';
 const Banner = ({title})=>{
     return(
         <Box className={styles.banner}>
-            <Image src={Bg2} className={styles.bannerimg}/>
+            <Image src={Bg2} alt={"banner"} className={styles.bannerimg}/>
             <Typography className={styles.bannertitle}>{title}</Typography>
         </Box>
     )

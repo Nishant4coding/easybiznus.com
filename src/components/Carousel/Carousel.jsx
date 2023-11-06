@@ -7,6 +7,7 @@ const Carousel = () => {
     return (
         <Box className={styles.container}>
             <Image src={Img1}
+                alt={"carousel-image"}
                 className={styles.image}
                 style={{
                     objectFit: 'cover',

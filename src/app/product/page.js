@@ -7,7 +7,7 @@ import PriceSection from '@/components/ProductPage/PriceSection';
 import Footer from "@/components/Footer/Footer";
 import Popup from "@/components/ProductPage/Popup";
 
-const Page = () => {
+const ProductPage = () => {
     const [open, setOpen] = useState(false);
     const [poptitle, setPopTitle]=useState({});
     const handleOpen = () => setOpen(true);
@@ -29,4 +29,4 @@ const Page = () => {
         </>
     )
 }
-export default Page;
+export default ProductPage;

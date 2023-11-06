@@ -1,9 +1,9 @@
 import CategoryView from "@/components/CategoryView/CategoryView";
 
-const Index = (props)=>{
+const CategoryPage = (props)=>{
     return(
         <CategoryView/>
     )
 }
 
-export default Index;
+export default CategoryPage;

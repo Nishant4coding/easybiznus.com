@@ -25,7 +25,7 @@ const UserMenu = ({ userMenu, handleClose }) => {
         >
             <Stack className={styles.menu}>
                 <Typography className={styles.username} onClick={handleClose}>
-                    <Image src={User} width={30} />
+                    <Image src={User} alt={"icon"} width={30} />
                     Hello, {"<Name>"}
                 </Typography>
                 {
@@ -45,7 +45,7 @@ export default UserMenu;
 const menuArray = [
     {title:"My Account", path:"#"},
     {title:"My Orders",path:"/orders"},
-    {title:"Wallet",path:"#"},
+    {title:"Wallet",path:"/wallet"},
     {title:"Try & Buy",path:"/trynbuy"},
     {title:"Contact Us",path:"#"},
 ]

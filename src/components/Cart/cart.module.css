@@ -65,6 +65,7 @@
     margin-top: 20px;
     border-radius: 8px;
     font-weight: 15px;
+    padding: 0;
 }
 .checkoutbtn:hover{
     background-color: #0D1A26;

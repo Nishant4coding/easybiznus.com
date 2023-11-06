@@ -3,7 +3,7 @@ import Filter from "@/components/Filter/Filter";
 import Footer from "@/components/Footer/Footer";
 import Container from "@/components/Orders/Container";
 
-const Page = ()=>{
+const OrdersPage = ()=>{
     return(
         <>
         <BasicBreadcrumbs inactive={inactive} active="My Orders" fsize={"25px"} mt={"20px"}/>
@@ -14,7 +14,7 @@ const Page = ()=>{
     )
 }
 
-export default Page;
+export default OrdersPage;
 
 const inactive =[
     {

@@ -9,7 +9,7 @@ const ImageGrid = () => {
             {
                 imgArray.map((item, index) => (
                     <Grid item xs={12} sm={6} key={index}>
-                        <Image src={item} className={styles.image}/>
+                        <Image src={item} alt={"product-image"} className={styles.image}/>
                     </Grid>
                 ))
             }

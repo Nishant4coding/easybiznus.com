@@ -48,7 +48,7 @@ const Stepper = ({ data }) => {
         <Stack direction="column">
             {
                 data.map((item, index) => (
-                    <Stack key={index} direction={"row"} style={{ height: 'auto' }} gap={3}>
+                    <Stack direction={"row"} style={{ height: 'auto' }} gap={3}>
                         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position:'relative',width:'30px',}}>
                             {
                             <Box className={[item.active?styles.activeStepperConnector:styles.inactiveStepperConnector]} style={{opacity:`${index===0?0:1}`}}></Box>

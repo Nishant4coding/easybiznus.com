@@ -8,8 +8,8 @@ const Category = () => {
         <Box direction={"row"} className={styles.products} gap={8} sx={{justifyContent:"center"}}>
             {
                 cardArray.map((item, index) => (
-                    <Box sx={{ flexShrink: 0 }} key={index}>
-                        <Card data={item} />
+                    <Box sx={{ flexShrink: 0 }}>
+                        <Card key={index} data={item} />
                     </Box>
                 ))
             }

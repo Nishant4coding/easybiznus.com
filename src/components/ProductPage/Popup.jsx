@@ -50,7 +50,7 @@ const Popup = ({ open, handleClose, poptitle }) => {
                     }} onClick={handleClose}></IonIcon>
                     <Typography className={styles.poptitle}>{poptitle.title}</Typography>
                     <Stack direction={"row"} gap={3}>
-                        <Image src={ModalShoe} />
+                        <Image src={ModalShoe} alt={"product"}/>
                         <Stack>
                             <Typography className={styles.poptitle} style={{ fontSize: "13px" }}>Nike Invisible 3</Typography>
                             <Typography className={styles.popsubtitle}>Mens Road Running Shoes</Typography>

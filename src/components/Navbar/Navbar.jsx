@@ -20,7 +20,7 @@ const Navbar = () => {
     return (
         <Box className={styles.navbar}>
             <Link href="/">
-                <Image src={Logo} width={120} />
+                <Image src={Logo} alt={"logo"} width={120} />
             </Link>
             <Location />
             <Navlink search={search} />

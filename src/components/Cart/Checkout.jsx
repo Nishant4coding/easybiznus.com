@@ -4,10 +4,11 @@ import styles from './cart.module.css';
 import { IonIcon } from "@ionic/react";
 import { caretDownOutline } from "ionicons/icons";
 import Strip from "./Strip";
+import Link from "next/link";
 
 const Checkout = () => {
     return (
-        <Stack direction={"column"} className={styles.checkout} style={{marginBottom:"30px"}}>
+        <Stack direction={"column"} className={styles.checkout} style={{ marginBottom: "30px" }}>
             <Stack gap={2} sx={{ marginBottom: "60px" }}>
                 <Button variant="outlined" className={styles.outbutton}>Return Policy</Button>
                 <Button variant="contained" className={styles.promobtn}>
@@ -31,9 +32,11 @@ const Checkout = () => {
                 <Typography className={styles.finalpricing}>₹ 16,030</Typography>
             </Stack>
             <Button variant="contained" className={styles.checkoutbtn}>
-                CHECKOUT
+                <Link href="/checkout" style={{ width: '100%', height: '100%',borderRadius: '5px', padding:'7px 0' }}>
+                    CHECKOUT
+                </Link>
             </Button>
-            <Strip/>
+            <Strip />
         </Stack>
     )
 }

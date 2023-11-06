@@ -9,15 +9,19 @@ import { CardD, Pen, Delete } from '@/assets/svg/index';
 import { checkmarkCircleOutline } from "ionicons/icons";
 import { IonIcon } from "@ionic/react";
 import { useState } from "react";
+import DeleteModal from "@/components/Cart/Delete";
 
-const Card = ({ data, edit = true, handleOpen }) => {
+const Card = ({ data, edit = true }) => {
     const { title, color, size, sku_code, price } = data;
     const [qty, setQty]=useState(1);
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     return (
         <Stack direction={"row"} gap={2} className={styles.container}>
             <Stack direction={"column"}>
-                <Image src={CardD} width={200} />
+                <Image src={CardD} alt={"product"} width={200} />
                 <Typography className={styles.stock}>
                     <IonIcon icon={checkmarkCircleOutline}></IonIcon>
                     In-Stock
@@ -49,8 +53,8 @@ const Card = ({ data, edit = true, handleOpen }) => {
                 <Stack direction={"column"} gap={1}>
                     <Typography className={styles.price}>{price}</Typography>
                     <Stack direction={"row"} gap={2} sx={{ justifyContent: "flex-end" }}>
-                        {edit && <Image src={Pen} style={{ cursor: "pointer" }} />}
-                        <Image src={Delete} style={{ cursor: "pointer" }} onClick={handleOpen}/>
+                        {edit && <Image src={Pen} alt={"pen"} style={{ cursor: "pointer" }} />}
+                        <Image src={Delete} alt={"delete"} style={{ cursor: "pointer" }} onClick={handleOpen}/>
                     </Stack>
                 </Stack>
 
@@ -69,6 +73,7 @@ const Card = ({ data, edit = true, handleOpen }) => {
 
 
             </Stack>
+            <DeleteModal open={open} handleClose={handleClose} />
         </Stack>
     )
 }

@@ -36,9 +36,11 @@ import Shoe4 from './shoe4.svg';
 import YellowTick from './yellow-tick.svg';
 import GreenTick from './green-tick.svg';
 import ModalShoe from './modal-shoe.svg';
+import OrderPlaced from './order-placed.svg';
 
 
 export {
+    OrderPlaced,
     YellowTick,
     GreenTick,
     Shoe3,

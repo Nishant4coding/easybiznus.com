@@ -10,7 +10,7 @@ const FilterBar = ({ filterArray, sort }) => {
     return (
         <Box className={styles.filter}>
             <Stack direction={"row"} gap={3} sx={{justifyContent:"flex-start"}}>
-                <Image src={Filter} width={17} />
+                <Image src={Filter} alt={"filter"} width={17} />
                 {
                     filterArray.map((item, index) => (
                         <Item key={index} data={item} />
