@@ -1,0 +1,107 @@
+.heading{
+    font-size: 24px;
+    margin: 30px 0px;
+    font-weight: 600;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.button,.button:hover{
+    width: 20%;
+    border-radius: 8px;
+    background-color: #0D1A26;
+    color:#fff;
+    font-size: 10px;
+    padding:10px 5px;
+    font-weight: 600;
+    display: flex;
+    gap:10px;
+}
+.couponcontainer{
+    border:2px solid #ECE6F0;
+    border-radius: 5px;
+    padding:20px;
+    width:40%;
+}
+.box{ 
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #A0A0A0;
+}
+.newsicon{
+    font-size: 23px;
+}
+.boxTitle{
+    font-weight: 600;
+    font-size: 25px;
+    display: flex;
+    gap:15px;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #A0A0A0;
+}
+.inputBox{
+    position: relative;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.input{
+    border:2px solid #D9D9D9;
+    border-radius: 5px;
+    height:40px;
+    width:100%;
+    font-size: 16px;
+    padding-left: 10px;
+    outline: none;
+}
+.closeicon{
+    position: absolute;
+    cursor: pointer;
+    top:12px;
+    right:10px;
+    color:#817e7e;
+}
+.pricebox{
+    font-weight: 600;
+    border:1px solid #5a595b;
+    height:22px;
+    border-radius: 10px;
+    font-size: 11px;
+    padding: 3px 8px 5px;
+    cursor: pointer;
+}
+.billing{
+    font-weight: 700;
+    font-size: 14px;
+}
+.container{
+    width:80%;
+    margin:0 auto;
+}
+.addcard{
+    border:1px solid #000000;
+    width:100%;
+    padding:20px 40px 30px;
+    align-items: flex-start;
+    height: fit-content;
+}
+.boxheading{
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.inputcontainer{
+    width:70%;
+    position: relative;
+}
+.cardcontainer{
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.pricing{
+    width:100%;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    flex-direction: row;
+}
