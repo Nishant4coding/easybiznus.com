@@ -9,7 +9,7 @@ const Card = ({ data }) => {
     const{title, color, size, seller, price, date}=data;
     return (
         <Stack className={styles.card} direction="row">
-            <Image src={Shoe3} width={160} />
+            <Image src={Shoe3} alt={"product"} width={160} />
             <Stack style={{ paddingLeft: "15px", width: "190px" }}>
                 <Typography className={styles.title}>{title}</Typography>
                 <Stack style={{ marginBottom: "2px" }}>

@@ -8,7 +8,7 @@ import { documentTextOutline, star } from "ionicons/icons";
 const Card = ({refundable, action}) => {
     return (
         <Stack className={styles.card} direction="row">
-            <Image src={Shoe3} width={160} />
+            <Image src={Shoe3} alt={"product"} width={160} />
             <Stack style={{ paddingLeft: "15px", width: "190px" }}>
                 <Typography className={styles.title}>Nike Kiger 9</Typography>
                 <Stack style={{ marginBottom: "10px" }}>
@@ -38,11 +38,11 @@ const Card = ({refundable, action}) => {
                     Rate & Review Product
                 </Typography>
                 <Typography className={styles.iconTypo} style={{gap:"10px", marginTop:"7px"}}>
-                    <IonIcon icon={star} style={{fontSize:"28px", color:"#BBBBBB"}}></IonIcon>
-                    <IonIcon icon={star} style={{fontSize:"28px", color:"#BBBBBB"}}></IonIcon>
-                    <IonIcon icon={star} style={{fontSize:"28px", color:"#BBBBBB"}}></IonIcon>
-                    <IonIcon icon={star} style={{fontSize:"28px", color:"#BBBBBB"}}></IonIcon>
-                    <IonIcon icon={star} style={{fontSize:"28px", color:"#BBBBBB"}}></IonIcon>
+                    {
+                        starArray.map((item)=>( 
+                            <IonIcon key={item} icon={star} style={{fontSize:"28px", color:"#BBBBBB"}}></IonIcon>
+                        ))
+                    }
                 </Typography>
                 <TextField
                     label="Description"
@@ -85,4 +85,6 @@ const input = {
     '& label': {
         marginTop:"20px",
     }
-}
+};
+
+const starArray=[1,2,3,4,5];

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Stack } from '@mui/material';
 
-const page = () => {
+const WalletPage = () => {
   return (
     <>
      Wallet 
@@ -9,4 +9,4 @@ const page = () => {
   )
 }
 
-export default page
+export default WalletPage;

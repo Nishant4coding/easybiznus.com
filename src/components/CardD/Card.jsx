@@ -21,7 +21,7 @@ const Card = ({ data, edit = true }) => {
     return (
         <Stack direction={"row"} gap={2} className={styles.container}>
             <Stack direction={"column"}>
-                <Image src={CardD} width={200} />
+                <Image src={CardD} alt={"product"} width={200} />
                 <Typography className={styles.stock}>
                     <IonIcon icon={checkmarkCircleOutline}></IonIcon>
                     In-Stock
@@ -53,8 +53,8 @@ const Card = ({ data, edit = true }) => {
                 <Stack direction={"column"} gap={1}>
                     <Typography className={styles.price}>{price}</Typography>
                     <Stack direction={"row"} gap={2} sx={{ justifyContent: "flex-end" }}>
-                        {edit && <Image src={Pen} style={{ cursor: "pointer" }} />}
-                        <Image src={Delete} style={{ cursor: "pointer" }} onClick={handleOpen}/>
+                        {edit && <Image src={Pen} alt={"pen"} style={{ cursor: "pointer" }} />}
+                        <Image src={Delete} alt={"delete"} style={{ cursor: "pointer" }} onClick={handleOpen}/>
                     </Stack>
                 </Stack>
 

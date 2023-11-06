@@ -11,7 +11,7 @@ import Button from '@/components/Try&buy/Button';
 import TrialContainer from '@/components/Try&buy/TrialContainer';
 import Footer from '@/components/Footer/Footer';
 
-const page = () => {
+const TrialPage = () => {
     return (
         <>
             <BasicBreadcrumbs inactive={inactive} active={"Trials"} fsize={"20px"} mt={"15px"} />
@@ -24,7 +24,7 @@ const page = () => {
     )
 }
 
-export default page;
+export default TrialPage;
 
 const inactive = [
     {

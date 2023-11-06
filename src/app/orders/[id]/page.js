@@ -4,7 +4,7 @@ import Footer from "@/components/Footer/Footer";
 import Details from "@/components/Orders/Details";
 import Help from "@/components/Orders/Help";
 
-const Page = ({params}) => {
+const OrderDetails = ({params}) => {
     const {id} = params;
 
     return (
@@ -18,7 +18,7 @@ const Page = ({params}) => {
     )
 }
 
-export default Page;
+export default OrderDetails;
 
 const inactive =[
     {

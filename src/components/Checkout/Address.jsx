@@ -10,7 +10,7 @@ const Address = () => {
 
     return (
         <Stack className={styles.leftboxes} gap={2}>
-            <Stack direction={"row"} style={{ width: '100%', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #A0A0A0' }}>
+            <Stack direction={"row"} className={styles.card}>
                 <Typography className={styles.boxTitle} style={{ border: 'none' }}>
                     <IonIcon icon={newspaperOutline} className={styles.newsicon}></IonIcon>
                     1. Shipping Address

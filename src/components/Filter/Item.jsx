@@ -10,9 +10,9 @@ const Item = ({data})=>{
 
     return(
         <Box className={[styles.dropdown,select?styles.selected:'']} onClick={()=>setSelect(!select)}>
-            {select&& <Image src={Check} width={12}/>}
+            {select&& <Image src={Check} alt={'check'} width={12}/>}
             <Typography className={styles.text}>{title}</Typography>
-            <Image src={ArrowDown}/>
+            ArrowDown}/>
         </Box>
     )
 }

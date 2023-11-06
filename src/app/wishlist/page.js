@@ -4,7 +4,7 @@ import Banner2 from "@/components/Wishlist/Banner";
 import Footer from "@/components/Footer/Footer";
 
 
-const Page = ()=>{
+const WishlistPage = ()=>{
     return(
         <>
         <Banner1 title="New Summer Collection"/>
@@ -15,4 +15,4 @@ const Page = ()=>{
     )
 }
 
-export default Page;
+export default WishlistPage;

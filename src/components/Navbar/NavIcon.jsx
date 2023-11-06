@@ -33,10 +33,10 @@ const NavIcon = ({handleOpen, userMenu}) => {
                                         fontSize:"9px"
                                     },
                                 }}>
-                                    <Image src={icon.title} width={15}></Image>
+                                    <Image src={icon.title} alt={"cart"} width={15}></Image>
                                 </Badge>
                             </ThemeProvider> :
-                            <Image src={icon.title} width={15}></Image>
+                            <Image src={icon.title} alt={"cart"} width={15}></Image>
                         }
                     </Link>
                 ))

@@ -10,7 +10,7 @@ const Location = () => {
 
     return (
         <Box className={styles.location}>
-            <Image src={Pin} height={13}></Image>
+            <Image src={Pin} alt={"pin"} height={13}></Image>
             <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
                 <Box sx={{display:"flex", gap:"0px", flexDirection:"column", width:"90px"}}>
                     <Typography className={styles.locText}>Location</Typography>

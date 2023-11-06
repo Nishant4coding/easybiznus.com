@@ -21,7 +21,7 @@ const Card = ({ data }) => {
     return (
         <Stack direction={"row"} gap={2} className={styles.container}>
             <Stack direction={"column"}>
-                <Image src={CardD} width={200} />
+                <Image src={CardD} alt={"product"} width={200} />
             </Stack>
             <Stack direction={"column"} gap={1}>
                 <Stack direction={"column"}>
@@ -55,8 +55,8 @@ const Card = ({ data }) => {
                         </Typography>
                     </Stack>
                     <Stack direction={"row"} gap={2} sx={{ justifyContent: "flex-end" }}>
-                        <Image src={Pen} style={{ cursor: "pointer" }} />
-                        <Image src={Delete} style={{ cursor: "pointer" }} onClick={handleOpen} />
+                        <Image src={Pen} alt={"pen"} style={{ cursor: "pointer" }} />
+                        <Image src={Delete} alt={"delete"} style={{ cursor: "pointer" }} onClick={handleOpen} />
                     </Stack>
                 </Stack>
 

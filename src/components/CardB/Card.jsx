@@ -7,7 +7,7 @@ const Card = ({data})=>{
     
     return(
         <Box className={styles.container}>
-            <Image src={image} className={styles.image} />
+            <Image src={image} alt={"product"} className={styles.image} />
             <Stack direction={"row"} className={styles.label}>
                     <Typography className={styles.title}>{title}</Typography>
                     <Typography className={styles.subtitle}> ({style}) </Typography>

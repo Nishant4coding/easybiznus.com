@@ -53,8 +53,8 @@ const PlacedPopup = ({ open, handleClose }) => {
                     cursor: 'pointer',
                     color: '#fff'
                 }} onClick={handleClose}></IonIcon>
-                <Image src={Logo} />
-                <Image src={OrderPlaced} width={200} />
+                <Image src={Logo} alt={"placed"}/>
+                <Image src={OrderPlaced} alt={"placed"} width={200} />
             </Stack>
         </Modal>
     )

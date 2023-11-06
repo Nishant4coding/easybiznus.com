@@ -6,7 +6,7 @@ import RightSide from '@/components/Checkout/RightSide'
 import styles from '@/components/Checkout/checkout.module.css';
 import BasicBreadcrumbsB from '@/components/BreadCrumbsB'
 
-const page = () => {
+const CheckoutPage = () => {
   return (
     <>
       <BasicBreadcrumbsB inactive={breadcrumbArray} fsize={"13px"} active="SUMMARY" mt={"10px"}/>
@@ -20,7 +20,7 @@ const page = () => {
   )
 }
 
-export default page;
+export default CheckoutPage;
 
 const breadcrumbArray = [
   {

@@ -10,7 +10,7 @@ import Brand from "@/components/Home/Brand/Brand";
 import Main from "@/components/Home/Main/Main";
 import Footer from "@/components/Footer/Footer";
 
-const Index = (props) => {
+const HomePage = (props) => {
   const { t, i18n } = useTranslation();
 
   const [title, setTitle] = useState();
@@ -33,4 +33,4 @@ const Index = (props) => {
   );
 };
 
-export default Index;
+export default HomePage;

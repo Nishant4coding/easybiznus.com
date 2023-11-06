@@ -5,7 +5,7 @@ import Footer from '@/components/Footer/Footer'
 import RightSide from '@/components/Try&buy/RightSide'
 import styles from '@/components/Try&buy/try.module.css';
 
-const page = () => {
+const TryBuyPage = () => {
   return (
     <>
     <Typography className={styles.heading} style={{paddingLeft:'100px'}}>Try And Buy</Typography>
@@ -18,4 +18,4 @@ const page = () => {
   )
 }
 
-export default page
+export default TryBuyPage;

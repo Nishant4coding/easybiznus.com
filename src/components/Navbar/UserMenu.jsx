@@ -25,7 +25,7 @@ const UserMenu = ({ userMenu, handleClose }) => {
         >
             <Stack className={styles.menu}>
                 <Typography className={styles.username} onClick={handleClose}>
-                    <Image src={User} width={30} />
+                    <Image src={User} alt={"icon"} width={30} />
                     Hello, {"<Name>"}
                 </Typography>
                 {

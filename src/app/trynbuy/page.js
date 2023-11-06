@@ -11,7 +11,7 @@ import Button from '@/components/Try&buy/Button';
 import Footer from '@/components/Footer/Footer';
 import Link from 'next/link';
 
-const page = () => {
+const TryPage = () => {
     return (
         <>
             <BasicBreadcrumbs inactive={inactive} active={"Bag"} fsize={"20px"} mt={"15px"} />
@@ -34,7 +34,7 @@ const page = () => {
     )
 }
 
-export default page;
+export default TryPage;
 
 const inactive = [
     {

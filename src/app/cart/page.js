@@ -6,7 +6,7 @@ import Frequent from "@/components/Cart/Frequent";
 import Footer from "@/components/Footer/Footer";
 import { Stack } from "@mui/material";
 
-const Page = () => {
+const CartPage = () => {
     return (
         <>
             <Stack direction={"row"} sx={{height:"min-content"}}>
@@ -19,4 +19,4 @@ const Page = () => {
     )
 }
 
-export default Page;
+export default CartPage;
