@@ -31,9 +31,10 @@ const Coupons = () => {
 
 export default Coupons;
 
-const Box = ({ data, select }) => {
-    const { icon, title, subtitile } = data;
+const Box = ({ data }) => {
+    const { icon, title, subtitile,path } = data;
     return (
+        <Link href={path}>
         <Stack gap={2} style={{ border: '1px solid #B5B5B5', borderRadius: '8px', alignItems: 'center', padding: '4px 10px', cursor: "pointer", width: '100%', position: 'relative' }} direction={"row"}>
             <IonIcon icon={icon} className={styles.newsicon}></IonIcon>
             <Typography style={{ fontSize: '13px' }}>
@@ -44,6 +45,7 @@ const Box = ({ data, select }) => {
             </Typography>
             <IonIcon icon={arrowForwardOutline} style={{position:'absolute', right:'10px'}}></IonIcon>
         </Stack>
+        </Link>
     )
 }
 
@@ -52,15 +54,18 @@ const boxArray = [
         icon: home,
         title: 'Add Coupons',
         subtitile: 'Get some exclusive Benefits',
+        path:"#"
     },
     {
         icon: businessOutline,
         title: 'Transaction History',
         subtitile: 'All your Previous Transaction',
+        path:"/wallet/transaction"
     },
     {
         icon: storefrontOutline,
         title: 'Help and Support',
         subtitile: 'Get help',
+        path:"#"
     }
 ]

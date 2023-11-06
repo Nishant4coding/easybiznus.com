@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack } from '@mui/material';
+import Footer from '@/components/Footer/Footer';
 import BasicBreadcrumbs from '@/components/BreadCrumbs';
 import Container from '@/components/Wallet/Container';
 const WalletPage = () => {
@@ -7,6 +7,7 @@ const WalletPage = () => {
     <>
      <BasicBreadcrumbs inactive={inactive} active="Vendor Wallet" fsize="25px"/>
      <Container/>
+     <Footer/>
     </>
   )
 }

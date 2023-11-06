@@ -37,9 +37,15 @@ import YellowTick from './yellow-tick.svg';
 import GreenTick from './green-tick.svg';
 import ModalShoe from './modal-shoe.svg';
 import OrderPlaced from './order-placed.svg';
+import Renew from './renew.svg';
+import SearchBlack from './search-black.svg';
+import Wallet from './wallet.svg';
 
 
 export {
+    Wallet,
+    SearchBlack,
+    Renew,
     OrderPlaced,
     YellowTick,
     GreenTick,
