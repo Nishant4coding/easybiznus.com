@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Stack, Button } from "@mui/material";
 import Specification from '@/components/ProductPage/Specification';
-import Image from '@/components/ProductPage/Image';
+import ImageBox from '@/components/ProductPage/Image';
 import PriceSection from '@/components/ProductPage/PriceSection';
 import Footer from "@/components/Footer/Footer";
 import Popup from "@/components/ProductPage/Popup";
@@ -17,7 +17,7 @@ const ProductPage = () => {
         <>
         <Stack direction={"row"} sx={{ padding: "5% 150px" }}>
             <Stack direction={"column"} sx={{ width: "58%", alignItems:'flex-end' }} spacing={2}>
-                <Image />
+                <ImageBox />
                 <Specification />
             </Stack>
             <Stack direction={"column"} sx={{ width: "42%", alignItems:'flex-end' }} spacing={2}>

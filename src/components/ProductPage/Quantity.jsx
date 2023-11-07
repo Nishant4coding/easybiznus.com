@@ -38,7 +38,7 @@ const Quantity = ({handleOpen,setPopTitle }) => {
                         button2:"View Bag",
                         button:"Checkout",
                         path2:"/cart",
-                        path:"#"
+                        path:"/checkout"
                     });
                     handleOpen();
                 }}>

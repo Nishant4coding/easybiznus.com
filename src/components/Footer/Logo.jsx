@@ -11,7 +11,7 @@ const LogoLink = ()=>{
             <Image src={Logo} alt={"logo"} width={180} style={{margin:"5px 20px"}}/>
             <Stack direction={"row"} sx={{width:"110%", justifyContent:"space-between"}}>
                 {logoArray.map((item,index)=>(
-                    <Image src={item} key={index}/>
+                    <Image alt="logo" src={item} key={index}/>
                 ))
                 }
             </Stack>

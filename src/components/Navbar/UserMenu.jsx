@@ -4,6 +4,7 @@ import styles from './nav.module.css';
 import { User } from "@/assets/svg/index";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const overlayStyle = {
     backdropFilter: "blur(9px)",
@@ -11,6 +12,8 @@ const overlayStyle = {
 };
 
 const UserMenu = ({ userMenu, handleClose }) => {
+    const router=useRouter();
+
     return (
         <Modal
             open={userMenu}
@@ -24,7 +27,9 @@ const UserMenu = ({ userMenu, handleClose }) => {
             }}
         >
             <Stack className={styles.menu}>
-                <Typography className={styles.username} onClick={handleClose}>
+                <Typography className={styles.username} onClick={()=>{
+                    handleClose();
+                }}>
                     <Image src={User} alt={"icon"} width={30} />
                     Hello, {"<Name>"}
                 </Typography>
@@ -43,7 +48,7 @@ const UserMenu = ({ userMenu, handleClose }) => {
 export default UserMenu;
 
 const menuArray = [
-    {title:"My Account", path:"#"},
+    {title:"My Account", path:"/account"},
     {title:"My Orders",path:"/orders"},
     {title:"Wallet",path:"/wallet"},
     {title:"Try & Buy",path:"/trynbuy"},
