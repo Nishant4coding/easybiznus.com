@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Avatar, Cart, Heart } from '@/assets/svg/index';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { useRouter } from 'next/navigation';
 
 const theme = createTheme({
     palette: {
@@ -14,11 +15,14 @@ const theme = createTheme({
 
 
 const NavIcon = ({handleOpen, userMenu}) => {
+    const router=useRouter();
+
     return (
-        <Box sx={{ display: "flex", gap: "25px", alignItems: "center" }}>
+        <Box sx={{height:'100%', display: "flex", gap: "25px", alignItems: "center",}}>
             {
                 iconArray.map((icon, index) => (
-                    <Link href={icon.path} key={index} onClick={()=>{
+                    <Box sx={{height:'100%', width:'fit-content', cursor:"pointer", padding:"0 10px",}} key={index} onClick={()=>{
+                        icon.path?router.push(icon.path):null;
                         if(index===2&&userMenu===false){
                             handleOpen();
                         }
@@ -38,7 +42,7 @@ const NavIcon = ({handleOpen, userMenu}) => {
                             </ThemeProvider> :
                             <Image src={icon.title} alt={"cart"} width={15}></Image>
                         }
-                    </Link>
+                    </Box>
                 ))
             }
         </Box>
@@ -60,7 +64,6 @@ const iconArray = [
     },
     {
         title: Avatar,
-        path: "#",
         number: 0
     }
 ]

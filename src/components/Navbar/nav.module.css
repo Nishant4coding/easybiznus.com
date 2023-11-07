@@ -6,6 +6,9 @@
     justify-content: space-around;
     align-items: center;
     padding-right: 50px;
+    position: sticky;
+    top:0px;
+    z-index: 1000;
 }
 
 .link {
