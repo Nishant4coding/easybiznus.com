@@ -9,7 +9,7 @@ import { useState } from 'react';
 const Profile = ({ setForm }) => {
     const [password, setPassword] = useState(true);
 
-    const handlePass=(e)=>{
+    const handlePass = (e) => {
         setPassword(e.target.value);
         console.log('====================================');
         console.log(password);
@@ -30,7 +30,7 @@ const Profile = ({ setForm }) => {
                     <Input type={"password"} handlePass={handlePass} title={"New Password"} placeholder={"New Password"} width={"82%"} />
                 </Stack>
 
-                <Stack sx={{paddingLeft:'9%'}}>
+                <Stack sx={{ paddingLeft: '9%' }}>
                     <TextIcon
                         correct={password.length >= 8 ? true : false}
                         text="Minimum 8 characters"
@@ -75,11 +75,11 @@ const Profile = ({ setForm }) => {
 
 export default Profile;
 
-const Input = ({type, handlePass, title, placeholder, width, children, fsize }) => {
+const Input = ({ type, handlePass, title, placeholder, width, children, fsize }) => {
     return (
         <Stack gap={1} sx={{ width: width ? width : '40%', position: 'relative' }}>
             <Typography style={{ fontSize: fsize ? fsize : "" }} className={styles.inputhead}>{title}</Typography>
-            <input onChange={handlePass} type={type?type:"text"} placeholder={placeholder} className={styles.input}></input>
+            <input onChange={handlePass} type={type ? type : "text"} placeholder={placeholder} className={styles.input}></input>
             {children}
         </Stack>
     )
@@ -88,9 +88,9 @@ const Input = ({type, handlePass, title, placeholder, width, children, fsize }) 
 
 const TextIcon = (props) => {
     return (
-        <Stack direction={"row"} gap={1} style={{alignItems:'center'}}>
-            <IonIcon icon={props.correct ? checkmarkCircleOutline : closeCircleOutline} size={18} style={{color:props.correct ? "#1BCFB4" : "#F55E53"}} />
-            <Typography style={{fontSize:'13px'}}>{props.text}</Typography>
+        <Stack direction={"row"} gap={1} style={{ alignItems: 'center' }}>
+            <IonIcon icon={props.correct ? checkmarkCircleOutline : closeCircleOutline} size={18} style={{ color: props.correct ? "#1BCFB4" : "#F55E53" }} />
+            <Typography style={{ fontSize: '13px' }}>{props.text}</Typography>
         </Stack>
     );
 };
