@@ -77,7 +77,7 @@ const AccountView = () => {
                             <Stack>
                                 {
                                     addressArray.map((item, index) => (
-                                        <AddressCard select={select} index={index} title={item.title} icon={item.icon} sub={item.sub} setSelect={setSelect}/>
+                                        <AddressCard key={index} select={select} index={index} title={item.title} icon={item.icon} sub={item.sub} setSelect={setSelect}/>
                                     ))
                                 }
                             </Stack>

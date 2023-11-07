@@ -19,7 +19,7 @@ const AddCard = () => {
                 <Stack direction={"row"} gap={2}>
                     {
                         priceArray.map((item,index)=>(
-                            <Box className={styles.pricebox}>
+                            <Box key={index} className={styles.pricebox}>
                                 {item}
                             </Box>
                         ))

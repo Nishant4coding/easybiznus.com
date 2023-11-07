@@ -14,10 +14,11 @@ const HomePage = (props) => {
   const { t, i18n } = useTranslation();
 
   const [title, setTitle] = useState();
-
+  const T=t("title");
+  
   useEffect(() => {
     setTitle(t("title"));
-  }, [t("title")]);
+  }, [T]);
 
   return (
     <>    
