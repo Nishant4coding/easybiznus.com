@@ -9,7 +9,7 @@ const ImageGrid = () => {
     const [mainImg, setMainImg]= useState(Img1);
 
     return (
-        <Stack direction={"row"} gap={1}>
+        <Stack style={{width:'100%'}} direction={"row"} gap={0.5}>
             <Stack gap={0.5}>
                 {
                     imgArray.map((item, index) => (

@@ -6,7 +6,7 @@ import Products from "../Products";
 const Trend = () => {
     return (
         <Stack direction={"column"} className={styles.container} gap={3}>
-            <Typography className={styles.title}> Our Trendy Products</Typography>
+            <Typography className={styles.title}> Trending </Typography>
             <Category data={catArray} />
             <Products/>
         </Stack>
