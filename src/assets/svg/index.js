@@ -40,13 +40,21 @@ import OrderPlaced from './order-placed.svg';
 import Renew from './renew.svg';
 import SearchBlack from './search-black.svg';
 import Wallet from './wallet.svg';
-import Product from './product.svg';
-
+import RightIcon from './RightIcon.svg';
+import Shoe5 from './shoe5.svg';
+import Wishlist from './Wishlist.svg';
+import GreenCircle from './greenCircle.svg';
+import BlueCircle from './blueCircle.svg';
 
 export {
     Product,
     Wallet,
     SearchBlack,
+    Wishlist,
+    BlueCircle,
+    GreenCircle,
+    RightIcon,
+    Shoe5,
     Renew,
     OrderPlaced,
     YellowTick,

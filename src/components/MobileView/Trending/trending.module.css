@@ -1,0 +1,19 @@
+.trending {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.heading {
+    font-size: 19px;
+    font-weight: 700px;
+    line-height: 28px;
+}
+
+.products {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 250px;
+}

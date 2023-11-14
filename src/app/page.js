@@ -12,6 +12,9 @@ import Footer from "@/components/Footer/Footer";
 import CarouselMob from "@/components/Carousel/MobileView/CarouselMob";
 import { imgMob1, imgMob2 } from '@/assets/carousel/index';
 import styles from './page.module.css';
+import Category from "@/components/MobileView/Categories/Category";
+import Trending from "@/components/MobileView/Trending/Trending";
+import Popular from "@/components/MobileView/Popular/Popular";
 
 
 const HomePage = (props) => {
@@ -26,20 +29,29 @@ const HomePage = (props) => {
 
   return (
     <>
-      <div className={styles.carousel}>
+      <div className={styles.desktopScreen}>
         <Carousel />
       </div>
-      <div className={styles.carouselMob}>
+    
+      <div className={styles.desktopScreen}>
+        <Try />
+        <Trend />
+        <Recommend />
+        <Banner title="TRY & BUY" />
+        <Brand />
+        <Main />
+        <Footer />
+      </div>
+      {/* Mobile view */}
+     <div style={{backgroundColor:"#EBEBEB"}}>
+     <div className={styles.carouselMob}>
         <CarouselMob img={imgMob1} />
         <CarouselMob img={imgMob2} />
       </div>
-      {/* <Try/>
-      <Trend/>
-      <Recommend/>
-      <Banner title="TRY & BUY"/>
-      <Brand/>
-      <Main/>
-      <Footer/> */}
+      <Category/>
+      <Trending/>
+      <Popular/>
+     </div>
     </>
   );
 };

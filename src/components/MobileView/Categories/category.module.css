@@ -1,0 +1,40 @@
+.category{
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    justify-content: center;
+    margin-top: 15px;
+    padding-bottom: 15px;
+}
+.mens{
+    display: flex;
+    background-color: #0D1A26;
+    color: white;
+    font-weight: 500px;
+    justify-content: center;
+    align-items: center;
+    width: 115px;
+    border-bottom-left-radius: 100px;
+    border-top-left-radius: 100px;
+    gap: 6px;
+}
+.womens{
+    display: flex;
+    font-weight: 500px;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid white;
+    width: 115px;
+}
+.kids{
+    display: flex;
+    font-weight: 500px;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: 115px;
+    border: 1px solid white;
+    border-bottom-right-radius: 100px;
+    border-top-right-radius: 100px;
+}

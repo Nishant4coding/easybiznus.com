@@ -1,0 +1,26 @@
+.prodImg {
+    background-color: #F6F6F6;
+    padding: 10px;
+}
+
+.prodTitle {
+    background-color: white;
+}
+
+.prodTitleTxt {
+    font-size: 12px;
+    font-weight: 500px;
+    line-height: 18px;
+    padding-left: 6px;
+    margin-top: 5px;
+}
+
+.wishlist {
+    display: flex;
+    align-self: end
+}
+.buttomSec{
+    display: flex;
+    flex-direction: row;
+   justify-content: space-between;
+}
