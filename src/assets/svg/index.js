@@ -40,9 +40,11 @@ import OrderPlaced from './order-placed.svg';
 import Renew from './renew.svg';
 import SearchBlack from './search-black.svg';
 import Wallet from './wallet.svg';
+import Product from './product.svg';
 
 
 export {
+    Product,
     Wallet,
     SearchBlack,
     Renew,

@@ -32,9 +32,21 @@
     font-weight: bold;
     line-height: 23px;
 }
+.sp2{
+    color:#BA2B20;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 23px;
+}
 .mrp{
     font-size: 16px;
     color:#B5B5B5;
+}
+.mrp2{
+    text-decoration: line-through;
+    font-size: 16px;
+    color:#191919;
+    font-weight: 600;
 }
 .cutline{
     width:90%;
@@ -136,4 +148,17 @@
     font-size: 10px;
     color:#0D1A26;
     padding: 5px 25px;
+}
+.discount{
+    padding: 2px 5px;
+    background-color: #F55E53;
+    width:fit-content;
+    color:white;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    position: absolute;
+    top:25px;
+    left:25px;
+    z-index: 1;
 }
