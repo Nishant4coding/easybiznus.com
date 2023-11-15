@@ -6,7 +6,7 @@ import styles from './card.module.css'
 
 const TrendingCard = ({ img, title }) => {
     return (
-        <Stack>
+        <Stack className={styles.cardCon}>
             <Stack className={styles.prodImg}>
                 <Image src={img} alt='shoe' />
             </Stack>

@@ -3,15 +3,24 @@ import { Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 import styles from './cardA.module.css';
-import { BlueCircle, GreenCircle, Wishlist } from '@/assets/svg/index';
+import { BlueCircle, GreenCircle } from '@/assets/svg/index';
+import {  heart, heartOutline,  } from 'ionicons/icons';
+import { IonIcon } from '@ionic/react';
+import { useState } from "react";
 
 const CardA = ({ img, title }) => {
+    const [wish, setWish] = useState(false);
     return (
-        <Stack>
-
+        <Stack className={styles.cardCon}>
             <Stack className={styles.prodImg}>
                 <Stack className={styles.wishlist}>
-                    <Image src={Wishlist} alt='Wishlist' width={24} height={24} />
+
+                    <IonIcon icon={wish ? heart : heartOutline} size="large" style={{ color: "#F55E53", cursor: "pointer" }}
+                    onClick={() =>{ 
+                        setWish(!wish); 
+                        // wish?null: addedToWishlist();
+                    }}
+                ></IonIcon>
                 </Stack>
                 <Image src={img} alt='shoe' />
             </Stack>

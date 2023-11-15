@@ -15,6 +15,13 @@ import styles from './page.module.css';
 import Category from "@/components/MobileView/Categories/Category";
 import Trending from "@/components/MobileView/Trending/Trending";
 import Popular from "@/components/MobileView/Popular/Popular";
+import { Stack } from "@mui/material";
+import TopCategories from "@/components/MobileView/TopCategories/TopCategories";
+import ShoeCategories from "@/components/MobileView/ShoeCategories/ShoeCategories";
+import MensCollections from "@/components/MobileView/MensCollections/MensCollections";
+import WomensCollections from "@/components/MobileView/WomensCollections/WomensCollections";
+import KidsCollections from "@/components/MobileView/KidsCollections/KidsCollections";
+import FooterM from "@/components/MobileView/Footer/FooterM";
 
 
 const HomePage = (props) => {
@@ -32,7 +39,7 @@ const HomePage = (props) => {
       <div className={styles.desktopScreen}>
         <Carousel />
       </div>
-    
+
       <div className={styles.desktopScreen}>
         <Try />
         <Trend />
@@ -43,15 +50,23 @@ const HomePage = (props) => {
         <Footer />
       </div>
       {/* Mobile view */}
-     <div style={{backgroundColor:"#EBEBEB"}}>
-     <div className={styles.carouselMob}>
-        <CarouselMob img={imgMob1} />
-        <CarouselMob img={imgMob2} />
+      <div style={{ backgroundColor: "#EBEBEB" }}>
+        <div className={styles.carouselMob}>
+          <CarouselMob img={imgMob1} />
+          <CarouselMob img={imgMob2} />
+        </div>
+        <Stack className={styles.mobileView}>
+          <Category />
+          <Trending />
+          <Popular />
+          <TopCategories />
+          <ShoeCategories />
+          <MensCollections />
+          <WomensCollections />
+          <KidsCollections />
+          <FooterM />
+        </Stack>
       </div>
-      <Category/>
-      <Trending/>
-      <Popular/>
-     </div>
     </>
   );
 };

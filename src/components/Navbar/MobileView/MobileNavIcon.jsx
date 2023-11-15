@@ -52,11 +52,6 @@ const MobileNavIcon = ({handleOpen, userMenu}) => {
 export default MobileNavIcon;
 
 const iconArray = [
-    // {
-    //     title: Search,
-    //     path: "/search",
-    //     number: 0
-    // },
     {
         title: Heart,
         path: "/wishlist",

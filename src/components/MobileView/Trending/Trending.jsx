@@ -15,6 +15,30 @@ const Trending = () => {
             img: Shoe5,
             title: "Air Jordan XXXVI"
         },
+        {
+            img: Shoe5,
+            title: "Air Jordan XXXVI"
+        },
+        {
+            img: Shoe5,
+            title: "Air Jordan XXXVI"
+        },
+        {
+            img: Shoe5,
+            title: "Air Jordan XXXVI"
+        },
+        {
+            img: Shoe5,
+            title: "Air Jordan XXXVI"
+        },
+        {
+            img: Shoe5,
+            title: "Air Jordan XXXVI"
+        },
+        {
+            img: Shoe5,
+            title: "Air Jordan XXXVI"
+        },
       
     ]
     return (
@@ -24,7 +48,7 @@ const Trending = () => {
             </Typography>
             <Stack className={styles.products} >
                 {
-                    prod.map((item, ind) => {
+                    prod?.map((item, ind) => {
                         return (
                             <TrendingCard img={item.img} title={item.title} key={ind} />
                         )
