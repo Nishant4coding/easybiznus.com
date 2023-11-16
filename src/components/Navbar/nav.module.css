@@ -135,3 +135,16 @@
     border-top: 1px solid #D1D5DB;
     width: 100%;
 }
+.searchPop{
+    width: 100%;
+    height: fit-content;
+    outline: none;
+}
+.suggest{
+    padding: 50px;
+    padding-top: 20px;
+    background-color: #fff;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: space-around;
+}

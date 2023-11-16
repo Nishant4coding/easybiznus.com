@@ -23,6 +23,7 @@ import WomensCollections from "@/components/MobileView/WomensCollections/WomensC
 import KidsCollections from "@/components/MobileView/KidsCollections/KidsCollections";
 import FooterM from "@/components/MobileView/Footer/FooterM";
 
+import global from '@/global.module.css'
 
 const HomePage = (props) => {
   const { t, i18n } = useTranslation();
@@ -36,11 +37,8 @@ const HomePage = (props) => {
 
   return (
     <>
-      <div className={styles.desktopScreen}>
+      <div className={global.desktop}>
         <Carousel />
-      </div>
-
-      <div className={styles.desktopScreen}>
         <Try />
         <Trend />
         <Recommend />
@@ -49,13 +47,14 @@ const HomePage = (props) => {
         <Main />
         <Footer />
       </div>
+
       {/* Mobile view */}
-      <div style={{ backgroundColor: "#EBEBEB" }}>
+      <div className={global.desktop} style={{ backgroundColor: "#EBEBEB" }}>
         <div className={styles.carouselMob}>
           <CarouselMob img={imgMob1} />
           <CarouselMob img={imgMob2} />
         </div>
-        <Stack className={styles.mobileView}>
+        <Stack>
           <Category />
           <Trending />
           <Popular />

@@ -6,9 +6,9 @@ import styles from '@/components/ProductPage/product.module.css';
 
 const ImageView = () => {
   return (
-    <Box style={{width:'100%', position:'relative', padding:'20px'}}>
-        <Typography className={styles.discount}>-50%</Typography>
-      <Image alt="product" src={Product} style={{width:'100%', objectFit:'cover'}}/>
+    <Box style={{ width: '100%', position: 'relative' }}>
+      <Typography className={styles.discount}>-50%</Typography>
+      <Image alt="product" src={Product} style={{ width: '100%', objectFit: 'cover' }} />
     </Box>
   )
 }

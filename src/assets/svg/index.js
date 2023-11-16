@@ -41,13 +41,27 @@ import Renew from './renew.svg';
 import SearchBlack from './search-black.svg';
 import Wallet from './wallet.svg';
 import RightIcon from './RightIcon.svg';
-import Shoe5 from './shoe5.svg';
 import Wishlist from './Wishlist.svg';
 import GreenCircle from './greenCircle.svg';
 import BlueCircle from './blueCircle.svg';
+import UserWallet from './user-wallet.svg';
+import CartBlack from './cart-black.svg';
+import Chat from './chat.svg';
+import Bag from './bag.svg';
+import UserLogo from './user-logo.svg';
+import Shoe5 from './shoe5.svg';
+import Product from './product.svg';
+import PinBlack from './pin-black.svg';
+
 
 export {
+    PinBlack,
     Product,
+    UserWallet,
+    CartBlack,
+    Chat,
+    Bag,
+    UserLogo,
     Wallet,
     SearchBlack,
     Wishlist,
