@@ -28,7 +28,7 @@ const PriceSection = ({handleOpen, setPopTitle}) => {
                 <Typography className={styles.declaratiob}>(Also include all application duties)</Typography>
             </Stack>
             <Typography className={styles.linebreak}></Typography>
-            <Stack direction={"column"} sx={{padding:"10px 0px 10px 25px"}}>
+            <Stack direction={"column"} sx={{padding:"10px 0px 10px 25px", width:'100%'}}>
                 <Size/>
                 <Quantity handleOpen={handleOpen} setPopTitle={setPopTitle}/>
                 <Pincode/>

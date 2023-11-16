@@ -12,7 +12,7 @@ import Footer from "@/components/Footer/Footer";
 import CarouselMob from "@/components/Carousel/MobileView/CarouselMob";
 import { imgMob1, imgMob2 } from '@/assets/carousel/index';
 import styles from './page.module.css';
-
+import global from '@/global.module.css'
 
 const HomePage = (props) => {
   const { t, i18n } = useTranslation();
@@ -26,20 +26,24 @@ const HomePage = (props) => {
 
   return (
     <>
-      <div className={styles.carousel}>
+
+      {/* DESKTOP */}
+      <div className={global.desktop}>
         <Carousel />
+        <Try />
+        <Trend />
+        <Recommend />
+        <Banner title="TRY & BUY" />
+        <Brand />
+        <Main />
+        <Footer />
       </div>
-      <div className={styles.carouselMob}>
+
+      {/* MOBILE */}
+      <div className={global.mobile}>
         <CarouselMob img={imgMob1} />
         <CarouselMob img={imgMob2} />
       </div>
-      {/* <Try/>
-      <Trend/>
-      <Recommend/>
-      <Banner title="TRY & BUY"/>
-      <Brand/>
-      <Main/>
-      <Footer/> */}
     </>
   );
 };

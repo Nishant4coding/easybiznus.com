@@ -5,6 +5,7 @@ import Specification from '@/components/ProductPage/Specification';
 import ImageBox from '@/components/ProductPage/Image';
 import PriceSection from '@/components/ProductPage/PriceSection';
 import Footer from "@/components/Footer/Footer";
+import FooterMobile from "@/components/Footer/Mobile/Footer";
 import Popup from "@/components/ProductPage/Popup";
 import global from '@/global.module.css';
 import ImageView from "@/components/ProductPage/Mobile/Image";
@@ -35,9 +36,12 @@ const ProductPage = () => {
             </Box>
 
             {/* MOBILE VIEW */}
-            <Box className={global.mobile}>
+            <Box className={global.mobile} sx={{padding:'15px'}}>
                 <ImageView/>
                 <Product/>
+            </Box>
+            <Box className={global.mobile}>
+                <FooterMobile/>
             </Box>
         </>
     )
