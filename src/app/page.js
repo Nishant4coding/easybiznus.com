@@ -50,7 +50,7 @@ const HomePage = (props) => {
 
       {/* Mobile view */}
       <div className={global.mobile} style={{ backgroundColor: "#EBEBEB" }}>
-        <div className={styles.carouselMob}>
+        <div>
           <CarouselMob img={imgMob1} />
           <CarouselMob img={imgMob2} />
         </div>
