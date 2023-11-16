@@ -23,7 +23,7 @@ import WomensCollections from "@/components/MobileView/WomensCollections/WomensC
 import KidsCollections from "@/components/MobileView/KidsCollections/KidsCollections";
 import FooterM from "@/components/MobileView/Footer/FooterM";
 import GlobalStyles from "../global.module.css"
-import ProductView from "@/components/MobileView/ProductView/ProductView";
+import ProductView from "@/components/MobileView/ProductsView/ProductView";
 
 
 const HomePage = (props) => {
@@ -54,11 +54,11 @@ const HomePage = (props) => {
       {/* Mobile view */}
       <div style={{ backgroundColor: "#EBEBEB" }}>
         <div className={GlobalStyles.mobile}>
-          {/* <CarouselMob img={imgMob1} />
-          <CarouselMob img={imgMob2} /> */}
+          <CarouselMob img={imgMob1} />
+          <CarouselMob img={imgMob2} />
         </div>
         <Stack className={GlobalStyles.mobile}>
-          {/* <Category />
+          <Category />
           <Trending />
           <Popular />
           <TopCategories />
@@ -66,7 +66,7 @@ const HomePage = (props) => {
           <MensCollections />
           <WomensCollections />
           <KidsCollections />
-          <FooterM /> */}
+          <FooterM />
           <ProductView/>
         </Stack>
       </div>

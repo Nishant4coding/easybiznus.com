@@ -10,27 +10,33 @@ const KidsCollections = () => {
     const prod = [
         {
             img: Shoe5,
-            title: "Air Jordan XXXVI"
+            title: "Air Jordan XXXVI",
+            link: "/productView"
         },
         {
             img: Shoe5,
-            title: "Air Jordan XXXVI"
+            title: "Air Jordan XXXVI",
+            link: "/productView"
         },
         {
             img: Shoe5,
-            title: "Air Jordan XXXVI"
+            title: "Air Jordan XXXVI",
+            link: "/productView"
         },
         {
             img: Shoe5,
-            title: "Air Jordan XXXVI"
+            title: "Air Jordan XXXVI",
+            link: "/productView"
         },
         {
             img: Shoe5,
-            title: "Air Jordan XXXVI"
+            title: "Air Jordan XXXVI",
+            link: "/productView"
         },
         {
             img: Shoe5,
-            title: "Air Jordan XXXVI"
+            title: "Air Jordan XXXVI",
+            link: "/productView"
         },
 
     ]
@@ -53,7 +59,7 @@ const KidsCollections = () => {
                     {
                         prod?.map((item, ind) => {
                             return (
-                                <CardA img={item?.img} title={item?.title} key={ind} />
+                                <CardA img={item?.img} title={item?.title} link={item?.link} key={ind} />
                             )
                         })
                     }
