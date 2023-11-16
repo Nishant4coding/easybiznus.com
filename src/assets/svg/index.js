@@ -45,10 +45,12 @@ import Shoe5 from './shoe5.svg';
 import Wishlist from './Wishlist.svg';
 import GreenCircle from './greenCircle.svg';
 import BlueCircle from './blueCircle.svg';
+import AddIcon from './AddIcon.svg';
+
 
 export {
-    Product,
     Wallet,
+    AddIcon,
     SearchBlack,
     Wishlist,
     BlueCircle,

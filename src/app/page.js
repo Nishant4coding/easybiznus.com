@@ -22,6 +22,8 @@ import MensCollections from "@/components/MobileView/MensCollections/MensCollect
 import WomensCollections from "@/components/MobileView/WomensCollections/WomensCollections";
 import KidsCollections from "@/components/MobileView/KidsCollections/KidsCollections";
 import FooterM from "@/components/MobileView/Footer/FooterM";
+import GlobalStyles from "../global.module.css"
+import ProductView from "@/components/MobileView/ProductView/ProductView";
 
 
 const HomePage = (props) => {
@@ -36,11 +38,11 @@ const HomePage = (props) => {
 
   return (
     <>
-      <div className={styles.desktopScreen}>
+      <div className={GlobalStyles.desktop}>
         <Carousel />
       </div>
 
-      <div className={styles.desktopScreen}>
+      <div className={GlobalStyles.desktop}>
         <Try />
         <Trend />
         <Recommend />
@@ -51,12 +53,12 @@ const HomePage = (props) => {
       </div>
       {/* Mobile view */}
       <div style={{ backgroundColor: "#EBEBEB" }}>
-        <div className={styles.carouselMob}>
-          <CarouselMob img={imgMob1} />
-          <CarouselMob img={imgMob2} />
+        <div className={GlobalStyles.mobile}>
+          {/* <CarouselMob img={imgMob1} />
+          <CarouselMob img={imgMob2} /> */}
         </div>
-        <Stack className={styles.mobileView}>
-          <Category />
+        <Stack className={GlobalStyles.mobile}>
+          {/* <Category />
           <Trending />
           <Popular />
           <TopCategories />
@@ -64,7 +66,8 @@ const HomePage = (props) => {
           <MensCollections />
           <WomensCollections />
           <KidsCollections />
-          <FooterM />
+          <FooterM /> */}
+          <ProductView/>
         </Stack>
       </div>
     </>
