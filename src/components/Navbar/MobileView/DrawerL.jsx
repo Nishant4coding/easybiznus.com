@@ -22,7 +22,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import MobileNavIcon from './MobileNavIcon';
 import MobileNavSearch from './MobileNavSearch';
-
+import BottomTabs from './BottomTabs.jsx';
 import styles from "./mobileNav.module.css";
 import { Logo, Search } from '@/assets/svg';
 
@@ -91,9 +91,9 @@ export default function DrawerL() {
   };
 
   return (
-    <Box sx={{ display: 'flex',}} >
+    <Box sx={{ display: 'flex', }} >
       <CssBaseline />
-      <AppBar position="fixed" open={open} style={{backgroundColor:'#0D1A26'}}>
+      <AppBar position="fixed" open={open} style={{ backgroundColor: '#0D1A26' }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -106,7 +106,7 @@ export default function DrawerL() {
 
           </IconButton>
 
-         {!open && <Box className={styles.navbar}>
+          {!open && <Box className={styles.navbar}>
             {searchIcon && <Link href="/">
               <Image src={Logo} alt={"logo"} width={65} />
             </Link>}
@@ -123,10 +123,11 @@ export default function DrawerL() {
 
       <Drawer
         sx={{
-          width: drawerWidth,
+          position: 'relative',
+          width: '100vw',
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: drawerWidth,
+            width: '100vw',
             boxSizing: 'border-box',
           },
         }}
@@ -153,11 +154,12 @@ export default function DrawerL() {
           ))}
         </List>
         <Divider />
+        <BottomTabs handleDrawerClose={handleDrawerClose}/>
       </Drawer>
 
-      <Main open={open}>
+      {/* <Main open={open}>
         <DrawerHeader />
-      </Main>
+      </Main> */}
 
     </Box>
   );
