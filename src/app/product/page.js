@@ -36,7 +36,7 @@ const ProductPage = () => {
             </Box>
 
             {/* MOBILE VIEW */}
-            <Box className={global.mobile} sx={{padding:'15px'}}>
+            <Box className={global.mobile} sx={{padding:'20px'}}>
                 <ImageView/>
                 <Product/>
             </Box>

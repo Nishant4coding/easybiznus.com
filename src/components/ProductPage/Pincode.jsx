@@ -4,16 +4,21 @@ import styles from './product.module.css';
 import { closeCircleOutline } from 'ionicons/icons';
 import { IonIcon } from '@ionic/react';
 
-const Pincode = () => {
+const Pincode = ({ btnwidth }) => {
     return (
-        <Box sx={{ width: "100%",}}>
+        <Box sx={{ width: "100%", }}>
             <Typography sx={{ fontWeight: "700", fontSize: "13px", marginBottom: "15px" }}>Please enter the PIN code to check the delivery time</Typography>
-            <Stack direction={"row"} sx={{ justifyContent: "space-between", width: "100%", }} gap={1}>
-                <Stack direction="row" sx={{ position: "relative", width: "70%"}}>
-                    <TextField id="outlined-basic" label="PIN code" variant="outlined" className={styles.qtyinput} sx={input} style={{width:'100%'}}></TextField>
+            <Stack direction={"row"} sx={{ justifyContent: "space-between", width: "100%", }} gap={1.5}>
+                <Stack direction="row" sx={btnwidth ? { position: "relative", width: btnwidth } : { position: "relative", width: "70%" }}>
+                    <TextField id="outlined-basic"
+                        InputProps={{
+                            inputProps: {
+                                maxLength: 6,
+                            },
+                        }} label="PIN code" variant="outlined" className={styles.qtyinput} sx={input} style={{ width: '100%' }}></TextField>
                     <IonIcon icon={closeCircleOutline} size={"medium"} style={{ position: "absolute", top: "32%", right: "10px", cursor: "pointer" }}></IonIcon>
                 </Stack>
-                <Box className={styles.button} style={{ width: "100px" }}>
+                <Box className={styles.button} style={btnwidth ? { width: btnwidth } : { width: "100px" }}>
                     CHECK
                 </Box>
             </Stack>
@@ -28,7 +33,7 @@ const input = {
         color: '#0D1A26',
         fontWeight: "700",
         marginTop: "0px",
-        fontSize: "10px"
+        fontSize: "12px"
     },
     '& .MuiInput-underline:after': {
         borderBottomColor: '#B2BAC2',

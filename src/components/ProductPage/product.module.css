@@ -194,8 +194,8 @@
     z-index: 1;
 }
 .sizeboxmobile,.selectedsize{
-    width:55px;
-    height: 55px;
+    width:68px;
+    height: 68px;
     flex-shrink: 0;
     display: flex;
     justify-content: center;
@@ -207,4 +207,27 @@
 }
 .selectedsize{
     border:1.5px solid #0D1A26;
+}
+
+.wishIcon{
+    color: #F55E53; 
+    font-size: 65px;
+}
+.titleMobie{
+    font-size: 22px; 
+    width: fit-content;
+}
+.taxDeclaration{
+    font-size: 15px; color: #6C6C6C; 
+}
+.colorContainer{
+    margin: 20px 0px;
+}
+.mobileSubTitle{
+    font-weight: 600; font-size: 18px;
+    width:100%;
+}
+
+.support{
+    width: fit-content; font-weight: 600; font-size: 15px; border-bottom: 2px solid #A1A8AF;
 }
