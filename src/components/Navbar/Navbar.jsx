@@ -11,11 +11,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import UserMenu from './UserMenu';
 
-const Navbar = () => {
-    const [search, setSearch] = useState(false);
+const Navbar = ({search, handleOpenSearch}) => {
     const [userMenu, setUserMenu ] = useState(false);
+    
     const handleClose = ()=>setUserMenu(false);
     const handleOpen = ()=>setUserMenu(true);
+    
 
     return (
         <Box className={styles.navbar}>
@@ -24,7 +25,7 @@ const Navbar = () => {
             </Link>
             <Location />
             <Navlink search={search} />
-            <Search search={search} setSearch={setSearch} />
+            <Search search={search} handleOpenSearch={handleOpenSearch} />
             <NavIcon handleClose={handleClose} userMenu={userMenu} handleOpen={handleOpen}/>
             <UserMenu userMenu={userMenu} handleClose={handleClose}/>
         </Box>

@@ -18,7 +18,7 @@ const NavIcon = ({handleOpen, userMenu}) => {
     const router=useRouter();
 
     return (
-        <Box sx={{height:'100%', display: "flex", gap: "25px", alignItems: "center",}}>
+        <Box sx={{height:'100%', display: "flex",gap:'10px', alignItems: "center",}}>
             {
                 iconArray.map((icon, index) => (
                     <Box sx={{height:'100%', width:'fit-content', cursor:"pointer", padding:"0 10px",}} key={index} onClick={()=>{

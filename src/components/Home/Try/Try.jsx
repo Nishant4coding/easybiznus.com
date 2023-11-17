@@ -6,7 +6,7 @@ import Products from "../Products";
 const Try = () => {
     return (
         <Stack direction={"column"} className={styles.container} gap={2.5}>
-            <Typography className={styles.title}> TRY & BUY PRODUCTS</Typography>
+            <Typography className={styles.title}> TRY & BUY </Typography>
             <Category data={catArray} />
             <Products/>
         </Stack>
@@ -16,7 +16,7 @@ const Try = () => {
 export default Try;
 
 const catArray = [
-    "BOOTS",
+    "SPORTS SHOES",
     "SANDALS",
     "LOAFERS",
     "SNEAKERS"

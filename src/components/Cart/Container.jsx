@@ -1,13 +1,8 @@
-import { useState } from "react";
 import { Stack, Typography } from "@mui/material";
 import Card from "../CardD/Card";
 import styles from '@/components/Wishlist/wishlist.module.css';
-import Delete from "./Delete";
 
 const Container = () => {
-    // const [open, setOpen] = useState(false);
-    // const handleOpen = () => setOpen(true);
-    // const handleClose = () => setOpen(false);
 
     return (
         <Stack direction={"column"} className={styles.container} gap={3} style={{ marginBottom: "30px" }}>
@@ -21,7 +16,6 @@ const Container = () => {
                     })
                 }
             </Stack>
-            {/* <Delete open={open} handleClose={handleClose} /> */}
 
         </Stack>
     )

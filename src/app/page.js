@@ -25,6 +25,7 @@ import FooterM from "@/components/MobileView/Footer/FooterM";
 import GlobalStyles from "../global.module.css"
 import ProductView from "@/components/MobileView/ProductsView/ProductView";
 
+import global from '@/global.module.css'
 
 const HomePage = (props) => {
   const { t, i18n } = useTranslation();
@@ -38,11 +39,8 @@ const HomePage = (props) => {
 
   return (
     <>
-      <div className={GlobalStyles.desktop}>
+      <div className={global.desktop}>
         <Carousel />
-      </div>
-
-      <div className={GlobalStyles.desktop}>
         <Try />
         <Trend />
         <Recommend />
@@ -51,13 +49,14 @@ const HomePage = (props) => {
         <Main />
         <Footer />
       </div>
+
       {/* Mobile view */}
-      <div style={{ backgroundColor: "#EBEBEB" }}>
-        <div className={GlobalStyles.mobile}>
+      <div className={global.mobile} style={{ backgroundColor: "#EBEBEB" }}>
+        <div>
           <CarouselMob img={imgMob1} />
           <CarouselMob img={imgMob2} />
         </div>
-        <Stack className={GlobalStyles.mobile}>
+        <Stack>
           <Category />
           <Trending />
           <Popular />
