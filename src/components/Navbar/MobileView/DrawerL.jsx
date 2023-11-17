@@ -106,17 +106,19 @@ export default function DrawerL() {
 
           </IconButton>
 
-          {!open && <Box className={styles.navbar}>
-            {searchIcon && <Link href="/">
-              <Image src={Logo} alt={"logo"} width={65} />
-            </Link>}
+          {!open &&
+            <Box className={styles.navbar}>
+              {searchIcon && <Link href="/">
+                <Image src={Logo} alt={"logo"} width={65} />
+              </Link>}
 
-            {!searchIcon && <MobileNavSearch search={search} setSearch={setSearch} searchIcon={searchIcon} setSearchIcon={setSearchIcon} />}
-            <div className={styles.navRight}>
-              {searchIcon && <Image src={Search} alt={"cart"} width={15} onClick={() => setSearchIcon(!searchIcon)}></Image>}
-              {searchIcon && <MobileNavIcon handleClose={handleClose} userMenu={userMenu} handleOpen={handleOpen} />}
-            </div>
-          </Box>}
+              {!searchIcon && <MobileNavSearch search={search} setSearch={setSearch} searchIcon={searchIcon} setSearchIcon={setSearchIcon} />}
+              <div className={styles.navRight}>
+                {searchIcon && <Image src={Search} alt={"cart"} width={15} onClick={() => setSearchIcon(!searchIcon)}></Image>}
+                {searchIcon && <MobileNavIcon handleClose={handleClose} userMenu={userMenu} handleOpen={handleOpen} />}
+              </div>
+            </Box>
+          }
 
         </Toolbar>
       </AppBar>
@@ -154,7 +156,7 @@ export default function DrawerL() {
           ))}
         </List>
         <Divider />
-        <BottomTabs handleDrawerClose={handleDrawerClose}/>
+        <BottomTabs handleDrawerClose={handleDrawerClose} />
       </Drawer>
 
       {/* <Main open={open}>

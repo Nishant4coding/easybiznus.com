@@ -36,12 +36,12 @@ const ProductPage = () => {
             </Box>
 
             {/* MOBILE VIEW */}
-            <Box className={global.mobile} sx={{padding:'20px'}}>
-                <ImageView/>
-                <Product/>
+            <Box className={global.mobile} sx={{ padding: '20px', marginTop:'30px' }}>
+                <ImageView />
+                <Product />
             </Box>
             <Box className={global.mobile}>
-                <FooterMobile/>
+                <FooterMobile />
             </Box>
         </>
     )
