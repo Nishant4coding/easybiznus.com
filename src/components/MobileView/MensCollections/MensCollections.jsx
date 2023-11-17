@@ -5,6 +5,7 @@ import Image from 'next/image';
 import React from 'react';
 import CardA from '@/components/MobileViewCards/CardA/CardA';
 import styles from './mensCollections.module.css';
+import Link from 'next/link';
 
 const MensCollections = () => {
     const prod = [
@@ -53,7 +54,9 @@ const MensCollections = () => {
                     {
                         prod?.map((item, ind) => {
                             return (
-                                <CardA img={item?.img} title={item?.title} key={ind} />
+                                <Link href={"/category"} key={ind}>
+                                    <CardA img={item?.img} title={item?.title} key={ind} />
+                                </Link>
                             )
                         })
                     }
@@ -67,7 +70,9 @@ const MensCollections = () => {
                     {
                         prod?.map((item, ind) => {
                             return (
-                                <CardA img={item?.img} title={item?.title} key={ind} />
+                                <Link href={"/category"} key={ind}>
+                                    <CardA img={item?.img} title={item?.title} />
+                                </Link>
                             )
                         })
                     }

@@ -1,16 +1,26 @@
 "use client"
-import React from 'react'
-import FilterAndSort from './FilterAndSort';
-import CardB from '../../MobileViewCards/CardB/CardB';
+
+import { Button, Stack, Typography, Grid } from '@mui/material';
+import React from 'react';
+import { EmptyBoxImg } from '@/assets/svg/index';
+import Image from 'next/image';
 import { Shoe1 } from '@/assets/svg/index';
-import { Stack, Grid } from '@mui/material';
+import CardB from '../../MobileViewCards/CardB/CardB';
 import Link from 'next/link';
 
 
-const ProductView = () => {
+const EmptyWishlist = () => {
     return (
         <Stack>
-            <FilterAndSort />
+            <Stack direction={"column"} alignItems={"center"} gap={2} sx={{ marginTop: "90px", }}>
+                <Image src={EmptyBoxImg} alt='Empty box' />
+                <Stack gap={5} alignItems={"center"}>
+                <Typography sx={{fontSize:"18px", fontWeight:"600px"}}>Your Wishlist is Empty</Typography>
+                <Typography sx={{fontSize:"14px", fontWeight:"600px"}}>YOU MAY ALSO LIKE</Typography>
+                </Stack>
+            </Stack>
+
+            <Stack sx={{backgroundColor:"#EBEBEB"}}>
             <Grid container rowSpacing={1} spacing={2} justifyContent={"center"} marginTop={2} >
                 {
                     cardArray.map((item, index) => (
@@ -22,6 +32,7 @@ const ProductView = () => {
                     ))
                 }
             </Grid>
+            </Stack>
         </Stack>
     )
 }
@@ -173,5 +184,4 @@ const cardArray = [
     },
 ];
 
-
-export default ProductView;
+export default EmptyWishlist;

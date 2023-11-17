@@ -5,7 +5,6 @@ import { IonIcon } from '@ionic/react';
 import styles from './cardB.module.css';
 import Image from "next/image";
 import Link from "next/link";
-import { AddIcon } from "@/assets/svg/index";
 
 const Card = ({ data }) => {
     const [wish, setWish] = useState(false);

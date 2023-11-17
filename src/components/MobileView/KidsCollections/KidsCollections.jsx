@@ -5,6 +5,7 @@ import Image from 'next/image';
 import React from 'react';
 import CardA from '@/components/MobileViewCards/CardA/CardA';
 import styles from './kidsCollections.module.css';
+import Link from 'next/link';
 
 const KidsCollections = () => {
     const prod = [
@@ -59,7 +60,9 @@ const KidsCollections = () => {
                     {
                         prod?.map((item, ind) => {
                             return (
-                                <CardA img={item?.img} title={item?.title} link={item?.link} key={ind} />
+                                <Link href={"/category"} key={ind}>
+                                    <CardA img={item?.img} title={item?.title} link={item?.link} />
+                                </Link>
                             )
                         })
                     }
@@ -73,7 +76,9 @@ const KidsCollections = () => {
                     {
                         prod?.map((item, ind) => {
                             return (
-                                <CardA img={item?.img} title={item?.title} key={ind} />
+                                <Link href={"/category"} key={ind}>
+                                    <CardA img={item?.img} title={item?.title} />
+                                </Link>
                             )
                         })
                     }

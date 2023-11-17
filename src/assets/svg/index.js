@@ -57,9 +57,12 @@ import PinBlack from './pin-black.svg';
 import Home from './home.svg';
 import Cash from './cash.svg';
 import UserBlack from './user-black.svg'
+import EmptyBoxImg from './empty-box.svg'
 
 export {
     UserBlack,
+    EmptyBoxImg,
+    Product,
     Cash,
     Home,
     PinBlack,

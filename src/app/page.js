@@ -11,7 +11,6 @@ import Main from "@/components/Home/Main/Main";
 import Footer from "@/components/Footer/Footer";
 import CarouselMob from "@/components/Carousel/MobileView/CarouselMob";
 import { imgMob1, imgMob2 } from '@/assets/carousel/index';
-import styles from './page.module.css';
 import Category from "@/components/MobileView/Categories/Category";
 import Trending from "@/components/MobileView/Trending/Trending";
 import Popular from "@/components/MobileView/Popular/Popular";
@@ -22,8 +21,6 @@ import MensCollections from "@/components/MobileView/MensCollections/MensCollect
 import WomensCollections from "@/components/MobileView/WomensCollections/WomensCollections";
 import KidsCollections from "@/components/MobileView/KidsCollections/KidsCollections";
 import FooterM from "@/components/MobileView/Footer/FooterM";
-import GlobalStyles from "../global.module.css"
-import ProductView from "@/components/MobileView/ProductsView/ProductView";
 
 import global from '@/global.module.css'
 
@@ -66,7 +63,6 @@ const HomePage = (props) => {
           <WomensCollections />
           <KidsCollections />
           <FooterM />
-          <ProductView/>
         </Stack>
       </div>
     </>

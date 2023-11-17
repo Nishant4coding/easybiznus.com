@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import { Product } from '@/assets/svg';
+import { Product } from '@/assets/svg/index';
 import { Box, Typography } from '@mui/material';
 import styles from '@/components/ProductPage/product.module.css';
 

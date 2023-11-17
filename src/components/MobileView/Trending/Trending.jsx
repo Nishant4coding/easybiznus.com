@@ -4,6 +4,7 @@ import React from 'react';
 import styles from './trending.module.css';
 import TrendingCard from './TrendingCard';
 import { Shoe5 } from '../../../assets/svg/index';
+import Link from 'next/link';
 
 const Trending = () => {
     const prod = [
@@ -39,7 +40,7 @@ const Trending = () => {
             img: Shoe5,
             title: "Air Jordan XXXVI"
         },
-      
+
     ]
     return (
         <Stack className={styles.trending}>
@@ -50,7 +51,10 @@ const Trending = () => {
                 {
                     prod?.map((item, ind) => {
                         return (
-                            <TrendingCard img={item.img} title={item.title} key={ind} />
+
+                            <Link href={"/category"} key={ind}>
+                                <TrendingCard img={item?.img} title={item?.title}  />
+                            </Link>
                         )
                     })
                 }

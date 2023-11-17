@@ -10,6 +10,7 @@ import Popup from "@/components/ProductPage/Popup";
 import global from '@/global.module.css';
 import ImageView from "@/components/ProductPage/Mobile/Image";
 import Product from "@/components/ProductPage/Mobile/Product";
+import PopupAlert from "@/components/MobileView/Snackbar/PopupAlert";
 
 const ProductPage = () => {
     const [open, setOpen] = useState(false);
@@ -21,7 +22,7 @@ const ProductPage = () => {
         <>
 
             {/* DESKTOP VIEW */}
-            <Box className={global.desktop}>
+            {/* <Box className={global.desktop}>
                 <Stack direction={"row"} sx={{ padding: "5% 150px" }}>
                     <Stack direction={"column"} sx={{ width: "58%", alignItems: 'flex-end' }} spacing={2}>
                         <ImageBox />
@@ -33,12 +34,13 @@ const ProductPage = () => {
                 </Stack>
                 <Footer />
                 {open && <Popup open={open} handleClose={handleClose} poptitle={poptitle} />}
-            </Box>
+            </Box> */}
 
             {/* MOBILE VIEW */}
-            <Box className={global.mobile} sx={{ padding: '20px', marginTop:'30px' }}>
+            <Box className={global.mobile} sx={{ padding: '20px', marginTop: '30px' }}>
                 <ImageView />
-                <Product />
+                <Product handleOpen={() => handleOpen()} />
+                {open && <PopupAlert open={open} handleClose={handleClose} title={"Product added successfully"} type={"success"}/>}
             </Box>
             <Box className={global.mobile}>
                 <FooterMobile />

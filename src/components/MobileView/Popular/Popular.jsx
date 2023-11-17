@@ -4,6 +4,7 @@ import React from 'react';
 import styles from './popular.module.css';
 import { Shoe5 } from '../../../assets/svg/index';
 import CardA from '@/components/MobileViewCards/CardA/CardA';
+import Link from 'next/link';
 
 const Popular = () => {
     const prod = [
@@ -42,7 +43,9 @@ const Popular = () => {
                 {
                     prod?.map((item, ind) => {
                         return (
-                            <CardA img={item?.img} title={item?.title} key={ind} />
+                            <Link href={"/category"} key={ind}>
+                                <CardA img={item?.img} title={item?.title}/>
+                            </Link>
                         )
                     })
                 }

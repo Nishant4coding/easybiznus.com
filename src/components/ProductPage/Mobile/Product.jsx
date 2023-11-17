@@ -8,7 +8,7 @@ import Pincode from '../Pincode';
 import { PinBlack } from '@/assets/svg';
 import Image from 'next/image';
 
-const Product = () => {
+const Product = ({handleOpen}) => {
     const [qty, setQty] = useState(1);
     const [wish, setWish] = useState(false);
     const [size, setSize] = useState(0);
@@ -17,7 +17,11 @@ const Product = () => {
     const handleSetWish = () => setWish(!wish);
     const handleSize = (value) => setSize(value);
     const toggleSetPin = () => setChangepin(!changepin);
-    const handlePin = (e) => setPin(e.target.value)
+    const handlePin = (e) => setPin(e.target.value);
+
+    const addedToCart=()=>{
+        handleOpen();
+    }
 
     return (
         <Box>
@@ -37,7 +41,7 @@ const Product = () => {
                     <Typography className={styles.taxDeclaration}>Prices include GST</Typography>
                 </Stack>
                 <Stack gap={1}>
-                    <Button className={styles.button}>
+                    <Button className={styles.button} onClick={()=> addedToCart()}>
                         + ADD TO CART
                     </Button>
                     <Button className={styles.button}>

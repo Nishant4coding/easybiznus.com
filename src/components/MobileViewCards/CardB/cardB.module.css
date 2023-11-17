@@ -1,6 +1,7 @@
 .container {
     position: relative;
-    width: 171px;
+    min-width: 171px;
+    max-width: 100%;
     height: 286px;
     border-radius: 10px 10px 0 0;
     cursor: pointer;
