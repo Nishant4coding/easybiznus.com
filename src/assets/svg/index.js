@@ -54,9 +54,14 @@ import UserLogo from './user-logo.svg';
 import Shoe5 from './shoe5.svg';
 import Product from './product.svg';
 import PinBlack from './pin-black.svg';
-
+import Home from './home.svg';
+import Cash from './cash.svg';
+import UserBlack from './user-black.svg'
 
 export {
+    UserBlack,
+    Cash,
+    Home,
     PinBlack,
     UserWallet,
     CartBlack,
