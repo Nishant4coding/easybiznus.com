@@ -37,7 +37,7 @@ const TryPage = () => {
             </Box>
 
             {/* MOBILE */}
-            <Box className={global.mobile} sx={{padding:'15px', backgroundColor:'red'}}>
+            <Box className={global.mobile} sx={{padding:'20px', marginTop:'60px'}}>
                 <Header/>
             </Box>
         </>

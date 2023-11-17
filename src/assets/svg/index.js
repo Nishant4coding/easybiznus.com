@@ -54,9 +54,11 @@ import Product from './product.svg';
 import PinBlack from './pin-black.svg';
 import Home from './home.svg';
 import Cash from './cash.svg';
-import UserBlack from './user-black.svg'
+import UserBlack from './user-black.svg';
+import Shoe6 from './shoe6.svg';
 
 export {
+    Shoe6,
     UserBlack,
     Cash,
     Home,
