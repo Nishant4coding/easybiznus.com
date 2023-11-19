@@ -3,7 +3,8 @@ import React from 'react';
 import { Box, Button, Stack, Typography } from '@mui/material';
 import { IonIcon } from '@ionic/react';
 import { arrowForwardSharp, chevronForwardOutline, closeCircleOutline } from 'ionicons/icons';
-import styles from '../wallet.module.css'
+import styles from '../wallet.module.css';
+import Link from 'next/link';
 
 const Wallet = () => {
   return (
@@ -44,18 +45,20 @@ const Wallet = () => {
       </Stack>
 
       <Stack sx={{ margin: '25px 0px', alignItems: 'center' }} gap={1}>
-        <Stack sx={{ borderBottom: '1px solid #AEAEAE', width: '95%', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }} direction={"row"}>
-          <Typography sx={{ fontWeight: '600', fontSize: '18px' }}>Transactions</Typography>
-          <IonIcon icon={chevronForwardOutline} style={{ fontSize: '18px' }} />
-        </Stack>
+        <Link href="/wallet/transaction" style={{ width: '100%' }}>
+          <Stack sx={{ borderBottom: '1px solid #AEAEAE', width: '100%', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }} direction={"row"}>
+            <Typography sx={{ fontWeight: '600', fontSize: '18px' }}>Transactions</Typography>
+            <IonIcon icon={chevronForwardOutline} style={{ fontSize: '18px' }} />
+          </Stack>
+        </Link>
         {
           txnArray.map((item, index) => (
-            <Stack sx={{margin:'2px 0', width: '90%', justifyContent: 'space-between', alignItems: 'center' }} direction={"row"}>
+            <Stack sx={{ margin: '2px 0', width: '90%', justifyContent: 'space-between', alignItems: 'center' }} direction={"row"}>
               <Stack>
                 <Typography>{item.title}</Typography>
                 <Typography sx={{ color: '#737373', fontSize: '13px' }}>{item.date}</Typography>
               </Stack>
-              <Typography sx={[{ fontWeight: '600' }, item.amt>0?{color:'#1BCFB4'}:{color:'#F55E53'}]}>{item.amt>0?"+₹"+item.amt:"₹"+item.amt.split("-")[1]}</Typography>
+              <Typography sx={[{ fontWeight: '600' }, item.amt > 0 ? { color: '#1BCFB4' } : { color: '#F55E53' }]}>{item.amt > 0 ? "+₹" + item.amt : "₹" + item.amt.split("-")[1]}</Typography>
             </Stack>
           ))
         }
