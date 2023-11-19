@@ -97,3 +97,15 @@
     background: linear-gradient(60deg, #0D1A26 13.4%, #693882 86.6%);
     padding:20px;
 }
+
+.buttonOutlined,.buttonOutlined:hover{
+    border:1px solid #0D1A26;
+    border-radius: 10px;
+    color:#0D1A26;
+    font-weight: 600;
+}
+
+.selectedCard{
+    background-color: #0D1A26;
+    color:#fff;
+}
