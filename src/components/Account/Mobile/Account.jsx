@@ -51,15 +51,15 @@ const Account = () => {
                 <Typography sx={{fontSize:'21px', fontWeight:'600', marginBottom:'10px'}}>User</Typography>
                 <Option title="My Profile" path="/profile"/>
                 <Option title="Customer Service" path="#"/>
-                <Option title="Settings" path="#"/>
+                <Option title="Settings" path="/account/setting"/>
                 <Option title="Wallet" path="/wallet"/>
             </Stack>
 
             <Stack gap={0.6} sx={{marginBottom:'40px'}}>
                 <Typography sx={{fontSize:'21px', fontWeight:'600', marginBottom:'10px'}}>About</Typography>
-                <Option title="About Us" path="#"/>
-                <Option title="Return Policy" path="#"/>
-                <Option title="Shipping & Delivery" path="#"/>
+                <Option title="About Us" path="/account/about"/>
+                <Option title="Return Policy" path="/account/shipping-return"/>
+                <Option title="Shipping & Delivery" path="/account/shipping-return"/>
             </Stack>
 
         </Stack>
@@ -74,7 +74,7 @@ const Option=({title, path})=>{
         <Link href={path}>
         <Stack gap={2} direction={"row"} sx={{position:'relative', padding:'15px', backgroundColor:'#fff', borderRadius:'5px', alignItems:'center'}}>
             <IonIcon style={{fontSize:'25px'}} icon={layersOutline}/>
-            <Typography sx={{fontSize:'20px'}}>{title}</Typography>
+            <Typography sx={{fontSize:'18px'}}>{title}</Typography>
             <IonIcon icon={caretForward} style={{position:'absolute', right:'15px'}}/>
         </Stack>
         </Link>

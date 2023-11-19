@@ -72,21 +72,6 @@ const txnArray = [
         amt: '-400'
     },
     {
-        title: 'Ordered on Shoemato',
-        date: '17 Jun 2022, 06:15 PM',
-        amt: '-400'
-    },
-    {
-        title: 'Ordered on Shoemato',
-        date: '17 Jun 2022, 06:15 PM',
-        amt: '-400'
-    },
-    {
-        title: 'Ordered on Shoemato',
-        date: '17 Jun 2022, 06:15 PM',
-        amt: '-400'
-    },
-    {
         title: 'Added to Wallet',
         date: '17 Jun 2022, 06:15 PM',
         amt: '400'
