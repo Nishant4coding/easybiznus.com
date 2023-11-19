@@ -180,3 +180,4 @@ const cardArray = [
     price: '₹3,499'
   },
 ]
+
