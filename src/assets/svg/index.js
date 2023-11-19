@@ -56,8 +56,12 @@ import Home from './home.svg';
 import Cash from './cash.svg';
 import UserBlack from './user-black.svg';
 import Shoe6 from './shoe6.svg';
+import Avatar3D from './3d-avatar.svg';
+import Verified from './verified.svg';
 
 export {
+    Verified,
+    Avatar3D,
     Shoe6,
     UserBlack,
     Cash,

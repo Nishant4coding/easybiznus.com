@@ -53,6 +53,6 @@ const tabArray = [
     {
         icon: UserBlack,
         title: 'Profile',
-        path: '/'
+        path: '/account'
     }
 ]
