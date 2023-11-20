@@ -47,8 +47,8 @@
 }
 .sp2{
     color:#BA2B20;
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 22px !important;
+    font-weight: 700 !important;;
     line-height: 23px;
 }
 .mrp{
@@ -137,8 +137,8 @@
 .button,.button:hover{
     user-select: none;
     color: #fff;
-    background-color: #0D1A26;
-    border-radius: 10px;
+    background-color: #0D1A26 !important;
+    border-radius: 10px !important;
     width: 160px;
     height: 45px;
     font-size: 13px;
