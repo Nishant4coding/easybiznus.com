@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const BottomTabs = ({ handleDrawerClose }) => {
     return (
-        <Stack direction={"row"} sx={{ width: '100%', backgroundColor: '#0D1A26', padding: '10px', position: 'absolute', bottom: '0px', zIndex: 1, justifyContent: 'space-around' }}>
+        <Stack sx={{ width: '100%', backgroundColor: '#0D1A26', padding: '10px', position: 'absolute', bottom: '0px', zIndex: 1, justifyContent: 'space-around' }}>
             {
                 tabArray.map((item, index) => (
                     <Link href={item.path} key={index} onClick={handleDrawerClose}>
@@ -25,7 +25,7 @@ const Tab = ({ data }) => {
     const { icon, title } = data;
 
     return (
-        <Stack sx={{ width: '100px', alignItems: 'center' }}>
+        <Stack direction={"row"} gap={2} sx={{ width: '100px', alignItems: 'center', padding:'15px 0px' }}>
             <Box sx={{ width: '20px', height: '20px' }}>
                 <Image src={icon} alt="icon" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </Box>
@@ -48,7 +48,7 @@ const tabArray = [
     {
         icon: Cash,
         title: 'Try & Buy',
-        path: '/product'
+        path: '/trynbuy'
     },
     {
         icon: UserBlack,

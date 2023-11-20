@@ -3,7 +3,9 @@ import { Button, Box, Stack, Typography } from '@mui/material';
 import { IonIcon } from '@ionic/react';
 import { arrowForwardSharp, heart, heartOutline, help, helpCircle, helpCircleOutline, trashOutline } from 'ionicons/icons';
 import Image from 'next/image';
-import { Delete, Shoe6 } from '@/assets/svg';
+import { Shoe6 } from '@/assets/svg';
+import styles from '../try.module.css';
+import global from '@/global.module.css';
 
 const Header = () => {
   const [changepin, setChangePin] = useState(true);
@@ -65,9 +67,9 @@ const Header = () => {
         </Stack>
       </Stack>
 
-      <Stack sx={{ alignItems: 'center', maxWidth: '400px', width: '90%', minWidth: '300px', margin: "0px auto" }}>
-        <Typography sx={{ width: '100%', textAlign: 'center', fontWeight: '600', fontSize: '20px', marginBottom:'10px' }}>Try & Buy Charges</Typography>
-        <Stack gap={10} direction={"row"} sx={{ width: '80%', justifyContent: 'space-evenly', padding: '10px', borderBottom: '2px dotted #000' }}>
+      <Stack sx={{ alignItems: 'center', maxWidth: '400px', width: '100%', minWidth: '300px', margin: "0px auto" }}>
+        <Typography sx={{ width: '100%', textAlign: 'center', fontWeight: '600', fontSize: '20px', marginBottom: '10px' }}>Try & Buy Charges</Typography>
+        <Stack gap={10} direction={"row"} sx={{ width: '100%', justifyContent: 'space-evenly', padding: '10px', borderBottom: '2px dotted #000' }}>
           <Stack gap={1}>
             <Typography sx={{ fontWeight: '700' }}>Delivery Charges :</Typography>
             <Typography sx={{ fontWeight: '700' }}>Total MRP :</Typography>
@@ -79,7 +81,7 @@ const Header = () => {
             <Typography sx={{ fontWeight: '700' }}>₹ 0.00</Typography>
           </Stack>
         </Stack>
-        <Stack gap={10} direction={"row"} sx={{ width: '80%', justifyContent: 'space-evenly', padding: '10px', }}>
+        <Stack gap={10} direction={"row"} sx={{ width: '90%', justifyContent: 'space-evenly', padding: '10px', }}>
           <Stack gap={1}>
             <Typography sx={{ fontWeight: '700' }}>Current Total :</Typography>
           </Stack>
@@ -89,8 +91,8 @@ const Header = () => {
         </Stack>
       </Stack>
 
-      <Stack sx={{alignItems:'center'}}>
-        <Button variant="contained" style={{backgroundColor:'#0D1A26', color:'#fff', borderRadius:'10px', maxWidth:'300px', width:'80%', minWidth:'200px'}}>
+      <Stack sx={{ alignItems: 'center' }}>
+        <Button variant="contained" className={global.mobileButton}>
           CONTINUE
         </Button>
       </Stack>
@@ -122,31 +124,31 @@ export const Card = ({ data }) => {
   const [wish, setWish] = useState(false);
 
   return (
-    <Stack direction={"row"} gap={1} sx={{ alignItems: 'center', height: '120px', padding: '10px 0' }}>
+    <Stack direction={"row"} gap={1} className={styles.mobileCard}>
 
-      <Box style={{ height: '100px', width: '180px', overflow: 'hidden', borderRadius: '10px' }}>
-        <Image src={image} alt="Product" style={{ objectFit: 'cover', height: '100%', width: '100%' }} />
+      <Box className={styles.mobileCardImage}>
+        <Image src={image} alt="Product" className={global.image} />
       </Box>
 
       <Stack gap={0.5}>
-        <Typography sx={{ fontWeight: '600', fontSize: '13px' }}>{title}</Typography>
+        <Typography className={styles.mobileCardTitle}>{title}</Typography>
         <Typography sx={{ fontSize: '13px' }}>{category}</Typography>
         <Typography sx={{ fontSize: '13px' }}>{subcategory}</Typography>
         <Typography sx={{ fontSize: '13px' }}>Size {size}</Typography>
       </Stack>
 
-      <Box style={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between', alignItems: 'center' }} >
+      <Box className={styles.mobileCardPriceSection} >
         <Stack direction={"row"} gap={0.5}>
           {
             wish ?
-              <IonIcon onClick={toggleWish} icon={heartOutline} style={{ color: '#F55E53', fontSize: '30px' }} /> :
-              <IonIcon onClick={toggleWish} icon={heart} style={{ color: '#F55E53', fontSize: '30px' }} />
+              <IonIcon onClick={toggleWish} icon={heart} className={styles.mobileCardIcon} /> :
+              <IonIcon onClick={toggleWish} icon={heartOutline} className={styles.mobileCardIcon} />
           }
-          <IonIcon icon={trashOutline} style={{ color: '#C73232', fontSize: '25px' }} />
+          <IonIcon icon={trashOutline} className={styles.mobileCardTrashIcon} />
         </Stack>
         <Stack gap={0}>
-          <Typography sx={{ fontWeight: '600', fontSize: '23px' }}>{price}</Typography>
-          <Typography sx={{ fontSize: '12px', width: 'fit-content', whiteSpace: 'nowrap' }}>Incl. of taxes</Typography>
+          <Typography className={styles.moileCardPrice}>{price}</Typography>
+          <Typography className={styles.mobileCardTaxTitle}>Incl. of taxes</Typography>
         </Stack>
       </Box>
 

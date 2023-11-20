@@ -58,8 +58,14 @@ import UserBlack from './user-black.svg';
 import Shoe6 from './shoe6.svg';
 import Avatar3D from './3d-avatar.svg';
 import Verified from './verified.svg';
+import Funnel from './funnel.svg';
+import Shoe7 from './shoe7.svg';
+import ArrowForwardCircle from './arrow-forward-circle.svg'
 
 export {
+    ArrowForwardCircle,
+    Shoe7,
+    Funnel,
     Verified,
     Avatar3D,
     Shoe6,
