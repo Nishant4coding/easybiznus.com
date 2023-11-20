@@ -39,7 +39,7 @@ const Header = () => {
         <Stack sx={{}}>
           {
             detailsArray.map((item, index) => (
-              <Stack direction={"row"} gap={0.5}>
+              <Stack direction={"row"} gap={0.5} key={index}>
                 <Stack>
                   <Typography sx={{ fontSize: '14px', color: '#3F3F3F' }}>{item.sno}.</Typography>
                 </Stack>

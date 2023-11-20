@@ -7,7 +7,7 @@ import global from '@/global.module.css';
 import About from '@/components/Account/Mobile/About';
 import { useRouter } from 'next/navigation';
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
 
   return (
@@ -21,4 +21,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

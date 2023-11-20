@@ -53,7 +53,7 @@ const Wallet = () => {
         </Link>
         {
           txnArray.map((item, index) => (
-            <Stack sx={{ margin: '2px 0', width: '90%', justifyContent: 'space-between', alignItems: 'center' }} direction={"row"}>
+            <Stack key={index} sx={{ margin: '2px 0', width: '90%', justifyContent: 'space-between', alignItems: 'center' }} direction={"row"}>
               <Stack>
                 <Typography>{item.title}</Typography>
                 <Typography sx={{ color: '#737373', fontSize: '13px' }}>{item.date}</Typography>

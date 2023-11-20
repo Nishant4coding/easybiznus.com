@@ -134,8 +134,8 @@ const Product = () => {
             <Stack sx={{ padding: '25px', backgroundColor: '#EEEEEE' }}>
                 <Stack gap={2} sx={{ margin: '25px 0', alignItems: 'center' }}>
                     <Typography className={styles.mobileSubTitle}>FEATURES & BENEFITS</Typography>
-                    <Typography sx={{ width: "85%", textAlign: 'left' }}>IMEVA: PUMA's material for a lightweight and comfortable feel</Typography>
-                    <Typography sx={{ width: "85%", textAlign: 'left' }}>SoftFoam+: PUMA's comfort sockliner for instant step-in and long-lasting comfort that provides soft cushioning every step of your day</Typography>
+                    <Typography sx={{ width: "85%", textAlign: 'left' }}>IMEVA: {"PUMA's"} material for a lightweight and comfortable feel</Typography>
+                    <Typography sx={{ width: "85%", textAlign: 'left' }}>SoftFoam+: {"PUMA's"} comfort sockliner for instant step-in and long-lasting comfort that provides soft cushioning every step of your day</Typography>
                 </Stack>
 
                 <Stack gap={2} sx={{ margin: '25px 0', }}>
