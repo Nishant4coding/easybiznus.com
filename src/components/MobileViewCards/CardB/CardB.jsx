@@ -6,7 +6,7 @@ import styles from './cardB.module.css';
 import Image from "next/image";
 import Link from "next/link";
 
-const Card = ({ data }) => {
+const Card = ({ data, wishIcon }) => {
     const [wish, setWish] = useState(false);
     const { discount, image, title, style, sp, mrp, link } = data;
 
@@ -14,12 +14,12 @@ const Card = ({ data }) => {
         <Box className={styles.container}>
             <Link href={link}>
                 <Stack className={styles.discount}>
-                    <IonIcon icon={wish ? heart : heartOutline} size="small" style={{ color: "#F55E53", cursor: "pointer" }}
+                    {wishIcon && <IonIcon icon={wish ? heart : heartOutline} size="small" style={{ color: "#F55E53", cursor: "pointer" }}
                         onClick={() => {
                             setWish(!wish);
                             // wish?null: addedToWishlist();
                         }}
-                    ></IonIcon>
+                    ></IonIcon>}
                 </Stack>
                 <Image src={image} alt={"product"} className={styles.image} />
                 <Stack direction={"column"} sx={{ justifyContent: "space-between", padding: "10px 10px", backgroundColor: "white", borderRadius: "0 0 10px 10px" }}>

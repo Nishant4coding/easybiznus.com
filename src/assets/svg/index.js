@@ -52,17 +52,23 @@ import Chat from './chat.svg';
 import Bag from './bag.svg';
 import UserLogo from './user-logo.svg';
 import Shoe5 from './shoe5.svg';
+import Shoe6 from './shoe6.svg';
 import Product from './product.svg';
 import PinBlack from './pin-black.svg';
 import Home from './home.svg';
 import Cash from './cash.svg';
 import UserBlack from './user-black.svg'
-import EmptyBoxImg from './empty-box.svg'
+import EmptyBoxImg from './empty-box.svg';
+import DeleteIconRed from './DeleteIconRed.svg';
+import HomeIcon from './HomeIcon.svg';
 
 export {
     UserBlack,
     EmptyBoxImg,
+    DeleteIconRed,
+    HomeIcon,
     Product,
+    Shoe6,
     Cash,
     Home,
     PinBlack,

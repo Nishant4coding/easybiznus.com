@@ -7,8 +7,11 @@ import Footer from "@/components/Footer/Footer";
 import { Stack, Box } from "@mui/material";
 import global from "@/global.module.css"
 import EmptyCart from "@/components/MobileView/EmptyCart/EmptyCart";
+import Cart from "@/components/MobileView/Cart/Cart";
 
 const CartPage = () => {
+    const cartVal = 1;
+
     return (
         <>
             <Box className={global.desktop}>
@@ -20,7 +23,7 @@ const CartPage = () => {
                 <Footer />
             </Box>
             <Box className={global.mobile}>
-                <EmptyCart />
+                {!cartVal ? <EmptyCart /> : <Cart />}
             </Box>
         </>
     )

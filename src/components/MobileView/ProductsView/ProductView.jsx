@@ -16,7 +16,7 @@ const ProductView = () => {
                     cardArray.map((item, index) => (
                         <Grid item key={index}  >
                             <Link href={"/product"} >
-                                <CardB data={item} />
+                                <CardB data={item} wishIcon={true} />
                             </Link>
                         </Grid>
                     ))

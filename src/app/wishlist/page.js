@@ -5,9 +5,12 @@ import Footer from "@/components/Footer/Footer";
 import { Box } from "@mui/material";
 import global from "@/global.module.css";
 import EmptyWishlist from "@/components/MobileView/EmptyWishlist/EmptyWishlist";
+import Wishlist from "@/components/MobileView/Wishlist/Wishlist";
 
 
 const WishlistPage = () => {
+    const wishlistVal = 1;
+
     return (
         <>
             <Box className={global.desktop}>
@@ -17,8 +20,8 @@ const WishlistPage = () => {
                 <Footer />
             </Box>
 
-            <Box className={global.mobile}>
-                <EmptyWishlist />
+            <Box className={global.mobile} >
+                {!wishlistVal? <EmptyWishlist /> : <Wishlist/>}
             </Box>
         </>
     )
