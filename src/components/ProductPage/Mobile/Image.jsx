@@ -13,4 +13,4 @@ const ImageView = () => {
   )
 }
 
-export default ImageView
+export default ImageView;

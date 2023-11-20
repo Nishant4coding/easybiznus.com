@@ -23,7 +23,7 @@ const Product = () => {
     return (
         <Box>
             <Stack direction={"row"} sx={{ justifyContent: 'space-evenly' }}>
-                <Typography className={[styles.titleMobie, styles.heading]} >Mercedes AMG Petronas F1 Wired Run Unisex Sneakers</Typography>
+                <Typography className={styles.heading} style={{fontSize:'22px'}}>Mercedes AMG Petronas F1 Wired Run Unisex Sneakers</Typography>
                 {
                     wish ?
                         <IonIcon icon={heart} className={styles.wishIcon} onClick={handleSetWish}></IonIcon> :
@@ -38,10 +38,10 @@ const Product = () => {
                     <Typography className={styles.taxDeclaration}>Prices include GST</Typography>
                 </Stack>
                 <Stack gap={1}>
-                    <Button className={styles.button}>
+                    <Button variant="contained" className={styles.button}>
                         + ADD TO CART
                     </Button>
-                    <Button className={styles.button}>
+                    <Button variant="contained" className={styles.button}>
                         ADD TO TRY ON
                     </Button>
                 </Stack>
