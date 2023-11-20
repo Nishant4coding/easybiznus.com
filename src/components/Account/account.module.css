@@ -95,17 +95,71 @@
 .sale {
     border-radius: 10px;
     background: linear-gradient(60deg, #0D1A26 13.4%, #693882 86.6%);
-    padding:20px;
+    padding: 20px;
 }
 
-.buttonOutlined,.buttonOutlined:hover{
-    border:1px solid #0D1A26;
+.buttonOutlined,
+.buttonOutlined:hover {
+    border: 1px solid #0D1A26;
     border-radius: 10px;
-    color:#0D1A26;
+    color: #0D1A26;
     font-weight: 600;
 }
 
-.selectedCard{
+.selectedCard {
     background-color: #0D1A26;
-    color:#fff;
+    color: #fff;
+}
+
+.mobileAccountContainer {
+    background-color: #fff;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    align-items: center;
+}
+
+.profilePhoto {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 2px solid #0D1A26;
+    border-radius: 100%;
+    top: -40px;
+}
+
+.profileDetails {
+    align-items: flex-start;
+    justify-content: center;
+    margin: 50px 0px 20px 0px;
+}
+
+.mobileUsername {
+    display: flex;
+    gap: 10px;
+    font-size: 22px;
+    align-items: center;
+}
+
+.accountType {
+    width: 100%;
+    background-color: #0D1A26;
+    letter-spacing: 8px;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+}
+
+.mobileAccountCard1 {
+    border-radius: 10px;
+    border: 1px solid #0D1A26;
+    width: 150px;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.mobileSection {
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
