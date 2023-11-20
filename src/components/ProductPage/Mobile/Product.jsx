@@ -1,3 +1,4 @@
+"use client"
 import { Stack, Typography, Box, Button, FormControl, Select, MenuItem } from '@mui/material'
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -47,8 +48,8 @@ const Product = () => {
             </Stack>
 
             <Stack className={styles.colorContainer}>
-                <Stack direction={"row"} gap={0.5} sx={{ alignItems: 'center' }}>
-                    <Typography className={styles.mobileSubTitle}>Color: </Typography>
+                <Stack direction={"row"} gap={0.5} sx={{ alignItems: 'center', justifyContent:'flex-start' }}>
+                    <Typography className={styles.mobileSubTitle} style={{width:'fit-content'}}>Color: </Typography>
                     <Box sx={{ width: "fit-content", height: 'fit-content' }}>
                         <FormControl fullWidth sx={dropdown}>
                             <Select
