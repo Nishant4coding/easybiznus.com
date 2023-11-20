@@ -1,113 +1,131 @@
-.heading{
+.heading {
     font-size: 24px;
     margin: 30px 0px;
     font-weight: 600;
-    width:100%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.button,.button:hover{
+
+.button,
+.button:hover {
     width: 20%;
     border-radius: 8px;
     background-color: #0D1A26;
-    color:#fff;
+    color: #fff;
     font-size: 10px;
-    padding:10px 5px;
+    padding: 10px 5px;
     font-weight: 600;
     display: flex;
-    gap:10px;
+    gap: 10px;
 }
-.couponcontainer{
-    border:2px solid #ECE6F0;
+
+.couponcontainer {
+    border: 2px solid #ECE6F0;
     border-radius: 5px;
-    padding:20px;
-    width:40%;
+    padding: 20px;
+    width: 40%;
 }
-.box{ 
+
+.box {
     width: 100%;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #A0A0A0;
 }
-.newsicon{
+
+.newsicon {
     font-size: 23px;
 }
-.boxTitle{
+
+.boxTitle {
     font-weight: 600;
     font-size: 25px;
     display: flex;
-    gap:15px;
+    gap: 15px;
     align-items: center;
     padding-bottom: 10px;
     border-bottom: 1px solid #A0A0A0;
 }
-.inputBox{
+
+.inputBox {
     position: relative;
     margin-bottom: 10px;
     width: 100%;
 }
-.input{
-    border:2px solid #D9D9D9;
+
+.input {
+    border: 2px solid #D9D9D9;
     border-radius: 5px;
-    height:40px;
-    width:100%;
+    height: 40px;
+    width: 100%;
     font-size: 16px;
     padding-left: 10px;
     outline: none;
 }
-.closeicon{
+
+.closeicon {
     position: absolute;
     cursor: pointer;
-    top:12px;
-    right:10px;
-    color:#817e7e;
+    top: 12px;
+    right: 10px;
+    color: #817e7e;
 }
-.pricebox{
+
+.pricebox {
     font-weight: 600;
-    border:1px solid #5a595b;
-    height:22px;
+    border: 1px solid #5a595b;
+    height: 22px;
     border-radius: 10px;
     font-size: 11px;
     padding: 3px 8px 5px;
     cursor: pointer;
 }
-.billing{
+
+.billing {
     font-weight: 700;
     font-size: 14px;
 }
-.container{
-    width:80%;
-    margin:0 auto;
+
+.container {
+    width: 80%;
+    margin: 0 auto;
     margin-bottom: 120px;
 }
-.addcard{
-    border:1px solid #000000;
-    width:100%;
-    padding:20px 40px 30px;
+
+.addcard {
+    border: 1px solid #000000;
+    width: 100%;
+    padding: 20px 40px 30px;
     align-items: flex-start;
     height: fit-content;
 }
-.boxheading{
+
+.boxheading {
     font-size: 18px;
     margin-bottom: 30px;
 }
-.inputcontainer{
-    width:70%;
+
+.inputcontainer {
+    width: 70%;
     position: relative;
 }
-.cardcontainer{
+
+.cardcontainer {
     align-items: flex-start;
     justify-content: space-between;
 }
-.pricing{
-    width:100%;
+
+.pricing {
+    width: 100%;
     justify-content: space-between;
     margin-bottom: 50px;
     flex-direction: row;
 }
-.tablehead{
-    border-radius:10px 10px 10px 0;
+
+.tablehead {
+    border-radius: 10px 10px 10px 0;
     overflow: hidden;
     box-shadow: inset -3px -2px 3px 0 #d9d9d9;
     padding-right: 10px;
@@ -116,43 +134,48 @@
     padding-top: 10px;
     background-color: #fff;
 }
-.selectedhead{
+
+.selectedhead {
     background-color: #fff;
-    box-shadow:inset 0 2px 2px 1px #d9d9d9;
+    box-shadow: inset 0 2px 2px 1px #d9d9d9;
     min-width: 100px;
-    padding:5px 10px;
+    padding: 5px 10px;
     text-align: center;
     cursor: pointer;
 }
-.tableheading{
-    width:auto;
+
+.tableheading {
+    width: auto;
     height: auto;
     min-width: 100px;
-    padding:5px 10px;
+    padding: 5px 10px;
     text-align: center;
-    color:#fff;
+    color: #fff;
     background-color: #0D1A26;
     font-weight: 700;
     font-size: 15px;
     cursor: pointer;
 }
-.table{
+
+.table {
     box-shadow: 0 5px 5px 0 #d9d9d9;
     width: fit-content;
     padding-right: 10px;
     border-radius: 10px;
     padding-bottom: 30px;
 }
-.card{
-    border:1px solid #B8B8B8;
+
+.card {
+    border: 1px solid #B8B8B8;
     border-radius: 5px;
-    width:80%;
+    width: 80%;
     margin: 5px auto 5px;
     padding: 10px;
     align-items: center;
     cursor: pointer;
 }
-.billcard{
+
+.billcard {
     padding: 18px;
     flex-direction: row;
     box-shadow: 0 1px 10px 0 #d9d9d9;
@@ -160,7 +183,9 @@
     border-radius: 10px;
     padding-right: 50px;
 }
-.walletbtn,.walletbtn:hover{
+
+.walletbtn,
+.walletbtn:hover {
     border-radius: 8px;
     display: flex;
     justify-content: space-between;
@@ -170,5 +195,28 @@
     text-transform: capitalize;
     background-color: #0D1A26;
     padding: 7px 10px;
-    gap:10px;
+    gap: 10px;
+}
+
+.mobileBalance {
+    background-color: #257611;
+    color: #fff;
+    border-radius: 20px;
+    padding: 0px 10px;
+}
+
+.carouselContainer {
+    background-color: #B08D8D;
+    border-radius: 10px;
+    height: 180px;
+    align-items: center;
+    justify-content: center;
+}
+
+.addMoneyCard {
+    border: 1px solid #ABABAB;
+    box-shadow: 0px 2px 10px #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+    align-items: center;
 }

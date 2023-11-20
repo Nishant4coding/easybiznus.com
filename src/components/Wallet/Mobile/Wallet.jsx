@@ -15,14 +15,14 @@ const Wallet = () => {
           Wallet Balance
           <IonIcon icon={arrowForwardSharp} />
         </Typography>
-        <Typography sx={{ backgroundColor: '#257611', color: '#fff', borderRadius: '20px', padding: '0px 10px' }}>₹ 12235</Typography>
+        <Typography className={styles.mobileBalance}>₹ 12235</Typography>
       </Stack>
 
-      <Stack sx={{ backgroundColor: '#B08D8D', borderRadius: '10px', height: '180px', alignItems: 'center', justifyContent: 'center' }}>
+      <Stack className={styles.carouselContainer}>
         <Typography sx={{ color: '#fff', fontWeight: '500', fontSize: '17px' }}>Carousells</Typography>
       </Stack>
 
-      <Stack gap={1.5} sx={{ border: '1px solid #ABABAB', boxShadow: '0px 2px 10px #e0e0e0', borderRadius: '10px', padding: '15px', alignItems: 'center' }}>
+      <Stack gap={1.5} className={styles.addMoneyCard}>
         <Typography sx={{ fontWeight: '600', fontSize: '17px', width: '100%' }}>Add Money to Wallet</Typography>
         <Box className={styles.inputcontainer} style={{ width: '100%' }}>
           <input type="text" placeholder='₹100' className={styles.input} />
