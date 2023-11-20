@@ -104,3 +104,34 @@
     height: 120px;
     padding: 10px 0;
 }
+
+.mobileBilling {
+    font-weight: 700;
+}
+
+.mobileSubHead {
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.mobileBillingContainer {
+    align-items: center;
+    max-width: 400px;
+    width: 100%;
+    min-width: 300px;
+    margin: 0px auto;
+}
+
+.pinChange {
+    font-size: 13px;
+    color: #F55E53;
+    font-weight: 600;
+}
+
+.pinText {
+    font-size: 13px;
+    color: #414141;
+}

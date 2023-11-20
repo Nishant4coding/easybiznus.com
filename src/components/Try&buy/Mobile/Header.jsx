@@ -14,19 +14,19 @@ const Header = () => {
   return (
     <Stack gap={5}>
       <Stack gap={2}>
-        <Typography sx={{ fontWeight: '900', letterSpacing: '-0.5px' }}>TRY & BUY</Typography>
+        <Typography sx={{ fontWeight: '900', letterSpacing: '0px' }}>TRY & BUY</Typography>
         <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'center', border: '1px solid #AEAEAE', borderRadius: '10px', padding: '10px' }}>
           <Stack>
-            <Typography sx={{ fontSize: '13px', color: '#414141' }}>
+            <Typography className={styles.pinText}>
               Deliver to:{" "}
               <Typography sx={{ fontSize: '14px', display: 'inline', fontWeight: '700', }}>Harsh Tyagi, 400037</Typography>
             </Typography>
-            <Typography sx={{ color: '#414141', fontSize: '13px' }}>634, Mahatma Gandhi Road, Fort, Mumbai</Typography>
+            <Typography className={styles.pinText}>634, Mahatma Gandhi Road, Fort, Mumbai</Typography>
           </Stack>
           {
             changepin ?
-              <Typography onClick={toggleSetPin} style={{ fontSize: '13px', color: '#F55E53', fontWeight: '600' }}>CHANGE</Typography> :
-              <Typography onClick={toggleSetPin} style={{ fontSize: '13px', color: '#1BCFB4', fontWeight: '600' }}>OK</Typography>
+              <Typography onClick={toggleSetPin} className={styles.pinChange}>CHANGE</Typography> :
+              <Typography onClick={toggleSetPin} style={{ color: '#1BCFB4' }} className={styles.pinChange}>OK</Typography>
           }
         </Stack>
       </Stack>
@@ -67,26 +67,26 @@ const Header = () => {
         </Stack>
       </Stack>
 
-      <Stack sx={{ alignItems: 'center', maxWidth: '400px', width: '100%', minWidth: '300px', margin: "0px auto" }}>
-        <Typography sx={{ width: '100%', textAlign: 'center', fontWeight: '600', fontSize: '20px', marginBottom: '10px' }}>Try & Buy Charges</Typography>
+      <Stack sx={styles.mobileBillingContainer}>
+        <Typography className={styles.mobileSubHead}>Try & Buy Charges</Typography>
         <Stack gap={10} direction={"row"} sx={{ width: '100%', justifyContent: 'space-evenly', padding: '10px', borderBottom: '2px dotted #000' }}>
           <Stack gap={1}>
-            <Typography sx={{ fontWeight: '700' }}>Delivery Charges :</Typography>
-            <Typography sx={{ fontWeight: '700' }}>Total MRP :</Typography>
-            <Typography sx={{ fontWeight: '700' }}>Discount :</Typography>
+            <Typography className={styles.mobileBilling}>Delivery Charges :</Typography>
+            <Typography className={styles.mobileBilling}>Total MRP :</Typography>
+            <Typography className={styles.mobileBilling}>Discount :</Typography>
           </Stack>
           <Stack gap={1}>
-            <Typography sx={{ fontWeight: '700' }}>₹ 0.00</Typography>
-            <Typography sx={{ fontWeight: '700' }}>₹ 0.00</Typography>
-            <Typography sx={{ fontWeight: '700' }}>₹ 0.00</Typography>
+            <Typography className={styles.mobileBilling}>₹ 0.00</Typography>
+            <Typography className={styles.mobileBilling}>₹ 0.00</Typography>
+            <Typography className={styles.mobileBilling}>₹ 0.00</Typography>
           </Stack>
         </Stack>
-        <Stack gap={10} direction={"row"} sx={{ width: '90%', justifyContent: 'space-evenly', padding: '10px', }}>
+        <Stack gap={10} direction={"row"} sx={{ width: '100%', justifyContent: 'space-evenly', padding: '10px', }}>
           <Stack gap={1}>
-            <Typography sx={{ fontWeight: '700' }}>Current Total :</Typography>
+            <Typography className={styles.mobileBilling}>Current Total :</Typography>
           </Stack>
           <Stack gap={1}>
-            <Typography sx={{ fontWeight: '700' }}>₹ 0.00</Typography>
+            <Typography className={styles.mobileBilling}>₹ 0.00</Typography>
           </Stack>
         </Stack>
       </Stack>
