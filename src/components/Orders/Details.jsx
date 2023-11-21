@@ -19,7 +19,7 @@ const Details = () => {
             </Typography>
             <Card refundable={"₹19,990"} action={true}/>
             <Stack direction={"row"} sx={{ justifyContent: 'space-between', paddingTop: '30px' }}>
-                <VerticalLinearStepper />
+                <VerticalLinearStepper title={true} steps={steps}/>
                 <Stack style={{ width: '40%' }}>
                     <Adress />
                     <Summary />
@@ -31,3 +31,30 @@ const Details = () => {
 }
 
 export default Details;
+
+
+const steps = [
+    {
+        label: 'Order Confirmed',
+        description: `The Order has been successfully confirmed by our system`,
+        date: `Nov 14, 10:25`,
+        active: true,
+    },
+    {
+        label: 'Dispatched',
+        description: `All items from your order were picked and Dispatched`,
+        date: `Nov 14, 12:25`,
+        active: true,
+    },
+    {
+        label: 'Out for Delivery',
+        description: `Our Courier is coming to your address`,
+        date: `Nov 15, 04:25`,
+        active: true,
+    },
+    {
+        label: 'On the Way',
+        date: `Estimate delivery by Nov 17`,
+        active: false,
+    },
+];

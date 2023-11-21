@@ -41,9 +41,9 @@
 
 .sp {
     color: #F55E53;
-    font-size: 22px;
-    font-weight: bold;
-    line-height: 23px;
+    font-size: 22px !important;
+    font-weight: bold !important;
+    line-height: 23px !important;
 }
 .sp2{
     color:#BA2B20;
@@ -52,14 +52,14 @@
     line-height: 23px;
 }
 .mrp{
-    font-size: 16px;
-    color: #B5B5B5;
+    font-size: 16px !important;
+    color: #B5B5B5 !important;
 }
 .mrp2{
     text-decoration: line-through;
     font-size: 16px;
-    color:#191919;
-    font-weight: 600;
+    color:#191919 !important;
+    font-weight: 600 !important;
 }
 .cutline{
     width:90%;
