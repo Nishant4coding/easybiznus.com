@@ -188,13 +188,13 @@
 .walletbtn:hover {
     border-radius: 8px;
     display: flex;
-    justify-content: space-between;
-    width: fit-content;
-    font-size: 13px;
-    font-weight: 500;
-    text-transform: capitalize;
-    background-color: #0D1A26;
-    padding: 7px 10px;
+    justify-content: space-between !important;
+    width: fit-content !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    text-transform: capitalize !important;
+    background-color: #0D1A26 !important;
+    padding: 7px 10px !important;
     gap: 10px;
 }
 
