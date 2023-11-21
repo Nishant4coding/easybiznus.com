@@ -61,9 +61,11 @@ import UserBlack from './user-black.svg'
 import EmptyBoxImg from './empty-box.svg';
 import DeleteIconRed from './DeleteIconRed.svg';
 import HomeIcon from './HomeIcon.svg';
+import RazorPay from './razorPay.svg';
 
 export {
     UserBlack,
+    RazorPay,
     EmptyBoxImg,
     DeleteIconRed,
     HomeIcon,
