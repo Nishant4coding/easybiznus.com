@@ -3,24 +3,38 @@ import { Box, Stack, Typography } from '@mui/material';
 import { GreenTick, Shoe7 } from '@/assets/svg';
 import Image from 'next/image';
 import { IonIcon } from '@ionic/react';
-import { star, starOutline, caretForward, layersOutline } from 'ionicons/icons';
+import { star, starOutline, caretForward,chevronForwardOutline, layersOutline } from 'ionicons/icons';
 import { useState } from 'react';
 import VerticalLinearStepper from '../Stepper';
 import Link from 'next/link';
+import styles from '../order.module.css';
 
-
-const Details = ({id}) => {
+const Details = () => {
     return (
         <Stack sx={{ width: '100%', alignItems: 'center' }} gap={2}>
             <Typography sx={{ textAlign: 'center', color: '#B5B5B5', fontWeight: '600' }}>OrderID</Typography>
             <Card />
-            <Stack sx={{ alignSelf: 'start', marginLeft: '15px' }}>
-                <VerticalLinearStepper title={false} steps={steps} />
+            <Stack sx={{ width: '100%', marginTop: '50px' }} gap={0.7}>
+                <Typography>I want to Return Because</Typography>
+                <Option title="Found at Cheaper Price" path="#" />
+                <Option title="Defective" path="#" />
+                <Option title="My Reason not Listed" path="#" />
             </Stack>
-            <Stack sx={{ width:'100%', marginTop:'50px'}} gap={0.7}>
-                <Option title="Write a Review" path="#" />
-                <Option title="Invoice Download" path="#" />
-                <Option title="Return" path={`/orders/return/${id}`} />
+
+            <Stack sx={{ width: '100%' }}>
+                <Typography>Comments(Optional):</Typography>
+                <textarea gap={2} direction={"row"} className={styles.returnOptions} style={{ cursor: 'text', height: '150px', resize: 'none' }}>
+
+                </textarea>
+            </Stack>
+
+            <Stack gap={1} sx={{width:'100%', marginBottom:'60px'}}>
+                <Typography>Refundable Amount !</Typography>
+                <Stack className={styles.returnbox} style={{width:'100%'}}>
+                    <Typography style={{ fontSize: '10px', width:'95%' }}>The Refundable amount will be credited to Shoemato wallet.</Typography>
+                    <Typography style={{ fontSize: '10px', fontWeight: 600 }}>SHOEMATO WALLET</Typography>
+                    <IonIcon icon={chevronForwardOutline} className={styles.returnboxicon}></IonIcon>
+                </Stack>
             </Stack>
         </Stack>
     )
@@ -95,7 +109,7 @@ const steps = [
 const Option = ({ title, path }) => {
     return (
         <Link href={path}>
-            <Stack gap={2} direction={"row"} sx={{ position: 'relative', padding: '15px', border:"1px solid #ECE6F0" , borderRadius: '5px', alignItems: 'center' }}>
+            <Stack gap={2} direction={"row"} sx={{ position: 'relative', padding: '15px', border: "1px solid #ECE6F0", borderRadius: '5px', alignItems: 'center' }}>
                 <IonIcon style={{ fontSize: '25px' }} icon={layersOutline} />
                 <Typography sx={{ fontSize: '18px' }}>{title}</Typography>
                 <IonIcon icon={caretForward} style={{ position: 'absolute', right: '15px' }} />

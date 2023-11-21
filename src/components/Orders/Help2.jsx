@@ -3,21 +3,18 @@ import React from 'react';
 import { Stack, Typography, Box } from '@mui/material';
 import styles from './order.module.css';
 import { IonIcon } from '@ionic/react';
-import { chevronForwardOutline } from 'ionicons/icons';;
-import Link from 'next/link';
+import { chevronForwardOutline } from 'ionicons/icons';
 
-const Help = ({id}) => {
+const Help = () => {
     return (
-        <Link href={`/orders/return/${id}`}>
         <Stack className={styles.helpbar} gap={1}>
-            <Typography>Need help with your Item?</Typography>
+            <Typography>Refundable Amount !</Typography>
             <Stack className={styles.returnbox}>
-                <Typography style={{fontSize:'14px', fontWeight:600}}>Return Items</Typography>
-                <Typography style={{fontSize:'13px'}}>Eligible till 20 November 2023</Typography>
+                <Typography style={{fontSize:'13px'}}>The Refundable amount will be credited to Shoemato wallet.</Typography>
+                <Typography style={{fontSize:'14px', fontWeight:600}}>SHOEMATO WALLET</Typography>
                 <IonIcon icon={chevronForwardOutline} className={styles.returnboxicon}></IonIcon>
             </Stack>
         </Stack>
-        </Link>
     )
 }
 

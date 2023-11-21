@@ -2,10 +2,10 @@ import BasicBreadcrumbs from "@/components/BreadCrumbs";
 import Filter from "@/components/Filter/Filter";
 import Footer from "@/components/Footer/Footer";
 import Details from "@/components/Orders/Details";
-import Help from "@/components/Orders/Help";
+import Help from "@/components/Orders/Help2";
 import { Box } from "@mui/material";
 import global from '@/global.module.css';
-import MobileDetails from "@/components/Orders/Mobile/Details";
+import Return from "@/components/Orders/Mobile/Return";
 
 
 const OrderDetails = ({ params }) => {
@@ -17,14 +17,14 @@ const OrderDetails = ({ params }) => {
             <Box className={global.desktop}>
                 <BasicBreadcrumbs inactive={inactive} active={`${id}`} fsize={"20px"} mt={"15px"} />
                 <Filter filterArray={filterArray} sort={false} />
-                <Details />
+                <Details rtrn={true}/>
                 <Help />
                 <Footer />
             </Box>
 
             {/* MOBILE */}
             <Box className={global.mobile} style={{ padding: '90px 15px 15px 15px' }}>
-                <MobileDetails />
+                <Return />
             </Box>
         </>
     )
