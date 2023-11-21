@@ -107,8 +107,8 @@
 }
 
 .selectedCard {
-    background-color: #0D1A26;
-    color: #fff;
+    background-color: #0D1A26 !important;
+    color: #fff !important;
 }
 
 .mobileAccountContainer {
