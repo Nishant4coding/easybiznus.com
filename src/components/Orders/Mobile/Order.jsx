@@ -38,7 +38,7 @@ const Card = ({ data }) => {
 
     return (
         <Link href={`/orders/details/${id}`} style={{maxWidth: '370px', minWidth: '270px', width: '90%' }}>
-        <Stack gap={1} direction={"row"} sx={{ boxShadow: '0 4px 12px 0 rgb(0,0,0, 0.1)', borderRadius: '10px', padding: '10px',}}>
+        <Stack gap={1} direction={"row"} sx={{ boxShadow: '0 4px 12px 0 rgb(0,0,0, 0.1)', borderRadius: '10px', padding: '10px', justifyContent:'space-between'}}>
             <Stack>
                 <Stack gap={0}>
                     <Typography sx={{ fontSize: '10px' }}>Order ID: {id}</Typography>

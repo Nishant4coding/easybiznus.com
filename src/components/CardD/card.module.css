@@ -20,12 +20,12 @@
     font-weight: 700;
 }
 .button{
-    width: 100%;
-    padding:12px;
-    font-size:10px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
+    width: 100% !important;
+    padding:12px !important;
+    font-size:10px !important;
+    font-weight: 600 !important;
+    display: flex !important;
+    align-items: center !important;
     background-color: #0D1A26 !important; 
 }
 .subtitle{
