@@ -62,10 +62,26 @@ import EmptyBoxImg from './empty-box.svg';
 import DeleteIconRed from './DeleteIconRed.svg';
 import HomeIcon from './HomeIcon.svg';
 import RazorPay from './razorPay.svg';
+import RigthArrowIcon from './RigthArrowIcon.svg';
+import CrossIcon from './crossIcon.svg';
+import OfficeIcon from './OfficeIcon.svg';
+import AddIconNoBackg from './AddIconNoBackg.svg';
+import AddIconWhite from './AddIconWhite.svg';
+import ApartmentIcon from './ApartmentIcon.svg';
+import HomeWhiteFill from './HomeWhiteFill.svg';
+import CrossCircle from './crossCircle.svg'
 
 export {
     UserBlack,
+    CrossCircle,
+    AddIconNoBackg,
+    AddIconWhite,
+    ApartmentIcon,
+    CrossIcon,
+    HomeWhiteFill,
+    OfficeIcon,
     RazorPay,
+    RigthArrowIcon,
     EmptyBoxImg,
     DeleteIconRed,
     HomeIcon,

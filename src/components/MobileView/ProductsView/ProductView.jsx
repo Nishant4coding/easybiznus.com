@@ -11,7 +11,7 @@ const ProductView = () => {
     return (
         <Stack>
             <FilterAndSort />
-            <Grid container rowSpacing={1} spacing={2} justifyContent={"center"} marginTop={2} >
+            <Grid container rowSpacing={0.1} spacing={2} justifyContent={"center"} marginTop={2} >
                 {
                     cardArray.map((item, index) => (
                         <Grid item key={index}  >

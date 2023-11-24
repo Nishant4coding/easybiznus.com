@@ -1,17 +1,26 @@
 "use client"
-import { Stack, Typography, Button } from '@mui/material'
+import { Stack, Typography, Button, Box } from '@mui/material'
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { AddIcon, Shoe6, DeleteIconRed } from '@/assets/svg/index';
 import { IonIcon } from '@ionic/react';
 import { heart, heartOutline, } from 'ionicons/icons';
 import styles from './cart.module.css'
-import CustomButton from '../CustomBtn/CustomButton';
+import CustomModal from './CustomModal';
+import global from '@/global.module.css'
+import { HomeIcon, ApartmentIcon, OfficeIcon, AddIconNoBackg } from '@/assets/svg/index';
+
 
 const Cart = () => {
     const [wish, setWish] = useState(false);
+    const [openModal, setOpenModal] = useState(false); 
 
     let quantity = 1;
+    let amnt = {
+        subtotal: "3,499",
+        delivery: 40,
+        grandTotal: 3539
+    }
 
     return (
         <Stack sx={{ marginTop: "55px" }}>
@@ -54,22 +63,50 @@ const Cart = () => {
             <Stack gap={2} paddingX={1}  >
                 <Stack className={styles.subTotal} paddingX={1} borderTop={"1px solid #9E9898"}>
                     <Typography>Subtotal</Typography>
-                    <Typography>₹ 3,499</Typography>
+                    <Typography>₹ {amnt.subtotal}</Typography>
                 </Stack>
                 <Stack className={styles.subTotal} paddingX={1} borderBottom={"1px solid black"}>
                     <Typography>Delivery</Typography>
-                    <Typography>₹ 40</Typography>
+                    <Typography>₹ {amnt.delivery}</Typography>
                 </Stack>
 
             </Stack>
             <Stack className={styles.grandTotal} paddingX={1} >
                 <Typography>Grand Total</Typography>
-                <Typography>₹ 3539</Typography>
+                <Typography>₹ {amnt.grandTotal}</Typography>
             </Stack>
 
-           <CustomButton name={"CHECKOUT"} link={"/checkout"}/>
+           <Stack alignItems={"center"}>
+                <Button className={styles.btn} onClick={() =>  setOpenModal(!openModal)}>CHECKOUT</Button>
+            </Stack>
+           <Box className={global.mobile}>
+           {openModal && <CustomModal data = {data} modalTitle={"Choose a Delivery Address"} openModal={openModal} setOpenModal={setOpenModal}/>}
+           </Box>
         </Stack>
     )
 }
+
+const data = [
+    {
+      title: "Home",
+      icon: HomeIcon,
+      address: "1067, Verona Mahagun Delhi (201501)",
+    },
+    {
+      title: "Apartment",
+      icon: ApartmentIcon,
+      address: "112, SuperTeck Delhi (201501)",
+    },
+    {
+      title: "Office",
+      icon: OfficeIcon,
+      address: "EliteCodes Office, Banglore",
+    },
+    {
+      title: "Add New Address",
+      icon: AddIconNoBackg,
+    },
+
+  ]
 
 export default Cart;
