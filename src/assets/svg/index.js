@@ -58,7 +58,6 @@ import PinBlack from './pin-black.svg';
 import Home from './home.svg';
 import Cash from './cash.svg';
 import UserBlack from './user-black.svg';
-import Shoe6 from './shoe6.svg';
 import Avatar3D from './3d-avatar.svg';
 import Verified from './verified.svg';
 import Funnel from './funnel.svg';
@@ -98,7 +97,6 @@ export {
     DeleteIconRed,
     HomeIcon,
     Product,
-    Shoe6,
     Cash,
     Home,
     PinBlack,
