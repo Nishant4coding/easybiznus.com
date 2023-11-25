@@ -21,7 +21,7 @@ const WishlistPage = () => {
             </Box>
 
             <Box className={global.mobile} >
-                {!wishlistVal? <EmptyWishlist /> : <Wishlist/>}
+                {true? <EmptyWishlist /> : <Wishlist/>}
             </Box>
         </>
     )

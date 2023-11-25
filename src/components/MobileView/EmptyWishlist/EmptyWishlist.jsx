@@ -12,26 +12,26 @@ import Link from 'next/link';
 const EmptyWishlist = () => {
     return (
         <Stack>
-            <Stack direction={"column"} alignItems={"center"} gap={2} sx={{ marginTop: "90px", }}>
+            <Stack direction={"column"} alignItems={"center"} gap={2} sx={{ marginTop: "90px", padding:'15px 0px' }}>
                 <Image src={EmptyBoxImg} alt='Empty box' />
                 <Stack gap={5} alignItems={"center"}>
-                <Typography sx={{fontSize:"18px", fontWeight:"600px"}}>Your Wishlist is Empty</Typography>
-                <Typography sx={{fontSize:"14px", fontWeight:"600px"}}>YOU MAY ALSO LIKE</Typography>
+                    <Typography sx={{ fontSize: "18px", fontWeight: "600px" }}>Your Wishlist is Empty</Typography>
+                    <Typography sx={{ fontSize: "14px", fontWeight: "600px" }}>YOU MAY ALSO LIKE</Typography>
                 </Stack>
             </Stack>
 
-            <Stack sx={{backgroundColor:"#EBEBEB"}}>
-            <Grid container rowSpacing={1} spacing={2} justifyContent={"center"} marginTop={2} >
-                {
-                    cardArray.map((item, index) => (
-                        <Grid item key={index}  >
-                            <Link href={"/product"} >
-                                <CardB data={item} wishIcon={true} />
-                            </Link>
-                        </Grid>
-                    ))
-                }
-            </Grid>
+            <Stack sx={{ backgroundColor: "#EBEBEB" }}>
+                <Grid container rowSpacing={1} spacing={2} justifyContent={"center"} marginTop={2} >
+                    {
+                        cardArray.map((item, index) => (
+                            <Grid item key={index}  >
+                                <Link href={"/product"} >
+                                    <CardB data={item} wishIcon={true} />
+                                </Link>
+                            </Grid>
+                        ))
+                    }
+                </Grid>
             </Stack>
         </Stack>
     )
