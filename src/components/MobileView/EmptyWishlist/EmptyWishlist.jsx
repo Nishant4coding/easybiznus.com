@@ -7,12 +7,14 @@ import Image from 'next/image';
 import { Shoe1 } from '@/assets/svg/index';
 import CardB from '../../MobileViewCards/CardB/CardB';
 import Link from 'next/link';
+import Header from '../CustomHeader/Header';
 
 
 const EmptyWishlist = () => {
     return (
         <Stack>
-            <Stack direction={"column"} alignItems={"center"} gap={2} sx={{ marginTop: "90px", padding:'15px 0px' }}>
+            <Stack direction={"column"} alignItems={"center"} gap={2} sx={{marginTop:'40px', padding:'15px 0px' }}>
+            <Header title={"Wishlist"} count={0}/>
                 <Image src={EmptyBoxImg} alt='Empty box' />
                 <Stack gap={5} alignItems={"center"}>
                     <Typography sx={{ fontSize: "18px", fontWeight: "600px" }}>Your Wishlist is Empty</Typography>
