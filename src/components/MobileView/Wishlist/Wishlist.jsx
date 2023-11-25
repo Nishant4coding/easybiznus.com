@@ -5,11 +5,13 @@ import { Shoe1 } from '@/assets/svg/index';
 import { Stack, Grid } from '@mui/material';
 import Link from 'next/link';
 import CustomButton from '../CustomBtn/CustomButton';
+import Header from '../CustomHeader/Header';
 
 const Wishlist = () => {
 
     return (
         <Stack sx={{alignItems:'center', marginTop: "55px", backgroundColor:'#fff', minHeight:'92vh',position:'relative'}}>
+            <Header title={"Wishlist"} count={cardArray.length}/>
             <Grid container rowSpacing={1} spacing={2} justifyContent={"center"} marginTop={2} sx={{ backgroundColor: "#EBEBEB", marginBottom:'70px' }}>
                 {
                     cardArray.map((item, index) => (
