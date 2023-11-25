@@ -47,7 +47,7 @@ const WomensCollections = () => {
             </Stack>
 
             <Stack sx={{ backgroundColor: "#F6B6C2FC" }}>
-                <Stack sx={{ backgroundColor: "#E4BBFF80", paddingY: 1 }} justifyContent={"center"} alignItems={"center"}>
+                <Stack sx={{ backgroundColor: "#E4BBFF80", paddingY: 1, width:'100%' }} justifyContent={"center"} alignItems={"center"}>
                     <Typography variant='h5' color={"white"}>TOP BRANDS</Typography>
                 </Stack>
                 <Stack className={styles.products}>

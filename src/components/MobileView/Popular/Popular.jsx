@@ -39,7 +39,7 @@ const Popular = () => {
             <Typography className={styles.heading} variant="h6" component="h6">
                 Popular among Men
             </Typography>
-            <Stack className={styles.products} >
+            <Stack className={styles.products}>
                 {
                     prod?.map((item, ind) => {
                         return (

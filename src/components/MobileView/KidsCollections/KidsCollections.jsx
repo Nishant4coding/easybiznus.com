@@ -53,7 +53,7 @@ const KidsCollections = () => {
             </Stack>
 
             <Stack sx={{ backgroundColor: "#E4BBFFFC" }}>
-                <Stack sx={{ backgroundColor: "#ECD4FC", paddingY: 1 }} justifyContent={"center"} alignItems={"center"}>
+                <Stack sx={{ backgroundColor: "#ECD4FC", paddingY: 1, width:'100%' }} justifyContent={"center"} alignItems={"center"}>
                     <Typography variant='h5' color={"white"}>TOP BRANDS</Typography>
                 </Stack>
                 <Stack className={styles.products}>

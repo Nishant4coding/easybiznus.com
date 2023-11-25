@@ -47,7 +47,7 @@ const MensCollections = () => {
             </Stack>
 
             <Stack sx={{ backgroundColor: "#E7EFFF" }}>
-                <Stack sx={{ backgroundColor: "#B4CDFF", paddingY: 1 }} justifyContent={"center"} alignItems={"center"}>
+                <Stack sx={{ backgroundColor: "#B4CDFF", paddingY: 1, width:'100%' }} justifyContent={"center"} alignItems={"center"}>
                     <Typography variant='h5' color={"white"}>TOP BRANDS</Typography>
                 </Stack>
                 <Stack className={styles.products}>

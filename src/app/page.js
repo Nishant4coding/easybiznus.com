@@ -53,7 +53,7 @@ const HomePage = (props) => {
           <CarouselMob img={imgMob1} />
           <CarouselMob img={imgMob2} />
         </div>
-        <Stack>
+        <Stack sx={{width:'100%', padding:'15px'}}>
           <Category />
           <Trending />
           <Popular />
