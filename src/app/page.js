@@ -11,7 +11,6 @@ import Main from "@/components/Home/Main/Main";
 import Footer from "@/components/Footer/Footer";
 import CarouselMob from "@/components/Carousel/MobileView/CarouselMob";
 import { imgMob1, imgMob2 } from '@/assets/carousel/index';
-import styles from './page.module.css';
 import Category from "@/components/MobileView/Categories/Category";
 import Trending from "@/components/MobileView/Trending/Trending";
 import Popular from "@/components/MobileView/Popular/Popular";
@@ -54,7 +53,7 @@ const HomePage = (props) => {
           <CarouselMob img={imgMob1} />
           <CarouselMob img={imgMob2} />
         </div>
-        <Stack>
+        <Stack sx={{width:'100%', padding:'15px'}}>
           <Category />
           <Trending />
           <Popular />

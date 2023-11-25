@@ -44,12 +44,15 @@ import RightIcon from './RightIcon.svg';
 import Wishlist from './Wishlist.svg';
 import GreenCircle from './greenCircle.svg';
 import BlueCircle from './blueCircle.svg';
+import AddIcon from './AddIcon.svg';
+
 import UserWallet from './user-wallet.svg';
 import CartBlack from './cart-black.svg';
 import Chat from './chat.svg';
 import Bag from './bag.svg';
 import UserLogo from './user-logo.svg';
 import Shoe5 from './shoe5.svg';
+import Shoe6 from './shoe6.svg';
 import Product from './product.svg';
 import PinBlack from './pin-black.svg';
 import Home from './home.svg';
@@ -61,6 +64,18 @@ import Verified from './verified.svg';
 import Funnel from './funnel.svg';
 import Shoe7 from './shoe7.svg';
 import ArrowForwardCircle from './arrow-forward-circle.svg'
+import EmptyBoxImg from './empty-box.svg';
+import DeleteIconRed from './DeleteIconRed.svg';
+import HomeIcon from './HomeIcon.svg';
+import RazorPay from './razorPay.svg';
+import RigthArrowIcon from './RigthArrowIcon.svg';
+import CrossIcon from './crossIcon.svg';
+import OfficeIcon from './OfficeIcon.svg';
+import AddIconNoBackg from './AddIconNoBackg.svg';
+import AddIconWhite from './AddIconWhite.svg';
+import ApartmentIcon from './ApartmentIcon.svg';
+import HomeWhiteFill from './HomeWhiteFill.svg';
+import CrossCircle from './crossCircle.svg'
 
 export {
     ArrowForwardCircle,
@@ -70,16 +85,30 @@ export {
     Avatar3D,
     Shoe6,
     UserBlack,
+    CrossCircle,
+    AddIconNoBackg,
+    AddIconWhite,
+    ApartmentIcon,
+    CrossIcon,
+    HomeWhiteFill,
+    OfficeIcon,
+    RazorPay,
+    RigthArrowIcon,
+    EmptyBoxImg,
+    DeleteIconRed,
+    HomeIcon,
+    Product,
+    Shoe6,
     Cash,
     Home,
     PinBlack,
-    Product,
     UserWallet,
     CartBlack,
     Chat,
     Bag,
     UserLogo,
     Wallet,
+    AddIcon,
     SearchBlack,
     Wishlist,
     BlueCircle,

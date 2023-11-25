@@ -1,0 +1,58 @@
+.title {
+    font-size: 12.99px;
+    font-weight: 700px;
+    color: #191919
+}
+
+.subtxt {
+    font-size: 8px;
+    font-weight: 400px;
+}
+
+.totalPrice {
+    font-size: 15px;
+    font-weight: 900px;
+    line-height: 28px;
+    color: black;
+}
+
+.subTitle {
+    font-size: 8px;
+    font-weight: 400px;
+    line-height: 20px
+}
+
+.subTotal {
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #9E9898;
+    padding-top: 5px;
+}
+
+.grandTotal {
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: 600px;
+    line-height: 24px;
+    color: black;
+    margin-top: 5px;
+}
+.btn {
+    width: 354px;
+    background-color: #0D1A26;
+    position: fixed;
+    bottom: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 500px;
+    border-radius: 10px
+}
+.modalCon {
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    flex-direction: row;
+}
+

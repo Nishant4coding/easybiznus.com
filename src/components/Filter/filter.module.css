@@ -26,3 +26,14 @@
     font-size: 12px;
     font-weight: 400;
 }
+
+@media screen and (max-width: 500px) {
+    .filter{
+        width:100%;
+        border-top:1px solid #0D1A26;
+        border-bottom:1px solid #0D1A26;
+        padding: 6px;
+        display: flex;
+        justify-content: space-between;
+    }
+}

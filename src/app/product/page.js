@@ -10,12 +10,17 @@ import Popup from "@/components/ProductPage/Popup";
 import global from '@/global.module.css';
 import ImageView from "@/components/ProductPage/Mobile/Image";
 import Product from "@/components/ProductPage/Mobile/Product";
+import PopupAlert from "@/components/MobileView/Snackbar/PopupAlert";
 
 const ProductPage = () => {
     const [open, setOpen] = useState(false);
+    const [openMobile, setOpenMobile] = useState(false);
     const [poptitle, setPopTitle] = useState({});
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const handleOpenMobile = () => setOpenMobile(true);
+    const handleCloseMobile = () => setOpenMobile(false);
 
     return (
         <>
@@ -36,9 +41,10 @@ const ProductPage = () => {
             </Box>
 
             {/* MOBILE VIEW */}
-            <Box className={global.mobile} sx={{ padding: '20px', marginTop:'30px' }}>
+            <Box className={global.mobile} sx={{ padding: '20px', marginTop: '30px' }}>
                 <ImageView />
-                <Product />
+                <Product handleOpen={handleOpenMobile} />
+                {openMobile && <PopupAlert open={openMobile} handleClose={handleCloseMobile} title={"Product added successfully"} type={"success"} />}
             </Box>
             <Box className={global.mobile}>
                 <FooterMobile />

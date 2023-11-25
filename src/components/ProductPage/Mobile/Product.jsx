@@ -9,7 +9,7 @@ import Pincode from '../Pincode';
 import { PinBlack } from '@/assets/svg';
 import Image from 'next/image';
 
-const Product = () => {
+const Product = ({handleOpen}) => {
     const [qty, setQty] = useState(1);
     const [wish, setWish] = useState(false);
     const [size, setSize] = useState(0);
@@ -18,7 +18,11 @@ const Product = () => {
     const handleSetWish = () => setWish(!wish);
     const handleSize = (value) => setSize(value);
     const toggleSetPin = () => setChangepin(!changepin);
-    const handlePin = (e) => setPin(e.target.value)
+    const handlePin = (e) => setPin(e.target.value);
+
+    const addedToCart=()=>{
+        handleOpen();
+    }
 
     return (
         <Box>
@@ -38,7 +42,7 @@ const Product = () => {
                     <Typography className={styles.taxDeclaration}>Prices include GST</Typography>
                 </Stack>
                 <Stack gap={1}>
-                    <Button variant="contained" className={styles.button}>
+                    <Button className={styles.button} variant='contained' onClick={()=> addedToCart()}>
                         + ADD TO CART
                     </Button>
                     <Button variant="contained" className={styles.button}>
@@ -135,8 +139,8 @@ const Product = () => {
             <Stack sx={{ padding: '25px', backgroundColor: '#EEEEEE' }}>
                 <Stack gap={2} sx={{ margin: '25px 0', alignItems: 'center' }}>
                     <Typography className={styles.mobileSubTitle}>FEATURES & BENEFITS</Typography>
-                    <Typography sx={{ width: "85%", textAlign: 'left' }}>IMEVA: {"PUMA's"} material for a lightweight and comfortable feel</Typography>
-                    <Typography sx={{ width: "85%", textAlign: 'left' }}>SoftFoam+: {"PUMA's"} comfort sockliner for instant step-in and long-lasting comfort that provides soft cushioning every step of your day</Typography>
+                    <Typography sx={{ width: "85%", textAlign: 'left' }}>{"IMEVA: PUMA's material for a lightweight and comfortable feel"}</Typography>
+                    <Typography sx={{ width: "85%", textAlign: 'left' }}>{"SoftFoam+: PUMA's comfort sockliner for instant step-in and long-lasting comfort that provides soft cushioning every step of your day"}</Typography>
                 </Stack>
 
                 <Stack gap={2} sx={{ margin: '25px 0', }}>
