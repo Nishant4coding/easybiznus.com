@@ -10,6 +10,7 @@ import CustomModal from './CustomModal';
 import global from '@/global.module.css'
 import { HomeIcon, ApartmentIcon, OfficeIcon, AddIconNoBackg } from '@/assets/svg/index';
 import Header from '../CustomHeader/Header';
+import { businessOutline, home, storefront, add } from 'ionicons/icons';
 
 
 const Cart = () => {
@@ -104,22 +105,22 @@ const Card = () => {
 const data = [
     {
         title: "Home",
-        icon: HomeIcon,
+        icon: home,
         address: "1067, Verona Mahagun Delhi (201501)",
     },
     {
         title: "Apartment",
-        icon: ApartmentIcon,
+        icon: businessOutline,
         address: "112, SuperTeck Delhi (201501)",
     },
     {
         title: "Office",
-        icon: OfficeIcon,
+        icon: storefront,
         address: "EliteCodes Office, Banglore",
     },
     {
         title: "Add New Address",
-        icon: AddIconNoBackg,
+        icon: add,
     },
 
 ]

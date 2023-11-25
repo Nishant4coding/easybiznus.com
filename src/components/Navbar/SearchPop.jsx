@@ -46,8 +46,8 @@ const Column1 = ({ list, heading }) => {
         <Stack gap={1}>
             <Typography style={{ fontWeight: '600' }}>{heading}</Typography>
             {
-                colArray.map((item) => (
-                    <Link href="#">{item}</Link>
+                colArray.map((item, index) => (
+                    <Link key={index} href="#">{item}</Link>
                 ))
             }
         </Stack>
@@ -62,8 +62,8 @@ const Column2 = ({ list, heading }) => {
             <Typography style={{ fontWeight: '600' }}>{heading}</Typography>
             <Stack direction={"row"} gap={5} style={{ flexWrap: 'wrap' }}>
                 {
-                    searchArray.map((item) => (
-                        <Link href="#">
+                    searchArray.map((item, index) => (
+                        <Link key={index} href="#">
                         <Stack direction={"row"} gap={4} style={{ width: "400px"}}>
                             <Box sx={{width:'150px', height:'100px'}}>
                             <Image alt="dxcfg" src={Shoe5} style={{width:'100%', height:'100%', objectFit:'cover'}}/>

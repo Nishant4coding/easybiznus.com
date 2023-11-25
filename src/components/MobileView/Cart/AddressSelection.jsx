@@ -61,7 +61,7 @@ const AddressSelection = () => {
                 </Stack>
                 <Box marginBottom={3}>
 
-                    <Stack boxShadow={1} marginY={"5px"} paddingX={2} paddingY={1} marginY={2} className={styles.modalCon} style={{backgroundColor: theme ? "#0D1A26": "", color: theme?"white": "#0D1A26"}}>
+                    <Stack boxShadow={1} marginY={"5px"} paddingX={2} paddingY={1} className={styles.modalCon} style={{backgroundColor: theme ? "#0D1A26": "", color: theme?"white": "#0D1A26"}}>
 
                         <Stack direction={"row"} gap={2} onClick={() => handledAdd()} >
                             <IonIcon icon={theme ? locationOutline : locationSharp} size="large" style={{ backgroundColor: theme ? "#0D1A26": "", color: theme?"white": "#0D1A26", cursor: "pointer" }}

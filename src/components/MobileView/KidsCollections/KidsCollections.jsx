@@ -46,7 +46,7 @@ const KidsCollections = () => {
         <Stack>
             <Stack direction={"row"} sx={{ backgroundColor: "white" }} marginTop={6} height={101}>
                 <Stack justifyContent={"center"} marginLeft={2}>
-                    <Typography variant='h5'>KID'S </Typography>
+                    <Typography variant='h5'>{"KID'S "}</Typography>
                     <Typography variant='h5'> COLLECTIONS</Typography>
                 </Stack>
                 <Image src={Shoe5} alt='shoe' width={150} height={100} />
