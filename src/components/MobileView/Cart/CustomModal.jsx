@@ -37,8 +37,6 @@ const CustomModal = ({ openModal, setOpenModal, data, modalTitle }) => {
       >
         <Box
           role="presentation"
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
           style={{borderRadius:'10px 10px 0 0'}}
         >
           <Stack paddingX={2} direction={"row"} justifyContent={"space-between"} alignItems={"center"} paddingY={2}>
@@ -50,9 +48,10 @@ const CustomModal = ({ openModal, setOpenModal, data, modalTitle }) => {
             {data?.map((item, id) => {
               return (
                 <Stack onClick={()=>{
-                  handleSelect(id)
+                  handleSelect(id);
+                  setTimeout(()=>router.push('/address'),1000);
                 }} key={id} marginY={"5px"} paddingX={2} paddingY={1} className={styles.modalCon} style={id===select?{backgroundColor:'#0D1A26'}:{}}>
-                  <Stack direction={"row"} sx={{alignItems:'center'}} gap={2} onClick={() => router.push('/address')}>
+                  <Stack direction={"row"} sx={{alignItems:'center'}} gap={2}>
                     <IonIcon icon={item?.icon} style={id===select?{color:'#fff',fontSize:'22px'}:{fontSize:'22px'}}/>
                     <Stack >
                       <Typography style={id===select?{color:'#fff'}:{}} fontSize={"16px"}>{item?.title}</Typography>
