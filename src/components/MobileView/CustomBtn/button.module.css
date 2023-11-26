@@ -1,8 +1,8 @@
 .btn {
-    width: 80%;
-    background-color: #0D1A26;
-    color: white;
-    font-size: 18px;
-    font-weight: 500px;
-    border-radius: 10px
+    width: 80% !important;
+    background-color: #0D1A26 !important;
+    color: white !important;
+    font-size: 18px !important;
+    font-weight: 500px !important;
+    border-radius: 10px !important;
 }

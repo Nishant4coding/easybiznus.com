@@ -41,7 +41,7 @@ const Cart = () => {
 
             </Stack>
 
-            <Stack sx={{padding:'15px'}}>
+            <Stack sx={{ padding: '15px' }}>
                 <Stack gap={0} paddingX={1}>
                     <Stack className={styles.subTotal} paddingX={1} borderTop={"1px solid #9E9898"}>
                         <Typography>Subtotal</Typography>
@@ -61,9 +61,9 @@ const Cart = () => {
             <Stack alignItems={"center"}>
                 <Button className={styles.btn} onClick={() => setOpenModal(!openModal)}>CHECKOUT</Button>
             </Stack>
-            <Box className={global.mobile}>
-                {openModal && <CustomModal data={data} modalTitle={"Choose a Delivery Address"} openModal={openModal} setOpenModal={setOpenModal} />}
-            </Box>
+
+            {openModal && <CustomModal data={data} modalTitle={"Choose a Delivery Address"} openModal={openModal} setOpenModal={setOpenModal} />}
+
         </Stack>
     )
 }
@@ -71,12 +71,12 @@ const Cart = () => {
 
 const Card = () => {
     const [wish, setWish] = useState(false);
-    const [openMobile, setOpenMobile]=useState(false);
-    const handleCloseMobile=()=>setOpenMobile(false);
-    const handleOpenMobile=()=>setOpenMobile(true);
+    const [openMobile, setOpenMobile] = useState(false);
+    const handleCloseMobile = () => setOpenMobile(false);
+    const handleOpenMobile = () => setOpenMobile(true);
 
     return (
-        <Stack direction={"row"} sx={{justifyContent:'space-between'}}>
+        <Stack direction={"row"} sx={{ justifyContent: 'space-between' }}>
 
             <Stack sx={{ width: "65%" }}>
                 <Typography className={styles.title} >Mercedes AMG Petronas F1 ,Wired Run Unisex Sneakers</Typography>
@@ -94,7 +94,7 @@ const Card = () => {
                             // wish?null: addedToWishlist();
                         }}
                     ></IonIcon>
-                    <Image src={DeleteIconRed} style={{ color: "red" }} onClick={handleOpenMobile}/>
+                    <Image src={DeleteIconRed} style={{ color: "red" }} onClick={handleOpenMobile} />
                 </Stack>
 
                 <Stack >
@@ -102,7 +102,7 @@ const Card = () => {
                     <Typography className={styles.subtxt}>Incl. of taxes</Typography>
                 </Stack>
             </Stack>
-            {openMobile && <PopupAlert open={openMobile} handleClose={handleCloseMobile} title={"Item Deleted Successfully"} path={"/product"}/>}
+            {openMobile && <PopupAlert open={openMobile} handleClose={handleCloseMobile} title={"Item Deleted Successfully"} path={"/product"} />}
         </Stack>
     )
 }

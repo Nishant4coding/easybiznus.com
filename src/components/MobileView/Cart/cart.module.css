@@ -39,11 +39,10 @@
     color: black;
     margin-top: 5px;
 }
-.btn {
-    width: 354px;
-    background-color: #0D1A26;
-    position: fixed;
-    bottom: 10px;
+.btn,.btn:hover {
+    max-width: 354px;
+    width: 90%;
+    background-color: #0D1A26 !;
     color: white;
     font-size: 18px;
     font-weight: 500px;
