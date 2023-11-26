@@ -7,8 +7,6 @@ import { IonIcon } from '@ionic/react';
 import { heart, heartOutline, } from 'ionicons/icons';
 import styles from './cart.module.css'
 import CustomModal from './CustomModal';
-import global from '@/global.module.css'
-import { HomeIcon, ApartmentIcon, OfficeIcon, AddIconNoBackg } from '@/assets/svg/index';
 import Header from '../CustomHeader/Header';
 import { businessOutline, home, storefront, add } from 'ionicons/icons';
 import PopupAlert from '../Snackbar/PopupAlert';
@@ -25,7 +23,7 @@ const Cart = () => {
     }
 
     return (
-        <Stack sx={{ marginTop: "55px" }}>
+        <Stack sx={{ marginTop: "55px", minHeight:'90svh' }}>
             <Header title={"Cart"} count={1} />
             <Stack padding={3} direction={"row"} gap={2}>
                 <Stack alignItems={"center"}>
@@ -41,7 +39,7 @@ const Cart = () => {
 
             </Stack>
 
-            <Stack sx={{ padding: '15px' }}>
+            <Stack sx={{ padding: '15px',marginBottom:'50px' }}>
                 <Stack gap={0} paddingX={1}>
                     <Stack className={styles.subTotal} paddingX={1} borderTop={"1px solid #9E9898"}>
                         <Typography>Subtotal</Typography>
@@ -58,7 +56,7 @@ const Cart = () => {
                     <Typography>₹ {amnt.grandTotal}</Typography>
                 </Stack>
             </Stack>
-            <Stack alignItems={"center"}>
+            <Stack alignItems={"center"} sx={{position:'absolute', bottom:'20px', width:'100%'}}>
                 <Button className={styles.btn} onClick={() => setOpenModal(!openModal)}>CHECKOUT</Button>
             </Stack>
 

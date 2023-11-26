@@ -53,7 +53,6 @@ const CustomModal = ({ openModal, setOpenModal, data, modalTitle }) => {
                   handleSelect(id)
                 }} key={id} marginY={"5px"} paddingX={2} paddingY={1} className={styles.modalCon} style={id===select?{backgroundColor:'#0D1A26'}:{}}>
                   <Stack direction={"row"} sx={{alignItems:'center'}} gap={2} onClick={() => router.push('/address')}>
-                    {/* <Image src={item?.icon} alt='Icon' style={id===select?{color:'#fff'}:{}}/> */}
                     <IonIcon icon={item?.icon} style={id===select?{color:'#fff',fontSize:'22px'}:{fontSize:'22px'}}/>
                     <Stack >
                       <Typography style={id===select?{color:'#fff'}:{}} fontSize={"16px"}>{item?.title}</Typography>

@@ -17,7 +17,11 @@ const overlayStyle = {
 const Popup = ({ open, handleClose, title, type, path }) => {
 
   useEffect(() => {
-    setTimeout(() => handleClose(), 2500);
+    const counter = setTimeout(() => handleClose(), 2500);
+
+    return ()=>{
+      clearTimeout(counter);
+    }
   }, [])
 
   return (
