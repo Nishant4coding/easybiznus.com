@@ -160,7 +160,7 @@ const Product = ({handleOpen}) => {
                 </Stack>
 
                 <Stack gap={2} sx={{ margin: '25px 0', }}>
-                    <Typography className={styles.mobileSubTitle} >Country of Origin</Typography>
+                    <Typography className={styles.mobileSubTitle}>Country of Origin</Typography>
                     <Typography>VN</Typography>
                 </Stack>
             </Stack>

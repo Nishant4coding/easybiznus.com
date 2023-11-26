@@ -11,6 +11,7 @@ import global from '@/global.module.css'
 import { HomeIcon, ApartmentIcon, OfficeIcon, AddIconNoBackg } from '@/assets/svg/index';
 import Header from '../CustomHeader/Header';
 import { businessOutline, home, storefront, add } from 'ionicons/icons';
+import PopupAlert from '../Snackbar/PopupAlert';
 
 
 const Cart = () => {
@@ -70,11 +71,14 @@ const Cart = () => {
 
 const Card = () => {
     const [wish, setWish] = useState(false);
+    const [openMobile, setOpenMobile]=useState(false);
+    const handleCloseMobile=()=>setOpenMobile(false);
+    const handleOpenMobile=()=>setOpenMobile(true);
 
     return (
-        <Stack direction={"row"}>
+        <Stack direction={"row"} sx={{justifyContent:'space-between'}}>
 
-            <Stack sx={{ width: "175px" }}>
+            <Stack sx={{ width: "65%" }}>
                 <Typography className={styles.title} >Mercedes AMG Petronas F1 ,Wired Run Unisex Sneakers</Typography>
                 <Typography className={styles.subTitle}>Men’s Shoes</Typography>
                 <Typography className={styles.subTitle}>Puma White-Silver</Typography>
@@ -90,7 +94,7 @@ const Card = () => {
                             // wish?null: addedToWishlist();
                         }}
                     ></IonIcon>
-                    <Image src={DeleteIconRed} style={{ color: "red" }} />
+                    <Image src={DeleteIconRed} style={{ color: "red" }} onClick={handleOpenMobile}/>
                 </Stack>
 
                 <Stack >
@@ -98,6 +102,7 @@ const Card = () => {
                     <Typography className={styles.subtxt}>Incl. of taxes</Typography>
                 </Stack>
             </Stack>
+            {openMobile && <PopupAlert open={openMobile} handleClose={handleCloseMobile} title={"Item Deleted Successfully"} path={"/product"}/>}
         </Stack>
     )
 }

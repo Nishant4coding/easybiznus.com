@@ -10,9 +10,9 @@ import Header from '../CustomHeader/Header';
 const Wishlist = () => {
 
     return (
-        <Stack sx={{alignItems:'center', marginTop: "55px", backgroundColor:'#fff', minHeight:'92vh',position:'relative'}}>
-            <Header title={"Wishlist"} count={cardArray.length}/>
-            <Grid container rowSpacing={1} spacing={2} justifyContent={"center"} marginTop={2} sx={{ backgroundColor: "#EBEBEB", marginBottom:'70px' }}>
+        <Stack sx={{ alignItems: 'center', marginTop: "55px", backgroundColor: '#fff', minHeight: '92vh', position: 'relative' }}>
+            <Header title={"Wishlist"} count={cardArray.length} />
+            <Grid container rowSpacing={1} spacing={2} justifyContent={"center"} marginTop={2} sx={{ backgroundColor: "#EBEBEB", marginBottom: '70px' }}>
                 {
                     cardArray.map((item, index) => (
                         <Grid item key={index}  >
@@ -24,9 +24,7 @@ const Wishlist = () => {
                 }
             </Grid>
 
-            <Stack sx={{marginTop:'20px', position:'absolute', bottom:'15px'}}>
-                <CustomButton name={`ADD TO CART  [${cardArray.length}]`} link={"checkout"} />
-            </Stack>
+            <CustomButton name={`ADD TO CART  [${cardArray.length}]`} link={"checkout"} />
 
         </Stack>
     )

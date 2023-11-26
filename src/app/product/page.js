@@ -44,7 +44,7 @@ const ProductPage = () => {
             <Box className={global.mobile} sx={{ padding: '20px', marginTop: '30px' }}>
                 <ImageView />
                 <Product handleOpen={handleOpenMobile} />
-                {openMobile && <PopupAlert open={openMobile} handleClose={handleCloseMobile} title={"Product added successfully"} type={"success"} />}
+                {openMobile && <PopupAlert open={openMobile} handleClose={handleCloseMobile} title={"Product added successfully"} type={"success"} path={"/cart"}/>}
             </Box>
             <Box className={global.mobile}>
                 <FooterMobile />

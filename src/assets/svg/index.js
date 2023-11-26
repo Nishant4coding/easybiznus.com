@@ -74,9 +74,13 @@ import AddIconNoBackg from './AddIconNoBackg.svg';
 import AddIconWhite from './AddIconWhite.svg';
 import ApartmentIcon from './ApartmentIcon.svg';
 import HomeWhiteFill from './HomeWhiteFill.svg';
-import CrossCircle from './crossCircle.svg'
+import CrossCircle from './crossCircle.svg';
+import CartOutline from './cart-outline.svg';
+import DetailOutline from './detail-outline.svg';
 
 export {
+    DetailOutline,
+    CartOutline,
     ArrowForwardCircle,
     Shoe7,
     Funnel,
