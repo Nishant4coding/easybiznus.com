@@ -1,52 +1,137 @@
-.heading{
+.heading {
     font-size: 24px;
     margin: 30px 0px;
     font-weight: 600;
-    width:100%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.button,.button:hover{
+
+.button,
+.button:hover {
     margin-top: 40px;
     border-radius: 8px;
-    background-color: #0D1A26;
-    color:#fff;
-    font-size: 11px;
-    padding:10px 28px;
-    font-weight: 600;
+    background-color: #0D1A26 !important;
+    color: #fff !important;
+    font-size: 11px !important;
+    padding: 10px 28px;
+    font-weight: 600 !important;
     display: flex;
-    gap:10px;
+    gap: 10px;
 }
-.leftboxes{
-    border:2px solid #ECE6F0;
+
+.leftboxes {
+    border: 2px solid #ECE6F0;
     border-radius: 5px;
-    padding:20px;
-    width:100%;
-    margin:10px 0;
+    padding: 20px;
+    width: 100%;
+    margin: 10px 0;
 }
-.newsicon{
+
+.newsicon {
     font-size: 23px;
 }
-.boxTitle{
+
+.boxTitle {
     font-weight: 600;
     font-size: 28px;
     display: flex;
-    gap:15px;
+    gap: 15px;
     align-items: center;
     padding-bottom: 10px;
     border-bottom: 1px solid #A0A0A0;
 }
-.input{
-    border:2px solid #D9D9D9;
+
+.input {
+    border: 2px solid #D9D9D9;
     border-radius: 8px;
-    height:40px;
-    width:100%;
+    height: 40px;
+    width: 100%;
     font-size: 16px;
     padding-left: 10px;
     outline: none;
 }
-.billing{
+
+.billing {
     font-weight: 700;
     font-size: 14px;
+}
+
+.mobileCardTaxTitle {
+    font-size: 10px;
+    width: fit-content;
+    white-space: nowrap;
+}
+
+.moileCardPrice {
+    font-weight: 600;
+    font-size: 19px;
+}
+
+.mobileCardIcon {
+    color: #F55E53;
+    font-size: 25px;
+}
+
+.mobileCardTrashIcon {
+    color: #C73232;
+    font-size: 25px;
+}
+
+.mobileCardPriceSection {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobileCardTitle {
+    font-weight: 600;
+    font-size: 13px
+}
+
+.mobileCardImage {
+    height: 100px;
+    width: 180px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.mobileCard {
+    align-items: center;
+    height: 120px;
+    padding: 10px 0;
+}
+
+.mobileBilling {
+    font-weight: 700;
+}
+
+.mobileSubHead {
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.mobileBillingContainer {
+    align-items: center;
+    max-width: 400px;
+    width: 100%;
+    min-width: 300px;
+    margin: 0px auto;
+}
+
+.pinChange {
+    font-size: 13px;
+    color: #F55E53;
+    font-weight: 600;
+}
+
+.pinText {
+    font-size: 13px;
+    color: #414141;
 }

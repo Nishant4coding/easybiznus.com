@@ -5,7 +5,7 @@ const Size = () => {
     return (
         <Box className={styles.size}>
             <Typography className={styles.heading} style={{ marginLeft: "2px", marginBottom: "0px", fontSize: "12px" }}>Select Size</Typography>
-            <Stack direction={"row"}>
+            <Stack direction={"row"} sx={{flexWrap:'wrap'}}>
                 {
                     sizeArray.map((item, index) => (
                         <Typography key={index} className={item.available ? styles.sizebox : styles.unavailablesizebox}>{item.size}</Typography>

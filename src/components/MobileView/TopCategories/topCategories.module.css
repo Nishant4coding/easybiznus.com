@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.heading {
+    font-size: 19px;
+    font-weight: 700px;
+    line-height: 28px;
+}
+
+.products {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    overflow: scroll;
+    width: 100%;
+}

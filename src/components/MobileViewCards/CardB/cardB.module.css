@@ -1,0 +1,60 @@
+.container {
+    position: relative;
+    min-width: 171px;
+    max-width: 100%;
+    height: 286px;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: "#FAFAFA";
+}
+
+.container:hover {
+    box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.discount {
+    padding: 2px 5px 2px 2px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.image {
+    width: 171px;
+    object-fit: cover;
+    height: 170px;
+    transition: all 0.3s ease;
+    transform-origin: 0% 100%;
+    z-index: -1;
+}
+
+.image:hover {
+    transform: scale(1.2);
+}
+
+.title {
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.subtitle {
+    font-weight: 300;
+    font-size: 11px;
+    color: #B5B5B5;
+}
+
+.sp {
+    color: #F55E53;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 24px;
+}
+
+.addIcon {
+    background-color: #0D1A26;
+    color: #FFFFFF;
+    cursor: pointer;
+    border-radius: 8px;
+    
+}

@@ -9,11 +9,11 @@ import Logo from "./Logo";
 const Footer = () => {
     return (
         <Stack direction={"row"} className={styles.footer}>
-            <Stack direction={'column'} gap={6} style={{height:'100%'}}>
+            <Stack direction={'column'} gap={6} className={styles.quickAbout}>
                 <QuickLink />
                 <About />
             </Stack>
-            <Box style={{height:'100%'}}>
+            <Box className={styles.help}>
                 <Help />
             </Box>
             <Box sx={{ height: "100%", display:'flex', alignItems:'center'}}>

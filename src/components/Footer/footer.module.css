@@ -16,3 +16,18 @@
     font-weight: 400;
     font-size: 16px;
 }
+.quickAbout{
+    height: 100%;
+}
+.help{
+    height: 100%;
+}
+
+@media screen and (max-width:425){
+    .quickAbout{
+        display: none;
+    }
+    .help{
+        display: none;
+    }
+}

@@ -20,3 +20,13 @@
 .searchinput::placeholder{
     color:#000;
 }
+
+.search2{
+    border-radius: 50px;
+    box-shadow: 0 4px 12px 0 #d9d9d9;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding:0px 15px;
+    margin-top:8px;
+}

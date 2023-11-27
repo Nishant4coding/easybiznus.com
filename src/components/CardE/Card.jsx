@@ -10,7 +10,7 @@ import { YellowTick, GreenTick } from "@/assets/svg/index";
 const Card = ({data}) => {
     const {id, image,title,color,price,status,date}=data;
     return (
-        <Link href={`/orders/${id}`}>
+        <Link href={`/orders/details/${id}`}>
             <Stack direction="row" className={styles.card}>
                 <Stack direction={"row"} sx={{ width: "60%", justifyContent: "flex-start" }} gap={1.5}>
                     <Image src={image} alt={"product"} width={170} />

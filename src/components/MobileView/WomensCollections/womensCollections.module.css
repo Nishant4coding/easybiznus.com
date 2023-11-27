@@ -1,0 +1,8 @@
+.products {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    overflow: scroll;
+    padding: 9px;
+    width: 100%;
+}

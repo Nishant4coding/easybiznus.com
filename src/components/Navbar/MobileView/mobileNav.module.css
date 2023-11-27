@@ -1,0 +1,86 @@
+.navbar{
+    width: 100%;
+    padding: 8px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+    padding-left: 20px;
+    position: sticky;
+    top:0px;
+    z-index: 1000;
+}
+
+.link {
+    color: #fff;
+    margin: 0px 10px;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.navlink {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    width: 460px;
+    text-align: center;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.navlinkfocus {
+    flex-wrap: nowrap;
+    width: 0px;
+    opacity: 0;
+}
+
+.search {
+    border-radius: 25px;
+    border: 1px solid #fff;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    height: 30px;
+    position: relative;
+}
+
+.searchInput {
+    background-color: #0D1A26;  
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+}
+
+
+.navRight{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.locInput{
+    background-color: #0D1A26;
+    color: #fff;
+    text-align: center;
+    font-size: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    /* width:80px; */
+}
+
+.cityInput {
+    border: 1px solid #fff;
+    border-radius: 3px;
+    font-size: 9px;
+    text-align: left;
+}
+
+.searchInput:focus {
+    outline: none;
+}
+
+
+
