@@ -1,10 +1,9 @@
 "use client"
 
-import { Button, Stack, Typography, Grid } from '@mui/material';
+import { Stack, Typography, Grid } from '@mui/material';
 import React from 'react';
-import { EmptyBoxImg } from '@/assets/svg/index';
+import { EmptyBoxImg, Shoe1 } from '@/assets/svg/index';
 import Image from 'next/image';
-import { Shoe1 } from '@/assets/svg/index';
 import CardB from '../../MobileViewCards/CardB/CardB';
 import Link from 'next/link';
 import Header from '../CustomHeader/Header';
