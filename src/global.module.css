@@ -1,6 +1,17 @@
+.boldHeadingMobile{
+    font-weight: 900;
+    font-size: 24px;
+    color:#0D1A26;
+}
+.boldSubheadingMobile{
+    font-weight: 900;
+    font-size: 18px;
+    color:#0D1A26;
+}
+
 .headingMobile{
     font-weight: 700;
-    font-size: 24px;
+    font-size: 22px;
     color:#0D1A26;
 }
 .subheadingMobile{
@@ -11,15 +22,25 @@
 
 .button,
 .button:hover {
-    width: 20%;
     border-radius: 8px;
     background-color: #0D1A26;
     color: #fff;
-    font-size: 10px;
-    padding: 10px 5px;
+    font-size: 11px;
+    padding: 10px 25px;
     font-weight: 600;
     display: flex;
     gap: 10px;
+}
+.buttonOutlined,
+.buttonOutlined:hover {
+    font-size: 11px;
+    display: flex;
+    gap: 10px;
+    padding: 10px 25px;
+    border: 1px solid #0D1A26 ;
+    border-radius: 10px ;
+    color: #0D1A26 ;
+    font-weight: 600 ;
 }
 
 
@@ -37,16 +58,6 @@
     height: 100%;
     object-fit: cover;
 }
-
-.mobileButton, .mobileButton:hover {
-    background-color: #0D1A26;
-    color: #fff;
-    border-radius: 10px;
-    max-width: 300px;
-    width: 80%;
-    min-width: 200px;
-}
-
 
 
 @media screen and (max-width:500px) {

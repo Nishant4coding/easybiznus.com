@@ -99,8 +99,8 @@ const Header = () => {
             </Stack>
           </Stack>
 
-          <Stack sx={{ alignItems: 'center' }}>
-            <Button variant="contained" className={global.mobileButton} onClick={openSlotBooking}>
+          <Stack sx={{ alignItems: 'center', width:'100%'}}>
+            <Button variant="contained" className={global.button} onClick={openSlotBooking} sx={{width:'80%'}}>
               CONTINUE
             </Button>
           </Stack>

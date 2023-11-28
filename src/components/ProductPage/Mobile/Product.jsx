@@ -8,6 +8,7 @@ import { heart, heartOutline } from 'ionicons/icons';
 import Pincode from '../Pincode';
 import { PinBlack } from '@/assets/svg';
 import Image from 'next/image';
+import global from '@/global.module.css';
 
 const Product = ({handleOpen}) => {
     const [qty, setQty] = useState(1);
@@ -15,23 +16,21 @@ const Product = ({handleOpen}) => {
     const [size, setSize] = useState(0);
     const [pin, setPin] = useState('201016');
     const [changepin, setChangepin] = useState(true);
-    const handleSetWish = () => setWish(!wish);
+    const toggleWish = () => setWish(!wish);
     const handleSize = (value) => setSize(value);
     const toggleSetPin = () => setChangepin(!changepin);
     const handlePin = (e) => setPin(e.target.value);
 
-    const addedToCart=()=>{
-        handleOpen();
-    }
+
 
     return (
         <Box>
             <Stack direction={"row"} sx={{ justifyContent: 'space-evenly' }}>
-                <Typography className={styles.heading} style={{fontSize:'22px'}}>Mercedes AMG Petronas F1 Wired Run Unisex Sneakers</Typography>
+                <Typography className={global.headingMobile} style={{fontSize:'22px', marginBottom:'15px'}}>Mercedes AMG Petronas F1 Wired Run Unisex Sneakers</Typography>
                 {
                     wish ?
-                        <IonIcon icon={heart} className={styles.wishIcon} onClick={handleSetWish}></IonIcon> :
-                        <IonIcon icon={heartOutline} className={styles.wishIcon} onClick={handleSetWish}></IonIcon>
+                        <IonIcon icon={heart} className={styles.wishIcon} onClick={toggleWish}></IonIcon> :
+                        <IonIcon icon={heartOutline} className={styles.wishIcon} onClick={toggleWish}></IonIcon>
                 }
             </Stack>
 
@@ -42,10 +41,10 @@ const Product = ({handleOpen}) => {
                     <Typography className={styles.taxDeclaration}>Prices include GST</Typography>
                 </Stack>
                 <Stack gap={1}>
-                    <Button className={styles.button} variant='contained' onClick={()=> addedToCart()}>
+                    <Button className={global.button} variant='contained' onClick={handleOpen}>
                         + ADD TO CART
                     </Button>
-                    <Button variant="contained" className={styles.button}>
+                    <Button variant="contained" className={global.button}>
                         ADD TO TRY ON
                     </Button>
                 </Stack>

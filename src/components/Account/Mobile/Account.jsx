@@ -21,24 +21,24 @@ const Account = () => {
                         User Name
                         <Image src={Verified} alt="verified" style={{ width: '20px', height: '20px', objectFit: 'cover' }} />
                     </Typography>
-                    <Typography sx={{ color: '#9E9898', fontSize: '15px' }}>+91 9888324512</Typography>
+                    <Typography sx={{ color: '#9E9898', fontSize: '15px' }}>+91 9999999999</Typography>
                 </Stack>
                 <Typography className={styles.accountType}>PRIME</Typography>
             </Stack>
 
             <Stack className={styles.sale}>
-                <Typography sx={{fontWeight:'600', fontSize:'25px', color:'white'}}>50% OFF</Typography>
+                <Typography className={global.headingMobile} style={{ color:'white'}}>50% OFF</Typography>
                 <Typography sx={{marginBottom:'20px', fontSize:'25px', color:'white'}}>New arrival sale</Typography>
             </Stack>
 
             <Stack direction={"row"} sx={{justifyContent:'space-between'}}>
                 <Stack className={styles.mobileAccountCard1}>
                     <Typography>My Cart</Typography>
-                    <Typography sx={{fontWeight:'900', fontSize:'18px'}}>2</Typography>
+                    <Typography className={global.boldSubheadingMobile}>2</Typography>
                 </Stack>
                 <Stack className={styles.mobileAccountCard1}>
                     <Typography>Wishlist</Typography>
-                    <Typography sx={{fontWeight:'900', fontSize:'18px'}}>186</Typography>
+                    <Typography className={global.boldSubheadingMobile}>186</Typography>
                 </Stack>
             </Stack>
 

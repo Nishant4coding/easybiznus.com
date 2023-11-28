@@ -12,7 +12,7 @@ const SlotBooking = ({ closeSlotBooking }) => {
         <Stack sx={{ width: '100%' }}>
             {address ?
                 <></> :
-                <Stack gap={7}>
+                <Stack gap={7} sx={{width:'100%'}}>
                     <Stack direction={"row"} sx={{ alignItems: 'center' }} gap={1}>
                         <IonIcon icon={arrowBack} style={{ fontSize: '20px' }} onClick={closeSlotBooking} />
                         <Typography sx={{ fontSize: '16px', fontWeight: '600' }}>Confirm Details</Typography>
@@ -45,8 +45,8 @@ const SlotBooking = ({ closeSlotBooking }) => {
                         <VoiceCard />
                     </Stack>
 
-                    <Stack sx={{ alignItems: 'center', marginTop:"30px" }}>
-                        <Button variant="contained" className={global.mobileButton}>
+                    <Stack sx={{ alignItems: 'center', marginTop:"30px", width:'100%' }}>
+                        <Button variant="contained" className={global.button} style={{width:'80%'}}>
                             CONTINUE
                         </Button>
                     </Stack>

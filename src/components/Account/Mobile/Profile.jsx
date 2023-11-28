@@ -21,14 +21,14 @@ const Profile = () => {
                         Arun
                         <Image src={Verified} alt="verified"  />
                     </Typography>
-                    <Typography sx={{ color: '#9E9898', fontSize: '15px' }}>+91 9888324512</Typography>
+                    <Typography sx={{ color: '#9E9898', fontSize: '15px' }}>+91 9999999999</Typography>
                 </Stack>
                 <Typography className={styles.accountType}>USER</Typography>
             </Stack>
 
             <Stack>
                 <Typography sx={{ fontSize: '15px' }}>Contact Details</Typography>
-                <Card1 title="Registered Mobile Number" value="+91 9888324512" />
+                <Card1 title="Registered Mobile Number" value="+91 9999999999" />
             </Stack>
 
             <Stack gap={0.8}>
