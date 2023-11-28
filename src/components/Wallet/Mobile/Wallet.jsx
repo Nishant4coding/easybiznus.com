@@ -5,6 +5,7 @@ import { IonIcon } from '@ionic/react';
 import { arrowForwardSharp, chevronForwardOutline, closeCircleOutline } from 'ionicons/icons';
 import styles from '../wallet.module.css';
 import Link from 'next/link';
+import global from '@/global.module.css';
 
 const Wallet = () => {
   return (
@@ -37,7 +38,7 @@ const Wallet = () => {
         </Stack>
 
         <Stack sx={{ width: '70%', marginTop: '20px' }}>
-          <Button variant="contained" className={styles.button} style={{ width: '100%', padding: '10px 25px' }}>
+          <Button variant="contained" className={global.button} style={{ width: '100%', padding: '10px 25px' }}>
             Proceed to Add
           </Button>
         </Stack>

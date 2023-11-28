@@ -9,6 +9,19 @@
     color:#0D1A26;
 }
 
+.button,
+.button:hover {
+    width: 20%;
+    border-radius: 8px;
+    background-color: #0D1A26;
+    color: #fff;
+    font-size: 10px;
+    padding: 10px 5px;
+    font-weight: 600;
+    display: flex;
+    gap: 10px;
+}
+
 
 .mobile {
     display: none;
