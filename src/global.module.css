@@ -22,12 +22,12 @@
 
 .button,
 .button:hover {
-    border-radius: 8px;
-    background-color: #0D1A26;
-    color: #fff;
+    border-radius: 8px !important;
+    background-color: #0D1A26 !important;
+    color: #fff !important;
     font-size: 11px;
     padding: 10px 25px;
-    font-weight: 600;
+    font-weight: 600 !important;
     display: flex;
     gap: 10px;
 }
