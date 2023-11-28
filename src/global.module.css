@@ -1,3 +1,15 @@
+.headingMobile{
+    font-weight: 700;
+    font-size: 24px;
+    color:#0D1A26;
+}
+.subheadingMobile{
+    font-weight: 700;
+    font-size: 18px;
+    color:#0D1A26;
+}
+
+
 .mobile {
     display: none;
     width: 100vw;
