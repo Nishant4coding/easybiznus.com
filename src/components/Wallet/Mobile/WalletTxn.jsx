@@ -25,7 +25,7 @@ const WalletTxn = () => {
                 ))
             }
 
-            <Button sx={{marginTop:'50px'}} variant='contained' className={global.button}>
+            <Button style={{marginTop:'50px'}} variant='contained' className={global.button}>
                 <Image alt="wallet" src={Wallet} width={20} />
                 Request Wallet Statement
             </Button>
