@@ -3,7 +3,7 @@ import { Button, Stack, Typography, Checkbox, FormControlLabel } from '@mui/mate
 import styles from './account.module.css';
 import { IonIcon } from '@ionic/react';
 import { checkmarkCircleOutline, closeCircleOutline } from 'ionicons/icons';
-import Link from 'next/link';
+import global from '@/global.module.css';
 import { useState } from 'react';
 
 const Profile = ({ setForm }) => {
@@ -11,9 +11,6 @@ const Profile = ({ setForm }) => {
 
     const handlePass = (e) => {
         setPassword(e.target.value);
-        console.log('====================================');
-        console.log(password);
-        console.log('====================================');
     }
 
     return (
@@ -64,8 +61,9 @@ const Profile = ({ setForm }) => {
                 </Stack>
 
             </Stack>
-            <Button variant='contained' className={styles.button}
+            <Button variant='contained' className={global.button}
                 onClick={() => setForm(false)}
+                style={{padding:'10px 50px', fontSize:'13px'}}
             >
                 SAVE
             </Button>

@@ -6,6 +6,7 @@ import styles from './account.module.css';
 import { Pen } from '@/assets/svg';
 import Image from 'next/image';
 import Link from 'next/link';
+import global from '@/global.module.css';
 
 const AccountView = () => {
     const [select, setSelect]= useState(0);
@@ -68,7 +69,7 @@ const AccountView = () => {
 
                             <Stack sx={{ width: "53%", margin: "20px auto 10px", paddingLeft: '10px', alignItems: 'center' }} gap={0.5}>
                                 <Typography sx={{ fontSize: '14px', textAlign: 'center', color: '#868686' }}>You need to enter your address so that we can send your purchase</Typography>
-                                <Button variant='contained' className={styles.button} style={{ marginTop: '30px', padding: '5px 10px', width: 'fit-content', gap: '10px' }} onClick={()=>setAdress(false)}>
+                                <Button variant='contained' className={global.button} style={{ fontSize:'13px', marginTop: '30px', padding: '5px 20px', width: 'fit-content', gap: '10px' }} onClick={()=>setAdress(false)}>
                                     <IonIcon icon={addOutline}></IonIcon>
                                     ADD ADDRESS
                                 </Button>
@@ -85,7 +86,7 @@ const AccountView = () => {
                 </Stack>
             </Stack>
         </Stack>
-            <Button variant='contained' className={styles.button} style={{marginTop:'180px'}}>
+            <Button variant='contained' className={global.button} style={{marginTop:'180px', padding:'10px 50px', fontSize:'13px'}}>
                 LOGOUT
             </Button>
         </Stack>

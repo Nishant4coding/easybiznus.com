@@ -23,14 +23,6 @@
     top: 60%;
 }
 
-.button,
-.button:hover {
-    background-color: #0D1A26 ;
-    border-radius: 8px ;
-    padding: 10px 55px ;
-    margin-bottom: 50px ;
-}
-
 .headline {
     font-size: 25px;
     display: flex;
@@ -152,7 +144,9 @@
 .mobileAccountCard1 {
     border-radius: 10px;
     border: 1px solid #0D1A26;
-    width: 150px;
+    min-width: 110px;
+    width: 45%;
+    max-width: 250px;
     align-items: center;
     justify-content: center;
     padding: 5px;
