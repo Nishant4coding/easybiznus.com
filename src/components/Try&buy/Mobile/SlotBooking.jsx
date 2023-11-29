@@ -2,17 +2,23 @@ import { IonIcon } from '@ionic/react';
 import { Button, Stack, Typography } from '@mui/material';
 import { arrowBack, caretForwardOutline, micOutline, radioButtonOffOutline, radioButtonOnOutline } from 'ionicons/icons';
 import React, { useState } from 'react';
-import global from '@/global.module.css'
+import global from '@/global.module.css';
+import AddressSelection from '@/components/MobileView/Cart/AddressSelection';
+import PlaceOrder from './PlaceOrder';
 
 const SlotBooking = ({ closeSlotBooking }) => {
     const [address, setAddress] = useState(false);
     const [selectAddress, setSelectAddress] = useState(0);
+    const [confirm, setConfirm] = useState(false);
+
+    const handleClose=()=>setConfirm(false)
+
 
     return (
         <Stack sx={{ width: '100%' }}>
             {address ?
-                <></> :
-                <Stack gap={7} sx={{width:'100%'}}>
+                <AddressSelection setAddress={setAddress}/> :
+                <Stack gap={7} sx={{ width: '100%' }}>
                     <Stack direction={"row"} sx={{ alignItems: 'center' }} gap={1}>
                         <IonIcon icon={arrowBack} style={{ fontSize: '20px' }} onClick={closeSlotBooking} />
                         <Typography sx={{ fontSize: '16px', fontWeight: '600' }}>Confirm Details</Typography>
@@ -31,10 +37,10 @@ const SlotBooking = ({ closeSlotBooking }) => {
 
                     <Stack gap={1.3}>
                         <Typography sx={{ fontSize: '14px', fontWeight: '600' }}>Select Address</Typography>
-                        <Typography sx={{ fontSize: '14px', fontWeight: '600' }}>+ Add a new address</Typography>
+                        <Typography sx={{ fontSize: '14px', fontWeight: '600' }} onClick={()=>setAddress(true)}>+ Add a new address</Typography>
                         {
                             addressArray.map((item, index) => (
-                                <AddressCard index={index} key={index} data={item} selected={index === selectAddress ? true : false} setSelectAddress={setSelectAddress} />
+                                <AddressCard index={index} key={index} data={item} selected={index === selectAddress} setSelectAddress={setSelectAddress} />
                             ))
                         }
                     </Stack>
@@ -45,11 +51,12 @@ const SlotBooking = ({ closeSlotBooking }) => {
                         <VoiceCard />
                     </Stack>
 
-                    <Stack sx={{ alignItems: 'center', marginTop:"30px", width:'100%' }}>
-                        <Button variant="contained" className={global.button} style={{width:'80%'}}>
+                    <Stack sx={{ alignItems: 'center', marginTop: "30px", width: '100%' }}>
+                        <Button variant="contained" className={global.button} style={{ width: '80%', fontSize: '12px' }} onClick={()=>setConfirm(true)}>
                             CONTINUE
                         </Button>
                     </Stack>
+                    {confirm&&<PlaceOrder open={confirm} handleClose={handleClose}/>}
                 </Stack>
             }
         </Stack>

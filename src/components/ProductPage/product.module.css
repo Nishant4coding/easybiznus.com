@@ -41,25 +41,25 @@
 
 .sp {
     color: #F55E53;
-    font-size: 22px !important;
-    font-weight: bold !important;
-    line-height: 23px !important;
+    font-size: 22px ;
+    font-weight: bold ;
+    line-height: 23px ;
 }
 .sp2{
     color:#BA2B20;
-    font-size: 22px !important;
-    font-weight: 700 !important;;
+    font-size: 22px ;
+    font-weight: 700 ;;
     line-height: 23px;
 }
 .mrp{
-    font-size: 16px !important;
-    color: #B5B5B5 !important;
+    font-size: 16px ;
+    color: #B5B5B5 ;
 }
 .mrp2{
     text-decoration: line-through;
     font-size: 16px;
-    color:#191919 !important;
-    font-weight: 600 !important;
+    color:#191919 ;
+    font-weight: 600 ;
 }
 .cutline{
     width:90%;
@@ -137,8 +137,8 @@
 .button,.button:hover{
     user-select: none;
     color: #fff;
-    background-color: #0D1A26 !important;
-    border-radius: 10px !important;
+    background-color: #0D1A26 ;
+    border-radius: 10px ;
     width: 160px;
     height: 45px;
     font-size: 13px;
@@ -229,5 +229,8 @@
 }
 
 .support{
-    width: fit-content; font-weight: 600; font-size: 15px; border-bottom: 2px solid #A1A8AF;
+    width: fit-content;
+    font-weight: 600;
+    font-size: 15px; 
+    border-bottom: 2px solid #A1A8AF;
 }

@@ -10,6 +10,7 @@ import global from '@/global.module.css';
 
 const Account = () => {
   const [form, setForm] = useState(true);
+  
   return (
     <>
       <Box className={global.desktop}>

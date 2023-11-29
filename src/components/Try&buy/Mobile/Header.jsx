@@ -7,19 +7,22 @@ import { Shoe6 } from '@/assets/svg';
 import styles from '../try.module.css';
 import global from '@/global.module.css';
 import SlotBooking from './SlotBooking';
+import PopupAlert from '@/components/MobileView/Snackbar/PopupAlert';
+
 
 const Header = () => {
-  const [slot, setSlot]=useState(false);
+  const [slot, setSlot] = useState(false);
   const [changepin, setChangePin] = useState(true);
-  const toggleSetPin = () => setChangePin(!changepin);
 
-  const openSlotBooking=()=>setTimeout(()=>setSlot(true),300);
-  const closeSlotBooking=()=>setSlot(false);
+
+  const toggleSetPin = () => setChangePin(!changepin);
+  const openSlotBooking = () => setTimeout(() => setSlot(true), 300);
+  const closeSlotBooking = () => setSlot(false);
 
   return (
     <>
-      {slot?
-        <SlotBooking closeSlotBooking={closeSlotBooking}/>:
+      {slot ?
+        <SlotBooking closeSlotBooking={closeSlotBooking} /> :
         <Stack gap={5}>
           <Stack gap={2}>
             <Typography sx={{ fontWeight: '900', letterSpacing: '0px' }}>TRY & BUY</Typography>
@@ -27,7 +30,7 @@ const Header = () => {
               <Stack>
                 <Typography className={styles.pinText}>
                   Deliver to:{" "}
-                  <Typography sx={{ fontSize: '14px', display: 'inline', fontWeight: '700', }}>Harsh Tyagi, 400037</Typography>
+                  <Typography sx={{ fontSize: '13px', display: 'inline', fontWeight: '700', }}>Harsh Tyagi, 400037</Typography>
                 </Typography>
                 <Typography className={styles.pinText}>634, Mahatma Gandhi Road, Fort, Mumbai</Typography>
               </Stack>
@@ -99,8 +102,8 @@ const Header = () => {
             </Stack>
           </Stack>
 
-          <Stack sx={{ alignItems: 'center', width:'100%'}}>
-            <Button variant="contained" className={global.button} onClick={openSlotBooking} sx={{width:'80%'}}>
+          <Stack sx={{ alignItems: 'center', width: '100%' }}>
+            <Button variant="contained" className={global.button} onClick={openSlotBooking} style={{ width: '80%', fontSize: '12px' }}>
               CONTINUE
             </Button>
           </Stack>
@@ -128,10 +131,14 @@ const detailsArray = [
 ]
 
 
-export const Card = ({ data }) => {
+export const Card = ({ data, icon }) => {
   const { image, title, category, subcategory, size, price } = data;
-  const toggleWish = () => setWish(!wish);
   const [wish, setWish] = useState(false);
+  const [openMobile, setOpenMobile] = useState(false);
+
+  const handleCloseMobile = () => setOpenMobile(false)
+
+  const toggleWish = () => setWish(!wish);
 
   return (
     <Stack direction={"row"} gap={1} className={styles.mobileCard}>
@@ -148,20 +155,22 @@ export const Card = ({ data }) => {
       </Stack>
 
       <Box className={styles.mobileCardPriceSection} >
-        <Stack direction={"row"} gap={0.5}>
+        {icon && <Stack direction={"row"} gap={0.5}>
           {
             wish ?
               <IonIcon onClick={toggleWish} icon={heart} className={styles.mobileCardIcon} /> :
               <IonIcon onClick={toggleWish} icon={heartOutline} className={styles.mobileCardIcon} />
           }
-          <IonIcon icon={trashOutline} className={styles.mobileCardTrashIcon} />
+          <IonIcon icon={trashOutline} className={styles.mobileCardTrashIcon} onClick={() => setOpenMobile(true)} />
         </Stack>
+        }
         <Stack gap={0}>
           <Typography className={styles.moileCardPrice}>{price}</Typography>
           <Typography className={styles.mobileCardTaxTitle}>Incl. of taxes</Typography>
         </Stack>
       </Box>
 
+      {openMobile && <PopupAlert open={openMobile} handleClose={handleCloseMobile} title={"Item Deleted Successfully"} path={"/product"} />}
     </Stack>
   )
 }

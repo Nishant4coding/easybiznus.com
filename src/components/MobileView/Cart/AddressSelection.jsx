@@ -10,7 +10,7 @@ import GoogleMapReact from 'google-map-react';
 import { IonIcon } from '@ionic/react';
 import { caretForwardOutline, caretForward, locationSharp, locationOutline, add, addOutline } from 'ionicons/icons';
 
-const AddressSelection = () => {
+const AddressSelection = ({setAddress}) => {
     const [openModal, setOpenModal] = useState(false);
     const [showAddForm, setShowAddForm] = useState(true);
     const [theme, setTheme] = useState(false);
@@ -30,9 +30,6 @@ const AddressSelection = () => {
 
     const handledAdd = () => {
         setTheme(!theme);
-        // setTheme1(!theme1);
-        // setOpenModal(!openModal);
-        // setShowAddForm(!showAddForm);
     }
 
     return (
@@ -96,7 +93,7 @@ const AddressSelection = () => {
                 </Box>
             </Box>}
 
-            {showAddForm && <AddressForm openModal={openModal} setOpenModal={setOpenModal} />}
+            {showAddForm && <AddressForm setAddress={setAddress} openModal={openModal} setOpenModal={setOpenModal} />}
             {!openModal || !showAddForm && <Button sx={{ position: "fixed", bottom: "10px", alignSelf: "center" }} onClick={() => setOpenModal(true)}>Select Address </Button>}
         </Stack>
     )

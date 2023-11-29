@@ -10,12 +10,13 @@ import { PinBlack } from '@/assets/svg';
 import Image from 'next/image';
 import global from '@/global.module.css';
 
-const Product = ({handleOpen}) => {
+const Product = ({ handleOpen }) => {
     const [qty, setQty] = useState(1);
     const [wish, setWish] = useState(false);
     const [size, setSize] = useState(0);
     const [pin, setPin] = useState('201016');
     const [changepin, setChangepin] = useState(true);
+
     const toggleWish = () => setWish(!wish);
     const handleSize = (value) => setSize(value);
     const toggleSetPin = () => setChangepin(!changepin);
@@ -26,7 +27,7 @@ const Product = ({handleOpen}) => {
     return (
         <Box>
             <Stack direction={"row"} sx={{ justifyContent: 'space-evenly' }}>
-                <Typography className={global.headingMobile} style={{fontSize:'22px', marginBottom:'15px'}}>Mercedes AMG Petronas F1 Wired Run Unisex Sneakers</Typography>
+                <Typography className={global.headingMobile} style={{ fontSize: '22px', marginBottom: '15px' }}>Mercedes AMG Petronas F1 Wired Run Unisex Sneakers</Typography>
                 {
                     wish ?
                         <IonIcon icon={heart} className={styles.wishIcon} onClick={toggleWish}></IonIcon> :
@@ -41,18 +42,19 @@ const Product = ({handleOpen}) => {
                     <Typography className={styles.taxDeclaration}>Prices include GST</Typography>
                 </Stack>
                 <Stack gap={1}>
-                    <Button className={global.button} variant='contained' onClick={handleOpen}>
-                        + ADD TO CART
+                    <Button className={global.button} variant='contained' onClick={handleOpen} style={{ fontSize: '13px' }}>
+                        <Typography style={{ fontWeight: '600' }}>+</Typography>
+                        ADD TO CART
                     </Button>
-                    <Button variant="contained" className={global.button}>
+                    <Button variant="contained" className={global.button} style={{ fontSize: '13px' }}>
                         ADD TO TRY ON
                     </Button>
                 </Stack>
             </Stack>
 
             <Stack className={styles.colorContainer}>
-                <Stack direction={"row"} gap={0.5} sx={{ alignItems: 'center', justifyContent:'flex-start' }}>
-                    <Typography className={styles.mobileSubTitle} style={{width:'fit-content'}}>Color: </Typography>
+                <Stack direction={"row"} gap={0.5} sx={{ alignItems: 'center', justifyContent: 'flex-start' }}>
+                    <Typography className={styles.mobileSubTitle} style={{ width: 'fit-content' }}>Color: </Typography>
                     <Box sx={{ width: "fit-content", height: 'fit-content' }}>
                         <FormControl fullWidth sx={dropdown}>
                             <Select
