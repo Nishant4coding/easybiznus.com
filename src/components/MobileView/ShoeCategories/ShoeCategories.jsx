@@ -6,7 +6,7 @@ import CardC from '@/components/MobileViewCards/CardC/CardC';
 const ShoeCategories = () => {
     return (
         <Stack >
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} marginTop={2} >
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} justifyContent={"center"} marginTop={2} >
                 {
                     cardData?.map((item, index) => {
                         return (
