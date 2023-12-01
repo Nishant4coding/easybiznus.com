@@ -72,7 +72,7 @@ const Header = () => {
             <Stack gap={3} direction="column" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
               {
                 cardArray.map((item, index) => (
-                  <Card key={index} data={item} />
+                  <Card key={index} data={item} icon={true} />
                 ))
               }
             </Stack>
