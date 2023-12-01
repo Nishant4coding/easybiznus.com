@@ -25,8 +25,7 @@ const Wishlist = () => {
                 }
             </Grid>
 
-            {/* <CustomButton name={`ADD TO CART  [${cardArray.length}]`} link={"checkout"} /> */}
-            <Button variant="outlined" className={global.button} style={{width:'80%', marginBottom:'30px', fontSize:'15px'}}>
+            <Button variant="contained" className={global.button} style={{width:'80%', marginBottom:'30px', fontSize:'15px'}}>
             <Link href="/checkout" style={{width:'100%'}}>
             {`ADD TO CART  [${cardArray.length}]`}
             </Link>

@@ -101,7 +101,7 @@ const PaymentOpt = () => {
             </Stack>
 
             <Stack alignItems={"center"} sx={{ position: 'absolute', width: '100%', bottom: '0px' }}>
-                <Button variant="outlined" className={global.button} style={{ width: '80%', marginBottom: '30px', fontSize: '15px' }}>
+                <Button variant="contained" className={global.button} style={{ width: '80%', marginBottom: '30px', fontSize: '15px' }}>
                     PAY
                 </Button>
             </Stack>
