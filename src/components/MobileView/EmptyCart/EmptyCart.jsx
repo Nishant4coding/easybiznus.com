@@ -2,9 +2,8 @@
 
 import { Button, Stack, Typography, Grid } from '@mui/material';
 import React from 'react';
-import { EmptyBoxImg } from '@/assets/svg/index';
+import { EmptyBoxImg, Shoe1 } from '@/assets/svg/index';
 import Image from 'next/image';
-import { Shoe1 } from '@/assets/svg/index';
 import CardB from '../../MobileViewCards/CardB/CardB';
 import Link from 'next/link';
 import Header from '../CustomHeader/Header';
@@ -27,7 +26,7 @@ const EmptyCart = () => {
             <Stack sx={{backgroundColor:"#EBEBEB"}}>
             <Grid container rowSpacing={1} spacing={2} justifyContent={"center"} marginTop={2} >
                 {
-                    cardArray.map((item, index) => (
+                    cardArray?.map((item, index) => (
                         <Grid item key={index}  >
                             <Link href={"/product"} >
                                 <CardB data={item} wishIcon={true}/>
