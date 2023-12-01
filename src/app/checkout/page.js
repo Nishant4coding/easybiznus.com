@@ -20,7 +20,7 @@ const CheckoutPage = () => {
         </Stack>
         <Footer />
       </Stack>
-      
+
       <Stack className={global.mobile}>
         <PaymentOpt />
       </Stack>

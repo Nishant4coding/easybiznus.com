@@ -140,23 +140,21 @@ const Product = ({ handleOpen }) => {
             <Stack sx={{ padding: '25px', backgroundColor: '#EEEEEE' }}>
                 <Stack gap={2} sx={{ margin: '25px 0', alignItems: 'center' }}>
                     <Typography className={styles.mobileSubTitle}>FEATURES & BENEFITS</Typography>
-                    <Typography sx={{ width: "85%", textAlign: 'left' }}>{"IMEVA: PUMA's material for a lightweight and comfortable feel"}</Typography>
-                    <Typography sx={{ width: "85%", textAlign: 'left' }}>{"SoftFoam+: PUMA's comfort sockliner for instant step-in and long-lasting comfort that provides soft cushioning every step of your day"}</Typography>
+                    {
+                        featuresArray.map((item, index) => (
+                            <Typography key={index} sx={{ width: "85%", textAlign: 'left' }}>{item}</Typography>
+                        ))
+                    }
                 </Stack>
 
                 <Stack gap={2} sx={{ margin: '25px 0', }}>
                     <Typography className={styles.mobileSubTitle}>DETAILS</Typography>
                     <Stack gap={0.8} sx={{ width: 'fit-content', maxWidth: '95%', paddingLeft: '15px' }}>
-                        <Typography>Heel type: Flat</Typography>
-                        <Typography>Shoe width: Regular fit</Typography>
-                        <Typography>Heel-to-toe-drop: 0 mm</Typography>
-                        <Typography>Low boot profile</Typography>
-                        <Typography>Mesh upper</Typography>
-                        <Typography>IMEVA outsole</Typography>
-                        <Typography>Softfoam+ sockliner</Typography>
-                        <Typography>Lace closure</Typography>
-                        <Typography>PUMA Cat Logo at tongue</Typography>
-                        <Typography>Elastic gore across forefoot with bold Mercedes-AMG Petronas Motorsport branding</Typography>
+                        {
+                            detailsArray.map((item, index) => (
+                                <Typography key={index}>{item}</Typography>
+                            ))
+                        }
                     </Stack>
                 </Stack>
 
@@ -197,6 +195,24 @@ const dropdown = {
         },
     },
 }
+
+const featuresArray = [
+    "IMEVA: PUMA's material for a lightweight and comfortable feel",
+    "SoftFoam+: PUMA's comfort sockliner for instant step-in and long-lasting comfort that provides soft cushioning every step of your day"
+]
+
+const detailsArray = [
+    'Heel type: Flat',
+    'Shoe width: Regular fit',
+    'Heel-to-toe-drop: 0 mm',
+    'Low boot profile',
+    'Mesh upper',
+    'IMEVA outsole',
+    'Softfoam+ sockliner',
+    'Lace closure',
+    'PUMA Cat Logo at tongue',
+    'Elastic gore across forefoot with bold Mercedes-AMG Petronas Motorsport branding'
+]
 
 const sizeArray = [
     {

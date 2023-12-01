@@ -1,10 +1,10 @@
 "use client"
-import { Checkbox, Stack, Typography, Radio, FormControl } from '@mui/material'
+import { Button, Checkbox, Stack, Typography, Radio, FormControl } from '@mui/material';
 import React, { useState } from 'react';
-import styles from './cart.module.css'
-import CustomButton from '../CustomBtn/CustomButton';
+import styles from './cart.module.css';
 import Image from 'next/image';
 import { HomeIcon, RazorPay } from '@/assets/svg/index';
+import global from '@/global.module.css';
 
 const PaymentOpt = () => {
     const [selectedValue, setSelectedValue] = useState('onlinePay');
@@ -99,7 +99,12 @@ const PaymentOpt = () => {
                     </Stack>
                 </FormControl>
             </Stack>
-            <CustomButton name={"PAY"} />
+
+            <Stack alignItems={"center"} sx={{ position: 'absolute', width: '100%', bottom: '0px' }}>
+                <Button variant="outlined" className={global.button} style={{ width: '80%', marginBottom: '30px', fontSize: '15px' }}>
+                    PAY
+                </Button>
+            </Stack>
         </Stack>
     )
 }

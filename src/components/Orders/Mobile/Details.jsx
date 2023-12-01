@@ -30,7 +30,7 @@ export default Details;
 
 
 
-const Card = () => {
+export const Card = () => {
     const [Star, setStar] = useState([
         1, 1, 0, 0, 0
     ]);
@@ -92,7 +92,7 @@ const steps = [
 ];
 
 
-const Option = ({ title, path }) => {
+export const Option = ({ title, path }) => {
     return (
         <Link href={path}>
             <Stack gap={2} direction={"row"} sx={{ position: 'relative', padding: '15px', border:"1px solid #ECE6F0" , borderRadius: '5px', alignItems: 'center' }}>
