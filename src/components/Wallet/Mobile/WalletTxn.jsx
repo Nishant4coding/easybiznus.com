@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from '../wallet.module.css';
 import React from 'react';
 import { Wallet } from '@/assets/svg';
+import global from '@/global.module.css';
 
 const WalletTxn = () => {
     return (
@@ -24,7 +25,7 @@ const WalletTxn = () => {
                 ))
             }
 
-            <Button sx={{marginTop:'50px'}} variant='contained' className={styles.walletbtn}>
+            <Button style={{marginTop:'50px'}} variant='contained' className={global.button}>
                 <Image alt="wallet" src={Wallet} width={20} />
                 Request Wallet Statement
             </Button>

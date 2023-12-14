@@ -2,6 +2,7 @@
 import { Button, Stack, Typography } from '@mui/material';
 import styles from './account.module.css';
 import { IonIcon } from '@ionic/react';
+import global from '@/global.module.css';
 import { chevronDownOutline } from 'ionicons/icons';
 
 const NewAccount = ({setForm}) => {
@@ -43,8 +44,9 @@ const NewAccount = ({setForm}) => {
           </Input>
         </Stack>
       </Stack>
-      <Button variant='contained'className={styles.button}
+      <Button variant='contained'className={global.button}
       onClick={()=>setForm(false)}
+      style={{padding:'10px 50px', fontSize:'13px'}}
       >
         SAVE
       </Button>

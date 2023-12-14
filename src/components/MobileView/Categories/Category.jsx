@@ -7,14 +7,14 @@ import Image from 'next/image';
 const Category = () => {
   return (
     <div className={styles.category}>
-        <div className={styles.mens}>
+        <div className={styles.mensSection}>
          <Image src={RightIcon} alt='right icon'/>
             Mens
         </div>
-        <div className={styles.womens}>
+        <div className={styles.womensSection}>
             Womens
         </div>
-        <div className={styles.kids}>
+        <div className={styles.kidsSection}>
             Kids
         </div>
     </div>

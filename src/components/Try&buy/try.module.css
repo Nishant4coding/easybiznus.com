@@ -12,11 +12,11 @@
 .button:hover {
     margin-top: 40px;
     border-radius: 8px;
-    background-color: #0D1A26 !important;
-    color: #fff !important;
-    font-size: 11px !important;
+    background-color: #0D1A26;
+    color: #fff;
+    font-size: 11px;
     padding: 10px 28px;
-    font-weight: 600 !important;
+    font-weight: 600;
     display: flex;
     gap: 10px;
 }
@@ -89,7 +89,7 @@
 
 .mobileCardTitle {
     font-weight: 600;
-    font-size: 13px
+    font-size: 12px
 }
 
 .mobileCardImage {
@@ -132,6 +132,15 @@
 }
 
 .pinText {
-    font-size: 13px;
+    font-size: 11px;
     color: #414141;
+}
+.popup{
+    background-color: #fff;
+    width: 100%;
+    height: auto;
+    max-height: 85svh;
+    overflow: scroll;
+    border-radius: 10px 10px 0 0;
+    padding:15px;
 }

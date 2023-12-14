@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image';
 import CustomButton from '../CustomBtn/CustomButton';
 
-const AddressForm = ({ openModal, setOpenModal }) => {
+const AddressForm = ({ openModal, setOpenModal, setAddress }) => {
     const [value, setValue] = useState(null);
 
     const data =
@@ -81,7 +81,7 @@ const AddressForm = ({ openModal, setOpenModal }) => {
                         <FormControlLabel control={<Checkbox color="default" />} label="Make Default" />
                     </Stack>
                     <Stack alignItems={"center"}>
-                        <Button className={styles.btn} onClick={() => setOpenModal(true)}>ADD ADDRESS</Button>
+                        <Button className={styles.btn} onClick={() => {setOpenModal(true);setAddress&&setAddress(false)}}>ADD ADDRESS</Button>
                     </Stack>
                 </Stack>
             }

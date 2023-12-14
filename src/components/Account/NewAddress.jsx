@@ -4,6 +4,7 @@ import styles from './account.module.css';
 import { IonIcon } from '@ionic/react';
 import { chevronDownOutline } from 'ionicons/icons';
 import Link from 'next/link';
+import global from '@/global.module.css';
 
 const NewAddress = ({ setForm }) => {
     return (
@@ -64,8 +65,9 @@ const NewAddress = ({ setForm }) => {
 
                 </Stack>
             </Stack>
-            <Button variant='contained' className={styles.button}
+            <Button variant='contained' className={global.button}
                 onClick={() => setForm(false)}
+                style={{padding:"10px 50px", fontSize:'13px'}}
             >
                 SAVE
             </Button>

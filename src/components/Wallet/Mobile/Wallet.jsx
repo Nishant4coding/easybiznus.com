@@ -5,6 +5,7 @@ import { IonIcon } from '@ionic/react';
 import { arrowForwardSharp, chevronForwardOutline, closeCircleOutline } from 'ionicons/icons';
 import styles from '../wallet.module.css';
 import Link from 'next/link';
+import global from '@/global.module.css';
 
 const Wallet = () => {
   return (
@@ -23,7 +24,7 @@ const Wallet = () => {
       </Stack>
 
       <Stack gap={1.5} className={styles.addMoneyCard}>
-        <Typography sx={{ fontWeight: '600', fontSize: '17px', width: '100%' }}>Add Money to Wallet</Typography>
+        <Typography className={global.subheadingMobile} sx={{ width: '100%' }}>Add Money to Wallet</Typography>
         <Box className={styles.inputcontainer} style={{ width: '100%' }}>
           <input type="text" placeholder='₹100' className={styles.input} />
           <IonIcon icon={closeCircleOutline} className={styles.closeicon}></IonIcon>
@@ -37,7 +38,7 @@ const Wallet = () => {
         </Stack>
 
         <Stack sx={{ width: '70%', marginTop: '20px' }}>
-          <Button variant="contained" className={styles.button} style={{ width: '100%', padding: '10px 25px' }}>
+          <Button variant="contained" className={global.button} style={{ width: '100%' }}>
             Proceed to Add
           </Button>
         </Stack>
@@ -47,7 +48,7 @@ const Wallet = () => {
       <Stack sx={{ margin: '25px 0px', alignItems: 'center' }} gap={1}>
         <Link href="/wallet/transaction" style={{ width: '100%' }}>
           <Stack sx={{ borderBottom: '1px solid #AEAEAE', width: '100%', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }} direction={"row"}>
-            <Typography sx={{ fontWeight: '600', fontSize: '18px' }}>Transactions</Typography>
+            <Typography className={global.subheadingMobile}>Transactions</Typography>
             <IonIcon icon={chevronForwardOutline} style={{ fontSize: '18px' }} />
           </Stack>
         </Link>

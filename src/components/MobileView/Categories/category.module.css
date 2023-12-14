@@ -6,7 +6,7 @@
     margin-top: 15px;
     padding-bottom: 15px;
 }
-.mens{
+.mensSection{
     display: flex;
     background-color: #0D1A26;
     color: white;
@@ -18,7 +18,7 @@
     border-top-left-radius: 100px;
     gap: 6px;
 }
-.womens{
+.womensSection{
     display: flex;
     font-weight: 500px;
     justify-content: center;
@@ -27,7 +27,7 @@
     border: 1px solid white;
     width: 115px;
 }
-.kids{
+.kidsSection{
     display: flex;
     font-weight: 500px;
     justify-content: center;

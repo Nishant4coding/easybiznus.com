@@ -1,17 +1,17 @@
 "use client"
-import { Checkbox, Stack, Typography, Radio, FormControl, RadioGroup } from '@mui/material'
+import { Button, Checkbox, Stack, Typography, Radio, FormControl } from '@mui/material';
 import React, { useState } from 'react';
-import styles from './cart.module.css'
-import CustomButton from '../CustomBtn/CustomButton';
+import styles from './cart.module.css';
 import Image from 'next/image';
 import { HomeIcon, RazorPay } from '@/assets/svg/index';
+import global from '@/global.module.css';
 
 const PaymentOpt = () => {
     const [selectedValue, setSelectedValue] = useState('onlinePay');
 
     const data = {
         total: "3,539",
-        shoeTitle:"Mercedes AMG Petronas F1 ,Wired Run Unisex Sneakers",
+        shoeTitle: "Mercedes AMG Petronas F1 ,Wired Run Unisex Sneakers",
         address: "1067, Verona Mahagun Delhi (201501)",
         payRest: "3,499",
         walletMoney: 1000
@@ -21,14 +21,20 @@ const PaymentOpt = () => {
         setSelectedValue(event.target.value);
     };
     return (
-        <Stack sx={{ minHeight:'95vh', position:'relative', alignItems:'center'}}>
+        <Stack sx={{ minHeight: '95vh', position: 'relative', alignItems: 'center' }}>
             <Stack sx={{ marginTop: "55px", }} paddingY={2} >
                 <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} paddingX={2} >
                     <Typography fontSize={"10px"} fontWeight={"bold"}>{data.shoeTitle}</Typography>
                     <Typography fontWeight={"bold"}>₹ {data.total}</Typography>
                 </Stack>
 
-                <Stack direction={"row"} paddingX={2} justifyContent={"space-between"} alignItems={"center"} marginTop={2} sx={{boxShadow:'0 5px 15px 0 #DBDBDB', borderRadius:'5px'}} paddingY={0.5}>
+                <Stack
+                    direction={"row"}
+                    paddingX={2}
+                    justifyContent={"space-between"}
+                    alignItems={"center"} marginTop={2}
+                    sx={{ boxShadow: '0 5px 15px 0 #DBDBDB', borderRadius: '5px' }} paddingY={0.5}
+                >
                     <Stack direction={"row"} gap={2}>
                         <Image src={HomeIcon} alt='Home' />
                         <Stack>
@@ -40,12 +46,12 @@ const PaymentOpt = () => {
                 </Stack>
 
             </Stack>
-            <Stack direction={"row"} gap={3} paddingLeft={2} sx={{alignItems:'center', width:'100%'}}>
-                <Typography marginTop={2} sx={{fontWeight:'600'}}>Preferred Payment</Typography>
+            <Stack direction={"row"} gap={3} paddingLeft={2} sx={{ alignItems: 'center', width: '100%' }}>
+                <Typography marginTop={2} sx={{ fontWeight: '600' }}>Preferred Payment</Typography>
                 <Typography className={styles.subTotal} >Pay rest : {data.payRest}</Typography>
             </Stack>
 
-            <Stack paddingX={3} sx={{width:'95%', boxShadow:'0 5px 15px 0 #DBDBDB', borderRadius:'10px'}} paddingY={1}>
+            <Stack paddingX={3} sx={{ width: '95%', boxShadow: '0 5px 15px 0 #DBDBDB', borderRadius: '10px' }} paddingY={1}>
                 <FormControl>
                     <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} marginTop={2} >
                         <Stack>
@@ -93,7 +99,12 @@ const PaymentOpt = () => {
                     </Stack>
                 </FormControl>
             </Stack>
-            <CustomButton name={"PAY"} />
+
+            <Stack alignItems={"center"} sx={{ position: 'absolute', width: '100%', bottom: '0px' }}>
+                <Button variant="contained" className={global.button} style={{ width: '80%', marginBottom: '30px', fontSize: '15px' }}>
+                    PAY
+                </Button>
+            </Stack>
         </Stack>
     )
 }

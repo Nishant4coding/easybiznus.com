@@ -21,53 +21,61 @@ const Account = () => {
                         User Name
                         <Image src={Verified} alt="verified" style={{ width: '20px', height: '20px', objectFit: 'cover' }} />
                     </Typography>
-                    <Typography sx={{ color: '#9E9898', fontSize: '15px' }}>+91 9888324512</Typography>
+                    <Typography sx={{ color: '#9E9898', fontSize: '15px' }}>+91 99XXXXXX99</Typography>
                 </Stack>
                 <Typography className={styles.accountType}>PRIME</Typography>
             </Stack>
 
             <Stack className={styles.sale}>
-                <Typography sx={{fontWeight:'600', fontSize:'25px', color:'white'}}>50% OFF</Typography>
+                <Typography className={global.headingMobile} style={{ color:'white'}}>50% OFF</Typography>
                 <Typography sx={{marginBottom:'20px', fontSize:'25px', color:'white'}}>New arrival sale</Typography>
             </Stack>
 
             <Stack direction={"row"} sx={{justifyContent:'space-between'}}>
                 <Stack className={styles.mobileAccountCard1}>
                     <Typography>My Cart</Typography>
-                    <Typography sx={{fontWeight:'900', fontSize:'18px'}}>2</Typography>
+                    <Typography className={global.boldSubheadingMobile}>2</Typography>
                 </Stack>
                 <Stack className={styles.mobileAccountCard1}>
                     <Typography>Wishlist</Typography>
-                    <Typography sx={{fontWeight:'900', fontSize:'18px'}}>186</Typography>
+                    <Typography className={global.boldSubheadingMobile}>186</Typography>
                 </Stack>
             </Stack>
 
             <Stack gap={0.6}>
                 <Typography className={styles.mobileSection}>ORDERS</Typography>
-                <Option title="My Order" path="/orders"/>
-                <Option title="Returns" path="/orders/123"/>
+                {
+                    optionArray1.map((item, index)=>(
+                        <Option key={index} title={item.title} path={item.path}/>
+                    ))
+                }
             </Stack>
 
             <Stack gap={0.6}>
                 <Typography className={styles.mobileSection}>User</Typography>
-                <Option title="My Profile" path="/profile"/>
-                <Option title="Customer Service" path="#"/>
-                <Option title="Settings" path="/account/setting"/>
-                <Option title="Wallet" path="/wallet"/>
+                {
+                    optionArray2.map((item, index)=>(
+                        <Option key={index} title={item.title} path={item.path}/>
+                    ))
+                }
             </Stack>
 
             <Stack gap={0.6} sx={{marginBottom:'40px'}}>
                 <Typography className={styles.mobileSection}>About</Typography>
-                <Option title="About Us" path="/account/about"/>
-                <Option title="Return Policy" path="/account/shipping-return"/>
-                <Option title="Shipping & Delivery" path="/account/shipping-return"/>
+                {
+                    optionArray3.map((item, index)=>(
+                        <Option key={index} title={item.title} path={item.path}/>
+                    ))
+                }
             </Stack>
 
         </Stack>
     )
 }
 
-export default Account
+export default Account;
+
+
 
 
 const Option=({title, path})=>{
@@ -81,3 +89,49 @@ const Option=({title, path})=>{
         </Link>
     )
 }
+
+
+const optionArray1=[
+    {
+        title:'My Order',
+        path:'/orders'
+    },
+    {
+        title:'Returns',
+        path:'/orders/return/123'
+    }
+]
+
+const optionArray2=[
+    {
+        title:'My Profile',
+        path:'/profile'
+    },
+    {
+        title:'Customer Service',
+        path:'#'
+    },
+    {
+        title:'Settings',
+        path:'/account/setting'
+    },
+    {
+        title:'Wallet',
+        path:'/wallet'
+    }
+]
+
+const optionArray3=[
+    {
+        title:'About Us',
+        path:'/account/about'
+    },
+    {
+        title:'Return Policy',
+        path:'/account/shipping-return'
+    },
+    {
+        title:'Shipping & Delivery',
+        path:'/account/shipping-return'
+    }
+]

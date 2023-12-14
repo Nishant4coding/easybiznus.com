@@ -8,30 +8,30 @@ import { heart, heartOutline } from 'ionicons/icons';
 import Pincode from '../Pincode';
 import { PinBlack } from '@/assets/svg';
 import Image from 'next/image';
+import global from '@/global.module.css';
 
-const Product = ({handleOpen}) => {
+const Product = ({ handleOpen }) => {
     const [qty, setQty] = useState(1);
     const [wish, setWish] = useState(false);
     const [size, setSize] = useState(0);
     const [pin, setPin] = useState('201016');
     const [changepin, setChangepin] = useState(true);
-    const handleSetWish = () => setWish(!wish);
+
+    const toggleWish = () => setWish(!wish);
     const handleSize = (value) => setSize(value);
     const toggleSetPin = () => setChangepin(!changepin);
     const handlePin = (e) => setPin(e.target.value);
 
-    const addedToCart=()=>{
-        handleOpen();
-    }
+
 
     return (
         <Box>
             <Stack direction={"row"} sx={{ justifyContent: 'space-evenly' }}>
-                <Typography className={styles.heading} style={{fontSize:'22px'}}>Mercedes AMG Petronas F1 Wired Run Unisex Sneakers</Typography>
+                <Typography className={global.headingMobile} style={{ fontSize: '22px', marginBottom: '15px' }}>Mercedes AMG Petronas F1 Wired Run Unisex Sneakers</Typography>
                 {
                     wish ?
-                        <IonIcon icon={heart} className={styles.wishIcon} onClick={handleSetWish}></IonIcon> :
-                        <IonIcon icon={heartOutline} className={styles.wishIcon} onClick={handleSetWish}></IonIcon>
+                        <IonIcon icon={heart} className={styles.wishIcon} onClick={toggleWish}></IonIcon> :
+                        <IonIcon icon={heartOutline} className={styles.wishIcon} onClick={toggleWish}></IonIcon>
                 }
             </Stack>
 
@@ -42,18 +42,19 @@ const Product = ({handleOpen}) => {
                     <Typography className={styles.taxDeclaration}>Prices include GST</Typography>
                 </Stack>
                 <Stack gap={1}>
-                    <Button className={styles.button} variant='contained' onClick={()=> addedToCart()}>
-                        + ADD TO CART
+                    <Button className={global.button} variant='contained' onClick={handleOpen} style={{ fontSize: '13px' }}>
+                        <Typography style={{ fontWeight: '600' }}>+</Typography>
+                        ADD TO CART
                     </Button>
-                    <Button variant="contained" className={styles.button}>
+                    <Button variant="contained" className={global.button} style={{ fontSize: '13px' }}>
                         ADD TO TRY ON
                     </Button>
                 </Stack>
             </Stack>
 
             <Stack className={styles.colorContainer}>
-                <Stack direction={"row"} gap={0.5} sx={{ alignItems: 'center', justifyContent:'flex-start' }}>
-                    <Typography className={styles.mobileSubTitle} style={{width:'fit-content'}}>Color: </Typography>
+                <Stack direction={"row"} gap={0.5} sx={{ alignItems: 'center', justifyContent: 'flex-start' }}>
+                    <Typography className={styles.mobileSubTitle} style={{ width: 'fit-content' }}>Color: </Typography>
                     <Box sx={{ width: "fit-content", height: 'fit-content' }}>
                         <FormControl fullWidth sx={dropdown}>
                             <Select
@@ -139,23 +140,21 @@ const Product = ({handleOpen}) => {
             <Stack sx={{ padding: '25px', backgroundColor: '#EEEEEE' }}>
                 <Stack gap={2} sx={{ margin: '25px 0', alignItems: 'center' }}>
                     <Typography className={styles.mobileSubTitle}>FEATURES & BENEFITS</Typography>
-                    <Typography sx={{ width: "85%", textAlign: 'left' }}>{"IMEVA: PUMA's material for a lightweight and comfortable feel"}</Typography>
-                    <Typography sx={{ width: "85%", textAlign: 'left' }}>{"SoftFoam+: PUMA's comfort sockliner for instant step-in and long-lasting comfort that provides soft cushioning every step of your day"}</Typography>
+                    {
+                        featuresArray.map((item, index) => (
+                            <Typography key={index} sx={{ width: "85%", textAlign: 'left' }}>{item}</Typography>
+                        ))
+                    }
                 </Stack>
 
                 <Stack gap={2} sx={{ margin: '25px 0', }}>
                     <Typography className={styles.mobileSubTitle}>DETAILS</Typography>
                     <Stack gap={0.8} sx={{ width: 'fit-content', maxWidth: '95%', paddingLeft: '15px' }}>
-                        <Typography>Heel type: Flat</Typography>
-                        <Typography>Shoe width: Regular fit</Typography>
-                        <Typography>Heel-to-toe-drop: 0 mm</Typography>
-                        <Typography>Low boot profile</Typography>
-                        <Typography>Mesh upper</Typography>
-                        <Typography>IMEVA outsole</Typography>
-                        <Typography>Softfoam+ sockliner</Typography>
-                        <Typography>Lace closure</Typography>
-                        <Typography>PUMA Cat Logo at tongue</Typography>
-                        <Typography>Elastic gore across forefoot with bold Mercedes-AMG Petronas Motorsport branding</Typography>
+                        {
+                            detailsArray.map((item, index) => (
+                                <Typography key={index}>{item}</Typography>
+                            ))
+                        }
                     </Stack>
                 </Stack>
 
@@ -196,6 +195,24 @@ const dropdown = {
         },
     },
 }
+
+const featuresArray = [
+    "IMEVA: PUMA's material for a lightweight and comfortable feel",
+    "SoftFoam+: PUMA's comfort sockliner for instant step-in and long-lasting comfort that provides soft cushioning every step of your day"
+]
+
+const detailsArray = [
+    'Heel type: Flat',
+    'Shoe width: Regular fit',
+    'Heel-to-toe-drop: 0 mm',
+    'Low boot profile',
+    'Mesh upper',
+    'IMEVA outsole',
+    'Softfoam+ sockliner',
+    'Lace closure',
+    'PUMA Cat Logo at tongue',
+    'Elastic gore across forefoot with bold Mercedes-AMG Petronas Motorsport branding'
+]
 
 const sizeArray = [
     {
