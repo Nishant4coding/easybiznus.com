@@ -24,6 +24,8 @@
     padding:20px;
     width:100%;
     margin:10px 0;
+    display: flex;
+    flex-direction: column;
 }
 .newsicon{
     font-size: 23px;

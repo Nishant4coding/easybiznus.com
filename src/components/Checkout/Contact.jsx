@@ -19,13 +19,13 @@ const Contact = () => {
             <Stack gap={1} direction={"column"} style={{ marginBottom: '10px', alignItems: 'flex-end',}}>
                 {
                     boxArray.map((item, index) => (
-                        <Link href="#" key={item.title} onClick={() => setSelect(index)} style={{width:'100%'}}>
+                        <Stack href="#" key={item.title} onClick={() => setSelect(index)} style={{width:'94%'}}>
                             <Box data={item} select={select === index} />
-                        </Link>
+                        </Stack>
                     ))
                 }
             </Stack>
-            <Stack direction={"row"} style={{width:'100%'}} gap={2}>
+            <Stack direction={"row"} style={{width:'94%', alignSelf:'flex-end'}} gap={2}>
                 <Stack style={{width:'50%'}}>
                     <Typography>Phone Number</Typography>
                     <input type='text' className={styles.input} placeholder='9898989898'></input>
