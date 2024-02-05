@@ -8,7 +8,6 @@
     justify-content: space-between;
 }
 .button,.button:hover{
-    /* margin-top: 40px !important; */
     border-radius: 8px !important;
     background-color: #0D1A26 !important;
     color:#fff !important;
