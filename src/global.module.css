@@ -34,13 +34,13 @@
 .buttonOutlined,
 .buttonOutlined:hover {
     font-size: 11px;
-    display: flex;
+    display: flex !important;
     gap: 10px;
     padding: 10px 25px;
-    border: 1px solid #0D1A26 ;
-    border-radius: 10px ;
-    color: #0D1A26 ;
-    font-weight: 600 ;
+    border: 1px solid #0D1A26 !important;
+    border-radius: 10px !important;
+    color: #0D1A26 !important;
+    font-weight: 600 !important;
 }
 
 
