@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&family=Rubik:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Open+Sans:wght@700&family=Rubik:wght@600&display=swap');
+.entryImg{
+    height: 100vh;
+    object-fit: cover;
+    width: 50vw;
+    box-shadow: 10px 0 40px 10px rgb(201, 199, 199), -10px 0 40px 10px rgb(201, 199, 199);
+    mix-blend-mode: overlay;
+}
+
+.signupBtn, .loginBtn{
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    height: 120px;
+    width: 120px;
+    /* background-image: url('../assets/Join_button.svg'); */
+    object-fit: fit;
+    border-radius: 100%;
+    background-repeat: no-repeat;
+    /* background-position: center center; */
+    /* -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; */
+    cursor: pointer;
+}
+
+.loginBtn{
+    /* background-image: url('../assets/svg/log'); */
+}
+
+.signupBtn:hover , .loginBtn:hover{
+    cursor:pointer;
+}
+

@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&family=Rubik:wght@500;600;700&display=swap');
+.super_container{
+    height: 100vh;
+    width: 50vw;
+   
+}
+.container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.box{
+    text-align: center;
+    margin: 5rem;
+    max-width: 26rem;
+}
+.input{
+    border-color: black;
+    border-radius: 100px;
+}
+
+.login_title{
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-style: normal;
+}
+.desc_text{
+    text-align: start;
+    font-size: 14px;
+    margin: .6rem 0rem;
+    font-weight: 600;
+    
+
+}
+.login_btn{
+    background-color: black;
+    text-transform: none;
+}
+.MuiOutlinedInput-root {
+    width: 300px;
+    height: 50px;
+}
+.icons{
+   height: 30px;
+   width: 30px;
+}
+.card {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .btn{
+    margin-top: 5px;
+    width:-webkit-fill-available ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:#0D1A26;
+    color: aliceblue;
+    border-radius: 6px;
+    padding: 3px 3px 5px 5px;
+    font-weight: 550;
+    border: none;
+    font-size: 12px;
+
+}

@@ -1,0 +1,174 @@
+
+.container{
+    width:50%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    width: 70%;
+    max-width: 25rem;
+    flex-direction: column;
+    
+}
+.logo{    
+    align-items: start;
+    justify-content: center;
+}
+.title_signup{
+     width:-webkit-fill-available ;
+    text-align: center;
+    font-size: var(--subtitle-fontsize);
+    font-weight: 600;
+}
+
+.icons{
+    height: 25px;
+    width: 25x;
+ }
+ .card {
+     width: 50px;
+     height: 50px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     
+   }
+.user_detail2{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+.input{
+    width: -webkit-fill-available;
+    
+}
+.desc_text{
+    font-size:10px;
+    line-height: 12px;
+    text-align: justify;
+    height: 35px;
+    font-weight:500 ;
+    
+}
+
+.code{
+    width:70px;
+}
+.phone{
+    width:auto;
+}
+.role{
+    width:50%
+}
+.country {
+    width: 5px;
+    font-size: 20px;
+    background-color: #000;
+}
+
+.title2{
+    width:-webkit-fill-available ;
+    text-align: start;
+    font-size: var(--title2-fontsize);
+    font-weight: 600;
+    margin: .5rem 0rem;
+}
+.title{
+    font-weight:bold;
+    margin: .5rem 0rem;
+}
+.btn{
+    margin-top: 5px;
+    width:-webkit-fill-available ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:#0D1A26;
+    color: aliceblue;
+    border-radius: 6px;
+    padding: 2px 3px 3px 5px;
+    font-weight: 500;
+    border: none;
+    font-size: 12px;
+
+}
+
+.divider{
+    width: 95%;
+    margin: .5rem 0rem;
+    height: 1.5px;
+    background: linear-gradient(22deg, rgba(255,255,255,1) 10%, rgba(176,176,176,1) 50%, rgba(255,255,255,1) 90%);
+
+   
+}
+.arrow2{
+    position: absolute;
+    margin : 5px;
+    height: 90px;
+    width: 90px;
+  border-radius: 50px 50px 50px 0px;
+  border-right: 2px solid #000;
+  
+    
+  }
+/* Login-button-circle-css */
+.Circle{
+    height : 121px;
+    width: 121px;
+    position:absolute;
+    border: 5px solid transparent;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    transform:rotate(60deg);
+    border-radius:50% ;
+
+  }
+  
+  
+  .arrow{
+    color: black;
+    top:25px;
+    display:flex;
+    position:relative;
+    left:15px;
+    height: 9px; 
+    width: 9px;
+    border: 6px solid black;
+    border-width: 0px 0px 3px 3px;
+    transform:rotate(170deg);
+    
+  }
+  
+  .login_button_circle{
+    background-color:yellow;
+    padding:10px;
+    width:120px;
+    height: 120px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+   }
+  
+   .login_btn_text{
+    font-size: 22px;
+    display: flex;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
+    
+
+  }
