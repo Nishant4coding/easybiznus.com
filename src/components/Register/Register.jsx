@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import {
   Box,
@@ -21,45 +21,61 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
 import Link from "next/link";
-// import { useRouter } from 'next/navigation';
-// import { register, authUser } from '@/Redux/Features/auth/authSlice';
-// import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+import { register, authUser } from "@/Redux/Features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Register = ({ setEnter }) => {
-  // const [userData, setUserData] = useState({
-  //   firstName: "",
-  //   lastName: "",
-  //   mobile: "",
-  //   role: "",
-  //   email: "",
-  //   password: "",
-  // });
+  const [userData, setUserData] = useState({
+    firstName: "",
+    lastName: "",
+    mobile: "",
+    role: "customer",
+    email: "",
+    password: "",
+    location: {
+      type: "Point",
+      coordinates: [-71.058884, 42.360081],
+    },
+  });
 
-  // const router = useRouter();
-  // const dispatch = useDispatch();
-  // const auth = useSelector(authUser);
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const auth = useSelector(authUser);
 
   const handleChange = (e) => {
-    // setUserData({ ...userData, [e.target.name]: e.target.value });
+    setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
-  // const signupHandler = (e)=>{
-  //   e.preventDefault();
-  //   dispatch(register(userData));
-  // }
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;
+      const updatedUserData = { ...userData };
+      updatedUserData.location.coordinates = [latitude, longitude];
+      setUserData(updatedUserData);
+    });
+  }, []);
 
-  // useEffect(()=>{
-  //   if(auth.isSuccess){
-  //     setEnter(true);
-  //     router.push('/dashboard');
-  //   }
-  // },[auth])
+  const signupHandler = (e) => {
+    e.preventDefault();
+    console.log(userData);
+    // dispatch(register(userData));
+    window.localStorage.setItem("token", 122323);
+  };
+
+  useEffect(() => {
+    if (auth.isSuccess) {
+      setEnter(true);
+    }
+  }, [auth]);
 
   return (
     <>
       <Box className={style.container}>
         <Stack className={style.box}>
-          <Typography variant="h4" className={style.title}>Register</Typography>
+          <Typography variant="h4" className={style.title}>
+            Register
+          </Typography>
 
           <Typography className={style.title_signup}>Sign up with</Typography>
 
@@ -141,7 +157,7 @@ const Register = ({ setEnter }) => {
               onChange={handleChange}
               name="mobile"
             />
-            <TextField
+            {/* <TextField
               className={style.role}
               sx={inputBoxStyle}
               id="outlined-basic"
@@ -156,7 +172,7 @@ const Register = ({ setEnter }) => {
                   {option.label}
                 </MenuItem>
               ))}
-            </TextField>
+            </TextField> */}
           </Stack>
           <div className={style.withEmail}>
             <Typography className={style.title2}>SignUp Details :</Typography>
@@ -214,7 +230,7 @@ const Register = ({ setEnter }) => {
                   label="Optional T&C"
                 />
               </FormGroup>
-            </div> 
+            </div>
             <Stack>
               <ThemeProvider theme={theme}>
                 <Button
@@ -227,7 +243,7 @@ const Register = ({ setEnter }) => {
                     height: 40,
                     mt: 2,
                   }}
-                  // onClick={signupHandler}
+                  onClick={signupHandler}
                 >
                   REGISTER
                 </Button>
@@ -248,27 +264,26 @@ const inputBoxStyle = {
     borderRadius: 2,
     fontSize: 16,
   },
-  '& label': {
-    color: '#000',
-    padding:"5px 0 0 0"
+  "& label": {
+    color: "#000",
+    padding: "5px 0 0 0",
   },
-  '& label.Mui-focused': {
-    color: '#000',
-    padding:"10px 0 0 0"
+  "& label.Mui-focused": {
+    color: "#000",
+    padding: "10px 0 0 0",
   },
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
       borderColor: "black",
     },
-    '&.Mui-focused fieldset': {
-      border: '1px solid #000',
+    "&.Mui-focused fieldset": {
+      border: "1px solid #000",
     },
   },
   "& .MuiInputLabel-root": {
     fontSize: 12,
   },
 };
-
 
 //mobile country code dorpdown css started here
 const code = {
@@ -347,7 +362,7 @@ const country = [
   {
     value: "+11",
     label: "+11",
-  }
+  },
 ];
 
 const theme = createTheme({

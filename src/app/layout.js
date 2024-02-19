@@ -16,7 +16,7 @@ function RootLayout({ children }) {
     const token = window.localStorage.getItem('token');
     if(!token){
       setIsLogin(false)
-      router.push('/login')
+      router.push('/register')
     }
   })
 
