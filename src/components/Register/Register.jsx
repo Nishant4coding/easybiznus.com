@@ -25,12 +25,13 @@ import { useRouter } from "next/navigation";
 import { register, authUser } from "@/Redux/Features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const Register = ({ setEnter }) => {
+const Register =(props) => {
+  console.log(props);
   const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
     mobile: "",
-    role: "customer",
+    role: "user",
     email: "",
     password: "",
     location: {
@@ -59,13 +60,12 @@ const Register = ({ setEnter }) => {
   const signupHandler = (e) => {
     e.preventDefault();
     console.log(userData);
-    // dispatch(register(userData));
-    window.localStorage.setItem("token", 122323);
+    dispatch(register(userData));
   };
 
   useEffect(() => {
+    console.log("auth User :",auth);
     if (auth.isSuccess) {
-      setEnter(true);
     }
   }, [auth]);
 

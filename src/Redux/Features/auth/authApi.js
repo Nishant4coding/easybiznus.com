@@ -5,6 +5,7 @@ import axiosToken from '@/Utility/axiosInstance';
 const login = async (credentials) => {
     try {
         const response = await axios.post(`${BASE_URL}/account/login`, credentials);
+        console.log(response);
         if (response.data.token) {
             window.localStorage.setItem("token", response.data.token);
             window.localStorage.setItem("userCode", response.data.userCode);   

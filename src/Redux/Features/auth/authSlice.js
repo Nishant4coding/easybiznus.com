@@ -19,6 +19,7 @@ export const login = createAsyncThunk(
 export const register = createAsyncThunk(
     "auth/register",
     async(userData, thunkAPI)=>{
+        console.log(userData);
         try{
             const res = await authApi.register(userData);
             if(!res){
@@ -26,7 +27,7 @@ export const register = createAsyncThunk(
             }
         }
         catch(err){
-            return thunkAPI.rejectWithValue(error);
+            return thunkAPI.rejectWithValue(err);
         }
     }
 )
