@@ -7,24 +7,18 @@ import MobileNavBar from "@/components/Navbar/MobileView/MobileNavBar";
 import TopNav from "@/components/Navbar/TopNav";
 import ReduxProvider from "@/Redux/provider";
 import { useRouter } from "next/navigation";
+import Login from "./login/page";
+import Register from "./register/page";
 const inter = Inter({ subsets: ["latin"] });
 
 function RootLayout({ children }) {
-  const router = useRouter();
-  const [isLogin, setIsLogin] = useState(null);
-  useEffect(() => {
-    const token = window.localStorage.getItem("token");
-    if (!token) {
-      setIsLogin(false);
-      router.push("/register");
-    }
-  });
-
+  const [isLogin, setIsLogin] = useState(false);
+  const [loginSwitch, setLoginSwitch] = useState(false);
   return (
     <html lang="en">
       <ReduxProvider>
         <body className={inter.className}>
-          {!isLogin && (
+          {isLogin ? (
             <>
               <div className={global.desktop}>
                 <TopNav />
@@ -32,9 +26,23 @@ function RootLayout({ children }) {
               <div className={global.mobile}>
                 <MobileNavBar />
               </div>
+              {children}
+            </>
+          ) : (
+            <>
+              {!loginSwitch ? (
+                <Login
+                  setLoginSwitch={setLoginSwitch}
+                  setIsLogin={setIsLogin}
+                />
+              ) : (
+                <Register
+                  setLoginSwitch={setLoginSwitch}
+                  setIsLogin={setIsLogin}
+                />
+              )}
             </>
           )}
-          {children}
         </body>
       </ReduxProvider>
     </html>

@@ -25,8 +25,7 @@ import { useRouter } from "next/navigation";
 import { register, authUser } from "@/Redux/Features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const Register =(props) => {
-  console.log(props);
+const Register =({setLoginSwitch,setIsLogin}) => {
   const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
@@ -59,8 +58,8 @@ const Register =(props) => {
 
   const signupHandler = (e) => {
     e.preventDefault();
-    console.log(userData);
     dispatch(register(userData));
+    setIsLogin(true);
   };
 
   useEffect(() => {
@@ -240,6 +239,10 @@ const Register =(props) => {
                   sx={{
                     display: "flex",
                     justifyContent: "space-between",
+                    color:"black",
+                    '&:hover': {
+                      color: 'white',  // Set the background color to transparent on hover
+                    },
                     height: 40,
                     mt: 2,
                   }}

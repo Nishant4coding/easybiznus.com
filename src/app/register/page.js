@@ -6,21 +6,16 @@ import Image from "next/image";
 import Register from "@/components/Register/Register";
 import { Stack, Box } from "@mui/material";
 import style from "../Global.module.css";
-
-const RegisterPage = ({ setExist, setEnter }) => {
+import { useRouter } from "next/navigation";
+const RegisterPage = ({ setLoginSwitch,setIsLogin }) => {
   return (
     <>
-      <Box
-        className={style.loginBtn}
-        onClick={() => {
-          setExist(true);
-        }}
-      >
-        <Image src={RegisterImage} width={120} height={120} alt=""></Image>
+      <Box className={style.loginBtn} onClick={() => setLoginSwitch(false)}>
+        <Image src={LogingBtn} width={120} height={120} alt=""></Image>
       </Box>
       <Stack direction="row">
-        <Image src={LogingBtn} className={style.entryImg} alt=""></Image>
-        <Register setEnter={setEnter} />
+        <Image src={RegisterImage} className={style.entryImg} alt=""></Image>
+        <Register setLoginSwitch={setLoginSwitch}  setIsLogin={setIsLogin}/>
       </Stack>
     </>
   );
