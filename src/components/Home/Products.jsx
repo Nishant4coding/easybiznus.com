@@ -19,68 +19,76 @@ const Products = () => {
 
 export default Products;
 
-const cardArray = [
-    {
-        discount: '-20%',
-        image: Shoe1,
-        title: 'Nike Air Max Plus',
-        style: 'DX4326-001',
-        sp: '₹15,990',
-        mrp: '₹19,990',
-        link:'/category'
-    },
-    {
-        discount: '-20%',
-        image: Shoe1,
-        title: 'Nike Air Max Plus',
-        style: 'DX4326-001',
-        sp: '₹15,990',
-        mrp: '₹19,990',
-        link:'/category'
-    },
-    {
-        discount: '-20%',
-        image: Shoe1,
-        title: 'Nike Air Max Plus',
-        style: 'DX4326-001',
-        sp: '₹15,990',
-        mrp: '₹19,990',
-        link:'/category'
-    },
-    {
-        discount: '-20%',
-        image: Shoe1,
-        title: 'Nike Air Max Plus',
-        style: 'DX4326-001',
-        sp: '₹15,990',
-        mrp: '₹19,990',
-        link:'/category'
-    },
-    {
-        discount: '-20%',
-        image: Shoe1,
-        title: 'Nike Air Max Plus',
-        style: 'DX4326-001',
-        sp: '₹15,990',
-        mrp: '₹19,990',
-        link:'/category'
-    },
-    {
-        discount: '-20%',
-        image: Shoe1,
-        title: 'Nike Air Max Plus',
-        style: 'DX4326-001',
-        sp: '₹15,990',
-        mrp: '₹19,990',
-        link:'/category'
-    },
-    {
-        discount: '-20%',
-        image: Shoe1,
-        title: 'Nike Air Max Plus',
-        style: 'DX4326-001',
-        sp: '₹15,990',
-        mrp: '₹19,990',
-        link:'/category'
-    }
-];
+// const cardArray = [
+//     {
+//         discount: '-20%',
+//         image: Shoe1,
+//         title: 'Nike Air Max Plus',
+//         style: 'DX4326-001',
+//         sp: '₹15,990',
+//         mrp: '₹19,990',
+//         link:'/category'
+//     },
+//     {
+//         discount: '-20%',
+//         image: Shoe1,
+//         title: 'Nike Air Max Plus',
+//         style: 'DX4326-001',
+//         sp: '₹15,990',
+//         mrp: '₹19,990',
+//         link:'/category'
+//     },
+//     {
+//         discount: '-20%',
+//         image: Shoe1,
+//         title: 'Nike Air Max Plus',
+//         style: 'DX4326-001',
+//         sp: '₹15,990',
+//         mrp: '₹19,990',
+//         link:'/category'
+//     },
+//     {
+//         discount: '-20%',
+//         image: Shoe1,
+//         title: 'Nike Air Max Plus',
+//         style: 'DX4326-001',
+//         sp: '₹15,990',
+//         mrp: '₹19,990',
+//         link:'/category'
+//     },
+//     {
+//         discount: '-20%',
+//         image: Shoe1,
+//         title: 'Nike Air Max Plus',
+//         style: 'DX4326-001',
+//         sp: '₹15,990',
+//         mrp: '₹19,990',
+//         link:'/category'
+//     },
+//     {
+//         discount: '-20%',
+//         image: Shoe1,
+//         title: 'Nike Air Max Plus',
+//         style: 'DX4326-001',
+//         sp: '₹15,990',
+//         mrp: '₹19,990',
+//         link:'/category'
+//     },
+//     {
+//         discount: '-20%',
+//         image: Shoe1,
+//         title: 'Nike Air Max Plus',
+//         style: 'DX4326-001',
+//         sp: '₹15,990',
+//         mrp: '₹19,990',
+//         link:'/category'
+//     }
+// ];
+
+const cardArray =[
+    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus', link:'/category' },
+    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus', link:'/category' },
+    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus', link:'/category' },
+    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus', link:'/category' },
+    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus', link:'/category' }
+]

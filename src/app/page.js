@@ -21,7 +21,6 @@ import MensCollections from "@/components/MobileView/MensCollections/MensCollect
 import WomensCollections from "@/components/MobileView/WomensCollections/WomensCollections";
 import KidsCollections from "@/components/MobileView/KidsCollections/KidsCollections";
 import FooterM from "@/components/MobileView/Footer/FooterM";
-
 import global from '@/global.module.css'
 
 const HomePage = (props) => {

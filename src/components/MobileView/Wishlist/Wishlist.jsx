@@ -25,10 +25,10 @@ const Wishlist = () => {
                 }
             </Grid>
 
-            <Button variant="contained" className={global.button} style={{width:'80%', marginBottom:'30px', fontSize:'15px'}}>
-            <Link href="/checkout" style={{width:'100%'}}>
-            {`ADD TO CART  [${cardArray.length}]`}
-            </Link>
+            <Button variant="contained" className={global.button} style={{ width: '80%', marginBottom: '30px', fontSize: '15px' }}>
+                <Link href="/checkout" style={{ width: '100%' }}>
+                    {`ADD TO CART  [${cardArray.length}]`}
+                </Link>
             </Button>
 
         </Stack>

@@ -1,17 +1,35 @@
+'use client'
 import { Box, Stack } from "@mui/material";
 import Card from '@/components/CardA/Card';
 import { Shoe1 } from '@/assets/svg/index';
+import { useEffect } from "react";
+import { getAll } from "@/Redux/Features/product/productSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Products = () => {
+    const dispatch = useDispatch();
+    const productState = useSelector(state => state.product);
+
+    useEffect(() => {
+        dispatch(getAll())
+    }, [])
+
     return (
-        <Box sx={{ display: "flex", width:"100%", flexWrap:"wrap", gap:"60px", padding:"50px", justifyContent:"center"}}>
+        <Box sx={{ display: "flex", width: "100%", flexWrap: "wrap", gap: "60px", padding: "50px", justifyContent: "center" }}>
             {
+                productState?.allProduct && productState?.allProduct.map((item, index) => (
+                    <Box sx={{ flexShrink: 0 }} key={index}>
+                        <Card data={item.Product} />
+                    </Box>
+                ))
+            }
+            {/* {
                 cardArray.map((item, index) => (
                     <Box sx={{ flexShrink: 0 }} key={index}>
                         <Card data={item} />
                     </Box>
                 ))
-            }
+            } */}
         </Box>
     )
 }

@@ -176,8 +176,9 @@
 }
 
 .billcard {
+    display: flex;
     padding: 18px;
-    flex-direction: row;
+    flex-direction: row !important;
     box-shadow: 0 1px 10px 0 #d9d9d9;
     height: fit-content;
     border-radius: 10px;

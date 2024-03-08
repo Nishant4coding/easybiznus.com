@@ -4,7 +4,8 @@ import { Stack, Typography, Button } from '@mui/material';
 import styles from './checkout.module.css';
 import { IonIcon } from '@ionic/react';
 import { newspaperOutline, home, add, businessOutline,radioButtonOnOutline, radioButtonOffOutline, storefrontOutline } from 'ionicons/icons';
-import Link from 'next/link';
+
+
 const Address = () => {
     const [select, setSelect] = useState();
 
@@ -23,9 +24,9 @@ const Address = () => {
             <Stack gap={1} direction={"column"} style={{ marginBottom: '10px', alignItems: 'flex-end',}}>
                 {
                     boxArray.map((item, index) => (
-                        <Link href="#" key={item.title} onClick={() => setSelect(index)} style={{width:'94%'}}>
+                        <Stack key={item.title} onClick={() => setSelect(index)} style={{width:'94%'}}>
                             <Box data={item} select={select === index} />
-                        </Link>
+                        </Stack>
                     ))
                 }
             </Stack>
