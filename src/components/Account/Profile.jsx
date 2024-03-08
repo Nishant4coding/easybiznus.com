@@ -55,8 +55,12 @@ const Profile = ({ }) => {
                         </Stack>
                     }
                     <Stack gap={1}>
-                        <Typography sx={{ cursor: 'pointer' }} onClick={() => setUserData({ ...userData, ['gender']: 'male' })}>Male</Typography>
-                        <Typography sx={{ cursor: 'pointer' }} onClick={() => setUserData({ ...userData, ['gender']: 'female' })}>Female</Typography>
+                        <Typography sx={{ cursor: 'pointer' }} onClick={() => {
+                            setUserData({ ...userData, ['gender']: 'male' });
+                        }}>Male</Typography>
+                        <Typography sx={{ cursor: 'pointer' }} onClick={() => {
+                            setUserData({ ...userData, ['gender']: 'female' })
+                        }}>Female</Typography>
                     </Stack>
                 </Stack>
 
