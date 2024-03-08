@@ -8,7 +8,8 @@ const login = async (credentials) => {
         console.log(response);
         if (response.data.token) {
             window.localStorage.setItem("token", response.data.token);
-            window.localStorage.setItem("userCode", response.data.userCode);   
+            window.localStorage.setItem("userCode", response.data.userCode);
+            window.localStorage.setItem("userId", response.data.userId);
         }
         return response.data;
     }

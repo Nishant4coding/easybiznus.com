@@ -4,10 +4,28 @@ import styles from './account.module.css';
 import { IonIcon } from '@ionic/react';
 import { radioButtonOffOutline, radioButtonOnOutline } from 'ionicons/icons';
 import global from '@/global.module.css';
-import { useState } from 'react';
+import { useState, useLayoutEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProfile, updateProfile } from '@/Redux/Features/profile/profileSlice';
 
-const Profile = ({ setForm }) => {
+const Profile = ({ }) => {
     const [set, setSet] = useState(true);
+    const [userData, setUserData] = useState(null);
+    const dispatch = useDispatch();
+    const profileState = useSelector(state => state.profile);
+    useLayoutEffect(() => {
+        if (profileState.profile === null) {
+            dispatch(getProfile());
+            setUserData(null);
+        }
+        if (profileState.profile) {
+            setUserData(profileState.profile);
+        }
+    }, [profileState.profile]);
+
+    const handleUpadteProfile = async () => {
+        dispatch(updateProfile(userData))
+    }
 
     return (
         <Stack sx={{ width: '80%', alignItems: 'center' }}>
@@ -17,10 +35,10 @@ const Profile = ({ setForm }) => {
 
 
                 <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
-                    <Input title={"First Name *"} placeholder={"First Name"} width={"82%"} />
+                    <Input title={"First Name *"} placeholder={"First Name"} width={"82%"} value={userData?.firstName} changeValue={setUserData} name={"firstName"} />
                 </Stack>
                 <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
-                    <Input title={"Last Name *"} placeholder={"Last Name"} width={"82%"} />
+                    <Input title={"Last Name *"} placeholder={"Last Name"} width={"82%"} value={userData?.lastName} changeValue={setUserData} name={"lastName"} />
                 </Stack>
 
                 <Stack direction={"row"} style={{ paddingLeft: '10%' }} gap={1}>
@@ -35,8 +53,8 @@ const Profile = ({ setForm }) => {
                         </Stack>
                     }
                     <Stack gap={1}>
-                        <Typography sx={{cursor:'pointer'}} onClick={() =>setSet(true)}>Male</Typography>
-                        <Typography sx={{cursor:'pointer'}} onClick={() =>setSet(false)}>Female</Typography>
+                        <Typography sx={{ cursor: 'pointer' }} onClick={() => setSet(true)}>Male</Typography>
+                        <Typography sx={{ cursor: 'pointer' }} onClick={() => setSet(false)}>Female</Typography>
                     </Stack>
                 </Stack>
 
@@ -50,13 +68,13 @@ const Profile = ({ setForm }) => {
                 </Stack>
 
                 <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
-                    <Input title={"Email *"} placeholder={"xyz123@gmail.com"} width={"82%"} />
+                    <Input title={"Email *"} placeholder={"xyz123@gmail.com"} width={"82%"} value={userData?.email} changeValue={setUserData} />
                 </Stack>
 
             </Stack>
             <Button variant='contained' className={global.button}
-                onClick={() => setForm(false)}
-                style={{padding:'10px 50px', fontSize:'13px'}}
+                style={{ padding: '10px 50px', fontSize: '13px' }}
+                onClick={handleUpadteProfile}
             >
                 SAVE
             </Button>
@@ -66,11 +84,11 @@ const Profile = ({ setForm }) => {
 
 export default Profile;
 
-const Input = ({ title, placeholder, width, children, fsize }) => {
+const Input = ({ name, value, title, placeholder, width, children, fsize, changeValue }) => {
     return (
         <Stack gap={1} sx={{ width: width ? width : '40%', position: 'relative' }}>
             <Typography style={{ fontSize: fsize ? fsize : "" }} className={styles.inputhead}>{title}</Typography>
-            <input type="text" placeholder={placeholder} className={styles.input}></input>
+            <input type="text" placeholder={placeholder} className={styles.input} value={value} onChange={(e) => changeValue({ ...value, [e.target.name]: e.target.value })} name={name}></input>
             {children}
         </Stack>
     )
