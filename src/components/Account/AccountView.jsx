@@ -35,16 +35,16 @@ const AccountView = () => {
                         <Heading title="Profile" icon={personOutline} linkpath="/profile" />
                         <Stack sx={{ marginTop: '20px', paddingLeft: '10px' }} gap={0.5}>
                             <Typography className={styles.subhead}>
-                                Name:
-                                <Typography className={styles.subvalue}>{userData.firstName +' '+ userData.lastName}</Typography>
+                                <Typography sx={{width:'50px', fontWeight:'700'}}>Name:</Typography>
+                                <Typography className={styles.subvalue}>{userData.firstName + ' ' + userData.lastName}</Typography>
                             </Typography>
                             <Typography className={styles.subhead}>
-                                Email:
+                                <Typography sx={{width:'50px', fontWeight:'700'}}>Email:</Typography>
                                 <Typography className={styles.subvalue}>{userData.email}</Typography>
                             </Typography>
                             <Typography className={styles.subhead}>
-                                DOB:
-                                <Typography className={styles.subvalue}>19-Feb-2000</Typography>
+                                <Typography sx={{width:'50px', fontWeight:'700'}}>DOB:</Typography>
+                                <Typography className={styles.subvalue}>{userData.birthday ? userData.birthday : 'XX-XX-XXXX'}</Typography>
                             </Typography>
                         </Stack>
                     </Stack>
