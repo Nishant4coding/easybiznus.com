@@ -86,9 +86,9 @@ export default Products;
 // ];
 
 const cardArray =[
-    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus' },
-    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus' },
-    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus' },
-    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus' },
-    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus' }
+    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus', link:'/category' },
+    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus', link:'/category' },
+    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus', link:'/category' },
+    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus', link:'/category' },
+    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus', link:'/category' }
 ]

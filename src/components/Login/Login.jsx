@@ -23,6 +23,7 @@ import googleIcon from "../../assets/svg/google_icon.svg";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { login, authUser } from "@/Redux/Features/auth/authSlice";
+import { getProfile } from "@/Redux/Features/profile/profileSlice";
 
 const Login = ({ setIsLogin, setLoginSwitch }) => {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ const Login = ({ setIsLogin, setLoginSwitch }) => {
   useEffect(() => {
     if (auth.isSuccess) {
       setIsLogin(true);
+      dispatch(getProfile())
     }
   }, [auth]);
 

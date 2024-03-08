@@ -13,16 +13,14 @@ import { getProfile } from "@/Redux/Features/profile/profileSlice";
 const LoginPage = ({ setIsLogin, setLoginSwitch }) => {
   const profileState = useSelector(state => state.profile);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
-    const token = window.localStorage.getItem("token");
-    if (token) {
-      if (profileState.profile === null) {
-        dispatch(getProfile());
-      }
-      if (profileState.profile) {
-        setIsLogin(true);
-      }
+    // const token = window.localStorage.getItem("token");
+    if (profileState.profile === null) {
+      dispatch(getProfile());
+    }
+    if (profileState.profile) {
+      setIsLogin(true);
     }
   }, [profileState.profile])
 

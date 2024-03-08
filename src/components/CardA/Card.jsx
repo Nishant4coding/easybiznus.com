@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useMemo } from "react";
 
 const Card = ({ data }) => {
-    const { MRP, salePrice, sku, name, sp, mrp } = data;
+    const { MRP, salePrice, sku, name, link } = data;
     const discount = useMemo(() => {
         return Math.ceil(((MRP - salePrice) / MRP) * 100);
     }, [MRP, salePrice])
@@ -19,7 +19,7 @@ const Card = ({ data }) => {
 
     return (
         <Box className={styles.container}>
-            <Link href={'/product'}>
+            <Link href={link ? link : '/product'}>
                 <Typography className={styles.discount}>{discount}%</Typography>
                 <Image src={image} alt={"product"} className={styles.image} />
                 <Stack direction={"row"} sx={{ justifyContent: "space-between", marginTop: "20px", padding: "0 10px" }}>

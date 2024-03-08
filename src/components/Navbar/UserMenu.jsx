@@ -25,7 +25,6 @@ const UserMenu = ({ userMenu, handleClose }) => {
         }
         if (profileState.profile)
             return profileState.profile
-
     }, [profileState.profile])
 
     return (
@@ -72,8 +71,8 @@ const UserMenu = ({ userMenu, handleClose }) => {
                     </>
 
                 }
-                <Typography className={styles.linebreak}></Typography>
-                <Link href="#" style={{ display: 'flex', justifyContent: "center" }} className={styles.menuitem} onClick={handleClose}>LOGOUT</Link>
+                {userData && <Typography className={styles.linebreak}></Typography>}
+                {userData && <Link href="#" style={{ display: 'flex', justifyContent: "center" }} className={styles.menuitem} onClick={handleClose}>LOGOUT</Link>}
             </Stack>
         </Modal>
     )
@@ -106,7 +105,7 @@ const menuArray = [
 
 const menuArray2 = [
     {
-        title: "LOGIN", path: "/login",
+        title: "LOGIN", path: "#",
         icon: UserLogo
     }
 ]
