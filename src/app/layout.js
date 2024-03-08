@@ -14,6 +14,7 @@ const inter = Inter({ subsets: ["latin"] });
 function RootLayout({ children }) {
   const [isLogin, setIsLogin] = useState(false);
   const [loginSwitch, setLoginSwitch] = useState(false);
+
   return (
     <html lang="en">
       <ReduxProvider>

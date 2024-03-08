@@ -27,7 +27,7 @@ export const updateProfile = createAsyncThunk(
 
 const state = {
     profile: null,
-    gettingProfile: false,
+    gettingProfile: true,
     gettingProfileError: false,
     updatingProfile: false,
     updatingProfileError: false

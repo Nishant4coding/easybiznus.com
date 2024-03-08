@@ -27,6 +27,7 @@ import { login, authUser } from "@/Redux/Features/auth/authSlice";
 const Login = ({ setIsLogin, setLoginSwitch }) => {
   const dispatch = useDispatch();
   const auth = useSelector(authUser);
+  const profileState = useSelector(state => state.profile);
 
   const [credentials, setCredentials] = useState({
     emailOrMobile: "",
@@ -42,7 +43,6 @@ const Login = ({ setIsLogin, setLoginSwitch }) => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
     if (auth.isSuccess) {
       setIsLogin(true);
     }
@@ -133,7 +133,7 @@ const Login = ({ setIsLogin, setLoginSwitch }) => {
                 sx={{
                   display: "flex",
                   justifyContent: "space-between",
-                  color:"black",
+                  color: "black",
                   '&:hover': {
                     color: 'white',  // Set the background color to transparent on hover
                   }

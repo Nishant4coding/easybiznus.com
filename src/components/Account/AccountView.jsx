@@ -36,7 +36,7 @@ const AccountView = () => {
                         <Stack sx={{ marginTop: '20px', paddingLeft: '10px' }} gap={0.5}>
                             <Typography className={styles.subhead}>
                                 Name:
-                                <Typography className={styles.subvalue}>{userData.firstName + userData.lastName}</Typography>
+                                <Typography className={styles.subvalue}>{userData.firstName +' '+ userData.lastName}</Typography>
                             </Typography>
                             <Typography className={styles.subhead}>
                                 Email:
