@@ -68,7 +68,7 @@ const Profile = ({ }) => {
                 </Stack>
 
                 <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
-                    <Input title={"Email *"} placeholder={"xyz123@gmail.com"} width={"82%"} value={userData?.email} changeValue={setUserData} />
+                    <Input title={"Email *"} placeholder={"xyz123@gmail.com"} width={"82%"} value={userData?.email} changeValue={setUserData} name={"email"} />
                 </Stack>
 
             </Stack>
