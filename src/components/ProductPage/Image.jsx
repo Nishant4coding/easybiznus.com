@@ -5,22 +5,22 @@ import Image from 'next/image';
 import styles from './product.module.css';
 import { useState } from 'react';
 
-const ImageGrid = () => {
-    const [mainImg, setMainImg]= useState(Img1);
+const ImageGrid = ({ image }) => {
+    const [mainImg, setMainImg] = useState(image[0]);
 
     return (
-        <Stack style={{width:'100%'}} direction={"row"} gap={0.5}>
+        <Stack style={{ width: '100%' }} direction={"row"} gap={0.5}>
             <Stack gap={0.5}>
                 {
-                    imgArray.map((item, index) => (
-                        <Box key={index} className={styles.imgGrid} onClick={()=>setMainImg(item)}>
-                            <Image alt="prod-image" src={item} className={styles.img}></Image>
+                    image.map((item, index) => (
+                        <Box key={index} className={styles.imgGrid} onClick={() => setMainImg(item)}>
+                            <Image alt="prod-image" src={item} className={styles.img} width={90} height={90}></Image>
                         </Box>
                     ))
                 }
             </Stack>
             <Box className={styles.mainImg}>
-                <Image alt="product" src={mainImg} className={styles.img}></Image>
+                <Image alt="product" src={mainImg} className={styles.img} width={600} height={600}></Image>
             </Box>
 
             {/* OLD STYLE */}

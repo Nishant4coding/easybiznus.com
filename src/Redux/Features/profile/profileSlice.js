@@ -30,6 +30,7 @@ const state = {
     gettingProfile: true,
     gettingProfileError: false,
     updatingProfile: false,
+    successUpdating:false,
     updatingProfileError: false
 }
 
@@ -58,16 +59,19 @@ const profileSlice = createSlice({
                 state.updatingProfile = true;
                 state.profile = null;
                 state.updatingProfileError = false;
+                state.successUpdating=false;
             })
             .addCase(updateProfile.fulfilled, (state, action) => {
                 state.updatingProfile = false;
                 state.profile = action.payload;
                 state.updatingProfileError = false;
+                state.successUpdating=true;
             })
             .addCase(updateProfile.rejected, (state, action) => {
                 state.updatingProfile = false;
                 state.profile = null;
                 state.updatingProfileError = true;
+                state.successUpdating=false;
             })
     }
 })

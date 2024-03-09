@@ -7,16 +7,13 @@ import global from '@/global.module.css';
 import { useState, useLayoutEffect, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProfile, updateProfile } from '@/Redux/Features/profile/profileSlice';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Profile = ({ }) => {
     const [userData, setUserData] = useState(null);
     const dispatch = useDispatch();
     const profileState = useSelector(state => state.profile);
     useLayoutEffect(() => {
-        if (profileState.profile === null) {
-            dispatch(getProfile());
-            setUserData(null);
-        }
         if (profileState.profile) {
             setUserData(profileState.profile);
         }
@@ -25,9 +22,17 @@ const Profile = ({ }) => {
     const handleUpadteProfile = async () => {
         let data = { ...userData };
         data.birthday = `${userData.birthday.split('-')[1]}-${userData.birthday.split('-')[2]}-${userData.birthday.split('-')[0]}`;
-        console.log(data.birthday);
-        dispatch(updateProfile(data))
+        dispatch(updateProfile(data));
     }
+
+    useEffect(() => {
+        if (profileState.successUpdating) {
+            toast.success("Profile Updated", {
+                duration: 3000,
+                position: 'top-center'
+            })
+        }
+    }, [profileState.successUpdating])
 
     return (
         <Stack sx={{ width: '80%', alignItems: 'center' }}>
@@ -44,20 +49,31 @@ const Profile = ({ }) => {
                 </Stack>
 
                 <Stack direction={"row"} style={{ paddingLeft: '10%' }} gap={1}>
-                    {userData?.gender === 'male' ?
+                    {!userData &&
+                        <Stack gap={2.1} sx={{ paddingTop: '3px' }}>
+                            <IonIcon icon={radioButtonOffOutline}></IonIcon>
+                            <IonIcon icon={radioButtonOffOutline}></IonIcon>
+                        </Stack>
+                    }
+                    {userData?.gender === 'male' &&
                         <Stack gap={2.1} sx={{ paddingTop: '3px' }}>
                             <IonIcon icon={radioButtonOnOutline}></IonIcon>
                             <IonIcon icon={radioButtonOffOutline}></IonIcon>
-                        </Stack> :
+                        </Stack>
+                    }
+                    {userData?.gender === 'female' &&
                         <Stack gap={2.1} sx={{ paddingTop: '3px' }}>
                             <IonIcon icon={radioButtonOffOutline}></IonIcon>
                             <IonIcon icon={radioButtonOnOutline}></IonIcon>
                         </Stack>
                     }
                     <Stack gap={1}>
-                        <Typography sx={{ cursor: 'pointer' }} onClick={() => {
-                            setUserData({ ...userData, ['gender']: 'male' });
-                        }}>Male</Typography>
+                        <Typography sx={{ cursor: 'pointer' }}
+                            onClick={() => {
+                                console.log(userData?.gender === 'male');
+                                setUserData({ ...userData, ['gender']: 'male' });
+                            }}
+                        >Male</Typography>
                         <Typography sx={{ cursor: 'pointer' }} onClick={() => {
                             setUserData({ ...userData, ['gender']: 'female' })
                         }}>Female</Typography>
@@ -84,6 +100,7 @@ const Profile = ({ }) => {
             >
                 SAVE
             </Button>
+            <Toaster />
         </Stack>
     )
 }
@@ -105,7 +122,6 @@ const Inputdd = ({ name, value, title, placeholder, width, children, fsize, chan
     const birthdayHandle = (e) => {
         if (e.target.value.length <= 2) {
             if (typeof (parseInt(e.target.value)) === 'number') {
-                console.log('hi');
                 const dd = `${value?.split('-')[0]}-${value?.split('-')[1]}-${e.target.value}`;
                 changeValue({ ...data, ['birthday']: dd })
             } else {
