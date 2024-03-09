@@ -7,6 +7,7 @@ import global from '@/global.module.css';
 import { useState, useLayoutEffect, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProfile, updateProfile } from '@/Redux/Features/profile/profileSlice';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Profile = ({ }) => {
     const [userData, setUserData] = useState(null);
@@ -20,14 +21,22 @@ const Profile = ({ }) => {
         if (profileState.profile) {
             setUserData(profileState.profile);
         }
-    }, [profileState.profile]);
+    }, [profileState.gettingProfile]);
 
     const handleUpadteProfile = async () => {
         let data = { ...userData };
         data.birthday = `${userData.birthday.split('-')[1]}-${userData.birthday.split('-')[2]}-${userData.birthday.split('-')[0]}`;
-        console.log(data.birthday);
-        dispatch(updateProfile(data))
+        dispatch(updateProfile(data));
     }
+
+    useEffect(()=>{
+        if(profileState.successUpdating){
+            toast.success("Profile Updated",{
+                duration: 3000,
+                position:'top-center'
+            })
+        }
+    },[profileState.successUpdating])
 
     return (
         <Stack sx={{ width: '80%', alignItems: 'center' }}>
@@ -84,6 +93,7 @@ const Profile = ({ }) => {
             >
                 SAVE
             </Button>
+            <Toaster/>
         </Stack>
     )
 }
