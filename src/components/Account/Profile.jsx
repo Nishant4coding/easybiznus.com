@@ -14,14 +14,15 @@ const Profile = ({ }) => {
     const dispatch = useDispatch();
     const profileState = useSelector(state => state.profile);
     useLayoutEffect(() => {
-        if (profileState.profile === null) {
-            dispatch(getProfile());
-            setUserData(null);
-        }
         if (profileState.profile) {
             setUserData(profileState.profile);
         }
-    }, [profileState.gettingProfile]);
+    }, [profileState.profile]);
+
+    // useEffect(() => {
+    //     console.log('hi1');
+    //     dispatch(getProfile());
+    // }, [])
 
     const handleUpadteProfile = async () => {
         let data = { ...userData };
@@ -29,14 +30,14 @@ const Profile = ({ }) => {
         dispatch(updateProfile(data));
     }
 
-    useEffect(()=>{
-        if(profileState.successUpdating){
-            toast.success("Profile Updated",{
+    useEffect(() => {
+        if (profileState.successUpdating) {
+            toast.success("Profile Updated", {
                 duration: 3000,
-                position:'top-center'
+                position: 'top-center'
             })
         }
-    },[profileState.successUpdating])
+    }, [profileState.successUpdating])
 
     return (
         <Stack sx={{ width: '80%', alignItems: 'center' }}>
@@ -53,20 +54,31 @@ const Profile = ({ }) => {
                 </Stack>
 
                 <Stack direction={"row"} style={{ paddingLeft: '10%' }} gap={1}>
-                    {userData?.gender === 'male' ?
+                    {!userData &&
+                        <Stack gap={2.1} sx={{ paddingTop: '3px' }}>
+                            <IonIcon icon={radioButtonOffOutline}></IonIcon>
+                            <IonIcon icon={radioButtonOffOutline}></IonIcon>
+                        </Stack>
+                    }
+                    {userData?.gender === 'male' &&
                         <Stack gap={2.1} sx={{ paddingTop: '3px' }}>
                             <IonIcon icon={radioButtonOnOutline}></IonIcon>
                             <IonIcon icon={radioButtonOffOutline}></IonIcon>
-                        </Stack> :
+                        </Stack>
+                    }
+                    {userData?.gender === 'female' &&
                         <Stack gap={2.1} sx={{ paddingTop: '3px' }}>
                             <IonIcon icon={radioButtonOffOutline}></IonIcon>
                             <IonIcon icon={radioButtonOnOutline}></IonIcon>
                         </Stack>
                     }
                     <Stack gap={1}>
-                        <Typography sx={{ cursor: 'pointer' }} onClick={() => {
-                            setUserData({ ...userData, ['gender']: 'male' });
-                        }}>Male</Typography>
+                        <Typography sx={{ cursor: 'pointer' }}
+                            onClick={() => {
+                                console.log(userData?.gender === 'male');
+                                setUserData({ ...userData, ['gender']: 'male' });
+                            }}
+                        >Male</Typography>
                         <Typography sx={{ cursor: 'pointer' }} onClick={() => {
                             setUserData({ ...userData, ['gender']: 'female' })
                         }}>Female</Typography>
@@ -93,7 +105,7 @@ const Profile = ({ }) => {
             >
                 SAVE
             </Button>
-            <Toaster/>
+            <Toaster />
         </Stack>
     )
 }
