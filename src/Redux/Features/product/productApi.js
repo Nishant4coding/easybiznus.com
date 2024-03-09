@@ -11,6 +11,17 @@ const getAll = async () => {
     }
 }
 
+const getProdById = async (id) => {
+    try {
+        const res = await axios.get(`${BASE_URL}/products/product/sellerProduct?id=${id}`);
+        console.log("get prod by id response: ", res.data);
+        return res.data;
+    } catch (error) {
+        console.log("gey prod by id: ", error.message);
+    }
+}
+
 export default {
-    getAll
+    getAll,
+    getProdById
 }

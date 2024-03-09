@@ -19,11 +19,6 @@ const Profile = ({ }) => {
         }
     }, [profileState.profile]);
 
-    // useEffect(() => {
-    //     console.log('hi1');
-    //     dispatch(getProfile());
-    // }, [])
-
     const handleUpadteProfile = async () => {
         let data = { ...userData };
         data.birthday = `${userData.birthday.split('-')[1]}-${userData.birthday.split('-')[2]}-${userData.birthday.split('-')[0]}`;
@@ -127,7 +122,6 @@ const Inputdd = ({ name, value, title, placeholder, width, children, fsize, chan
     const birthdayHandle = (e) => {
         if (e.target.value.length <= 2) {
             if (typeof (parseInt(e.target.value)) === 'number') {
-                console.log('hi');
                 const dd = `${value?.split('-')[0]}-${value?.split('-')[1]}-${e.target.value}`;
                 changeValue({ ...data, ['birthday']: dd })
             } else {

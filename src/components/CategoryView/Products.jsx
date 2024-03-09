@@ -15,7 +15,7 @@ const Products = () => {
     }, [])
 
     return (
-        <Box sx={{ display: "flex", width: "100%", flexWrap: "wrap", gap: "60px", padding: "50px", justifyContent: "center", alignItems:'center'}}>
+        <Box sx={{ display: "flex", width: "100%", flexWrap: "wrap", gap: "60px", padding: "50px", justifyContent: "center", alignItems: 'center' }}>
             {
                 productState.gettingAllProduct &&
                 <Typography>Loading...</Typography>
@@ -24,7 +24,7 @@ const Products = () => {
             {
                 productState?.allProduct && productState?.allProduct.map((item, index) => (
                     <Box sx={{ flexShrink: 0 }} key={index}>
-                        <Card data={item.Product} />
+                        <Card data={item.Product} id={item.id} />
                     </Box>
                 ))
             }
