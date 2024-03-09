@@ -53,7 +53,7 @@ const PriceSection = ({ handleOpen, setPopTitle, data }) => {
             </Stack>
             <Typography className={styles.linebreak}></Typography>
             <Stack direction={"column"} sx={{ padding: "10px 0px 10px 25px" }}>
-                <Description />
+                <Description data={data}/>
             </Stack>
             <Typography className={styles.linebreak}></Typography>
             <Stack direction={"column"} sx={{ padding: "10px 0px 10px 25px" }}>
