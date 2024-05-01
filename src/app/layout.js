@@ -19,7 +19,7 @@ function RootLayout({ children }) {
     <html lang="en">
       <ReduxProvider>
         <body className={inter.className}>
-          {isLogin ? (
+          {true ? (
             <>
               <div className={global.desktop}>
                 <TopNav />
