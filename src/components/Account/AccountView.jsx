@@ -40,11 +40,11 @@ const AccountView = () => {
                             </Typography>
                             <Typography className={styles.subhead}>
                                 <Typography sx={{width:'50px', fontWeight:'700'}}>Email:</Typography>
-                                <Typography className={styles.subvalue}>{userData.email}</Typography>
+                                <Typography className={styles.subvalue}>{userData?.email}</Typography>
                             </Typography>
                             <Typography className={styles.subhead}>
                                 <Typography sx={{width:'50px', fontWeight:'700'}}>DOB:</Typography>
-                                <Typography className={styles.subvalue}>{userData.birthday ? userData.birthday : 'XX-XX-XXXX'}</Typography>
+                                <Typography className={styles.subvalue}>{userData?.birthday ? userData?.birthday : 'XX-XX-XXXX'}</Typography>
                             </Typography>
                         </Stack>
                     </Stack>
@@ -66,7 +66,7 @@ const AccountView = () => {
                         <Stack sx={{ marginTop: '20px', paddingLeft: '10px' }} gap={0.5}>
                             <Typography className={styles.subhead}>
                                 Phone Number:
-                                <Typography className={styles.subvalue}>{userData.phoneNumber}</Typography>
+                                <Typography className={styles.subvalue}>{userData?.phoneNumber}</Typography>
                             </Typography>
                         </Stack>
                     </Stack>
