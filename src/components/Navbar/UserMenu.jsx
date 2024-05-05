@@ -46,7 +46,7 @@ const UserMenu = ({ userMenu, handleClose }) => {
                             handleClose();
                         }}>
                             <Image src={User} alt={"icon"} width={30} />
-                            Hello, {userData.firstName}
+                            Hello, {userData?.firstName}
                         </Typography>
 
                         {
