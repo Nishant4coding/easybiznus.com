@@ -1,4 +1,4 @@
-import Logo from './logo.png';
+import Logo from './Logo.png';
 import Search from './search.svg';
 import Avatar from './avatar.svg';
 import Cart from './cart.svg';
