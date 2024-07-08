@@ -1,9 +1,9 @@
-import axios from "@/Utility/axiosInstance";
+import axiosToken from "@/Utility/axiosInstance";
 import BASE_URL from "@/Utility/baseUrl";
 
 const getAll = async () => {
     try {
-        const res = await axios.get(`${BASE_URL}/products/product/seller`);
+        const res = await axiosToken.get(`${BASE_URL}/products/product/seller`);
         console.log("get all product response: ", res.data);
         return res.data;
     } catch (error) {
@@ -13,7 +13,7 @@ const getAll = async () => {
 
 const getProdById = async (id) => {
     try {
-        const res = await axios.get(`${BASE_URL}/products/product/sellerProduct?id=${id}`);
+        const res = await axiosToken.get(`${BASE_URL}/products/product/sellerProduct?id=${id}`);
         console.log("get prod by id response: ", res.data);
         return res.data;
     } catch (error) {

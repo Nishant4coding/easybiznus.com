@@ -35,7 +35,7 @@ const ProductPage = ({ params }) => {
         <>
             {
                 !productState.product &&
-                <Typography sx={{ textAlign: 'center', marginTop: '50px' }}>Loading...</Typography>
+                <Typography sx={{ textAlign: 'center', marginTop: '50px' }}>No Product Found...</Typography>
             }
 
             {/* DESKTOP VIEW */}
