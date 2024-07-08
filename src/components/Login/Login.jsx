@@ -25,7 +25,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, authUser } from "@/Redux/Features/auth/authSlice";
 import { getProfile } from "@/Redux/Features/profile/profileSlice";
 
-const Login = ({ setIsLogin, setLoginSwitch }) => {
+// const Login = ({ setIsLogin, setLoginSwitch }) => {
+const Login = ({setLoginSwitch }) => {
   const dispatch = useDispatch();
   const auth = useSelector(authUser);
   const profileState = useSelector(state => state.profile);
@@ -45,7 +46,7 @@ const Login = ({ setIsLogin, setLoginSwitch }) => {
 
   useEffect(() => {
     if (auth.isSuccess) {
-      setIsLogin(true);
+      // setIsLogin(true);
       dispatch(getProfile())
     }
   }, [auth]);

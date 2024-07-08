@@ -25,7 +25,8 @@ import { useRouter } from "next/navigation";
 import { register, authUser } from "@/Redux/Features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const Register =({setLoginSwitch,setIsLogin}) => {
+// const Register =({setLoginSwitch,setIsLogin}) => {
+const Register =({setLoginSwitch}) => {
   const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
@@ -59,7 +60,7 @@ const Register =({setLoginSwitch,setIsLogin}) => {
   const signupHandler = (e) => {
     e.preventDefault();
     dispatch(register(userData));
-    setIsLogin(true);
+    // setIsLogin(true);
   };
 
   useEffect(() => {

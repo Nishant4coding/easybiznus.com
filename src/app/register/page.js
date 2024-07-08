@@ -7,7 +7,8 @@ import Register from "@/components/Register/Register";
 import { Stack, Box } from "@mui/material";
 import style from "../Global.module.css";
 import { useRouter } from "next/navigation";
-const RegisterPage = ({ setLoginSwitch,setIsLogin }) => {
+// const RegisterPage = ({ setLoginSwitch,setIsLogin }) => {
+const RegisterPage = ({ setLoginSwitch }) => {
   return (
     <>
       <Box className={style.loginBtn} onClick={() => setLoginSwitch(false)}>
@@ -15,7 +16,8 @@ const RegisterPage = ({ setLoginSwitch,setIsLogin }) => {
       </Box>
       <Stack direction="row">
         <Image src={RegisterImage} className={style.entryImg} alt=""></Image>
-        <Register setLoginSwitch={setLoginSwitch}  setIsLogin={setIsLogin}/>
+        {/* <Register setLoginSwitch={setLoginSwitch}  setIsLogin={setIsLogin}/> */}
+        <Register setLoginSwitch={setLoginSwitch}/>
       </Stack>
     </>
   );

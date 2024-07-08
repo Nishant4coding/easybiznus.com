@@ -10,7 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { getProfile } from "@/Redux/Features/profile/profileSlice";
 
-const LoginPage = ({ setIsLogin, setLoginSwitch }) => {
+// const LoginPage = ({ setIsLogin, setLoginSwitch }) => {
+const LoginPage = ({setLoginSwitch }) => {
   const profileState = useSelector(state => state.profile);
   const dispatch = useDispatch();
 
@@ -19,9 +20,12 @@ const LoginPage = ({ setIsLogin, setLoginSwitch }) => {
     if (profileState.profile === null) {
       dispatch(getProfile());
     }
-    if (profileState.profile) {
-      setIsLogin(true);
-    }
+    // if (profileState.profile) {
+    //   setIsLogin(true);
+    // }
+    // if (profileState.profile) {
+    //   setIsLogin(true);
+    // }
   }, [profileState.profile])
 
 
@@ -35,7 +39,8 @@ const LoginPage = ({ setIsLogin, setLoginSwitch }) => {
             <Image src={JoinButton} width={120} height={120} alt=""></Image>
           </Box>
           <Stack direction="row">
-            <Login setIsLogin={setIsLogin} setLoginSwitch={setLoginSwitch} />
+            {/* <Login setIsLogin={setIsLogin} setLoginSwitch={setLoginSwitch} /> */}
+            <Login setLoginSwitch={setLoginSwitch} />
             <Image src={LoginImage} className={style.entryImg} alt=""></Image>
           </Stack>
         </>

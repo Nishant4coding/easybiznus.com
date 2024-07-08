@@ -12,7 +12,8 @@ import Register from "./register/page";
 const inter = Inter({ subsets: ["latin"] });
 
 function RootLayout({ children }) {
-  const [isLogin, setIsLogin] = useState(false);
+  // const [isLogin, setIsLogin] = useState(false);
+  const [isLogin] = useState(false);
   const [loginSwitch, setLoginSwitch] = useState(false);
 
   return (
@@ -34,12 +35,12 @@ function RootLayout({ children }) {
               {!loginSwitch ? (
                 <Login
                   setLoginSwitch={setLoginSwitch}
-                  setIsLogin={setIsLogin}
+                  // setIsLogin={setIsLogin}
                 />
               ) : (
                 <Register
                   setLoginSwitch={setLoginSwitch}
-                  setIsLogin={setIsLogin}
+                  // setIsLogin={setIsLogin}
                 />
               )}
             </>
