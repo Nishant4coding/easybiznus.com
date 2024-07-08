@@ -1,14 +1,31 @@
 "use client"
-import React from 'react';
+import React, { useEffect } from 'react';
 import CardB from '../../MobileViewCards/CardB/CardB';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { Shoe1 } from '@/assets/svg/index';
 import { Stack, Grid, Button } from '@mui/material';
 import Link from 'next/link';
 import CustomButton from '../CustomBtn/CustomButton';
 import Header from '../CustomHeader/Header';
+import { fetchWishlist, removeFromWishlist } from '@/Redux/Features/wishlist/wishlistSlice';    
 import global from '@/global.module.css';
 
 const Wishlist = () => {
+    const dispatch = useDispatch();
+    const userId = useSelector(state => state.auth.user.id);
+    const wishlistItems = useSelector(state => state.wishlist.items);
+    const loading = useSelector(state => state.wishlist.loading);
+    const error = useSelector(state => state.wishlist.error);
+
+    useEffect(() => {
+        // Fetch wishlist on component mount
+        dispatch(fetchWishlist());
+    }, [dispatch]);
+
+    const handleRemoveFromWishlist = (productId) => {
+        dispatch(removeFromWishlist({ productId }));
+    };
 
     return (
         <Stack sx={{ alignItems: 'center', marginTop: "55px", backgroundColor: '#fff', minHeight: '92vh', position: 'relative' }}>

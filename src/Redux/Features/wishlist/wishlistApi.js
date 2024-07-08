@@ -1,6 +1,6 @@
 import axiosToken from "@/Utility/axiosInstance";
 import BASE_URL from "@/Utility/baseUrl";
-// const userId = window.localStorage.getItem("userId");
+const userId = window.localStorage.getItem("userId");
 
 export const addToWishlistApi = async (productId) => {
   try {
