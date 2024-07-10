@@ -9,14 +9,33 @@ import { CardD, Pen, Delete } from '@/assets/svg/index';
 import { checkmarkCircleOutline } from "ionicons/icons";
 import { IonIcon } from "@ionic/react";
 import { useState } from "react";
+import { useDispatch } from "react-redux"; // Import useDispatch
+import { addToCart } from "@/Redux/Features/cart/cartSlice"; // Import the addToCart action
 import DeleteModal from "@/components/Cart/Delete";
 
 const Card = ({ data, edit = true }) => {
-    const { title, color, size, sku_code, price } = data;
-    const [qty, setQty]=useState(1);
+    const { title, color, size, sku_code, price, id,sellerId, 
+        AccountId
+         } = data;
+    const [qty, setQty] = useState(1);
     const [open, setOpen] = useState(false);
+    const dispatch = useDispatch(); // Use the useDispatch hook
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const handleAddToCart = () => {
+        const productDetails = {
+          productId: id, // Assuming 'id' corresponds to productId
+          quantity: qty,
+          price: price ?? 0, // Default to 0 if undefinedF
+    salePrice: price ?? 0, // Assuming salePrice is the same as price here
+          sellerId: sellerId, // Replace with the actual sellerId if available
+          AccountId: AccountId // Replace with the actual AccountId if available
+        };
+      
+        console.log('Dispatching addToCart with:', productDetails);
+        dispatch(addToCart(productDetails));
+      };
 
     return (
         <Stack direction={"row"} gap={2} className={styles.container}>
@@ -40,7 +59,7 @@ const Card = ({ data, edit = true }) => {
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             value={qty}
-                            onChange={(e)=>setQty(e.target.value)}
+                            onChange={(e) => setQty(e.target.value)}
                         >
                             <MenuItem value={1}>1</MenuItem>
                             <MenuItem value={2}>2</MenuItem>
@@ -54,11 +73,11 @@ const Card = ({ data, edit = true }) => {
                     <Typography className={styles.price}>{price}</Typography>
                     <Stack direction={"row"} gap={2} sx={{ justifyContent: "flex-end" }}>
                         {edit && <Image src={Pen} alt={"pen"} style={{ cursor: "pointer" }} />}
-                        <Image src={Delete} alt={"delete"} style={{ cursor: "pointer" }} onClick={handleOpen}/>
+                        <Image src={Delete} alt={"delete"} style={{ cursor: "pointer" }} onClick={handleOpen} />
                     </Stack>
                 </Stack>
 
-                {edit &&
+                {/* {edit && */}
                     <Button variant="contained" className={styles.button}
                         sx={{
                             "&:hover": {
@@ -66,14 +85,13 @@ const Card = ({ data, edit = true }) => {
                             },
                             marginTop: "40px"
                         }}
+                        onClick={handleAddToCart}
                     >
                         ADD TO CART
                     </Button>
-                }
-
-
+                {/* } */}
             </Stack>
-            <DeleteModal open={open} handleClose={handleClose} />
+            <DeleteModal open={open} handleClose={handleClose} cartItemId={id} />
         </Stack>
     )
 }

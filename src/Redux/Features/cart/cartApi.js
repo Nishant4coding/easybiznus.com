@@ -1,38 +1,46 @@
-import axiosToken from '@/Utility/axiosInstance';
+import axiosToken from '@/Utility/axiosInstance'; 
 import BASE_URL from '@/Utility/baseUrl';
 import axios from 'axios';
 
+export const addToCartApi = async (productDetails) => {
+  try {
+    console.log('Adding to cart:', productDetails);
+    const response = await axiosToken.post(`${BASE_URL}/cart/add-to-cart`, productDetails);
+    
+    return response.data;
+  } catch (error) {
 
-export const addToCartApi = async ( productDetails) => {
-  const response = await axios.post(
-    `${BASE_URL}/cart/add-to-cart`,
-    productDetails,
- 
-  );
-
- 
-  return response.data;
+    console.error('Error adding to cart:', error);
+    throw error; 
+  }
 };
 
 export const getCartApi = async () => {
-  const response = await axiosToken.get(`${BASE_URL}/cart`);
-  console.log(response.data)
-  return response.data;
+  try {
+    const response = await axiosToken.get(`${BASE_URL}/cart`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching cart:', error);
+    throw error; 
+  }
 };
 
-export const editCartItemQuantityApi = async (token, cartItemId, quantity) => {
-  const response = await axiosToken.put(
-    `${BASE_URL}/cart/addtocart`,
-    { cartItemId, quantity },
-    
-  );
-
-  return response.data;
+export const editCartItemQuantityApi = async (cartItemId, quantity) => {
+  try {
+    const response = await axiosToken.put(`${BASE_URL}/cart/addtocart`, { cartItemId, quantity });
+    return response.data;
+  } catch (error) {
+    console.error('Error editing cart item quantity:', error);
+    throw error; 
+  }
 };
 
-export const removeCartItemApi = async (token, cartItemId) => {
-  const response = await axiosToken.delete(
-    `${BASE_URL}/cart/deleteCartItem/${cartItemId}`,);
-
-  return response.data;
+export const removeCartItemApi = async (cartItemId) => {
+  try {
+    const response = await axiosToken.delete(`${BASE_URL}/cart/deleteCartItem/${cartItemId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error removing cart item:', error);
+    throw error; 
+  }
 };

@@ -9,6 +9,8 @@ import Pincode from '../Pincode';
 import { PinBlack } from '@/assets/svg';
 import Image from 'next/image';
 import global from '@/global.module.css';
+import { addToCart } from '@/Redux/Features/cart/cartSlice';
+import { useDispatch } from 'react-redux';
 
 const Product = ({ handleOpen }) => {
     const [qty, setQty] = useState(1);
@@ -16,13 +18,26 @@ const Product = ({ handleOpen }) => {
     const [size, setSize] = useState(0);
     const [pin, setPin] = useState('201016');
     const [changepin, setChangepin] = useState(true);
+    const dispatch = useDispatch(); 
 
     const toggleWish = () => setWish(!wish);
     const handleSize = (value) => setSize(value);
     const toggleSetPin = () => setChangepin(!changepin);
     const handlePin = (e) => setPin(e.target.value);
 
-
+    const handleAddToCart = () => {
+        const productDetails = {
+          productId: id, 
+          quantity: qty,
+          price,
+          salePrice: price, 
+          sellerId: 'e21796a6-8af1-49b7-a4ec-6c65e62786a8', 
+          AccountId: '4c27d1b6-15fd-4554-8ff5-970fcc319665'
+        };
+      
+        console.log('Dispatching addToCart with:', productDetails);
+        dispatch(addToCart(productDetails));
+      };
 
     return (
         <Box>
@@ -43,7 +58,7 @@ const Product = ({ handleOpen }) => {
                 </Stack>
                 <Stack gap={1}>
                     <Button className={global.button} variant='contained' onClick={handleOpen} style={{ fontSize: '13px' }}>
-                        <Typography style={{ fontWeight: '600' }}>+</Typography>
+                        <Typography style={{ fontWeight: '600' }} onClick={handleAddToCart}>+</Typography>
                         ADD TO CART
                     </Button>
                     <Button variant="contained" className={global.button} style={{ fontSize: '13px' }}>

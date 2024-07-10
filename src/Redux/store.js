@@ -6,6 +6,7 @@ import wishlistSlice from "./Features/wishlist/wishlistSlice";
 import cartSlice from "./Features/cart/cartSlice";
 import orderHistorySlice from "./Features/orderHistory/orderHistorySlice";
 import productSliceCat from './Features/category/categorySlice'
+import dashboardSlice from "./Features/dashboard/dashboardSlice";
 
 const store = configureStore({
   reducer: {
@@ -15,7 +16,8 @@ const store = configureStore({
     wishlist: wishlistSlice,
     category:productSliceCat,
     cart:cartSlice,
-    order:orderHistorySlice
+    order:orderHistorySlice,
+    dashboard:dashboardSlice
   }
 })
 

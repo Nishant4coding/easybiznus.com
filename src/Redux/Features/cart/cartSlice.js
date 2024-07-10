@@ -85,11 +85,13 @@ const cartSlice = createSlice({
       })
       .addCase(getCart.fulfilled, (state, action) => {
         state.loading = false;
-        state.cart = action.payload;
+        state.cart = action.payload.items; 
+        console.log("Fulfilled: ", action.payload); 
       })
       .addCase(getCart.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        console.log("Rejected: ", action.payload);
       })
       // Edit Cart Item Quantity
       .addCase(editCartItemQuantity.pending, (state) => {
