@@ -7,8 +7,8 @@ export const fetchWishlist = createAsyncThunk(
     try {
       const userId = thunkApi.getState().auth.user.id;
       const res = await getWishlistApi(userId);
-      console.log(userId)
-      console.log(res)
+      // console.log(userId)
+      // console.log(res)
       return res;
     } catch (error) {
       return thunkApi.rejectWithValue({

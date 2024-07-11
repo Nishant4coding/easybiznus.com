@@ -1,12 +1,12 @@
 "use client"
 
-import { Stack, Typography } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 import { fetchWishlist } from "@/Redux/Features/wishlist/wishlistSlice";
+import { Stack, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Card from "../CardD/Card";
-import styles from './wishlist.module.css';
 import Delete from "../Cart/Delete";
+import styles from './wishlist.module.css';
 
 const Container = () => {
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -27,8 +27,6 @@ const Container = () => {
         dispatch(fetchWishlist());
         
     }, [dispatch]);
-
-    console.log("Wishlist state:", wishlistState);
 
     return (
         <Stack direction={"column"} className={styles.container} gap={3}>

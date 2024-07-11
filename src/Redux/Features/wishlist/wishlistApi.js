@@ -8,7 +8,7 @@ export const addToWishlistApi = async (productId) => {
       `${BASE_URL}/account/wishlist/${userId}`,
       { productId }
     );
-    console.log("added data ",response.data)
+    // console.log("added data ",response.data)
     return response.data;
   } catch (error) {
     console.log("get all product: ", error.message);
@@ -21,7 +21,7 @@ export const getWishlistApi = async () => {
     const response = await axiosToken.get(
       `${BASE_URL}/account/wishlist/${userId}`
     );
-    console.log("get data",response.data);
+    // console.log("get data",response.data);
     return response.data;
   }
   
