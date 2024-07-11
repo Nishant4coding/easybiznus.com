@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "./Features/auth/authSlice";
-import profileSlice from "./Features/profile/profileSlice";
-import productSlice from "./Features/product/productSlice";
-import wishlistSlice from "./Features/wishlist/wishlistSlice";
 import cartSlice from "./Features/cart/cartSlice";
 import orderHistorySlice from "./Features/orderHistory/orderHistorySlice";
-import productSliceCat from './Features/category/categorySlice'
-import dashboardSlice from "./Features/dashboard/dashboardSlice";
+import productSlice from "./Features/product/productSlice";
+import profileSlice from "./Features/profile/profileSlice";
+import wishlistSlice from "./Features/wishlist/wishlistSlice";
+// import dashboardSlice from "./Features/dashboard/dashboardSlice";
+import categorySlice from "./Features/category/categorySlice";
 
 const store = configureStore({
   reducer: {
@@ -14,10 +14,10 @@ const store = configureStore({
     profile: profileSlice,
     product: productSlice,
     wishlist: wishlistSlice,
-    category:productSliceCat,
+    category:categorySlice,
     cart:cartSlice,
     order:orderHistorySlice,
-    dashboard:dashboardSlice
+    // dashboard:dashboardSlice
   }
 })
 
