@@ -44,6 +44,7 @@ export const removeCartItem = createAsyncThunk(
   async (cartItemId, { rejectWithValue }) => {
     try {
       const res = await removeCartItemApi(cartItemId);
+      console.log(cartItemId)
       return { cartItemId };
     } catch (error) {
       return rejectWithValue(error.response.data);
