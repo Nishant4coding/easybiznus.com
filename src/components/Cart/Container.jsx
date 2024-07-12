@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Stack, Typography } from "@mui/material";
-import Card from "../CardD/Card";
+import Card from "../CardI/Card";
 import { getCart } from "@/Redux/Features/cart/cartSlice";
 import styles from '@/components/Wishlist/wishlist.module.css';
 import Delete from './Delete';
