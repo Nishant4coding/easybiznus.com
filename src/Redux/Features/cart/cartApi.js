@@ -6,12 +6,11 @@ export const addToCartApi = async (productDetails) => {
   try {
     console.log('Adding to cart:', productDetails);
     const response = await axiosToken.post(`${BASE_URL}/cart/add-to-cart`, productDetails);
-    
+    console.log("Add to cart response:", response);
     return response.data;
   } catch (error) {
-
-    console.error('Error adding to cart:', error);
-    throw error; 
+    console.error('Error adding to cart:', error.message);
+    throw error;
   }
 };
 

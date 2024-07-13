@@ -6,10 +6,13 @@ export const addToCart = createAsyncThunk(
   'cart/addToCart',
   async (productDetails, { rejectWithValue }) => {
     try {
+      console.log('Sending product details to server:', productDetails);
       const res = await addToCartApi(productDetails);
+      console.log("Slice response:", res);
       return res;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      console.error('Add to cart error:', error.message);
+      return rejectWithValue(error.response ? error.response.data : error.message);
     }
   }
 );
@@ -54,9 +57,11 @@ export const removeCartItem = createAsyncThunk(
 
 // Initial state
 const initialState = {
-  cart: [],
-  loading: false,
-  error: null,
+  cart: {
+    items: [],
+    loading: false,
+    error: null,
+  },
 };
 
 // Slice
@@ -73,11 +78,13 @@ const cartSlice = createSlice({
       })
       .addCase(addToCart.fulfilled, (state, action) => {
         state.loading = false;
-        state.cart.push(action.payload);
+        state.cart.items.push(action.payload);
       })
       .addCase(addToCart.rejected, (state, action) => {
         state.loading = false;
+        console.log("Payload",action.payload)
         state.error = action.payload;
+        
       })
       // Get Cart
       .addCase(getCart.pending, (state) => {
@@ -86,7 +93,7 @@ const cartSlice = createSlice({
       })
       .addCase(getCart.fulfilled, (state, action) => {
         state.loading = false;
-        state.cart = action.payload.items; 
+        state.cart = action.payload; 
         console.log("Fulfilled: ", action.payload); 
       })
       .addCase(getCart.rejected, (state, action) => {
@@ -117,7 +124,7 @@ const cartSlice = createSlice({
       })
       .addCase(removeCartItem.fulfilled, (state, action) => {
         state.loading = false;
-        state.cart = state.cart.filter(item => item.id !== action.payload.cartItemId);
+        state.cart.items = state.cart.items.filter(item => item.id !== action.payload.cartItemId);
       })
       .addCase(removeCartItem.rejected, (state, action) => {
         state.loading = false;
