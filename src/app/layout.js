@@ -19,7 +19,7 @@ function RootLayout({ children }) {
   return (
     <html lang="en">
       <ReduxProvider>
-        <body className={inter.className}>
+        <body suppressHydrationWarning={true} className={inter.className}>
           {true ? (
             <>
               <div className={global.desktop}>
@@ -34,12 +34,12 @@ function RootLayout({ children }) {
             <>
               {!loginSwitch ? (
                 <Login
-                  setLoginSwitch={setLoginSwitch}
+                  // setLoginSwitch={setLoginSwitch}
                   // setIsLogin={setIsLogin}
                 />
               ) : (
                 <Register
-                  setLoginSwitch={setLoginSwitch}
+                  // setLoginSwitch={setLoginSwitch}
                   // setIsLogin={setIsLogin}
                 />
               )}

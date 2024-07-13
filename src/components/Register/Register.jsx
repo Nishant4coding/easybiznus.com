@@ -29,7 +29,6 @@ import { useDispatch, useSelector } from "react-redux";
 const Register =({setLoginSwitch}) => {
   const [userData, setUserData] = useState({
     firstName: "",
-    lastName: "",
     mobile: "",
     role: "user",
     email: "",

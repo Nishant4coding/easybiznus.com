@@ -10,7 +10,7 @@ export const login = createAsyncThunk(
                 return thunkAPI.rejectWithValue(error);    
             }
         }
-        catch(err){
+        catch(error){
             return thunkAPI.rejectWithValue(error);
         }
     }
@@ -42,7 +42,7 @@ export const profile = createAsyncThunk(
             }
             return res;
         }
-        catch(err){
+        catch(error){
             return thunkAPI.rejectWithValue(error);
         }
     }
@@ -68,6 +68,7 @@ const authSlice  = createSlice({
             state.isLoading=false;
             state.isSuccess=true;
             state.isError=false;
+            console.log("Fullfill",state)
         })
         .addCase(login.rejected, (state)=>{
             state.isError=true;
@@ -80,6 +81,7 @@ const authSlice  = createSlice({
             state.isSuccess=true;
             state.isLoading=false;
             state.isError=false;
+            console.log("Fullfill",state)
         })
         .addCase(register.rejected, (state)=>{
             state.isError=true;

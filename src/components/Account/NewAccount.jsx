@@ -5,7 +5,7 @@ import { IonIcon } from '@ionic/react';
 import global from '@/global.module.css';
 import { chevronDownOutline } from 'ionicons/icons';
 
-const NewAccount = ({setForm}) => {
+const NewAccount = ({ setForm }) => {
   return (
     <Stack sx={{ width: '80%', alignItems: 'center' }}>
       <Stack sx={{ width: '100%', marginBottom: '160px' }} gap={5}>
@@ -28,40 +28,42 @@ const NewAccount = ({setForm}) => {
           <Input title={"Address Line 2*"} placeholder={"Address Line 2"} width={"82%"} />
         </Stack>
         <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
-          <Input title={"Country"} placeholder={"Select Country"} >
-          <IonIcon icon={chevronDownOutline} className={styles.downArrow}></IonIcon>
+          <Input title={"Country"} placeholder={"Select Country"}>
+            <IonIcon icon={chevronDownOutline} className={styles.downArrow} />
           </Input>
-          <Input title={"State *"} placeholder={"Select State"} >
-          <IonIcon icon={chevronDownOutline} className={styles.downArrow}></IonIcon>
+          <Input title={"State *"} placeholder={"Select State"}>
+            <IonIcon icon={chevronDownOutline} className={styles.downArrow} />
           </Input>
         </Stack>
-        <Stack direction={"row"} gap={2} className={styles.inputcontainer} sx={{alignItems:'flex-end'}}>
-          <Input title={"City *"} placeholder={"Select City"} >
-            <IonIcon icon={chevronDownOutline} className={styles.downArrow}></IonIcon>
+        <Stack direction={"row"} gap={2} className={styles.inputcontainer} sx={{ alignItems: 'flex-end' }}>
+          <Input title={"City *"} placeholder={"Select City"}>
+            <IonIcon icon={chevronDownOutline} className={styles.downArrow} />
           </Input>
           <Input title={"PIN CODE *"} placeholder={"State"} fsize={"15px"}>
-            <IonIcon icon={chevronDownOutline} className={styles.downArrow}></IonIcon>
+            <IonIcon icon={chevronDownOutline} className={styles.downArrow} />
           </Input>
         </Stack>
       </Stack>
-      <Button variant='contained'className={global.button}
-      onClick={()=>setForm(false)}
-      style={{padding:'10px 50px', fontSize:'13px'}}
+      <Button
+        variant='contained'
+        className={global.button}
+        onClick={() => setForm(false)}
+        style={{ padding: '10px 50px', fontSize: '13px' }}
       >
         SAVE
       </Button>
     </Stack>
-  )
+  );
 }
 
 export default NewAccount;
 
 const Input = ({ title, placeholder, width, children, fsize }) => {
   return (
-    <Stack gap={1} sx={{ width: width ? width : '40%', position:'relative'}}>
-      <Typography style={{fontSize:fsize?fsize:""}} className={styles.inputhead}>{title}</Typography>
+    <Stack gap={1} sx={{ width: width ? width : '40%', position: 'relative' }}>
+      <Typography style={{ fontSize: fsize ? fsize : "" }} className={styles.inputhead}>{title}</Typography>
       <input type="text" placeholder={placeholder} className={styles.input}></input>
       {children}
     </Stack>
-  )
+  );
 }
