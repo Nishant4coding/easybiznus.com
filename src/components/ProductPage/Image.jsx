@@ -6,21 +6,23 @@ import styles from './product.module.css';
 import { useState } from 'react';
 
 const ImageGrid = ({ image }) => {
-    const [mainImg, setMainImg] = useState(image[0]);
+    // const [mainImg, setMainImg] = useState(image[0]);
+    // const [mainImg, setMainImg] = useState(image);
 
     return (
         <Stack style={{ width: '100%' }} direction={"row"} gap={0.5}>
             <Stack gap={0.5}>
                 {
-                    image.map((item, index) => (
-                        <Box key={index} className={styles.imgGrid} onClick={() => setMainImg(item)}>
-                            <Image alt="prod-image" src={item} className={styles.img} width={90} height={90}></Image>
+                    // image.map((item, index) => ( //when images are in array
+                        // <Box key={index} className={styles.imgGrid} onClick={() => setMainImg(item)}>
+                        <Box  className={styles.imgGrid}>
+                            <Image alt="prod-image" src={image} className={styles.img} width={90} height={90}></Image>
                         </Box>
-                    ))
+                    // ))
                 }
             </Stack>
             <Box className={styles.mainImg}>
-                <Image alt="product" src={mainImg} className={styles.img} width={600} height={600}></Image>
+                <Image alt="product" src={image} className={styles.img} width={600} height={600}></Image>
             </Box>
 
             {/* OLD STYLE */}

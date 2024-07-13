@@ -11,9 +11,10 @@ const getAll = async () => {
     }
 }
 
-const getProdById = async (id) => {
+const getProductById = async (id) => {
     try {
         const res = await axiosToken.get(`${BASE_URL}/products/product/sellerProduct?id=${id}`);
+        console.log(id)
         console.log("get prod by id response: ", res.data);
         return res.data;
     } catch (error) {
@@ -23,5 +24,5 @@ const getProdById = async (id) => {
 
 export default {
     getAll,
-    getProdById
+    getProductById
 }
