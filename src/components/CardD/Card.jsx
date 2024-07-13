@@ -9,12 +9,14 @@ import { CardD, Pen, Delete } from "@/assets/svg/index";
 import { checkmarkCircleOutline } from "ionicons/icons";
 import { IonIcon } from "@ionic/react";
 import { useState } from "react";
-import { useDispatch } from "react-redux"; // Import useDispatch
-import { addToCart } from "@/Redux/Features/cart/cartSlice"; // Import the addToCart action
+import { useDispatch } from "react-redux"; 
+import { addToCart } from "@/Redux/Features/cart/cartSlice"; 
 import DeleteModal from "@/components/Cart/Delete";
 
 const Card = ({ data, edit = true }) => {
   const cardData = data.SellerProduct.Product;
+  console.log("data",data)
+  console.log("Card data",cardData)
   const [qty, setQty] = useState(1);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
@@ -23,13 +25,17 @@ const Card = ({ data, edit = true }) => {
 
   const handleAddToCart = () => {
     const productDetails = {
-      productId: data.SellerProduct.ProductId,
+      productId: String(data?.SellerProduct?.Cartons[0]?.id || data.SellerProduct.SellerVariants[0].id),
       quantity: data.SellerProduct.quantity,
-      price: data.SellerProduct.price, 
-      salePrice: data.SellerProduct.price,
-      sellerId: data.sellerProductId,
-      AccountId: data.SellerProduct.AccountId,
+      price: String(data.SellerProduct.price), 
+      salePrice: String(data.SellerProduct.Product.salePrice),
+      sellerId: String(data.SellerProduct.Product.adminId),
+      AccountId: String(data.accountId),   
     };
+   
+    console.log('Product details being sent:', productDetails);
+    console.log('data', data);
+
 
     dispatch(addToCart(productDetails));
   };
@@ -38,11 +44,12 @@ const Card = ({ data, edit = true }) => {
     <Stack direction={"row"} gap={2} className={styles.container}>
       <Stack direction={"column"}>
         <Image
-          src={cardData.images[0]}
+          src={cardData?.images[0]|| cardData.primaryImage}
           alt={"product"}
           width={200}
           height={200}
         />
+        {JSON.stringify(data?.SellerProduct?.Cartons[0]?.id || data.SellerProduct.SellerVariants[0].id)}
         <Typography className={styles.stock}>
           <IonIcon icon={checkmarkCircleOutline}></IonIcon>
           In-Stock
@@ -50,6 +57,7 @@ const Card = ({ data, edit = true }) => {
       </Stack>
       <Stack direction={"column"} gap={1}>
         <Stack direction={"column"}>
+      
           <Typography className={styles.prodname}>
             {cardData.articalName}
           </Typography>
@@ -72,7 +80,7 @@ const Card = ({ data, edit = true }) => {
               onChange={(e) => setQty(e.target.value)}
             >
               <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
+              <MenuItem value={2}>2</MenuItem>  
               <MenuItem value={3}>3</MenuItem>
             </Select>
           </FormControl>
@@ -110,7 +118,7 @@ const Card = ({ data, edit = true }) => {
         </Button>
         {/* } */}
       </Stack>
-      <DeleteModal open={open} handleClose={handleClose} cartItemId={data.id} />
+      {/* <DeleteModal open={open} handleClose={handleClose} cartItemId={data.id} /> */}
     </Stack>
   );
 };

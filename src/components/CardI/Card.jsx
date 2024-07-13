@@ -13,9 +13,8 @@ import { useDispatch } from "react-redux";
 import DeleteModal from "@/components/Cart/Delete";
 
 const Card = ({ data, edit = true }) => {
-    // const { title, color, size, sku_code, price, id } = data.Carton.SellerProduct.Product;
-    const cardData = data.Carton.SellerProduct.Product;
-    const cardDataVarient = data.Carton.SellerVariants ;
+
+    const cardData = data.Carton?.SellerProduct?.Product || data.SellerVariant.SellerProduct.Product;
     const [qty, setQty] = useState(1);
     const [open, setOpen] = useState(false);
     const dispatch = useDispatch(); 
@@ -26,7 +25,7 @@ const Card = ({ data, edit = true }) => {
     return (
         <Stack direction={"row"} gap={2} className={styles.container}>
             <Stack direction={"column"}>
-                {/* <Image src={cardData.images[0]} alt={"product"} width={200} height={200}/> */}
+                <Image src={cardData?.images[0] || cardData.primaryImage} alt={"product"} width={200} height={200}/>
                 <Typography className={styles.stock}>
                     <IonIcon icon={checkmarkCircleOutline}></IonIcon>
                     In-Stock
@@ -35,8 +34,8 @@ const Card = ({ data, edit = true }) => {
             <Stack direction={"column"} gap={1}>
                 <Stack direction={"column"}>
                     <Typography className={styles.prodname}>{cardData.articalName}</Typography>
-                    <Typography className={styles.subtitle}>Color:{cardDataVarient[0].color}</Typography>
-                    <Typography className={styles.subtitle}>Size: {cardDataVarient[0].size}</Typography>
+                    {/* <Typography className={styles.subtitle}>Color:{cardDataVarient[0].color}</Typography> */}
+                    {/* <Typography className={styles.subtitle}>Size: {cardDataVarient[0].size}</Typography> */}
                     <Typography className={styles.subtitle}>SKU CODE: {cardData.sku}</Typography>
                 </Stack>
                 <Box sx={{ width: "70px" }}>
@@ -56,7 +55,7 @@ const Card = ({ data, edit = true }) => {
             </Stack>
             <Stack direction={"column"} sx={{ width: "30%", alignItems: "flex-end" }}>
                 <Stack direction={"column"} gap={1}>
-                    <Typography className={styles.price}>{data.price}</Typography>
+                    <Typography className={styles.price}>{data.salePrice}</Typography>
                     <Stack direction={"row"} gap={2} sx={{ justifyContent: "flex-end" }}>
                         {edit && <Image src={Pen} alt={"pen"} style={{ cursor: "pointer" }} />}
                         <Image src={Delete} alt={"delete"} style={{ cursor: "pointer" }} onClick={handleOpen} />

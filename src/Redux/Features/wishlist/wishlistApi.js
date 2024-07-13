@@ -1,8 +1,8 @@
 import axiosToken from "@/Utility/axiosInstance";
 import BASE_URL from "@/Utility/baseUrl";
-const userId = window.localStorage.getItem("userId");
 
 export const addToWishlistApi = async (productId) => {
+  const userId = window.localStorage.getItem("userId");
   try {
     const response = await axiosToken.post(
       `${BASE_URL}/account/wishlist/${userId}`,
@@ -16,21 +16,20 @@ export const addToWishlistApi = async (productId) => {
 };
 
 export const getWishlistApi = async () => {
-  try{
-    
+  const userId = window.localStorage.getItem("userId");
+  try {
     const response = await axiosToken.get(
       `${BASE_URL}/account/wishlist/${userId}`
     );
     // console.log("get data",response.data);
     return response.data;
+  } catch (error) {
+    console.log("get all product: ", error.message);
   }
-  
-catch (error) {
-  console.log("get all product: ", error.message);
-}
-}
+};
 
 export const removeWishlistItemApi = async (productId) => {
+  const userId = window.localStorage.getItem("userId");
   const response = await axiosToken.delete(
     `${BASE_URL}/account/wishlist/${userId}/${productId}`
   );

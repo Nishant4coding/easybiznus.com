@@ -13,6 +13,7 @@ const Container = () => {
     const [selectedCartItemId, setSelectedCartItemId] = useState(null);
     const dispatch = useDispatch();
     const wishlistState = useSelector(state => state.wishlist);
+    console.log(wishlistState)
     const handleDeleteOpen = (cartItemId) => {
         setSelectedCartItemId(cartItemId);
         setDeleteModalOpen(true);
@@ -37,7 +38,7 @@ const Container = () => {
                 {
                     wishlistState.items && wishlistState.items.map((item, index) => (
                         <Card  data={item} 
-                        key={index} 
+                        key={index}     
                         edit={false} 
                         onDelete={() => handleDeleteOpen(item.id)} />
                     ))
