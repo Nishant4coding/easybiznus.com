@@ -5,7 +5,7 @@ const nextConfig = {
         defaultLocale: 'en',
     },
     images: {
-        domains: ['shoemato.s3.ap-south-1.amazonaws.com'],
+        domains: ['shoemato.s3.ap-south-1.amazonaws.com','static.nike.com'],
     },
 }
 

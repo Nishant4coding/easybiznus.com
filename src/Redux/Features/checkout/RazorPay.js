@@ -1,3 +1,4 @@
+import axiosToken from "@/Utility/axiosInstance";
 import axios from "@/Utility/axiosInstance";
 import BASE_URL from "@/Utility/baseUrl";
 
@@ -13,12 +14,13 @@ const loadRazorpay = () => {
 };
 
 export const RazorCheckout = async (pricingData, id, userDetails) => {
+    const token = localStorage.getItem("token");
     const { firstName, phoneNumber } = userDetails;
     try {
         await loadRazorpay();
 
         const userEmail = localStorage.getItem("username");
-        const response = await axios.post(`${BASE_URL}/transaction/initiate`, { amount: pricingData.subTotal + pricingData.tax });
+        const response = await axiosToken.post(`${BASE_URL}/transaction/initiate`, { amount: pricingData.subTotal + pricingData.tax });
         const order = response.data.order;
 
         if (!window.Razorpay) {
@@ -43,25 +45,20 @@ export const RazorCheckout = async (pricingData, id, userDetails) => {
             handler: function (response) {
                 console.log({ response });
                 const paymentData = {
-                    ...order,
-                    ...response,
+                    // ...order,
+                    // ...response,
                     cartId: id,
-                    creditsUsed: 10000,
+                    // creditsUsed: 10000,
                 };
 
                 fetch(`${BASE_URL}/order/createOrder`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
+                        "Authorization": `${token}`
                     },
                     body: JSON.stringify(paymentData),
                 })
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error("Network response was not ok");
-                        }
-                        return response.json();
-                    })
                     .then((data) => {
                         console.log(data);
                     })
@@ -80,7 +77,7 @@ export const RazorCheckout = async (pricingData, id, userDetails) => {
             }
         };
 
-        const rzp = new window.Razorpay(options); // Create Razorpay instance
+        const rzp = new window.Razorpay(options);
         rzp.open();
 
     } catch (error) {
