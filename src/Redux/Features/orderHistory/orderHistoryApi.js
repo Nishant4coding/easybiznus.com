@@ -4,7 +4,6 @@ import BASE_URL from '@/Utility/baseUrl';
 export const fetchOrderHistoryApi = async () => {
   try {
     const response = await axiosToken.get(`${BASE_URL}/order/orders`);
-    console.log('API response:', response.data); 
     return response.data; 
   } catch (error) {
     console.error('API error:', error);

@@ -6,7 +6,6 @@ export const fetchOrders = createAsyncThunk(
   async () => {
     try {
       const response = await fetchOrderHistoryApi();
-      console.log("API response data:", response); 
       return response; 
     } catch (error) {
       console.error('fetchOrders error:', error);
@@ -34,7 +33,6 @@ const orderHistorySlice = createSlice({
       .addCase(fetchOrders.fulfilled, (state, action) => {
         state.loading = false;
         state.orders = action.payload.orders;
-        console.log("fetchOrders.fulfilled:", action.payload);
       })
       .addCase(fetchOrders.rejected, (state, action) => {
         state.loading = false;
