@@ -17,14 +17,8 @@ import Description from "@/components/ProductPage/Description";
 
 const ProductPage = ({ params }) => {
   const dispatch = useDispatch();
-  const productState = useSelector((state) => state.product);
-  const [details, setDetails] = useState(productState.selectedProduct.Product);
-
-  if (details) {
-    console.log(details.description);
-  } else {
-    console.log("Product details are not available");
-  }
+  const productState = useSelector((state) => state?.product);
+  const [details, setDetails] = useState(productState?.selectedProduct?.Product);
 
   const [open, setOpen] = useState(false);
   const [openMobile, setOpenMobile] = useState(false);
@@ -36,24 +30,24 @@ const ProductPage = ({ params }) => {
   const handleCloseMobile = () => setOpenMobile(false);
 
   useEffect(() => {
-    dispatch(getProductById(params.id));
+    dispatch(getProductById(params?.id));
   }, []);
 
   useEffect(() => {
-    setDetails(productState.selectedProduct.Product);
+    setDetails(productState?.selectedProduct?.Product);
   }, [productState]);
 
   return (
     <>
-      {!productState.selectedProduct && (
+      {!productState?.selectedProduct && (
         <Typography sx={{ textAlign: "center", marginTop: "50px" }}>
-          No Product Found...
+          No Product Found
         </Typography>
       )}
 
       {/* DESKTOP VIEW */}
-      {productState.selectedProduct && (
-        <Box className={global.desktop}>
+      {productState?.selectedProduct && (
+        <Box className={global?.desktop}>
           <Stack direction={"row"} sx={{ padding: "5% 150px" }}>
             <Stack
               direction={"column"}
@@ -62,9 +56,9 @@ const ProductPage = ({ params }) => {
             >
               {details && (
                 <>
-                  <ImageBox image={details.primaryImage} />
-                  <Specification spec={details.specifications} />
-                  <Description des={productState.selectedProduct.Product.description} />
+                  <ImageBox image={details?.primaryImage} />
+                  <Specification spec={details?.specifications} />
+                  <Description des={productState?.selectedProduct?.Product?.description} />
                 </>
               )}
             </Stack>
@@ -91,7 +85,7 @@ const ProductPage = ({ params }) => {
 
       {/* MOBILE VIEW */}
       <Box
-        className={global.mobile}
+        className={global?.mobile}
         sx={{ padding: "20px", marginTop: "30px" }}
       >
         <ImageView />
@@ -106,7 +100,7 @@ const ProductPage = ({ params }) => {
           />
         )}
       </Box>
-      <Box className={global.mobile}>
+      <Box className={global?.mobile}>
         <FooterMobile />
       </Box>
     </>

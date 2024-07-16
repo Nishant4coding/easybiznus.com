@@ -6,7 +6,7 @@ export const getAllProducts = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const res = await productApi.getAll();
-            // console.log("All product",res)
+            console.log("All product",res)
             return res;
         } catch (error) {
             return rejectWithValue(error.response.data);
@@ -19,8 +19,6 @@ export const getProductById = createAsyncThunk(
     async (id, { rejectWithValue }) => {
         try {
             const res = await productApi.getProductById(id);
-            // console.log("product slice response",res)
-            // console.log("product slice id",id)
             return res;
         } catch (error) {
             return rejectWithValue(error.response.data);
@@ -58,8 +56,6 @@ const productSlice = createSlice({
             })
             .addCase(getProductById.fulfilled, (state, action) => {
                 state.selectedProduct = action.payload;
-                // console.log("Selected product",selectedProduct)
-                console.log("Fullfill payload",action.payload)
                 state.loadingProduct = false;
             })
             .addCase(getProductById.rejected, (state, action) => {
