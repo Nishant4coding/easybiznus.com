@@ -1,16 +1,57 @@
 "use client";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Button, Stack, Typography, Checkbox, FormControlLabel } from '@mui/material';
 import styles from './account.module.css';
 import { IonIcon } from '@ionic/react';
 import { chevronDownOutline } from 'ionicons/icons';
 import Link from 'next/link';
 import global from '@/global.module.css';
+import { createAddress } from '@/Redux/Features/address/addressSlice'; 
+import { useRouter } from 'next/navigation';
 
-const NewAddress = ({ setForm }) => {
+// const NewAddress = ({ setForm }) => {
+const NewAddress = ({}) => {
+    const router = useRouter();
+    const dispatch = useDispatch();
+    const [formData, setFormData] = useState({
+        addressTitle: '',
+        firstName: '',
+        lastName: '',
+        addressLine1: '',
+        addressLine2: '',
+        country: '',
+        state: '',
+        city: '',
+        pincode: '',
+        phoneNumber: '',
+        isPrimary: false,
+    });
+
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        setFormData((prevState) => ({
+            ...prevState,
+            [name]: type === 'checkbox' ? checked : value,
+        }));
+    };
+
+    const handleSubmit = () => {
+        dispatch(createAddress(formData))
+            .unwrap()
+            .then(() => {
+                // setForm(false);
+                router.push('/account')
+                
+            })
+            .catch((err) => {
+                console.error("Error creating address: ", err);
+            });
+    };
+
     return (
         <Stack sx={{ width: '80%', alignItems: 'center' }}>
             <Typography sx={{ paddingBottom: '10px', borderBottom: '1px solid #A0A0A0', width: '82%', fontSize: '23px', fontWeight: '600', marginBottom: '40px' }}>New Address</Typography>
-
             <Stack sx={{ width: '100%', marginBottom: '160px' }} gap={5}>
                 <Stack direction={"column"} gap={2} sx={{ width: '82%', margin: '0px auto' }}>
                     <Typography sx={{ paddingBottom: '10px', width: '100%', fontSize: '20px', fontWeight: '600', }}>Address Title</Typography>
@@ -21,53 +62,52 @@ const NewAddress = ({ setForm }) => {
                             ))
                         }
                     </Stack>
-                        <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
-                            <Input placeholder={"Address Title"} width={"100%"} />
-                        </Stack>
+                    <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
+                        <Input name="addressTitle" value={formData.addressTitle} onChange={handleChange} placeholder={"Address Title"} width={"100%"} />
+                    </Stack>
                 </Stack>
 
                 <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
-                    <Input title={"First Name"} placeholder={"First Name"} />
-                    <Input title={"Last Name"} placeholder={"Last Name"} />
+                    <Input name="firstName" value={formData.firstName} onChange={handleChange} title={"First Name"} placeholder={"First Name"} />
+                    <Input name="lastName" value={formData.lastName} onChange={handleChange} title={"Last Name"} placeholder={"Last Name"} />
                 </Stack>
 
                 <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
-                    <Input title={"Address Line 1 *"} placeholder={"Address Line 1"} width={"82%"} />
+                    <Input name="addressLine1" value={formData.addressLine1} onChange={handleChange} title={"Address Line 1 *"} placeholder={"Address Line 1"} width={"82%"} />
                 </Stack>
                 <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
-                    <Input title={"Address Line 2*"} placeholder={"Address Line 2"} width={"82%"} />
+                    <Input name="addressLine2" value={formData.addressLine2} onChange={handleChange} title={"Address Line 2*"} placeholder={"Address Line 2"} width={"82%"} />
                 </Stack>
                 <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
-                    <Input title={"Country"} placeholder={"Select Country"} >
+                    <Input name="country" value={formData.country} onChange={handleChange} title={"Country"} placeholder={"Select Country"} >
                         <IonIcon icon={chevronDownOutline} className={styles.downArrow}></IonIcon>
                     </Input>
-                    <Input title={"State *"} placeholder={"Select State"} >
+                    <Input name="state" value={formData.state} onChange={handleChange} title={"State *"} placeholder={"Select State"} >
                         <IonIcon icon={chevronDownOutline} className={styles.downArrow}></IonIcon>
                     </Input>
                 </Stack>
                 <Stack direction={"row"} gap={2} className={styles.inputcontainer} sx={{ alignItems: 'flex-end' }}>
-                    <Input title={"City *"} placeholder={"Select City"} >
+                    <Input name="city" value={formData.city} onChange={handleChange} title={"City *"} placeholder={"Select City"} >
                         <IonIcon icon={chevronDownOutline} className={styles.downArrow}></IonIcon>
                     </Input>
-                    <Input title={"PIN CODE *"} placeholder={"State"} fsize={"15px"}>
+                    <Input name="pincode" value={formData.pincode} onChange={handleChange} title={"PIN CODE *"} placeholder={"PIN CODE"} fsize={"15px"}>
                         <IonIcon icon={chevronDownOutline} className={styles.downArrow}></IonIcon>
                     </Input>
                 </Stack>
                 <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
-                    <Input title={"Phone Number *"} placeholder={"+91"} width={"82%"} />
+                    <Input name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} title={"Phone Number *"} placeholder={"+91"} width={"82%"} />
                 </Stack>
                 <Stack direction={"row"} gap={2} sx={{ paddingLeft: '8%' }}>
                     <FormControlLabel
-                        control={<Checkbox defaultChecked color="default" />}
+                        control={<Checkbox name="isPrimary" checked={formData.isPrimary} onChange={handleChange} color="default" />}
                         label="Make Default"
                         labelPlacement="right"
                     />
-
                 </Stack>
             </Stack>
             <Button variant='contained' className={global.button}
-                onClick={() => setForm(false)}
-                style={{padding:"10px 50px", fontSize:'13px'}}
+                onClick={handleSubmit}
+                style={{ padding: "10px 50px", fontSize: '13px' }}
             >
                 SAVE
             </Button>
@@ -77,11 +117,11 @@ const NewAddress = ({ setForm }) => {
 
 export default NewAddress;
 
-const Input = ({ title, placeholder, width, children, fsize }) => {
+const Input = ({ title, placeholder, width, children, fsize, name, value, onChange }) => {
     return (
         <Stack gap={1} sx={{ width: width ? width : '40%', position: 'relative' }}>
             <Typography style={{ fontSize: fsize ? fsize : "" }} className={styles.inputhead}>{title}</Typography>
-            <input type="text" placeholder={placeholder} className={styles.input}></input>
+            <input type="text" name={name} value={value} onChange={onChange} placeholder={placeholder} className={styles.input}></input>
             {children}
         </Stack>
     )
@@ -92,4 +132,4 @@ const selectArray = [
     "Apartments",
     "Office",
     "Other"
-]
+];
