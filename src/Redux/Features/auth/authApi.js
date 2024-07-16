@@ -5,7 +5,7 @@ import axiosToken from '@/Utility/axiosInstance';
 const login = async (credentials) => {
     try {
         const response = await axios.post(`${BASE_URL}/account/login`, credentials);
-        console.log(response);
+        // console.log(response);
         if (response.data.token) {
             window.localStorage.setItem("token", response.data.token);
             window.localStorage.setItem("userCode", response.data.userCode);
@@ -42,6 +42,32 @@ const profile = async (token) => {
     catch (err) {
         console.log(err)
         alert("Error Profile")
+    }
+}
+
+
+const requestOTP = async (phoneNumber) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/account/requestOTP`, { phoneNumber, type: 'mobile' });
+        return response.data;
+    } catch (err) {
+        console.log(err);
+        alert("Error requesting OTP");
+    }
+}
+
+const resetPassword = async ({ emailOrMobile, otpValue, newPassword, id }) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/account/reset-password`, {
+            emailOrMobile,
+            otpValue,
+            newPassword,
+            id
+        });
+        return response.data;
+    } catch (err) {
+        console.log(err);
+        alert("Error resetting password");
     }
 }
 

@@ -9,7 +9,7 @@ import AccountMobile from '@/components/Account/Mobile/Account';
 import global from '@/global.module.css';
 
 const Account = () => {
-  const [form, setForm] = useState(true);
+  // const [form, setForm] = useState(true);
   return (
     <>
       <Box className={global.desktop}>
@@ -17,7 +17,8 @@ const Account = () => {
         <Stack sx={{ width: '80%', margin: '10px auto', alignItems: 'center' }}>
           <Typography sx={{ fontSize: '50px', fontWeight: '700', textAlign: 'center', marginBottom: '30px' }}>My Account</Typography>
           {false ?
-            <NewAccount setForm={setForm} /> : <AccountView />
+            // <NewAccount setForm={setForm} /> : <AccountView />
+            <NewAccount /> : <AccountView />
           }
         </Stack>
         <Footer />
