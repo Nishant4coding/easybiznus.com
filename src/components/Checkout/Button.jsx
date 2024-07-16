@@ -13,6 +13,7 @@ const CheckoutButton = () => {
   const dispatch = useDispatch();
   const profileState = useSelector((state) => state.profile.profile);
   const getCartState = useSelector((state) => state.cart.cart);
+  console.log(getCartState);
 
   const [states, setState] = useState(profileState);
   const [cartStates, setCartState] = useState(getCartState);
@@ -40,11 +41,15 @@ const CheckoutButton = () => {
     firstName: profileState?.firstName || "",
     phoneNumber: profileState?.phoneNumber || "",
   };
-  console.log(userDetails);
+  // console.log(userDetails);
 
   const handlePlaceOrder = async () => {
+    const total=getCartState.items.map(ele=>{
+      return parseFloat(ele.Carton.SellerProduct.Product.salePrice)
+    }).reduce((partialSum, a) => partialSum+a,0);
+
     const pricingData = {
-      subTotal: 50000,
+      subTotal: total,
       tax: 500,
     };
     const id = getCartState.id;

@@ -16,7 +16,8 @@ const AddressPage = () => {
         <BasicBreadcrumbs inactive={inactive} active="Address Book" fsize={"22px"} mt={"20px"} />
         <Stack sx={{ width: '80%', margin: '10px auto', alignItems: 'center' }}>
           <Typography sx={{ fontSize: '50px', fontWeight: '700', textAlign: 'center', marginBottom: '30px' }}>Address Book</Typography>
-          {showForm && <NewAddress setForm={setShowForm} />}
+          {/* {showForm && <NewAddress setForm={setShowForm} />} */}
+          {showForm && <NewAddress />}
         </Stack>
         <Footer />
       </Box>

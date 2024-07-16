@@ -5,7 +5,8 @@ import { IonIcon } from '@ionic/react';
 import global from '@/global.module.css';
 import { chevronDownOutline } from 'ionicons/icons';
 
-const NewAccount = ({ setForm }) => {
+// const NewAccount = ({ setForm }) => {
+const NewAccount = ({ }) => {
   return (
     <Stack sx={{ width: '80%', alignItems: 'center' }}>
       <Stack sx={{ width: '100%', marginBottom: '160px' }} gap={5}>
@@ -47,7 +48,7 @@ const NewAccount = ({ setForm }) => {
       <Button
         variant='contained'
         className={global.button}
-        onClick={() => setForm(false)}
+        // onClick={() => setForm(false)}
         style={{ padding: '10px 50px', fontSize: '13px' }}
       >
         SAVE
