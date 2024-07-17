@@ -13,7 +13,6 @@ const CheckoutButton = () => {
   const dispatch = useDispatch();
   const profileState = useSelector((state) => state.profile.profile);
   const getCartState = useSelector((state) => state.cart.cart);
-  console.log(getCartState);
 
   const [states, setState] = useState(profileState);
   const [cartStates, setCartState] = useState(getCartState);
@@ -41,7 +40,6 @@ const CheckoutButton = () => {
     firstName: profileState?.firstName || "",
     phoneNumber: profileState?.phoneNumber || "",
   };
-  // console.log(userDetails);
 
   const handlePlaceOrder = async () => {
     const total=getCartState.items.map(ele=>{

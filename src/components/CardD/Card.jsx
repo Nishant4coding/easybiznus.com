@@ -33,9 +33,6 @@ const Card = ({ data, edit = true }) => {
       AccountId: String(data.accountId),   
     };
    
-    console.log('Product details being sent:', productDetails);
-    console.log('data', data);
-
 
     dispatch(addToCart(productDetails));
   };
