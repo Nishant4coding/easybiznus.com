@@ -18,7 +18,10 @@ import Description from "@/components/ProductPage/Description";
 const ProductPage = ({ params }) => {
   const dispatch = useDispatch();
   const productState = useSelector((state) => state?.product);
-  const [details, setDetails] = useState(productState?.selectedProduct?.Product);
+  const [details, setDetails] = useState(
+    productState?.selectedProduct?.Product
+  );
+  const [data, setData] = useState(productState?.selectedProduct);
 
   const [open, setOpen] = useState(false);
   const [openMobile, setOpenMobile] = useState(false);
@@ -36,6 +39,12 @@ const ProductPage = ({ params }) => {
   useEffect(() => {
     setDetails(productState?.selectedProduct?.Product);
   }, [productState]);
+  useEffect(() => {
+    setData(productState?.selectedProduct);
+  }, [productState]);
+  // console.log(productState)
+  // console.log(details)
+  // console.log(data)
 
   return (
     <>
@@ -56,9 +65,14 @@ const ProductPage = ({ params }) => {
             >
               {details && (
                 <>
-                  <ImageBox image={details?.primaryImage} />
+                  <ImageBox
+                    image={details?.images}
+                    primaryImage={details?.primaryImage}
+                  />
                   <Specification spec={details?.specifications} />
-                  <Description des={productState?.selectedProduct?.Product?.description} />
+                  <Description
+                    des={productState?.selectedProduct?.Product?.description}
+                  />
                 </>
               )}
             </Stack>
@@ -71,7 +85,7 @@ const ProductPage = ({ params }) => {
                 <PriceSection
                   handleOpen={handleOpen}
                   setPopTitle={setPopTitle}
-                  data={details}
+                  data={data}
                 />
               )}
             </Stack>
