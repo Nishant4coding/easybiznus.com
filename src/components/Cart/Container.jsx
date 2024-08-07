@@ -9,12 +9,13 @@ import Delete from "./Delete";
 const Container = () => {
   const dispatch = useDispatch();
   const { cart, loading, error } = useSelector((state) => state.cart);
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [selectedCartItemId, setSelectedCartItemId] = useState(null);
+
 
   useEffect(() => {
     dispatch(getCart());
   }, [dispatch]);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [selectedCartItemId, setSelectedCartItemId] = useState(null);
 
   const handleDeleteOpen = (cartItemId) => {
     setSelectedCartItemId(cartItemId);
@@ -43,7 +44,7 @@ const Container = () => {
             <Card
               data={item}
               key={index}
-              edit={false}
+              edit={true}
               onDelete={() => handleDeleteOpen(item.id)}
             />
           ))
