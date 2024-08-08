@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from './home.module.css';
 
 const Products = ({prodData}) => {
+
+    console.log("products", prodData);
     return (
         <Box direction={"row"} className={styles.products} gap={10}>
             {
