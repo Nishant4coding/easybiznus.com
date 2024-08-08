@@ -7,6 +7,7 @@ import cartSlice from "./Features/cart/cartSlice";
 import orderHistorySlice from "./Features/orderHistory/orderHistorySlice";
 import dashboardSlice from "./Features/dashboard/dashboardSlice";
 import categorySlice from "./Features/category/categorySlice";
+import bannerSlice from "./Features/banner/bannerSlice";
 
 const store = configureStore({
   reducer: {
@@ -17,7 +18,8 @@ const store = configureStore({
     category:categorySlice,
     cart:cartSlice,
     order:orderHistorySlice,
-    dashboard:dashboardSlice
+    dashboard:dashboardSlice,
+    banner: bannerSlice,
   }
 })
 

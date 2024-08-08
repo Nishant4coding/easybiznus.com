@@ -1,19 +1,39 @@
 import { Box } from "@mui/material";
 import styles from './carousel.module.css';
 import Image from "next/image";
-import { Img1 } from '@/assets/carousel/index';
+import { useDispatch, useSelector } from "react-redux";
+import { getActiveAdvertisements } from "@/Redux/Features/banner/bannerSlice";
+import { useEffect } from "react";
 
 const Carousel = () => {
+
+    const dispatch = useDispatch();
+    const { banners, loading, error } = useSelector((state) => state.banner);
+  
+    useEffect(() => {
+      dispatch(getActiveAdvertisements());
+    }, [dispatch]);
+
+    console.log(banners);
+  
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
+
     return (
-        <Box className={styles.container}>
-            <Image src={Img1}
-                alt={"carousel-image"}
-                className={styles.image}
-                style={{
-                    objectFit: 'cover',
-                }} />
-        </Box>
-    )
-}
+        <>
+            {banners.map((banner, index) => (
+                <Box className={styles.container} key={index}>
+                    <Image
+                        src={banner.imagePath} 
+                        alt={`carousel-image-${index}`}
+                        className={styles.image}
+                        layout="fill" 
+                        objectFit="cover"
+                    />
+                </Box>
+            ))}
+        </>
+    );
+};
 
 export default Carousel;

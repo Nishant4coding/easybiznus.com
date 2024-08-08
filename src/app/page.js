@@ -22,10 +22,26 @@ import WomensCollections from "@/components/MobileView/WomensCollections/WomensC
 import KidsCollections from "@/components/MobileView/KidsCollections/KidsCollections";
 import FooterM from "@/components/MobileView/Footer/FooterM";
 import global from '@/global.module.css'
+import { fetchDashboard} from "@/Redux/Features/dashboard/dashboardSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const HomePage = (props) => {
-  const { t, i18n } = useTranslation();
 
+  const dispatch = useDispatch();
+  const dashboardState = useSelector(state => state.dashboard);
+  const [dashboardData, setDashboardData] = useState(dashboardState)
+
+  useEffect(() => {
+      dispatch(fetchDashboard());
+  }, [dispatch]);
+  
+  useEffect(() => {
+      setDashboardData(dashboardState);
+  }, [dashboardState]);
+
+  console.log(dashboardData)
+
+  const { t, i18n } = useTranslation();
   const [title, setTitle] = useState();
   const T = t("title");
 
@@ -37,10 +53,10 @@ const HomePage = (props) => {
     <>
       <div className={global.desktop}>
         <Carousel />
-        <Try />
+        <Try/>
         <Trend />
-        <Recommend />
-        <Banner title="TRY & BUY" />
+        {/* <Recommend /> */}
+        {/* <Banner title="TRY & BUY" /> */}
         <Brand />
         <Main />
         <Footer />
