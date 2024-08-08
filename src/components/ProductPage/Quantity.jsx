@@ -1,38 +1,32 @@
 "use client";
-import { Box, Stack, TextField, Button } from "@mui/material";
-import {
-  closeCircleOutline,
-  heart,
-  heartOutline,
-  addOutline,
-} from "ionicons/icons";
+import { Box, Stack, TextField } from "@mui/material";
+import { closeCircleOutline, heart, heartOutline, addOutline } from "ionicons/icons";
 import { IonIcon } from "@ionic/react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import styles from "./product.module.css";
 import toast, { Toaster } from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/Redux/Features/cart/cartSlice";
-import {
-  addToWishlist,
-  removeFromWishlist,
-} from "@/Redux/Features/wishlist/wishlistSlice";
+import { addToWishlist, removeFromWishlist, fetchWishlist } from "@/Redux/Features/wishlist/wishlistSlice";
 
-const Quantity = ({
-  handleOpen,
-  setPopTitle,
-  data,
-  selectedSize,
-  selectedColor,
-}) => {
+const Quantity = ({ handleOpen, setPopTitle, data, selectedSize, selectedColor }) => {
   const qtyRef = useRef(null);
   const [qty, setQty] = useState("");
   const [wish, setWish] = useState(false);
   const dispatch = useDispatch();
+  const wishlist = useSelector((state) => state.wishlist.items);
+
+  useEffect(() => {
+    dispatch(fetchWishlist()).then((action) => {
+      const productId = data.SellerVariants[0].SellerProductId;
+      const isInWishlist = action.payload.some(item => item.productId === productId);
+      setWish(isInWishlist);
+    });
+  }, [dispatch, data]);
 
   const handleAddToCart = () => {
     const variant = data.SellerVariants.find(
-      (variant) =>
-        variant.size === selectedSize && variant.color === selectedColor
+      (variant) => variant.size === selectedSize && variant.color === selectedColor
     );
 
     if (!variant) {
@@ -51,34 +45,18 @@ const Quantity = ({
       sellerId: String(data.Product.adminId),
       AccountId: String(data.AccountId),
     };
-    console.log(productDetails);
-
     dispatch(addToCart(productDetails));
   };
 
-  const handleAddToWishlist = () => {
-    const productId = data.SellerVariants[0].SellerProductId;
-
-    dispatch(addToWishlist({ productId }));
-  };
-
-  const addedToWishlist = () => {
-    setPopTitle({
-      title: "Added to wishlist",
-      button: "Go to Wishlist",
-      path: "/wishlist",
-    });
-    handleOpen();
-  };
-
   const handleWishlistToggle = () => {
-    const productId = data.SellerVariants[0].id;
+    const productId = data.SellerVariants[0].SellerProductId;
     if (wish) {
       dispatch(removeFromWishlist({ productId }));
+      setWish(false);
     } else {
       dispatch(addToWishlist({ productId }));
+      setWish(true);
     }
-    setWish(!wish);
   };
 
   return (
@@ -129,8 +107,8 @@ const Quantity = ({
         <IonIcon
           icon={wish ? heart : heartOutline}
           size="large"
-          style={{ color: "#F55E53", cursor: "pointer" }}
-          onClick={handleAddToWishlist}
+          style={{ color: wish ? "#F55E53" : "inherit", cursor: "pointer" }}
+          onClick={handleWishlistToggle}
         />
       </Box>
       <Box
@@ -153,7 +131,7 @@ const Quantity = ({
                 path: "/checkout",
                 name: data.Product.name,
                 price: data.Product.salePrice,
-                imaage: data.Product.primaryImage,
+                image: data.Product.primaryImage,
                 size: selectedSize,
               });
               handleOpen();

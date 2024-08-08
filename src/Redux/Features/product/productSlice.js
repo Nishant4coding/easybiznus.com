@@ -51,10 +51,12 @@ const productSlice = createSlice({
             })
             .addCase(getProductById.pending, (state) => {
                 state.loadingProduct = true;
+                console.log(state)
                 state.productError = null;
             })
             .addCase(getProductById.fulfilled, (state, action) => {
                 state.selectedProduct = action.payload;
+                console.log(action.payload)
                 state.loadingProduct = false;
             })
             .addCase(getProductById.rejected, (state, action) => {

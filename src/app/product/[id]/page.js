@@ -42,9 +42,9 @@ const ProductPage = ({ params }) => {
   useEffect(() => {
     setData(productState?.selectedProduct);
   }, [productState]);
-  // console.log(productState)
-  // console.log(details)
-  // console.log(data)
+  console.log(productState)
+  console.log(details)
+  console.log(data)
 
   return (
     <>
@@ -67,7 +67,9 @@ const ProductPage = ({ params }) => {
                 <>
                   <ImageBox
                     image={details?.images}
-                    primaryImage={details?.primaryImage}
+                    primaryImage={details?.images[0]}
+                    // primaryImage={details?.primaryImage}
+                    //primary image in null right now
                   />
                   <Specification spec={details?.specifications} />
                   <Description

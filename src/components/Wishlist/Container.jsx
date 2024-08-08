@@ -1,3 +1,4 @@
+// Wishlist Container
 "use client";
 
 import { fetchWishlist } from "@/Redux/Features/wishlist/wishlistSlice";
@@ -5,27 +6,29 @@ import { Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../CardD/Card";
-import Delete from "../Cart/Delete";
+import Delete from "../Wishlist/Delete";
 import styles from "./wishlist.module.css";
 
 const Container = () => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [selectedCartItemId, setSelectedCartItemId] = useState(null);
+  const [selectedWishItemId, setSelectedWishItemId] = useState(null);
   const dispatch = useDispatch();
   const wishlistState = useSelector((state) => state.wishlist);
-  const handleDeleteOpen = (cartItemId) => {
-    setSelectedCartItemId(cartItemId);
+  const handleDeleteOpen = (wishId) => {
+    setSelectedWishItemId(wishId);
     setDeleteModalOpen(true);
   };
 
   const handleDeleteClose = () => {
     setDeleteModalOpen(false);
-    setSelectedCartItemId(null);
+    setSelectedWishItemId(null);
   };
 
   useEffect(() => {
     dispatch(fetchWishlist());
   }, [dispatch]);
+
+  console.log(wishlistState)
 
   return (
     <Stack direction={"column"} className={styles.container} gap={3}>
@@ -37,7 +40,7 @@ const Container = () => {
           wishlistState.items.map((item, index) => (
             <Card
               data={item}
-              key={index}
+              key={index} 
               edit={false}
               onDelete={() => handleDeleteOpen(item.id)}
             />
@@ -46,7 +49,7 @@ const Container = () => {
       <Delete
         open={deleteModalOpen}
         handleClose={handleDeleteClose}
-        cartItemId={selectedCartItemId}
+        wishId={selectedWishItemId}
       />
     </Stack>
   );

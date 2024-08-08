@@ -5,7 +5,7 @@ import productSlice from "./Features/product/productSlice";
 import wishlistSlice from "./Features/wishlist/wishlistSlice";
 import cartSlice from "./Features/cart/cartSlice";
 import orderHistorySlice from "./Features/orderHistory/orderHistorySlice";
-// import dashboardSlice from "./Features/dashboard/dashboardSlice";
+import dashboardSlice from "./Features/dashboard/dashboardSlice";
 import categorySlice from "./Features/category/categorySlice";
 
 const store = configureStore({
@@ -17,7 +17,7 @@ const store = configureStore({
     category:categorySlice,
     cart:cartSlice,
     order:orderHistorySlice,
-    // dashboard:dashboardSlice
+    dashboard:dashboardSlice
   }
 })
 
