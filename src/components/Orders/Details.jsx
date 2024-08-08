@@ -9,7 +9,9 @@ import Adress from "./Address";
 import Summary from "./OrderSummary";
 import Return from "@/components/Orders/Return";
 
-const Details = ({ stepper,rtrn, bill }) => {
+const Details = ({ stepper,rtrn, bill,data }) => {
+
+    console.log("details",data.length)
     return (
         <Stack className={styles.details}>
             <Typography className={styles.heading}>Orders Details</Typography>
@@ -17,7 +19,13 @@ const Details = ({ stepper,rtrn, bill }) => {
                 <IonIcon icon={helpCircleOutline} style={{ fontSize: "18px" }}></IonIcon>
                 Need help?
             </Typography>
-            <Card refundable={"₹19,990"} action={true} />
+            <Stack direction={"row"}>
+                {data.map((item) => (
+                    <Card refundable={item.refundable} action={item.action} data={item.data} />
+                ))}
+            </Stack>
+            <Card refundable={"₹19,990"} action={true} data={data}/>
+            
             <Stack direction={"row"} sx={{ justifyContent: 'space-between', paddingTop: '30px' }}>
                 {stepper&&<VerticalLinearStepper title={true} steps={steps} />}
                 {bill&&

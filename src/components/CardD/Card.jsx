@@ -1,3 +1,4 @@
+// Card component
 "use client";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
@@ -11,10 +12,10 @@ import { IonIcon } from "@ionic/react";
 import { useState } from "react";
 import { useDispatch } from "react-redux"; 
 import { addToCart } from "@/Redux/Features/cart/cartSlice"; 
-import DeleteModal from "@/components/Cart/Delete";
+import DeleteModal from "@/components/Wishlist/Delete";
 
-const Card = ({ data, edit = true }) => {
-  const cardData = data.SellerProduct.Product;
+const Card = ({ data, edit = true,  }) => {
+  const cardData = data?.SellerProduct?.Product;
   console.log("data",data)
   console.log("Card data",cardData)
   const [qty, setQty] = useState(1);
@@ -32,8 +33,6 @@ const Card = ({ data, edit = true }) => {
       sellerId: String(data.SellerProduct.Product.adminId),
       AccountId: String(data.accountId),   
     };
-   
-
     dispatch(addToCart(productDetails));
   };
 
@@ -41,12 +40,11 @@ const Card = ({ data, edit = true }) => {
     <Stack direction={"row"} gap={2} className={styles.container}>
       <Stack direction={"column"}>
         <Image
-          src={cardData?.images[0]|| cardData.primaryImage}
+          src={cardData?.images[0]|| cardData?.primaryImage}
           alt={"product"}
           width={200}
           height={200}
         />
-        {JSON.stringify(data?.SellerProduct?.Cartons[0]?.id || data.SellerProduct.SellerVariants[0].id)}
         <Typography className={styles.stock}>
           <IonIcon icon={checkmarkCircleOutline}></IonIcon>
           In-Stock
@@ -56,16 +54,16 @@ const Card = ({ data, edit = true }) => {
         <Stack direction={"column"}>
       
           <Typography className={styles.prodname}>
-            {cardData.articalName}
+            {cardData?.articalName}
           </Typography>
           <Typography className={styles.subtitle}>
-            Color:{cardData.Variants[0].color}
+            Color:{cardData?.Variants[0]?.color}
           </Typography>
           <Typography className={styles.subtitle}>
-            Size: {cardData.Variants[0].size}
+            Size: {cardData?.Variants[0]?.size}
           </Typography>
           <Typography className={styles.subtitle}>
-            SKU CODE: {cardData.sku}
+            SKU CODE: {cardData?.sku}
           </Typography>
         </Stack>
         <Box sx={{ width: "70px" }}>
@@ -85,7 +83,7 @@ const Card = ({ data, edit = true }) => {
       </Stack>
       <Stack direction={"column"} sx={{ width: "30%", alignItems: "flex-end" }}>
         <Stack direction={"column"} gap={1}>
-          <Typography className={styles.price}>{cardData.salePrice}</Typography>
+          <Typography className={styles.price}>₹ {cardData?.salePrice}</Typography>
           <Stack direction={"row"} gap={2} sx={{ justifyContent: "flex-end" }}>
             {edit && (
               <Image src={Pen} alt={"pen"} style={{ cursor: "pointer" }} />
@@ -115,7 +113,7 @@ const Card = ({ data, edit = true }) => {
         </Button>
         {/* } */}
       </Stack>
-      {/* <DeleteModal open={open} handleClose={handleClose} cartItemId={data.id} /> */}
+      <DeleteModal open={open} handleClose={handleClose} wishId={data.sellerProductId}/>
     </Stack>
   );
 };

@@ -39,8 +39,8 @@ const navArray = [
         title: "Sports",
         path: "#"
     },
-    {
-        title: "Offers",
-        path: "#"
-    }
+    // {
+    //     title: "Offers",
+    //     path: "#"
+    // }
 ]

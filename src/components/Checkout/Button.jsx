@@ -43,7 +43,7 @@ const CheckoutButton = () => {
 
   const handlePlaceOrder = async () => {
     const total=getCartState.items.map(ele=>{
-      return parseFloat(ele.Carton.SellerProduct.Product.salePrice)
+      return parseFloat(ele.salePrice)
     }).reduce((partialSum, a) => partialSum+a,0);
 
     const pricingData = {
@@ -58,8 +58,11 @@ const CheckoutButton = () => {
     }
 
     try {
-      await RazorCheckout(pricingData, id, userDetails);
-      handleOpen();
+      const isPaymentSuccessful = await RazorCheckout(pricingData, id, userDetails);
+      console.log(isPaymentSuccessful)
+      if (isPaymentSuccessful) {
+        handleOpen();
+      }
     } catch (error) {
       console.error("Failed to initiate Razorpay payment:", error);
     }

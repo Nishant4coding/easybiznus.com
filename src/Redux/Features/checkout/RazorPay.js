@@ -51,12 +51,12 @@ export const RazorCheckout = async (pricingData, id, userDetails) => {
           // creditsUsed: 10000,
         };
 
-        fetch(`${BASE_URL}/order/createOrder`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `${token}`,
-          },
+        axiosToken.post(`${BASE_URL}/order/createOrder`, {
+          // method: "POST",
+          // headers: {
+          //   "Content-Type": "application/json",
+          //   Authorization: `${token}`,
+          // },
           body: JSON.stringify(paymentData),
         })
           .then((data) => {
@@ -70,7 +70,7 @@ export const RazorCheckout = async (pricingData, id, userDetails) => {
           });
 
         console.log("Payment successful!");
-        // console.log(response);
+        console.log(response);
         // console.log(userDetails);
       },
       modal: {

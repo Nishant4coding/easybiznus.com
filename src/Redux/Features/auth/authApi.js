@@ -4,13 +4,13 @@ import axiosToken from '@/Utility/axiosInstance';
 
 const login = async (credentials) => {
     try {
-        const response = await axios.post(`${BASE_URL}/account/login`, credentials);
-        // console.log(response);
+        const response = await axiosToken.post(`${BASE_URL}/account/login`, credentials);
         if (response.data.token) {
             window.localStorage.setItem("token", response.data.token);
             window.localStorage.setItem("userCode", response.data.userCode);
             window.localStorage.setItem("userId", response.data.userId);
         }
+        console.log(response);
         return response.data;
     }
     catch (err) {

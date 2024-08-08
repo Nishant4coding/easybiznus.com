@@ -15,11 +15,12 @@ const Products = () => {
   const [filteredProducts, setFilteredProducts] = useState({});
   const [categoryDict, setCategoryDict] = useState({});
 
-
   useEffect(() => {
     dispatch(getAllCategories());
     dispatch(getAllProducts());
   }, [dispatch]);
+
+  console.log("productState",productState)
 
   useEffect(() => {
     if(categories){
@@ -41,7 +42,7 @@ const Products = () => {
         }, {});
 
         setFilteredProducts(filtered);
-        // console.log("Filtered: ", filtered);
+        console.log("Filtered: ", filtered);
     }
 }, [categories, products]);
 

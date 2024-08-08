@@ -1,13 +1,19 @@
 'use client';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { Stack, Typography, Button } from '@mui/material';
 import styles from './checkout.module.css';
 import { IonIcon } from '@ionic/react';
-import { newspaperOutline, home, add, businessOutline,radioButtonOnOutline, radioButtonOffOutline, storefrontOutline } from 'ionicons/icons';
+import { newspaperOutline, home, add, businessOutline, radioButtonOnOutline, radioButtonOffOutline, storefrontOutline } from 'ionicons/icons';
 
+const Address = ({ addressData }) => {
+    const [select, setSelect] = useState(null);
+    const [address, setAddress] = useState(addressData || { AddressBooks: [] });
 
-const Address = () => {
-    const [select, setSelect] = useState();
+    useEffect(() => {
+        setAddress(addressData || { AddressBooks: [] });
+    }, [addressData]);
+
+    console.log("address", address);
 
     return (
         <Stack className={styles.leftboxes} gap={2}>
@@ -21,10 +27,10 @@ const Address = () => {
                     New Address
                 </Button>
             </Stack>
-            <Stack gap={1} direction={"column"} style={{ marginBottom: '10px', alignItems: 'flex-end',}}>
+            <Stack gap={1} direction={"column"} style={{ marginBottom: '10px', alignItems: 'flex-end' }}>
                 {
-                    boxArray.map((item, index) => (
-                        <Stack key={item.title} onClick={() => setSelect(index)} style={{width:'94%'}}>
+                    address.AddressBooks && address.AddressBooks.map((item, index) => (
+                        <Stack key={item.addressTitle} onClick={() => setSelect(index)} style={{ width: '94%' }}>
                             <Box data={item} select={select === index} />
                         </Stack>
                     ))
@@ -37,20 +43,22 @@ const Address = () => {
 export default Address;
 
 const Box = ({ data, select }) => {
-    const { icon, title, subtitile } = data;
+    const { icon, addressTitle, subtitile } = data;
     return (
         <Stack gap={2} style={{ border: '1px solid #B5B5B5', borderRadius: '8px', alignItems: 'center', padding: '10px', cursor: "pointer", width: '100%', position: 'relative' }} direction={"row"}>
             <IonIcon icon={icon} className={styles.newsicon}></IonIcon>
-            <Typography style={{ fontSize: '15px' }}>
-                {title}
+            <Stack>
+                <Typography style={{ fontSize: '15px' }}>
+                    {addressTitle}
+                </Typography>
                 <Typography style={{ fontSize: '12px' }}>
                     {subtitile}
                 </Typography>
-            </Typography>
+            </Stack>
             {select ?
-                <IonIcon icon={radioButtonOnOutline} className={styles.newsicon} style={{position:'absolute', right:'10px'}}></IonIcon>
+                <IonIcon icon={radioButtonOnOutline} className={styles.newsicon} style={{ position: 'absolute', right: '10px' }}></IonIcon>
                 :
-                <IonIcon icon={radioButtonOffOutline} className={styles.newsicon} style={{position:'absolute', right:'10px'}}></IonIcon>
+                <IonIcon icon={radioButtonOffOutline} className={styles.newsicon} style={{ position: 'absolute', right: '10px' }}></IonIcon>
             }
         </Stack>
     )

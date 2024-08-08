@@ -38,6 +38,8 @@ const AccountView = () => {
     return null;
   }, [profileState.profile]);
 
+  console.log(userData)
+
   return (
     <Stack sx={{ width: "100%", alignItems: "center" }}>
       {/* {JSON.stringify(userData)} */}
@@ -122,7 +124,7 @@ const AccountView = () => {
                 linkicon={addOutline}
                 linkpath="/address"
               />
-              {address ? (
+              {/* {address ? (
                 <Stack
                   sx={{
                     width: "53%",
@@ -158,21 +160,21 @@ const AccountView = () => {
                     ADD ADDRESS
                   </Button>
                 </Stack>
-              ) : (
+              ) : ( */}
                 <Stack>
-                  {addressArray.map((item, index) => (
+                {userData.AddressBooks.map((item, index) => (
                     <AddressCard
                       key={index}
                       select={select}
                       index={index}
-                      title={item.title}
+                      title={item.addressTitle}
                       icon={item.icon}
-                      sub={item.sub}
+                      sub={item.addressLine1+item.addressLine2+' '+item.addressLine1+' '+`(${item.city})`}
                       setSelect={setSelect}
                     />
                   ))}
                 </Stack>
-              )}
+              {/* )} */}
             </Stack>
           </Stack>
         </Stack>

@@ -1,94 +1,29 @@
-import { Box } from "@mui/material";
+"use client";
+import { Box, Typography } from "@mui/material";
 import Card from '@/components/CardA/Card';
-import { Shoe1 } from '@/assets/svg/index';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import styles from './home.module.css';
 
-const Products = () => {
+const Products = ({prodData}) => {
     return (
         <Box direction={"row"} className={styles.products} gap={10}>
             {
-                cardArray.map((item, index) => (
-                    <Box sx={{flexShrink:0}} key={index}>
-                    <Card data={item} />
-                    </Box>
-                ))
+                prodData ? (
+                    prodData.map((item, index) => (
+                        <Box sx={{flexShrink:0}} key={index}>
+                            <Card data={item} />
+                        </Box>
+                    ))
+                ) : (
+                    !prodData && (
+                        <Typography>No products available</Typography>
+                    )
+                )
             }
         </Box>
     )
 }
 
 export default Products;
-
-// const cardArray = [
-//     {
-//         discount: '-20%',
-//         image: Shoe1,
-//         title: 'Nike Air Max Plus',
-//         style: 'DX4326-001',
-//         sp: '₹15,990',
-//         mrp: '₹19,990',
-//         link:'/category'
-//     },
-//     {
-//         discount: '-20%',
-//         image: Shoe1,
-//         title: 'Nike Air Max Plus',
-//         style: 'DX4326-001',
-//         sp: '₹15,990',
-//         mrp: '₹19,990',
-//         link:'/category'
-//     },
-//     {
-//         discount: '-20%',
-//         image: Shoe1,
-//         title: 'Nike Air Max Plus',
-//         style: 'DX4326-001',
-//         sp: '₹15,990',
-//         mrp: '₹19,990',
-//         link:'/category'
-//     },
-//     {
-//         discount: '-20%',
-//         image: Shoe1,
-//         title: 'Nike Air Max Plus',
-//         style: 'DX4326-001',
-//         sp: '₹15,990',
-//         mrp: '₹19,990',
-//         link:'/category'
-//     },
-//     {
-//         discount: '-20%',
-//         image: Shoe1,
-//         title: 'Nike Air Max Plus',
-//         style: 'DX4326-001',
-//         sp: '₹15,990',
-//         mrp: '₹19,990',
-//         link:'/category'
-//     },
-//     {
-//         discount: '-20%',
-//         image: Shoe1,
-//         title: 'Nike Air Max Plus',
-//         style: 'DX4326-001',
-//         sp: '₹15,990',
-//         mrp: '₹19,990',
-//         link:'/category'
-//     },
-//     {
-//         discount: '-20%',
-//         image: Shoe1,
-//         title: 'Nike Air Max Plus',
-//         style: 'DX4326-001',
-//         sp: '₹15,990',
-//         mrp: '₹19,990',
-//         link:'/category'
-//     }
-// ];
-
-const cardArray =[
-    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus', link:'/category' },
-    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus', link:'/category' },
-    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus', link:'/category' },
-    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus', link:'/category' },
-    { MRP:'19990', salePrice:'15990', sku:'DX4326-001', name:'Nike Air Max Plus', link:'/category' }
-]

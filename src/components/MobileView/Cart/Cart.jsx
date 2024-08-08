@@ -12,8 +12,13 @@ import { businessOutline, home, storefront, add } from 'ionicons/icons';
 import PopupAlert from '../Snackbar/PopupAlert';
 
 
-const Cart = () => {
+const Cart = (data) => {
+
+    
     const [openModal, setOpenModal] = useState(false);
+
+    console.log(data)
+    
 
     let quantity = 1;
     let amnt = {
@@ -34,9 +39,13 @@ const Cart = () => {
                         <Image src={AddIcon} alt='icon' />
                     </Stack>
                 </Stack>
-
-                <Card />
-
+                {Array.isArray(data.items) && data.items.length > 0 ? (
+                data.items.map((item, index)=>(
+                <Card cartData={item} key={index}/>
+                ))
+            ) : (
+                <Typography>No items in the cart.</Typography>
+              )}
             </Stack>
 
             <Stack sx={{ padding: '15px',marginBottom:'50px' }}>
@@ -67,7 +76,9 @@ const Cart = () => {
 }
 
 
-const Card = () => {
+const Card = (cartData) => {
+
+    console.log(cartData)
     const [wish, setWish] = useState(false);
     const [openMobile, setOpenMobile] = useState(false);
     const handleCloseMobile = () => setOpenMobile(false);

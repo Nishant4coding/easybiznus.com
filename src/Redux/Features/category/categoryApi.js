@@ -4,6 +4,7 @@ import BASE_URL from "@/Utility/baseUrl";
 export const fetchCategories = async () => {
     try {
         const response = await axiosToken.get(`${BASE_URL}/categories`);
+        console.log(response)
         return response.data;
     } catch (error) {
         console.error("API error: ", error);

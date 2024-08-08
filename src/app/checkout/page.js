@@ -11,6 +11,9 @@ import PaymentOpt from '@/components/MobileView/Cart/PaymentOpt'
 
 //Hello demo
 const CheckoutPage = () => {
+
+
+
   return (
     <>
       <Stack className={global.desktop}>

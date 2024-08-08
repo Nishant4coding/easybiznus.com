@@ -1,17 +1,23 @@
 "use client";
-import { Button, Stack, Typography, Checkbox, FormControlLabel } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import styles from './account.module.css';
 import { IonIcon } from '@ionic/react';
 import { checkmarkCircleOutline, closeCircleOutline } from 'ionicons/icons';
 import global from '@/global.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const Profile = ({ setForm }) => {
-    const [password, setPassword] = useState(true);
+const Profile = ({  }) => {
+    const [password, setPassword] = useState('');
 
     const handlePass = (e) => {
         setPassword(e.target.value);
     }
+
+    useEffect(() => {
+        if (password) {
+            console.log(`Password updated: ${password}`);
+        }
+    }, [password]);
 
     return (
         <Stack sx={{ width: '80%', alignItems: 'center' }}>
@@ -19,9 +25,8 @@ const Profile = ({ setForm }) => {
 
             <Stack sx={{ width: '100%', marginBottom: '160px' }} gap={3}>
 
-
                 <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
-                    <Input title={"Current Password"} placeholder={"Current Password"} width={"82%"} />
+                    <Input type={"password"} title={"Current Password"} placeholder={"Current Password"} width={"82%"} />
                 </Stack>
                 <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
                     <Input type={"password"} handlePass={handlePass} title={"New Password"} placeholder={"New Password"} width={"82%"} />
@@ -29,28 +34,28 @@ const Profile = ({ setForm }) => {
 
                 <Stack sx={{ paddingLeft: '9%' }}>
                     <TextIcon
-                        correct={password.length >= 8 ? true : false}
+                        correct={password.length >= 8}
                         text="Minimum 8 characters"
                     />
                     <TextIcon
-                        correct={password.length <= 15 ? true : false}
+                        correct={password.length <= 15}
                         text="Maximum 15 characters"
                     />
                     <TextIcon
-                        correct={/[a-z]/.test(password) ? true : false}
+                        correct={/[a-z]/.test(password)}
                         text="1 lower case"
                     />
                     <TextIcon
-                        correct={/[A-Z]/.test(password) ? true : false}
+                        correct={/[A-Z]/.test(password)}
                         text="1 upper case"
                     />
                     <TextIcon
-                        correct={/[0-9]/.test(password) ? true : false}
+                        correct={/[0-9]/.test(password)}
                         text="1 digit"
                     />
                     <TextIcon
                         correct={
-                            /[!@#$%^&*(),.?":{}|<>]/.test(password) ? true : false
+                            /[!@#$%^&*(),.?":{}|<>]/.test(password)
                         }
                         text="1 special character (!@#$%^&*)"
                     />
@@ -62,7 +67,7 @@ const Profile = ({ setForm }) => {
 
             </Stack>
             <Button variant='contained' className={global.button}
-                onClick={() => setForm(false)}
+                // onClick={() => setForm(false)}
                 style={{padding:'10px 50px', fontSize:'13px'}}
             >
                 SAVE
@@ -83,7 +88,6 @@ const Input = ({ type, handlePass, title, placeholder, width, children, fsize })
     )
 }
 
-
 const TextIcon = (props) => {
     return (
         <Stack direction={"row"} gap={1} style={{ alignItems: 'center' }}>
@@ -92,4 +96,3 @@ const TextIcon = (props) => {
         </Stack>
     );
 };
-

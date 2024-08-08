@@ -39,7 +39,7 @@ const HomePage = (props) => {
       setDashboardData(dashboardState);
   }, [dashboardState]);
 
-  console.log(dashboardData)
+  // console.log(dashboardData)
 
   const { t, i18n } = useTranslation();
   const [title, setTitle] = useState();
@@ -51,13 +51,14 @@ const HomePage = (props) => {
 
   return (
     <>
+
       <div className={global.desktop}>
         <Carousel />
         <Try/>
         <Trend />
         {/* <Recommend /> */}
         {/* <Banner title="TRY & BUY" /> */}
-        <Brand />
+        {/* <Brand dashboardData={dashboardData}/> */}
         <Main />
         <Footer />
       </div>

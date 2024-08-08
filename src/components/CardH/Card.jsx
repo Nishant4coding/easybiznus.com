@@ -10,13 +10,26 @@ import { checkmarkCircleOutline } from "ionicons/icons";
 import { IonIcon } from "@ionic/react";
 import { useState } from "react";
 import DeleteModal from "@/components/Cart/Delete";
+import { useDispatch, useSelector } from "react-redux";
 
 const Card = ({ data }) => {
-    const { title, color, size, sku_code, price } = data;
+    const { title, color, size, sku_code, salePrice, id: cartItemId } = data;  
+    console.log("this is data", data)
     const [qty, setQty] = useState(1);
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const dispatch = useDispatch();
+    const { cart, loading, error } = useSelector((state) => state.cart);
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+    const [selectedCartItemId, setSelectedCartItemId] = useState(null);
+
+    const handleDeleteOpen = (cartItemId) => {
+        setSelectedCartItemId(cartItemId);
+        setDeleteModalOpen(true);
+    };
+    
+    const handleDeleteClose = () => {
+        setDeleteModalOpen(false);
+        setSelectedCartItemId(null);
+    };
 
     return (
         <Stack direction={"row"} gap={2} className={styles.container}>
@@ -26,7 +39,7 @@ const Card = ({ data }) => {
             <Stack direction={"column"} gap={1}>
                 <Stack direction={"column"}>
                     <Typography className={styles.prodname}>{title}</Typography>
-                    <Typography className={styles.subtitle}>Color:{color}</Typography>
+                    <Typography className={styles.subtitle}>Color: {color}</Typography>
                     <Typography className={styles.subtitle}>Size: {size}</Typography>
                     <Typography className={styles.subtitle}>SKU CODE: {sku_code}</Typography>
                 </Stack>
@@ -48,23 +61,32 @@ const Card = ({ data }) => {
             <Stack direction={"column"} sx={{ width: "30%", alignItems: "flex-end" }}>
                 <Stack direction={"column"} style={{ justifyContent: 'space-between', height:'90%' }}>
                     <Stack>
-                        <Typography className={styles.price}>{price}</Typography>
+                        <Typography className={styles.price}>{salePrice}</Typography>
                         <Typography className={styles.stock} style={{color:'#1BCFB4'}}>
-                            <IonIcon icon={checkmarkCircleOutline} style={{color:'#1BCFB4'}}></IonIcon>
+                            <IonIcon icon={checkmarkCircleOutline} style={{color:'#1BCFB4'}} />
                             In-Stock
                         </Typography>
                     </Stack>
                     <Stack direction={"row"} gap={2} sx={{ justifyContent: "flex-end" }}>
                         <Image src={Pen} alt={"pen"} style={{ cursor: "pointer" }} />
-                        <Image src={Delete} alt={"delete"} style={{ cursor: "pointer" }} onClick={handleOpen} />
+                        <Image
+                          src={Delete}
+                          alt={"delete"}
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handleDeleteOpen(cartItemId)}  // Correct event handler
+                        />
                     </Stack>
                 </Stack>
 
-                <DeleteModal open={open} handleClose={handleClose} />
+                <DeleteModal
+                    open={deleteModalOpen}
+                    handleClose={handleDeleteClose}
+                    cartItemId={selectedCartItemId}
+                />
             </Stack>
         </Stack>
-    )
-}
+    );
+};
 
 export default Card;
 
@@ -90,4 +112,4 @@ const dropdown = {
             border: '1px solid #0D1A26',
         },
     },
-}
+};

@@ -3,11 +3,11 @@ import Card from '@/components/CardB/Card';
 import { Shoe2 } from '@/assets/svg/index';
 import styles from '../home.module.css';
 
-const Products = () => {
+const Products = ({products}) => {
     return (
         <Box direction={"row"} className={styles.products} gap={8}>
             {
-                cardArray.map((item, index) => (
+                products.map((item, index) => (
                     <Box key={index} sx={{ flexShrink: 0 }}>
                         <Card data={item} />
                     </Box>

@@ -5,7 +5,9 @@ import { Shoe3 } from "@/assets/svg/index";
 import { IonIcon } from "@ionic/react";
 import { documentTextOutline, star } from "ionicons/icons";
 
-const Card = ({refundable, action}) => {
+const Card = ({refundable, action,data}) => {
+
+    console.log(data)
     return (
         <Stack className={styles.card} direction="row">
             <Image src={Shoe3} alt={"product"} width={160} />
