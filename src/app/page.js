@@ -24,10 +24,22 @@ import FooterM from "@/components/MobileView/Footer/FooterM";
 import global from '@/global.module.css'
 import { fetchDashboard} from "@/Redux/Features/dashboard/dashboardSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { getAllCategories } from "@/Redux/Features/category/categorySlice";
 
 const HomePage = (props) => {
 
   const dispatch = useDispatch();
+  const categoryState = useSelector((state) => state.category);
+  const categories = categoryState.categories.categories;
+
+  
+  
+  useEffect(() => {
+    dispatch(getAllCategories());
+  }, [dispatch]);
+  console.log("categories",categoryState) 
+
+
   const dashboardState = useSelector(state => state.dashboard);
   const [dashboardData, setDashboardData] = useState(dashboardState)
 
@@ -54,8 +66,9 @@ const HomePage = (props) => {
 
       <div className={global.desktop}>
         <Carousel />
-        <Try/>
-        <Trend />
+        {categories && <Try categories={categories} />}
+        {/* <Try categories={categories} /> */}
+        {/* <Trend /> */}
         {/* <Recommend /> */}
         {/* <Banner title="TRY & BUY" /> */}
         {/* <Brand dashboardData={dashboardData}/> */}

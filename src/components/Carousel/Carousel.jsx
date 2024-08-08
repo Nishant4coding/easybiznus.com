@@ -14,8 +14,6 @@ const Carousel = () => {
       dispatch(getActiveAdvertisements());
     }, [dispatch]);
 
-    console.log(banners);
-  
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
 
