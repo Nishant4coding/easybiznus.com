@@ -4,7 +4,8 @@ import styles from "../home.module.css";
 import Products from "../Products";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import productApi from "@/Redux/Features/product/productApi";
+import fetchDashboardApi from "@/Redux/Features/dashboard/dashboardApi";
+import dashboardApi from "@/Redux/Features/dashboard/dashboardApi";
 
 const Try = ({ categories }) => {
   // console.log("try", categories[0]?.title);
@@ -14,11 +15,11 @@ const Try = ({ categories }) => {
 
   useEffect(() => {
     if (categories && selected) {
-      productApi
-        .getAll([
+      
+        fetchDashboardApi([
           {
             name: "category",
-            value: categories[0]?.id,
+            value: selected,
           },
         ])
         .then((res) => {
@@ -30,9 +31,12 @@ const Try = ({ categories }) => {
     }
   }, [selected]);
 
+  console.log("active", active);
+  console.log("selected", selected);
+
   return (
     <Stack direction={"column"} className={styles.container} gap={2.5}>
-      <Typography className={styles.title}> TRY & BUY </Typography>
+      {/* <Typography className={styles.title}> TRY & BUY </Typography> */}
       <Category
         data={categories.map(({ title, id }) => {
           return { title, id };

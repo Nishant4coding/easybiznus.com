@@ -5,7 +5,7 @@ export const fetchDashboard = createAsyncThunk(
     'dashboard/fetch',
     async (_, thunkApi) => {
         try {
-            const data = await fetchDashboardApi();
+            const data = await fetchDashboardApi([]);
             console.log(data);
             return data;
         } catch (error) {

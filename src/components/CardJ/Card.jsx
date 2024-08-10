@@ -11,32 +11,20 @@ const Card = ({ data }) => {
   const [Pid, setProdId] = useState("");
   const [CatData, setData] = useState("");
 
-  useEffect(() => {
-    if(data.filter==undefined){
-      const productData = data?.Product;
-      const sellerProductId = data.SellerVariants && data.SellerVariants.length > 0 ? data.SellerVariants[0].
-      SellerProductId : "";
-      setData(productData);
-      setProdId(sellerProductId);
-    }
-    else if (data.sellerProducts.length) {
-      const productData = data?.sellerProducts.map(item=>{
-        if(item.Product.Product){
-          return item.Product.Product;
-        }
-        return item.Product;
-        
+  const productData = data?.sellerProducts[0].Product.Product;
+    
 
-      });
-      const sellerProductId = data.SellerVariants && data.SellerVariants.length > 0 ? data.SellerVariants[0].
-      SellerProductId : "";
+  const sellerProductId = data.sellerProducts[0].id;
+  console.log("pid",sellerProductId)
+  console.log("productData",productData)
+  useEffect(() => {
+      
       setData(productData);
       setProdId(sellerProductId);
-    }
   }, [data]);
   // console.log("cat",CatData)
+  // console.log("pid",Pid)
 
-  // const { MRP, salePrice, sku, name, link } = data;
 
   const discount = useMemo(() => {
     if (CatData?.MRP > 0 && CatData?.salePrice >= 0) {
@@ -58,7 +46,7 @@ const Card = ({ data }) => {
     <Box className={styles.container}>
       <Link href={`/product/${Pid}`}>
         <Typography className={styles.discount}>{discount}%</Typography>
-        <Image src={CatData.primaryImage} alt={"product"} className={styles.image} width={400} height={600} />
+        <Image src={CatData.images[0]} alt={"product"} className={styles.image} width={400} height={600} />
         <Stack
           direction={"row"}
           sx={{
@@ -68,7 +56,7 @@ const Card = ({ data }) => {
           }}
         >
           <Stack direction={"column"}>
-            {/* <Typography className={styles.title}>{capitalizeEachWord(name)}</Typography> */}
+            <Typography className={styles.title}>{capitalizeEachWord(name)}</Typography>
             <Typography className={styles.title}>
               {capitalizeEachWord(CatData.articalName)}
             </Typography>
@@ -88,3 +76,4 @@ const Card = ({ data }) => {
 };
 
 export default Card;
+
