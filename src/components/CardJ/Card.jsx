@@ -1,52 +1,53 @@
 import { Box, Stack, Typography } from "@mui/material";
 import styles from "./card.module.css";
-import { Shoe1 as image } from "@/assets/svg/index";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { Shoe1 as placeholderImage } from "@/assets/svg/index"; // Ensure this import is correct
 
 const Card = ({ data }) => {
-  console.log("props data",data)
+  console.log("props data", data);
 
   const [Pid, setProdId] = useState("");
   const [CatData, setData] = useState("");
 
-  const productData = data?.sellerProducts[0].Product.Product;
-    
+  const productData = data?.sellerProducts[0]?.Product?.Product;
+  const sellerProductId = data?.sellerProducts[0]?.id;
 
-  const sellerProductId = data.sellerProducts[0].id;
-  console.log("pid",sellerProductId)
-  console.log("productData",productData)
   useEffect(() => {
-      
+    if (productData) {
       setData(productData);
       setProdId(sellerProductId);
-  }, [data]);
-  // console.log("cat",CatData)
-  // console.log("pid",Pid)
-
+    }
+  }, [data, productData, sellerProductId]);
 
   const discount = useMemo(() => {
     if (CatData?.MRP > 0 && CatData?.salePrice >= 0) {
       return Math.ceil(((CatData.MRP - CatData.salePrice) / CatData.MRP) * 100);
     }
     return 0;
-  }, [CatData.MRP, CatData.salePrice]);
+  }, [CatData?.MRP, CatData?.salePrice]);
 
   function capitalizeEachWord(sentence) {
-    if (typeof sentence !== 'string') {
-      return '';
+    if (typeof sentence !== "string") {
+      return "";
     }
     return sentence.replace(/\b\w/g, function (char) {
       return char.toUpperCase();
     });
   }
 
+  const primaryImage = CatData?.primaryImage || (CatData?.images?.length > 0 ? CatData.images[0] : placeholderImage);
+
   return (
     <Box className={styles.container}>
       <Link href={`/product/${Pid}`}>
-        <Typography className={styles.discount}>{discount}%</Typography>
-        <Image src={CatData.images[0]} alt={"product"} className={styles.image} width={400} height={600} />
+        {discount > 0 && <Typography className={styles.discount}>{discount}%</Typography>}
+        {primaryImage ? (
+          <Image src={primaryImage} alt={"product"} className={styles.image} width={400} height={600} />
+        ) : (
+          <Typography>No Image Available</Typography>
+        )}
         <Stack
           direction={"row"}
           sx={{
@@ -56,16 +57,16 @@ const Card = ({ data }) => {
           }}
         >
           <Stack direction={"column"}>
-            <Typography className={styles.title}>{capitalizeEachWord(name)}</Typography>
+            <Typography className={styles.title}>{capitalizeEachWord(CatData?.name || "")}</Typography>
             <Typography className={styles.title}>
-              {capitalizeEachWord(CatData.articalName)}
+              {capitalizeEachWord(CatData?.articalName || "")}
             </Typography>
-            <Typography className={styles.subtitle}>Style: {CatData.sku}</Typography>
+            <Typography className={styles.subtitle}>Style: {CatData?.sku || "N/A"}</Typography>
           </Stack>
           <Stack direction={"column"} sx={{ alignItems: "center" }} gap={0}>
-            <Typography className={styles.sp}>₹{CatData.salePrice}</Typography>
+            <Typography className={styles.sp}>₹{CatData?.salePrice || "N/A"}</Typography>
             <Box>
-              <Typography className={styles.mrp}>₹{CatData.MRP}</Typography>
+              <Typography className={styles.mrp}>₹{CatData?.MRP || "N/A"}</Typography>
               <Typography className={styles.cutline}></Typography>
             </Box>
           </Stack>
@@ -76,4 +77,3 @@ const Card = ({ data }) => {
 };
 
 export default Card;
-
