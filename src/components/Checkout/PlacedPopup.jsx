@@ -20,12 +20,12 @@ const PlacedPopup = ({ open, handleClose }) => {
       console.log("Popup is open, redirecting in 3 seconds"); // Debug log
       const timer = setTimeout(() => {
         handleClose();
-        // router.push("/orders");
+        router.push("/orders");
       }, 3000);
 
       return () => clearTimeout(timer);
     }
-  }, [open, router]);
+  }, [handleClose, open, router]);
 
   return (
     <Modal

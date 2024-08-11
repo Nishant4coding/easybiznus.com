@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Button, Stack } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./checkout.module.css";
@@ -14,9 +14,8 @@ const CheckoutButton = () => {
   const profileState = useSelector((state) => state.profile.profile);
   const getCartState = useSelector((state) => state.cart.cart);
 
-  const [states, setState] = useState(profileState);
-  const [cartStates, setCartState] = useState(getCartState);
   const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     dispatch(getProfile());
@@ -26,13 +25,16 @@ const CheckoutButton = () => {
     dispatch(getCart());
   }, [dispatch]);
 
-  useEffect(() => {
-    setState(profileState);
-  }, [profileState]);
+  // const [states, setState] = useState(profileState);
+  // const [cartStates, setCartState] = useState(getCartState);
 
-  useEffect(() => {
-    setCartState(getCartState);
-  }, [getCartState]);
+  // useEffect(() => {
+  //   setState(profileState);
+  // }, [profileState]);
+
+  // useEffect(() => {
+  //   setCartState(getCartState);
+  // }, [getCartState]);
 
   const userDetails = {
     firstName: profileState?.firstName || "",
@@ -56,14 +58,11 @@ const CheckoutButton = () => {
     }
 
     try {
-      const paymentSuccess = await RazorCheckout(pricingData, id, userDetails);
-      console.log("Payment Success:", paymentSuccess);
-
-      if (paymentSuccess) {
+      await RazorCheckout(pricingData, id, userDetails, () => {
         console.log("Opening Popup");
+        setOpen(true);
         setIsPaymentSuccessful(true);
-        handleOpen();
-      }
+      });
     } catch (error) {
       console.error("Failed to initiate Razorpay payment:", error);
     }
@@ -82,9 +81,9 @@ const CheckoutButton = () => {
         <Strip />
       </Stack>
       <PlacedPopup
-        open={isPaymentSuccessful}
+        open={open}
         handleClose={() => {
-          setIsPaymentSuccessful(true);
+          setOpen(false);
         }}
       />
     </>

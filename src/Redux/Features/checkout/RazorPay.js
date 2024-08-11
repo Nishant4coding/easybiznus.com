@@ -11,7 +11,7 @@ const loadRazorpay = () => {
   });
 };
 
-export const RazorCheckout = async (pricingData, id, userDetails) => {
+export const RazorCheckout = async (pricingData, id, userDetails, cb = () => { }) => {
   const token = localStorage.getItem("token");
   const { firstName, phoneNumber } = userDetails;
   try {
@@ -53,7 +53,7 @@ export const RazorCheckout = async (pricingData, id, userDetails) => {
         };
 
         axiosToken.post(`${BASE_URL}/order/createOrder`,
-           paymentData,
+          paymentData,
         )
           .then((data) => {
             console.log(data);
@@ -67,6 +67,8 @@ export const RazorCheckout = async (pricingData, id, userDetails) => {
 
         console.log("Payment successful!");
         console.log(response);
+        cb();
+
         // console.log(userDetails);
       },
       modal: {
