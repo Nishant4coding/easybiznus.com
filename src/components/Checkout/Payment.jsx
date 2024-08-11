@@ -19,9 +19,9 @@ const Payment = () => {
             <Stack gap={1} direction={"column"} style={{ marginBottom: '10px', alignItems: 'flex-end',}}>
                 {
                     boxArray.map((item, index) => (
-                        <Link href="#" key={item.title} onClick={() => setSelect(index)} style={{width:'94%'}}>
+                        <Stack key={item.title} onClick={() => setSelect(index)} style={{width:'94%'}}>
                             <Box data={item} select={select === index} />
-                        </Link>
+                        </Stack>
                     ))
                 }
             </Stack>

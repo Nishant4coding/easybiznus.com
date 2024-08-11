@@ -18,8 +18,6 @@ const theme = createTheme({
   },
 });
 
-
-
 const NavIcon = ({ handleOpen, userMenu }) => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -29,41 +27,41 @@ const NavIcon = ({ handleOpen, userMenu }) => {
   const [wishData, setWishData] = useState(wishItems);
 
   useEffect(() => {
-      dispatch(fetchWishlist());
+    dispatch(fetchWishlist());
     dispatch(getCart());
-  }, [dispatch,dispatch]);
+  }, [dispatch, dispatch]);
 
   useEffect(() => {
     setCartData(cartItems);
   }, [cartItems]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setWishData(wishItems);
-  },[wishItems])
-  console.log(cartData);
-  console.log(wishData.length);
+  }, [wishItems]);
   const cartLength = cartData.length;
   const wishLength = wishData.length;
 
-
   const iconArray = [
     {
-      title: Heart,
+      title: "Heart",
+      asset: Heart,
       path: "/wishlist",
       number: wishLength,
     },
     {
-      title: Cart,
+      title: "Cart",
+      asset: Cart,
       path: "/cart",
       number: cartLength,
     },
     {
-      title: Avatar,
+      title: "Avatar",
+      asset: Avatar,
       number: 0,
     },
   ];
-  
 
+  const isLoggedIn = useSelector((state) => state.profile.profile);
 
   return (
     <Box
@@ -81,6 +79,12 @@ const NavIcon = ({ handleOpen, userMenu }) => {
             width: "fit-content",
             cursor: "pointer",
             padding: "0 10px",
+            visibility:
+              icon.title === "Avatar"
+                ? "visible"
+                : !isLoggedIn
+                ? "hidden"
+                : "visible",
           }}
           key={index}
           onClick={() => {
@@ -93,7 +97,7 @@ const NavIcon = ({ handleOpen, userMenu }) => {
           {icon.number !== undefined ? (
             <ThemeProvider theme={theme}>
               <Badge
-                badgeContent={index === 1 ?  icon.number :0}
+                badgeContent={icon.number}
                 color="primary"
                 sx={{
                   "& .MuiBadge-badge": {
@@ -104,11 +108,11 @@ const NavIcon = ({ handleOpen, userMenu }) => {
                   },
                 }}
               >
-                <Image src={icon.title} alt={"cart"} width={15}></Image>
+                <Image src={icon.asset} alt={"cart"} width={15}></Image>
               </Badge>
             </ThemeProvider>
           ) : (
-            <Image src={icon.title} alt={"cart"} width={15}></Image>
+            <Image src={icon.asset} alt={"cart"} width={15}></Image>
           )}
         </Box>
       ))}
@@ -117,4 +121,3 @@ const NavIcon = ({ handleOpen, userMenu }) => {
 };
 
 export default NavIcon;
-

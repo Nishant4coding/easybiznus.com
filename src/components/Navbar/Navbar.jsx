@@ -23,7 +23,7 @@ const Navbar = ({search, handleOpenSearch}) => {
             <Link href="/">
                 <Image src={Logo} alt={"logo"} width={120} />
             </Link>
-            <Location />
+            {/* <Location /> */}
             <Navlink search={search} />
             <Search search={search} handleOpenSearch={handleOpenSearch} />
             <NavIcon handleClose={handleClose} userMenu={userMenu} handleOpen={handleOpen}/>
