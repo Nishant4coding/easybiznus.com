@@ -57,12 +57,12 @@ const RightSide = () => {
                     <Stack direction="row" style={{ justifyContent: 'space-between', padding: '20px', paddingBottom:'0' }}>
                         <Stack>
                             <Typography className={styles.billing}>Subtotal</Typography>
-                            <Typography className={styles.billing}>Wallet</Typography>
+                            {/* <Typography className={styles.billing}>Wallet</Typography> */}
                             <Typography className={styles.billing}>Delivery</Typography>
                         </Stack>
                         <Stack>
                             <Typography className={styles.billing}>₹ {total}</Typography>
-                            <Typography className={styles.billing}>₹ -1000</Typography>
+                            {/* <Typography className={styles.billing}>₹ -1000</Typography> */}
                             <Typography className={styles.billing}>₹ 40</Typography>
                         </Stack>
                     </Stack>
@@ -74,7 +74,7 @@ const RightSide = () => {
                             <Typography className={styles.billing} style={{color:'#0D1A26', fontWeight:'700'}}>Grand Total :</Typography>
                         </Stack>
                         <Stack>
-                            <Typography className={styles.billing} style={{color:'#0D1A26', fontWeight:'700'}}>₹ {total-1000+40}</Typography>
+                            <Typography className={styles.billing} style={{color:'#0D1A26', fontWeight:'700'}}>₹ {total+40}</Typography>
                         </Stack>
                     </Stack>
                 </Stack>

@@ -17,11 +17,15 @@ const PlacedPopup = ({ open, handleClose }) => {
 
   useEffect(() => {
     if (open) {
-      setTimeout(() => {
-        router.push("/orders");
+      console.log("Popup is open, redirecting in 3 seconds"); // Debug log
+      const timer = setTimeout(() => {
+        handleClose();
+        // router.push("/orders");
       }, 3000);
+
+      return () => clearTimeout(timer);
     }
-  }, [open]);
+  }, [open, router]);
 
   return (
     <Modal
@@ -39,7 +43,7 @@ const PlacedPopup = ({ open, handleClose }) => {
       <Stack
         sx={{
           backgroundColor: "#0D1A26",
-          padding: "30px 180px",
+          padding: { xs: "20px 30px", md: "30px 180px" }, // Responsive padding
           width: "max-content",
           outline: "none",
           borderRadius: "5px",
@@ -58,9 +62,9 @@ const PlacedPopup = ({ open, handleClose }) => {
             color: "#fff",
           }}
           onClick={handleClose}
-        ></IonIcon>
-        <Image src={Logo} alt={"placed"} />
-        <Image src={OrderPlaced} alt={"placed"} width={200} />
+        />
+        <Image src={Logo} alt="Logo" />
+        <Image src={OrderPlaced} alt="Order Placed" width={200} />
       </Stack>
     </Modal>
   );

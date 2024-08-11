@@ -28,7 +28,7 @@ const Container = () => {
     dispatch(fetchWishlist());
   }, [dispatch]);
 
-  console.log(wishlistState)
+  console.log("wishlistState", wishlistState);
 
   return (
     <Stack direction={"column"} className={styles.container} gap={3}>

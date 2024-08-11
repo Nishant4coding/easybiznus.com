@@ -13,7 +13,7 @@ import DeleteModal from "@/components/Cart/Delete";
 import { useDispatch, useSelector } from "react-redux";
 
 const Card = ({ data }) => {
-    const { title, color, size, sku_code, salePrice, id: cartItemId } = data;  
+    const { title, color, size, sku_code, salePrice, id: cartItemId, primaryImage } = data;  
     console.log("this is data", data)
     const [qty, setQty] = useState(1);
     const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const Card = ({ data }) => {
     return (
         <Stack direction={"row"} gap={2} className={styles.container}>
             <Stack direction={"column"}>
-                <Image src={CardD} alt={"product"} width={200} />
+                <Image src={data.SellerVariant.SellerProduct.Product.images[0]} alt={"product"} width={200} height={200} />
             </Stack>
             <Stack direction={"column"} gap={1}>
                 <Stack direction={"column"}>

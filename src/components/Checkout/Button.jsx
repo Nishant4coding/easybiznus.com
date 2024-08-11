@@ -16,10 +16,12 @@ const CheckoutButton = () => {
 
   const [states, setState] = useState(profileState);
   const [cartStates, setCartState] = useState(getCartState);
+  const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false);
 
   useEffect(() => {
     dispatch(getProfile());
   }, [dispatch]);
+
   useEffect(() => {
     dispatch(getCart());
   }, [dispatch]);
@@ -27,14 +29,10 @@ const CheckoutButton = () => {
   useEffect(() => {
     setState(profileState);
   }, [profileState]);
+
   useEffect(() => {
     setCartState(getCartState);
   }, [getCartState]);
-
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   const userDetails = {
     firstName: profileState?.firstName || "",
@@ -42,9 +40,9 @@ const CheckoutButton = () => {
   };
 
   const handlePlaceOrder = async () => {
-    const total=getCartState.items.map(ele=>{
-      return parseFloat(ele.salePrice)
-    }).reduce((partialSum, a) => partialSum+a,0);
+    const total = getCartState.items
+      .map((ele) => parseFloat(ele.salePrice))
+      .reduce((partialSum, a) => partialSum + a, 0);
 
     const pricingData = {
       subTotal: total,
@@ -58,9 +56,12 @@ const CheckoutButton = () => {
     }
 
     try {
-      const isPaymentSuccessful = await RazorCheckout(pricingData, id, userDetails);
-      console.log(isPaymentSuccessful)
-      if (isPaymentSuccessful) {
+      const paymentSuccess = await RazorCheckout(pricingData, id, userDetails);
+      console.log("Payment Success:", paymentSuccess);
+
+      if (paymentSuccess) {
+        console.log("Opening Popup");
+        setIsPaymentSuccessful(true);
         handleOpen();
       }
     } catch (error) {
@@ -69,17 +70,24 @@ const CheckoutButton = () => {
   };
 
   return (
-    <Stack style={{ width: "100%" }}>
-      <Button
-        variant="contained"
-        className={styles.button}
-        onClick={handlePlaceOrder}
-      >
-        PLACE YOUR ORDER
-      </Button>
-      <Strip />
-      <PlacedPopup open={open} handleClose={handleClose} />
-    </Stack>
+    <>
+      <Stack style={{ width: "100%" }}>
+        <Button
+          variant="contained"
+          className={styles.button}
+          onClick={handlePlaceOrder}
+        >
+          PLACE YOUR ORDER
+        </Button>
+        <Strip />
+      </Stack>
+      <PlacedPopup
+        open={isPaymentSuccessful}
+        handleClose={() => {
+          setIsPaymentSuccessful(true);
+        }}
+      />
+    </>
   );
 };
 

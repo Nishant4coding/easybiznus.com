@@ -24,7 +24,7 @@ export const getCartApi = async () => {
 
 export const editCartItemQuantityApi = async (cartItemId, quantity) => {
   try {
-    const response = await axiosToken.put(`${BASE_URL}/cart/addtocart`, { cartItemId, quantity });
+    const response = await axiosToken.put(`${BASE_URL}/cart/edit-cart`, {cartItemId, quantity});
     return response.data;
   } catch (error) {
     console.error('Error editing cart item quantity:', error);

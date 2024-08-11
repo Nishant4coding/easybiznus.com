@@ -19,7 +19,7 @@ const Brand = ( dashboardData ) => {
         setSelectedCategory(categories[index]);
     };
 
-    // const selectedData =data?.dashboardData?.find(item => item.filter === selectedCategory);
+    const selectedData =data?.dashboardData?.find(item => item.filter === selectedCategory);
 
     return (
         <Stack direction={"column"} className={styles.container} gap={3}>

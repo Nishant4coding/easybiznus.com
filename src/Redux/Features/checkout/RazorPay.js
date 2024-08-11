@@ -54,7 +54,6 @@ export const RazorCheckout = async (pricingData, id, userDetails) => {
 
         axiosToken.post(`${BASE_URL}/order/createOrder`,
            paymentData,
-          //  {headers: {Authorization: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBhMzMyOWZkLWQ2ZDctNGFmNC05OTg4LTYyMWUyOTJiZjM2MiIsImVtYWlsIjoicm9oYW5kb2dyYTI1KzRAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjMwMzkxMTN9.rMxLL53BvJ5bQXis2Loq1k59Z_N3deKzfRojh-btgGI`}}
         )
           .then((data) => {
             console.log(data);

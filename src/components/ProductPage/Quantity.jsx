@@ -38,12 +38,12 @@ const Quantity = ({ handleOpen, setPopTitle, data, selectedSize, selectedColor }
     }
 
     const productDetails = {
-      productId: String(variant.id),
+      productId: String(variant?.id),
       quantity: qty,
-      price: String(data.Product.MRP),
-      salePrice: String(data.Product.salePrice),
-      sellerId: String(data.Product.adminId),
-      AccountId: String(data.AccountId),
+      price: String(data?.Product?.MRP),
+      salePrice: String(data?.Product?.salePrice),
+      sellerId: String(data?.Product?.adminId),
+      AccountId: String(data?.AccountId),
     };
     dispatch(addToCart(productDetails));
   };

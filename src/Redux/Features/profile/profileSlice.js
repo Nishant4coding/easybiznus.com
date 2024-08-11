@@ -11,6 +11,15 @@ export const getProfile = createAsyncThunk("profile/get", async (thunkApi) => {
   }
 });
 
+export const logout=createAsyncThunk("profile/logout",async(thunkApi)=>{
+  try{
+    return "successfully logged out";
+  }catch(error){
+    console.log(error);
+    return thunkApi.rejectWithValue(error);
+  }
+})
+
 export const updateProfile = createAsyncThunk(
   "profile/put",
   async (data, thunkApi) => {
@@ -70,6 +79,9 @@ const profileSlice = createSlice({
         state.profile = null;
         state.updatingProfileError = true;
         state.successUpdating = false;
+      })
+      .addCase(logout.fulfilled, (state, action) => {
+        state.profile = null;
       });
   },
 });
