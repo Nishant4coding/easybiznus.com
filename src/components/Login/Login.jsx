@@ -101,7 +101,7 @@ const Login = ({setLoginSwitch }) => {
             />
           </FormGroup>
 
-          <Stack
+          {/* <Stack
             direction="row"
             spacing={3}
             style={{
@@ -126,7 +126,7 @@ const Login = ({setLoginSwitch }) => {
                 <Image src={fbIcon} alt="FB" className={style.icons} />
               </Link>
             </Box>
-          </Stack>
+          </Stack> */}
           <Stack>
             <ThemeProvider theme={theme}>
               <Button

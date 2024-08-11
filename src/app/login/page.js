@@ -4,7 +4,7 @@ import Login from "../../components/Login/Login.jsx";
 import LoginImage from "../../assets/svg/LoginPage.svg";
 import JoinButton from "../../assets/svg/Join_button.svg";
 import Image from "next/image";
-import { Stack, Box, Typography } from "@mui/material";
+import { Stack, Box, Typography, Link } from "@mui/material";
 import style from "../Global.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
@@ -36,7 +36,9 @@ const LoginPage = ({setLoginSwitch }) => {
         :
         <>
           <Box className={style.signupBtn} onClick={() => setLoginSwitch(true)}>
+            <Link href="/register">
             <Image src={JoinButton} width={120} height={120} alt=""></Image>
+            </Link>
           </Box>
           <Stack direction="row">
             {/* <Login setIsLogin={setIsLogin} setLoginSwitch={setLoginSwitch} /> */}

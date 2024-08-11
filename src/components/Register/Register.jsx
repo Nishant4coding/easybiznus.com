@@ -78,7 +78,7 @@ const Register =({setLoginSwitch}) => {
 
           <Typography className={style.title_signup}>Sign up with</Typography>
 
-          <Stack
+          {/* <Stack
             direction="row"
             spacing={3}
             style={{
@@ -104,7 +104,7 @@ const Register =({setLoginSwitch}) => {
                 <Image src={appleIcon} alt="Apple" className={style.icons} />
               </Link>
             </Box>
-          </Stack>
+          </Stack> */}
 
           <span className={style.divider} />
 
