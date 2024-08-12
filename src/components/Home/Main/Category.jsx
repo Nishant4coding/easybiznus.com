@@ -29,19 +29,19 @@ const cardArray = [
     image: Men,
     title: "Men's Collection",
     style: "500+",
-    link:"/category/men"
+    link:"/category?title=men"
   },
   {
     image: Women,
     title: "Women's Collection",
     style: "500+",
-     link:"/category/women"
+     link:"/category?title=women"
   },
 
   {
     image: Kids,
     title: "Kid's Collection",
     style: "500+",
-     link:"/category/kids"
+     link:"/category?title=kids"
   },
 ];

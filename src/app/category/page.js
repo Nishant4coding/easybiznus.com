@@ -19,7 +19,7 @@ const CategoryPage = () => {
         if (title) {
             const filterArray = [{
                 "name": "category",
-                "value": title
+                "values": [title]
             }];
             console.log("Filter Array:", filterArray);
 
