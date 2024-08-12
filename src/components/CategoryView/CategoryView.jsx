@@ -4,12 +4,12 @@ import Filter from "../Filter/Filter";
 import Products from "./Products";
 import Footer from "../Footer/Footer";
 
-const CategoryView = ()=>{
+const CategoryView = ({products})=>{
     return(
         <Box>
             <BasicBreadcrumbs inactive={inactive} active='Running'/>
             <Filter filterArray={filterArray} sort={true}/>
-            <Products/>
+            <Products products={products}/>
             <Footer/>
         </Box>
     )

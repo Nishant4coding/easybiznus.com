@@ -50,7 +50,7 @@ const Quantity = ({ handleOpen, setPopTitle, data, selectedSize, selectedColor }
 
   const handleWishlistToggle = () => {
     const productId = data.SellerVariants[0].SellerProductId;
-    if (wish) {
+        if (wish) {
       dispatch(removeFromWishlist({ productId }));
       setWish(false);
     } else {

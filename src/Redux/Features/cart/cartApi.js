@@ -1,6 +1,5 @@
 import axiosToken from '@/Utility/axiosInstance'; 
 import BASE_URL from '@/Utility/baseUrl';
-import axios from 'axios';
 
 export const addToCartApi = async (productDetails) => {
   try {
@@ -18,6 +17,15 @@ export const getCartApi = async () => {
     return response.data;
   } catch (error) {
     console.error('Error fetching cart:', error);
+    throw error; 
+  }
+};
+export const checkStockApi = async () => {
+  try {
+    const response = await axiosToken.get(`${BASE_URL}/cart/cart-check-stock`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching stock cart:', error);
     throw error; 
   }
 };
