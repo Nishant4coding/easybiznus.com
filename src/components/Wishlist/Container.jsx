@@ -13,7 +13,11 @@ const Container = () => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [selectedWishItemId, setSelectedWishItemId] = useState(null);
   const dispatch = useDispatch();
-  const wishlistState = useSelector((state) => state.wishlist);
+  const wishlistState = useSelector((state) => state.wishlist.items);
+
+
+  console.log("wishlistState", wishlistState);
+
   const handleDeleteOpen = (wishId) => {
     setSelectedWishItemId(wishId);
     setDeleteModalOpen(true);
@@ -33,11 +37,11 @@ const Container = () => {
   return (
     <Stack direction={"column"} className={styles.container} gap={3}>
       <Typography className={styles.title}>
-        MY WISHLIST {wishlistState.items && `[ ${wishlistState.items.length} ]`}
+        MY WISHLIST {wishlistState && `[ ${wishlistState.length} ]`}
       </Typography>
       <Stack direction={"column"} gap={1.8}>
-        {wishlistState.items &&
-          wishlistState.items.map((item, index) => (
+        {wishlistState &&
+          wishlistState.map((item, index) => (
             <Card
               data={item}
               key={index} 
