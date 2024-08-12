@@ -10,37 +10,34 @@ import productApi from '@/Redux/Features/product/productApi';
 
 const CategoryPage = () => {
     const searchParams = useSearchParams();
-    const title = searchParams.get('title'); // Get the title from the query params
-
+    const title = searchParams.get('title') || ''; // Get the title from the query params
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (title) {
+        if (title !== undefined) {
             const filterArray = [{
                 "name": "category",
-                "values": [title]
+                "values": title.length > 0 ? [title] : []
             }];
-            console.log("Filter Array:", filterArray);
 
             productApi.getAll(filterArray).then(data => {
-                console.log("API Response:", data); 
-                
+
                 if (data && data.filteredProducts) {
-                    setProducts(data.filteredProducts); 
+                    setProducts(data.filteredProducts);
                 } else if (data && Array.isArray(data)) {
-                    setProducts(data); 
+                    setProducts(data);
                 } else {
                     console.error("Unexpected API response structure:", data);
                 }
 
-                setLoading(false); 
+                setLoading(false);
             }).catch(error => {
                 console.error("Error fetching products:", error);
-                setLoading(false); 
+                setLoading(false);
             });
         } else {
-            setLoading(false); 
+            setLoading(false);
         }
     }, [title]);
 

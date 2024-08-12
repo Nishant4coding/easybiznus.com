@@ -1,9 +1,9 @@
-import { Box, Stack } from "@mui/material";
-import Link from "next/link";
-import styles from "./nav.module.css";
 import { getAllCategories } from "@/Redux/Features/category/categorySlice";
-import { useDispatch, useSelector } from "react-redux";
+import { Stack } from "@mui/material";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import styles from "./nav.module.css";
 
 const Navlink = ({ search }) => {
   // get all the catregories
@@ -11,10 +11,10 @@ const Navlink = ({ search }) => {
   const [catArr, setcatArr] = useState(navArray);
   const categoryState = useSelector((state) => state.category);
   useEffect(() => {
-    if (categoryState.categories.categories?.length === 0) {
+    if (!categoryState.categories.categories?.length) {
       dispatch(getAllCategories());
     }
-  }, [dispatch]);
+  }, [dispatch, categoryState.categories]);
 
   useEffect(() => {
     if (categoryState.categories.categories?.length) {
@@ -26,14 +26,14 @@ const Navlink = ({ search }) => {
         );
         return available
           ? {
-              ...cat,
-              path: `/category/?id=${available.id}&title=${available.title}`,
-            }
+            ...cat,
+            path: `/category/?id=${available.id}&title=${available.title}`,
+          }
           : { ...cat, path: `/category/?id=${cat.id}&title=${cat.title}` };
       });
       setcatArr(tempcatArr);
     }
-  }, [categoryState]);
+  }, [catArr, categoryState]);
 
   return (
     <>
