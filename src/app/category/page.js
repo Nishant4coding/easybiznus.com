@@ -10,15 +10,15 @@ import productApi from '@/Redux/Features/product/productApi';
 
 const CategoryPage = () => {
     const searchParams = useSearchParams();
-    const title = searchParams.get('title') || ''; // Get the title from the query params
+    const id = searchParams.get('id') || ''; // Get the id from the query params
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (title !== undefined) {
+        if (id !== undefined) {
             const filterArray = [{
                 "name": "category",
-                "values": title.length > 0 ? [title] : []
+                "values": id.length > 0 ? [id] : []
             }];
 
             productApi.getAll(filterArray).then(data => {
@@ -39,7 +39,7 @@ const CategoryPage = () => {
         } else {
             setLoading(false);
         }
-    }, [title]);
+    }, [id]);
 
     console.log("Filtered Products:", products);
 
