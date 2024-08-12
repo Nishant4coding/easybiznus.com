@@ -62,7 +62,6 @@ const Card = ({ data }) => {
               {capitalizeEachWord(CatData?.articalName || "")}
             </Typography>
             <Typography className={styles.subtitle}>Style: {CatData?.sku || "N/A"}</Typography>
-            <Typography className={styles.subtitle}>Style: {CatData?.section || "N/A"}</Typography>
           </Stack>
           <Stack direction={"column"} sx={{ alignItems: "center" }} gap={0}>
             <Typography className={styles.sp}>₹{CatData?.salePrice || "N/A"}</Typography>

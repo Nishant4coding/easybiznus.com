@@ -43,9 +43,9 @@ const Navlink = ({ search }) => {
         className={[styles.navlink, search ? styles.navlinkfocus : ""]}
       >
         {catArr.map((link, index) => (
-          <Link key={index} href={link.path} className={styles.link}>
+          <a key={index} href={link.path} className={styles.link} sx={{textDecoration:"none"}}>
             {link.title}
-          </Link>
+          </a>
         ))}
       </Stack>
     </>
