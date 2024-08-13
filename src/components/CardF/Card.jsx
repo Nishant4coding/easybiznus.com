@@ -1,3 +1,5 @@
+'use client'
+
 import { Button, Stack, Typography, TextField } from "@mui/material";
 import styles from './card.module.css';
 import Image from "next/image";

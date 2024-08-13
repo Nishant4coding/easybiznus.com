@@ -18,7 +18,7 @@ const LeftBox = () => {
     if (profileState.profile === null) {
       dispatch(getProfile());
     }
-  }, [profileState.profile])
+  }, [dispatch, profileState.profile])
 
   console.log(profileState)
   return (

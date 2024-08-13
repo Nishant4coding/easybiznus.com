@@ -34,7 +34,7 @@ const ProductPage = ({ params }) => {
 
   useEffect(() => {
     dispatch(getProductById(params?.id));
-  }, []);
+  }, [dispatch, params?.id]);
 
   useEffect(() => {
     setDetails(productState?.selectedProduct?.Product);

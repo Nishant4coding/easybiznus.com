@@ -18,7 +18,7 @@ const Popup = ({ open, handleClose, poptitle }) => {
 
   useEffect(() => {
     setTimeout(() => handleClose(), 2000);
-  }, []);
+  }, [handleClose]);
 
   return (
     <Modal

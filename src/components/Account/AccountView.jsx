@@ -38,7 +38,7 @@ const AccountView = () => {
     if (!profileState.profile) {
       dispatch(getProfile());
     }
-  }, [dispatch]);
+  }, [dispatch, profileState.profile]);
 
   const userData = useMemo(() => {
     if (profileState.profile) {

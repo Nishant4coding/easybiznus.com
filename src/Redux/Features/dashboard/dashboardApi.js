@@ -2,10 +2,7 @@ import axiosToken from "@/Utility/axiosInstance";
 import BASE_URL from "@/Utility/baseUrl";
 
 const fetchDashboardApi = async (filterArray) => {
-  // {
-  //     "name": "section",
-  //     "value": "male"
-  // },
+  
 
   if (!filterArray) {
     filterArray = [];

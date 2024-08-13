@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import profileApi from "./profileApi";
+import * as profileApi from "./profileApi";
 
 export const getProfile = createAsyncThunk("profile/get", async (thunkApi) => {
   try {
@@ -11,10 +11,10 @@ export const getProfile = createAsyncThunk("profile/get", async (thunkApi) => {
   }
 });
 
-export const logout=createAsyncThunk("profile/logout",async(thunkApi)=>{
-  try{
+export const logout = createAsyncThunk("profile/logout", async (thunkApi) => {
+  try {
     return "successfully logged out";
-  }catch(error){
+  } catch (error) {
     console.log(error);
     return thunkApi.rejectWithValue(error);
   }
@@ -86,5 +86,5 @@ const profileSlice = createSlice({
   },
 });
 
-export const {} = profileSlice.actions;
+export const { } = profileSlice.actions;
 export default profileSlice.reducer;

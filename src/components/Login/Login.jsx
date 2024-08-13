@@ -49,7 +49,7 @@ const Login = ({setLoginSwitch }) => {
       // setIsLogin(true);
       dispatch(getProfile())
     }
-  }, [auth]);
+  }, [auth, dispatch]);
 
   return (
     <Box className={style.super_container}>
