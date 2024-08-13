@@ -14,7 +14,7 @@ const Navlink = ({ search }) => {
     if (!categoryState.categories.categories?.length) {
       dispatch(getAllCategories());
     }
-  }, [dispatch]);
+  }, [categoryState, dispatch]);
 
   useEffect(() => {
     if (categoryState.categories.categories?.length) {
@@ -43,7 +43,7 @@ const Navlink = ({ search }) => {
         className={[styles.navlink, search ? styles.navlinkfocus : ""]}
       >
         {catArr.map((link, index) => (
-          <a key={index} href={link.path} className={styles.link} sx={{textDecoration:"none"}}>
+          <a key={index} href={link.path} className={styles.link} sx={{ textDecoration: "none" }}>
             {link.title}
           </a>
         ))}

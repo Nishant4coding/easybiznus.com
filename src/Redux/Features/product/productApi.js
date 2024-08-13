@@ -1,7 +1,7 @@
 import axiosToken from "@/Utility/axiosInstance";
 import BASE_URL from "@/Utility/baseUrl";
 
-const getAll = async (filterArray) => {
+export const getAll = async (filterArray) => {
     // [{
     //     "name": "section",
     //     "value": "male"
@@ -18,14 +18,14 @@ const getAll = async (filterArray) => {
                 "targetLongitude": 28.7041
             }
         );
-        console.log("product api, filter api",res.data)
+        console.log("product api, filter api", res.data)
         return res.data;
     } catch (error) {
         console.log("get all product: ", error.message);
     }
 }
 
-const getProductById = async (id) => {
+export const getProductByIdOnly = async (id) => {
     try {
         const res = await axiosToken.get(`${BASE_URL}/products/product/sellerProduct/${id}`);
         console.log(id)
@@ -33,9 +33,4 @@ const getProductById = async (id) => {
     } catch (error) {
         console.log("gey prod by id: ", error.message);
     }
-}
-
-export default {
-    getAll,
-    getProductById
 }

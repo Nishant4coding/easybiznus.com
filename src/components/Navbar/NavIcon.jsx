@@ -29,7 +29,7 @@ const NavIcon = ({ handleOpen, userMenu }) => {
   useEffect(() => {
     dispatch(fetchWishlist());
     dispatch(getCart());
-  }, [dispatch, dispatch]);
+  }, [dispatch]);
 
   useEffect(() => {
     setCartData(cartItems);
@@ -83,8 +83,8 @@ const NavIcon = ({ handleOpen, userMenu }) => {
               icon.title === "Avatar"
                 ? "visible"
                 : !isLoggedIn
-                ? "hidden"
-                : "visible",
+                  ? "hidden"
+                  : "visible",
           }}
           key={index}
           onClick={() => {

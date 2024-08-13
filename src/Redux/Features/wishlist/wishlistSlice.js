@@ -21,7 +21,7 @@ export const fetchWishlist = createAsyncThunk(
 
 export const addToWishlist = createAsyncThunk(
   'wishlist/addToWishlist',
-  async ({productId} , {rejectWithValue}) => {
+  async ({ productId }, { rejectWithValue }) => {
     try {
       // const userId = thunkApi.getState().auth.user.id;
       const res = await addToWishlistApi(productId);
@@ -40,7 +40,7 @@ export const removeFromWishlist = createAsyncThunk(
   'wishlist/removeFromWishlist',
   async ({ productId }, thunkApi) => {
     try {
-      const res = await removeWishlistItemApi( productId);
+      const res = await removeWishlistItemApi(productId);
       return { productId };
     } catch (error) {
       return thunkApi.rejectWithValue({

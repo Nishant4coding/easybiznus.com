@@ -31,7 +31,7 @@ const UserMenu = ({ userMenu, handleClose }) => {
       return null;
     }
     if (profileState.profile) return profileState.profile;
-  }, [profileState.profile]);
+  }, [dispatch, profileState.profile]);
 
   const loggingout = () => {
     localStorage.removeItem("token");

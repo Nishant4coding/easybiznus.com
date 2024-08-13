@@ -13,11 +13,9 @@ import DeleteModal from "@/components/Cart/Delete";
 import { useDispatch, useSelector } from "react-redux";
 
 const Card = ({ data }) => {
-    const { title, color, size, sku_code, salePrice, id: cartItemId, primaryImage } = data;  
-    console.log("this is data", data)
+    const { title, color, size, sku_code, salePrice, id: cartItemId, primaryImage } = data;
+    // console.log("this is data", data)
     const [qty, setQty] = useState(1);
-    const dispatch = useDispatch();
-    const { cart, loading, error } = useSelector((state) => state.cart);
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
     const [selectedCartItemId, setSelectedCartItemId] = useState(null);
 
@@ -25,7 +23,7 @@ const Card = ({ data }) => {
         setSelectedCartItemId(cartItemId);
         setDeleteModalOpen(true);
     };
-    
+
     const handleDeleteClose = () => {
         setDeleteModalOpen(false);
         setSelectedCartItemId(null);
@@ -59,21 +57,21 @@ const Card = ({ data }) => {
                 </Box>
             </Stack>
             <Stack direction={"column"} sx={{ width: "30%", alignItems: "flex-end" }}>
-                <Stack direction={"column"} style={{ justifyContent: 'space-between', height:'90%' }}>
+                <Stack direction={"column"} style={{ justifyContent: 'space-between', height: '90%' }}>
                     <Stack>
                         <Typography className={styles.price}>{salePrice}</Typography>
-                        <Typography className={styles.stock} style={{color:'#1BCFB4'}}>
-                            <IonIcon icon={checkmarkCircleOutline} style={{color:'#1BCFB4'}} />
+                        <Typography className={styles.stock} style={{ color: '#1BCFB4' }}>
+                            <IonIcon icon={checkmarkCircleOutline} style={{ color: '#1BCFB4' }} />
                             In-Stock
                         </Typography>
                     </Stack>
                     <Stack direction={"row"} gap={2} sx={{ justifyContent: "flex-end" }}>
                         <Image src={Pen} alt={"pen"} style={{ cursor: "pointer" }} />
                         <Image
-                          src={Delete}
-                          alt={"delete"}
-                          style={{ cursor: "pointer" }}
-                          onClick={() => handleDeleteOpen(cartItemId)}  // Correct event handler
+                            src={Delete}
+                            alt={"delete"}
+                            style={{ cursor: "pointer" }}
+                            onClick={() => handleDeleteOpen(cartItemId)}  // Correct event handler
                         />
                     </Stack>
                 </Stack>

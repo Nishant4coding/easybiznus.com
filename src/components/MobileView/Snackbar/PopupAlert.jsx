@@ -22,7 +22,7 @@ const Popup = ({ open, handleClose, title, type, path }) => {
     return ()=>{
       clearTimeout(counter);
     }
-  }, [])
+  }, [handleClose])
 
   return (
     <Modal

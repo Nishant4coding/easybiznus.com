@@ -26,7 +26,7 @@ const LoginPage = ({setLoginSwitch }) => {
     // if (profileState.profile) {
     //   setIsLogin(true);
     // }
-  }, [profileState.profile])
+  }, [dispatch, profileState])
 
 
   return (

@@ -29,7 +29,7 @@ const Try = ({ categories }) => {
           console.log(err);
         });
     }
-  }, [selected]);
+  }, [categories, selected]);
 
   console.log("active", active);
   console.log("selected", selected);

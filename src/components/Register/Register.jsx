@@ -54,7 +54,7 @@ const Register =({setLoginSwitch}) => {
       updatedUserData.location.coordinates = [latitude, longitude];
       setUserData(updatedUserData);
     });
-  }, []);
+  }, [userData]);
 
   const signupHandler = (e) => {
     e.preventDefault();

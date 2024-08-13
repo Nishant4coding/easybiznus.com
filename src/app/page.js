@@ -59,7 +59,7 @@ const HomePage = (props) => {
 
   useEffect(() => {
     setTitle(t("title"));
-  }, [T]);
+  }, [T, t]);
 
   return (
     <>

@@ -20,8 +20,8 @@ const Details = ({ stepper,rtrn, bill,data }) => {
                 Need help?
             </Typography>
             <Stack direction={"row"}>
-                {data.map((item) => (
-                    <Card refundable={item.refundable} action={item.action} data={item.data} />
+                {data.map((item, index) => (
+                    <Card key={index} refundable={item.refundable} action={item.action} data={item.data} />
                 ))}
             </Stack>
             <Card refundable={"₹19,990"} action={true} data={data}/>
