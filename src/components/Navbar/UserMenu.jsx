@@ -142,7 +142,7 @@ const menuArray = [
 const menuArray2 = [
   {
     title: "LOGIN",
-    path: "#",
+    path: "/login",
     icon: UserLogo,
   },
 ];

@@ -26,14 +26,15 @@ const Card = ({ data, edit = true,  }) => {
 
   const handleAddToCart = () => {
     const productDetails = {
-      productId: String(data?.SellerProduct?.Cartons[0]?.id || data.SellerProduct.SellerVariants[0].id),
-      quantity: data.SellerProduct.quantity,
-      price: String(data.SellerProduct.price), 
+      productId: String(data?.SellerProduct?.Cartons[0]?.id || data.SellerProduct.SellerVariants[0]?.id),
+      quantity: qty,
+      price: String(data.SellerProduct?.price), 
       salePrice: String(data.SellerProduct.Product.salePrice),
       sellerId: String(data.SellerProduct.Product.adminId),
       AccountId: String(data.accountId),   
     };
     dispatch(addToCart(productDetails));
+    console.log("productDetails", productDetails);
   };
 
   return (

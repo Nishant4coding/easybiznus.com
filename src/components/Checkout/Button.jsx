@@ -43,7 +43,7 @@ const CheckoutButton = () => {
 
   const handlePlaceOrder = async () => {
     const total = getCartState.items
-      .map((ele) => parseFloat(ele.salePrice))
+      .map((ele) => parseFloat(ele.salePrice*ele.quantity))
       .reduce((partialSum, a) => partialSum + a, 0);
 
     const pricingData = {

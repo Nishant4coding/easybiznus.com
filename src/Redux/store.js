@@ -8,6 +8,7 @@ import orderHistorySlice from "./Features/orderHistory/orderHistorySlice";
 import dashboardSlice from "./Features/dashboard/dashboardSlice";
 import categorySlice from "./Features/category/categorySlice";
 import bannerSlice from "./Features/banner/bannerSlice";
+import stockSlice from "./Features/checkout/checkStockSlice";
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     order:orderHistorySlice,
     dashboard:dashboardSlice,
     banner: bannerSlice,
+    stock: stockSlice,
   }
 })
 

@@ -14,7 +14,7 @@ const Navlink = ({ search }) => {
     if (!categoryState.categories.categories?.length) {
       dispatch(getAllCategories());
     }
-  }, [dispatch, categoryState.categories]);
+  }, [dispatch]);
 
   useEffect(() => {
     if (categoryState.categories.categories?.length) {

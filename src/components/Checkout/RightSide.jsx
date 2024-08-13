@@ -4,7 +4,7 @@ import { Stack, Typography, Button } from '@mui/material';
 import styles from './checkout.module.css';
 import { IonIcon } from '@ionic/react';
 import { newspaperOutline, home, add, businessOutline, radioButtonOnOutline, radioButtonOffOutline, storefrontOutline } from 'ionicons/icons';
-import Card from '../CardH/Card';
+import Card from '../CardI/Card';
 import { getCart } from "@/Redux/Features/cart/cartSlice";
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -23,9 +23,13 @@ const RightSide = () => {
       setCartState(getCartState);
     }, [getCartState]);
 
-    const total=getCartState.items.map(ele=>{
-        return parseFloat(ele.salePrice)
-      }).reduce((partialSum, a) => partialSum+a,0);
+    const handleQuantityChange = (cartItemId, quantity) => {
+      dispatch(editCartItemQuantity({ cartItemId, quantity }));
+    };
+
+    const total = getCartState.items
+      .map(item => parseFloat(item.salePrice * item.quantity))
+      .reduce((partialSum, a) => partialSum + a, 0);
 
     return (
         <Stack style={{ width: '45%', marginBottom: '100px', alignItems:'center'}} gap={3}>
@@ -47,7 +51,7 @@ const RightSide = () => {
                 <Stack gap={2} style={{ width: '100%' }}>
                     {
                         getCartState.items.map((item, index) => (
-                            <Card key={index} data={item} />
+                            <Card key={index} data={item} onQuantityChange={handleQuantityChange} />
                         ))
                     }
                 </Stack>
@@ -57,12 +61,10 @@ const RightSide = () => {
                     <Stack direction="row" style={{ justifyContent: 'space-between', padding: '20px', paddingBottom:'0' }}>
                         <Stack>
                             <Typography className={styles.billing}>Subtotal</Typography>
-                            {/* <Typography className={styles.billing}>Wallet</Typography> */}
                             <Typography className={styles.billing}>Delivery</Typography>
                         </Stack>
                         <Stack>
                             <Typography className={styles.billing}>₹ {total}</Typography>
-                            {/* <Typography className={styles.billing}>₹ -1000</Typography> */}
                             <Typography className={styles.billing}>₹ 40</Typography>
                         </Stack>
                     </Stack>
@@ -84,20 +86,3 @@ const RightSide = () => {
 }
 
 export default RightSide;
-
-const cardArray = [
-    {
-        title: "Mercedes AMG Petronas F1, Wired Run Unisex Sneakers",
-        color: "Warm White Inky-Blue",
-        size: "8",
-        sku_code: "99845_01",
-        price: "₹15,990",
-    },
-    {
-        title: "Mercedes AMG Petronas F1, Wired Run Unisex Sneakers",
-        color: "Warm White Inky-Blue",
-        size: "8",
-        sku_code: "99845_01",
-        price: "₹15,990",
-    }
-]

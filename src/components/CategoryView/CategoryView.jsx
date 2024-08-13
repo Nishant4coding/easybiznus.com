@@ -29,28 +29,28 @@ const inactive =[
 ];
 
 const filterArray=[
-    // {
-    //     title:"Category"
-    // },
-    // {
-    //     title:"Product Type"
-    // },
-    // {
-    //     title:"Price"
-    // },
-    // {
-    //     title:"Gender"
-    // },
-    // {
-    //     title:"Size"
-    // },
-    // {
-    //     title:"Color"
-    // },
-    // {
-    //     title:"Discount"
-    // },
-    // {
-    //     title:"Activity"
-    // }
+    {
+        title:"Category"
+    },
+    {
+        title:"Product Type"
+    },
+    {
+        title:"Price"
+    },
+    {
+        title:"Gender"
+    },
+    {
+        title:"Size"
+    },
+    {
+        title:"Color"
+    },
+    {
+        title:"Discount"
+    },
+    {
+        title:"Activity"
+    }
 ]

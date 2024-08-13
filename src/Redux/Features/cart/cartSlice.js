@@ -4,7 +4,6 @@ import {
   getCartApi,
   editCartItemQuantityApi,
   removeCartItemApi,
-  checkStockApi,
 } from "./cartApi";
 
 // Thunks
@@ -35,17 +34,6 @@ export const getCart = createAsyncThunk(
   }
 );
 
-export const checkStock = createAsyncThunk(
-  "cart/checkStock",
-  async (_, { rejectWithValue }) => {
-    try {
-      const res = await checkStockApi();
-      return res;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
-  }
-);
 
 export const editCartItemQuantity = createAsyncThunk(
   "cart/editCartItemQuantity",
@@ -112,20 +100,6 @@ const cartSlice = createSlice({
         state.error = action.payload;
       })
 
-      //check stock
-      .addCase(checkStock.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(checkStock.fulfilled, (state, action) => {
-        state.loading = false;
-        state.cart = action.payload;
-      })
-      .addCase(checkStock.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      })
-      
       // Edit Cart Item Quantity
       .addCase(editCartItemQuantity.pending, (state) => {
         state.loading = true;
@@ -133,13 +107,14 @@ const cartSlice = createSlice({
       })
       .addCase(editCartItemQuantity.fulfilled, (state, action) => {
         state.loading = false;
-        const index = state.cart.findIndex(
+        const index = state.cart.items.findIndex(
           (item) => item.id === action.payload.id
         );
         if (index !== -1) {
-          state.cart[index] = action.payload;
+          state.cart.items[index] = action.payload;
         }
       })
+      
       .addCase(editCartItemQuantity.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;

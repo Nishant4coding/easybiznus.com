@@ -93,9 +93,9 @@ const ProductPage = ({ params }) => {
             </Stack>
           </Stack>
           <Footer />
-          {open && (
-            <Popup open={open} handleClose={handleClose} poptitle={poptitle} />
-          )}
+            {/* {open && (
+              <Popup open={open} handleClose={handleClose} poptitle={poptitle} />
+            )} */}
         </Box>
       )}
 
