@@ -1,6 +1,6 @@
 import { Pen } from "@/assets/svg";
 import global from "@/global.module.css";
-import { getProfile } from "@/Redux/Features/profile/profileSlice";
+import { getProfile, logout } from "@/Redux/Features/profile/profileSlice";
 import { IonIcon } from "@ionic/react";
 import { Button, Stack, Typography } from "@mui/material";
 import {
@@ -18,18 +18,27 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./account.module.css";
+import { useRouter } from "next/navigation";
+
 
 const AccountView = () => {
+  const router = useRouter();
   const [select, setSelect] = useState(0);
   const [address, setAddress] = useState(true);
   const dispatch = useDispatch();
   const profileState = useSelector((state) => state.profile);
 
+  const loggingout = () => {
+    localStorage.removeItem("token");
+    dispatch(logout());
+    router.push("/login");
+  };
+
   useEffect(() => {
     if (!profileState.profile) {
       dispatch(getProfile());
     }
-  }, [dispatch, profileState.profile]);
+  }, [dispatch]);
 
   const userData = useMemo(() => {
     if (profileState.profile) {
@@ -38,7 +47,6 @@ const AccountView = () => {
     return null;
   }, [profileState.profile]);
 
-  console.log(userData)
 
   return (
     <Stack sx={{ width: "100%", alignItems: "center" }}>
@@ -183,6 +191,9 @@ const AccountView = () => {
         variant="contained"
         className={global.button}
         style={{ marginTop: "180px", padding: "10px 50px", fontSize: "13px" }}
+        onClick={() => {
+          loggingout();
+        }}
       >
         LOGOUT
       </Button>
