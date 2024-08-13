@@ -133,14 +133,14 @@ const Inputdd = ({ name, value, title, placeholder, width, children, fsize, chan
     return (
         <Stack gap={1} sx={{ width: width ? width : '40%', position: 'relative' }}>
             <Typography style={{ fontSize: fsize ? fsize : "" }} className={styles.inputhead}>{title}</Typography>
-            <input type="text" placeholder={placeholder} className={styles.input} value={value?.split('-')[2]} onChange={(e) => birthdayHandle(e)} name={name}></input>
+            <input type="number" placeholder={placeholder} className={styles.input} value={value?.split('-')[2]} onChange={(e) => birthdayHandle(e)} name={name}></input>
             {children}
         </Stack>
     )
 }
 const Inputmm = ({ name, value, title, placeholder, width, children, fsize, changeValue, data }) => {
     const birthdayHandle = (e) => {
-        console.log('hi');
+        // console.log('hi');
         if (e.target.value.length <= 2) {
             if (typeof (parseInt(e.target.value)) === 'number') {
                 const mm = `${value?.split('-')[0]}-${e.target.value}-${value?.split('-')[2]}`;
@@ -154,7 +154,7 @@ const Inputmm = ({ name, value, title, placeholder, width, children, fsize, chan
     return (
         <Stack gap={1} sx={{ width: width ? width : '40%', position: 'relative' }}>
             <Typography style={{ fontSize: fsize ? fsize : "" }} className={styles.inputhead}>{title}</Typography>
-            <input type="text" placeholder={placeholder} className={styles.input} value={value?.split('-')[1]} onChange={(e) => birthdayHandle(e)} name={name}></input>
+            <input type="number" placeholder={placeholder} className={styles.input} value={value?.split('-')[1]} onChange={(e) => birthdayHandle(e)} name={name}></input>
             {children}
         </Stack>
     )
@@ -176,7 +176,7 @@ const Inputyy = ({ name, value, title, placeholder, width, children, fsize, chan
     return (
         <Stack gap={1} sx={{ width: width ? width : '40%', position: 'relative' }}>
             <Typography style={{ fontSize: fsize ? fsize : "" }} className={styles.inputhead}>{title}</Typography>
-            <input type="text" placeholder={placeholder} className={styles.input} value={value?.split('-')[0]} onChange={(e) => birthdayHandle(e)} name={name}></input>
+            <input type="number" placeholder={placeholder} className={styles.input} value={value?.split('-')[0]} onChange={(e) => birthdayHandle(e)} name={name}></input>
             {children}
         </Stack>
     )
