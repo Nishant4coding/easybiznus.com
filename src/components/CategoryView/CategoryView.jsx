@@ -4,10 +4,10 @@ import Filter from "../Filter/Filter";
 import Products from "./Products";
 import Footer from "../Footer/Footer";
 
-const CategoryView = ({products})=>{
+const CategoryView = ({products,title})=>{
     return(
         <Box>
-            <BasicBreadcrumbs inactive={inactive} active='Running'/>
+            <BasicBreadcrumbs inactive={inactive} active={title}/>
             <Filter filterArray={filterArray} sort={true}/>
             <Products products={products}/>
             <Footer/>
@@ -23,38 +23,34 @@ const inactive =[
         path:'/'
     },
     {
-        title:'Men',
-        path:'#'
+        title:'Category',
+        path:'/'
     },
-    {
-        title:'Shoes',
-        path:'#'
-    }
 ];
 
 const filterArray=[
-    {
-        title:"Category"
-    },
-    {
-        title:"Product Type"
-    },
-    {
-        title:"Price"
-    },
-    {
-        title:"Gender"
-    },
-    {
-        title:"Size"
-    },
-    {
-        title:"Color"
-    },
-    {
-        title:"Discount"
-    },
-    {
-        title:"Activity"
-    }
+    // {
+    //     title:"Category"
+    // },
+    // {
+    //     title:"Product Type"
+    // },
+    // {
+    //     title:"Price"
+    // },
+    // {
+    //     title:"Gender"
+    // },
+    // {
+    //     title:"Size"
+    // },
+    // {
+    //     title:"Color"
+    // },
+    // {
+    //     title:"Discount"
+    // },
+    // {
+    //     title:"Activity"
+    // }
 ]

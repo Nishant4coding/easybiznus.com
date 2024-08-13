@@ -11,6 +11,8 @@ import productApi from '@/Redux/Features/product/productApi';
 const CategoryPage = () => {
     const searchParams = useSearchParams();
     const id = searchParams.get('id') || ''; // Get the id from the query params
+    const title = searchParams.get('title') || '';
+    console.log("title", title);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -50,7 +52,7 @@ const CategoryPage = () => {
     return (
         <>
             <Box className={global.desktop}>
-                <CategoryView products={products} />
+                <CategoryView products={products} title={title}/>
             </Box>
             <Box className={global.mobile} sx={{ marginTop: "55px", backgroundColor: "#EBEBEB" }} >
                 <ProductView products={products} />
