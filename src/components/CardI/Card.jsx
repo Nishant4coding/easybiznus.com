@@ -11,16 +11,23 @@ import { IonIcon } from "@ionic/react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import DeleteModal from "@/components/Cart/Delete";
+import { editCartItemQuantity } from "@/Redux/Features/cart/cartSlice";
 
 const Card = ({ data, edit = true }) => {
   const cardData =
     data.Carton?.SellerProduct || data.SellerVariant.SellerProduct;
   console.log(data);
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState(data.quantity || 1);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const handleQtyChange = (e) => {
+    const newQty = e.target.value;
+    setQty(newQty);
+    dispatch(editCartItemQuantity({ cartItemId: data.id, quantity: newQty }));
+  };
 
   const capitalizeWords = (str) => {
     return str.replace(/\b\w/g, (char) => char.toUpperCase());
@@ -36,8 +43,15 @@ const Card = ({ data, edit = true }) => {
           height={200}
         />
         <Typography className={styles.stock}>
-          <IonIcon icon={checkmarkCircleOutline}></IonIcon>
-          In-Stock
+          {data.SellerVariant.stock > 0 ? (
+            <>
+              <IonIcon icon={checkmarkCircleOutline}></IonIcon> In-Stock
+            </>
+          ) : (
+            <>
+             <IonIcon icon={checkmarkCircleOutline}></IonIcon> Out of Stock
+            </>
+          )}
         </Typography>
       </Stack>
       <Stack direction={"column"} gap={1}>
@@ -45,8 +59,8 @@ const Card = ({ data, edit = true }) => {
           <Typography className={styles.prodname}>
             {capitalizeWords(cardData.Product.name)}
           </Typography>{" "}
-          {/* <Typography className={styles.subtitle}>Color:{data.SellerVariant.color}</Typography> */}
-          {/* <Typography className={styles.subtitle}>Size: {cardDataVarient[0].size}</Typography> */}
+          <Typography className={styles.subtitle}>Color:{data.SellerVariant.color}</Typography>
+          <Typography className={styles.subtitle}>Size: {data.SellerVariant.size}</Typography>
           <Typography className={styles.subtitle}>
             SKU CODE: {cardData.Product.sku}
           </Typography>
@@ -57,7 +71,7 @@ const Card = ({ data, edit = true }) => {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={qty}
-              onChange={(e) => setQty(e.target.value)}
+            onChange={handleQtyChange}
             >
               <MenuItem value={1}>1</MenuItem>
               <MenuItem value={2}>2</MenuItem>

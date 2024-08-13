@@ -38,7 +38,7 @@ const CartPage = () => {
           <Container cart={cart} loading={loading} error={error}/>
           <Checkout />
         </Stack>
-        <Frequent />
+        {/* <Frequent /> */}
         <Footer />
       </Box>
       <Box className={global.mobile}>

@@ -7,7 +7,7 @@ const Shipping = () => {
             <Typography sx={{ fontWeight: "700", fontSize: "13px", marginBottom: "15px" }}>Shipping and Returns</Typography>
             <Stack direction={"column"} gap={2} sx={{ width: "100%", paddingLeft: "20px" }}>
                 <Typography sx={{ fontSize: "11px", textAlign: "justify" }}>
-                    {shipData}
+                    {/* {shipData} */}
                 </Typography>
                 <Typography sx={{ fontSize: "11px" }}>For any queries, please contact Cutomer Service at
                     <Link href="#" style={{ fontSize: "11px", fontWeight: "700", textDecoration: "underline", margin: "0 5px" }}>1900-00232 {" "}</Link>

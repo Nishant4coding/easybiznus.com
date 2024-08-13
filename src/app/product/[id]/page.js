@@ -71,7 +71,7 @@ const ProductPage = ({ params }) => {
                     // primaryImage={details?.primaryImage}
                     //primary image in null right now
                   />
-                  <Specification spec={details?.specifications} />
+                  {/* <Specification spec={details?.specifications} /> */}
                   <Description
                     des={productState?.selectedProduct?.Product?.description}
                   />

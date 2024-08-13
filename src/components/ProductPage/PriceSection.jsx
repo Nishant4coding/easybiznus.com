@@ -60,6 +60,8 @@ const PriceSection = ({ handleOpen, setPopTitle, data }) => {
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
 
+  console.log("product", details);
+
   return (
     <Stack className={styles.pricesection}>
       <Stack direction={"row"} gap={5} sx={{ alignItems: "center" }}>
@@ -70,7 +72,7 @@ const PriceSection = ({ handleOpen, setPopTitle, data }) => {
               : "Product Name"}
           </Typography>
           <Typography className={styles.pricesubhead}>
-            Product Category
+            Product Category :{details.section}
           </Typography>
           <Stack direction={"row"} gap={1}>
             <Typography style={{ fontSize: "14px" }}>MRP:</Typography>
@@ -121,7 +123,7 @@ const PriceSection = ({ handleOpen, setPopTitle, data }) => {
           selectedSize={selectedSize}
           selectedColor={selectedColor}
         />
-        <Pincode />
+        {/* <Pincode /> //NO api for pincode */}
       </Stack>
       <Typography className={styles.linebreak}></Typography>
       <Stack direction={"column"} sx={{ padding: "10px 0px 10px 25px" }}>

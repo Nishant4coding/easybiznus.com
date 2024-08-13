@@ -1,7 +1,6 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Link, Stack, Typography } from "@mui/material";
 import styles from "./card.module.css";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { Shoe1 as placeholderImage } from "@/assets/svg/index"; // Ensure this import is correct
 
@@ -41,7 +40,7 @@ const Card = ({ data }) => {
 
   return (
     <Box className={styles.container}>
-      <Link href={`/product/${Pid}`}>
+      <Link href={`/product/${Pid}`} sx={{ textDecoration: "none" , color:'black'}}>
         {discount > 0 && <Typography className={styles.discount}>{discount}%</Typography>}
         {primaryImage ? (
           <Image src={primaryImage} alt={"product"} className={styles.image} width={400} height={600} />
