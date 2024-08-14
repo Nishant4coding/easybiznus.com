@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -10,27 +11,27 @@ import { useRouter } from "next/navigation";
 import Login from "./login/page";
 import Register from "./register/page";
 const inter = Inter({ subsets: ["latin"] });
+import { Toaster } from "react-hot-toast";
 
 function RootLayout({ children }) {
-  const [isLogin, setIsLogin] = useState(false);
-  const [loginSwitch, setLoginSwitch] = useState(false);
+  // const [isLogin, setIsLogin] = useState(false);
+  // const [loginSwitch, setLoginSwitch] = useState(false);
 
   return (
     <html lang="en">
       <ReduxProvider>
-        <body className={inter.className}>
-          {true ? (
-            <>
-              <div className={global.desktop}>
-                <TopNav />
-              </div>
-              <div className={global.mobile}>
-                <MobileNavBar />
-              </div>
-              {children}
-            </>
-          ) : (
-            <>
+        <body className={inter.className} suppressHydrationWarning>
+      <Toaster />
+          <>
+            <div className={global.desktop}>
+              <TopNav />
+            </div>
+            <div className={global.mobile}>
+              <MobileNavBar />
+            </div>
+            {children}
+          </>
+          {/* <>
               {!loginSwitch ? (
                 <Login
                   setLoginSwitch={setLoginSwitch}
@@ -42,8 +43,7 @@ function RootLayout({ children }) {
                   setIsLogin={setIsLogin}
                 />
               )}
-            </>
-          )}
+            </> */}
         </body>
       </ReduxProvider>
     </html>

@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { getProfile } from "@/Redux/Features/profile/profileSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useMemo } from "react";
+import { useEffect } from "react";
 
 const overlayStyle = {
     backgroundColor: "rgba(13, 26, 38, 0.3)",
@@ -18,14 +18,11 @@ const UserMenu = ({ userMenu, handleClose }) => {
     const dispatch = useDispatch();
     const profileState = useSelector(state => state.profile);
 
-    const userData = useMemo(() => {
+    useEffect(() => {
         if (profileState.profile === null) {
             dispatch(getProfile());
-            return null;
         }
-        if (profileState.profile)
-            return profileState.profile
-    }, [profileState.profile])
+    }, [dispatch, profileState.profile])
 
     return (
         <Modal
@@ -40,13 +37,13 @@ const UserMenu = ({ userMenu, handleClose }) => {
             }}
         >
             <Stack className={styles.menu}>
-                {userData ?
+                {profileState ?
                     <>
                         <Typography className={styles.username} onClick={() => {
                             handleClose();
                         }}>
                             <Image src={User} alt={"icon"} width={30} />
-                            Hello, {userData?.firstName}
+                            Hello, {profileState?.firstName}
                         </Typography>
 
                         {
@@ -71,8 +68,8 @@ const UserMenu = ({ userMenu, handleClose }) => {
                     </>
 
                 }
-                {userData && <Typography className={styles.linebreak}></Typography>}
-                {userData && <Link href="#" style={{ display: 'flex', justifyContent: "center" }} className={styles.menuitem} onClick={handleClose}>LOGOUT</Link>}
+                {profileState && <Typography className={styles.linebreak}></Typography>}
+                {profileState && <Link href="#" style={{ display: 'flex', justifyContent: "center" }} className={styles.menuitem} onClick={handleClose}>LOGOUT</Link>}
             </Stack>
         </Modal>
     )

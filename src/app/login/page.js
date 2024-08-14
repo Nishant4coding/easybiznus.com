@@ -9,37 +9,40 @@ import style from "../Global.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { getProfile } from "@/Redux/Features/profile/profileSlice";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-const LoginPage = ({ setIsLogin, setLoginSwitch }) => {
-  const profileState = useSelector(state => state.profile);
-  const dispatch = useDispatch();
+const LoginPage = () => {
+  const router = useRouter();
+  const profileState = useSelector((state) => state.profile);
 
   useEffect(() => {
-    // const token = window.localStorage.getItem("token");
-    if (profileState.profile === null) {
-      dispatch(getProfile());
-    }
     if (profileState.profile) {
-      setIsLogin(true);
+      router.push("/");
     }
-  }, [profileState.profile])
-
+  }, [profileState.profile, router]);
 
   return (
-    <Stack sx={{ justifyContent: 'center', alignItems: 'center', minHeight: '100svh' }}>
-      {profileState.gettingProfile ?
+    <Stack
+      sx={{
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100svh",
+      }}
+    >
+      {profileState.gettingProfile ? (
         <Typography>Loading...</Typography>
-        :
+      ) : (
         <>
-          <Box className={style.signupBtn} onClick={() => setLoginSwitch(true)}>
+          <Link className={style.signupBtn} href={"/register"}>
             <Image src={JoinButton} width={120} height={120} alt=""></Image>
-          </Box>
+          </Link>
           <Stack direction="row">
-            <Login setIsLogin={setIsLogin} setLoginSwitch={setLoginSwitch} />
+            <Login />
             <Image src={LoginImage} className={style.entryImg} alt=""></Image>
           </Stack>
         </>
-      }
+      )}
     </Stack>
   );
 };

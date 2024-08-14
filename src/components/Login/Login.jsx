@@ -1,34 +1,35 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
+
+import { authUser, login } from "@/Redux/Features/auth/authSlice";
+import { getProfile } from "@/Redux/Features/profile/profileSlice";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import {
   Box,
   Button,
   Checkbox,
   FormControlLabel,
   FormGroup,
-  Grid,
   Stack,
   TextField,
-  Typography,
+  Typography
 } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import style from "../Component.module.css";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Image from "next/image";
-import fbIcon from "../../assets/svg/facebook_icon.svg";
-import appleIcon from "../../assets/svg/apple_icon.svg";
-import googleIcon from "../../assets/svg/google_icon.svg";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { login, authUser } from "@/Redux/Features/auth/authSlice";
-import { getProfile } from "@/Redux/Features/profile/profileSlice";
+import appleIcon from "../../assets/svg/apple_icon.svg";
+import fbIcon from "../../assets/svg/facebook_icon.svg";
+import googleIcon from "../../assets/svg/google_icon.svg";
+import style from "../Component.module.css";
 
-const Login = ({ setIsLogin, setLoginSwitch }) => {
+
+const Login = () => {
+  const router = useRouter();
   const dispatch = useDispatch();
-  const auth = useSelector(authUser);
-  const profileState = useSelector(state => state.profile);
 
   const [credentials, setCredentials] = useState({
     emailOrMobile: "",
@@ -40,15 +41,16 @@ const Login = ({ setIsLogin, setLoginSwitch }) => {
   };
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(login(credentials));
-  };
+    dispatch(login(credentials)).then((res) => {
+      if (res.type === "auth/login/fulfilled") {
+       toast.success("Login Successful", {
+          duration: 3000,
+        })
+        router.push('/')
+      }
+    })
 
-  useEffect(() => {
-    if (auth.isSuccess) {
-      setIsLogin(true);
-      dispatch(getProfile())
-    }
-  }, [auth]);
+  };
 
   return (
     <Box className={style.super_container}>
@@ -100,7 +102,7 @@ const Login = ({ setIsLogin, setLoginSwitch }) => {
             />
           </FormGroup>
 
-          <Stack
+          {/* <Stack
             direction="row"
             spacing={3}
             style={{
@@ -125,7 +127,7 @@ const Login = ({ setIsLogin, setLoginSwitch }) => {
                 <Image src={fbIcon} alt="FB" className={style.icons} />
               </Link>
             </Box>
-          </Stack>
+          </Stack> */}
           <Stack>
             <ThemeProvider theme={theme}>
               <Button
@@ -135,9 +137,10 @@ const Login = ({ setIsLogin, setLoginSwitch }) => {
                 sx={{
                   display: "flex",
                   justifyContent: "space-between",
-                  color: "black",
+                  color: "white",
                   '&:hover': {
-                    color: 'white',  // Set the background color to transparent on hover
+                    color: 'black',
+                    backgroundColor: 'white',  // Set the background color to transparent on hover
                   }
                 }}
                 onClick={handleLogin}
