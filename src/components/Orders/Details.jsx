@@ -8,10 +8,21 @@ import VerticalLinearStepper from "./Stepper";
 import Adress from "./Address";
 import Summary from "./OrderSummary";
 import Return from "@/components/Orders/Return";
+import { useEffect, useState } from "react";
 
-const Details = ({ stepper,rtrn, bill,data }) => {
+const Details = ({ stepper, rtrn, bill, data }) => {
+    console.log("details", data);
+    const [filterData, setFilterData] = useState([]);
 
-    console.log("details",data.length)
+    useEffect(() => {
+        setFilterData(data);
+    }, [data]);
+
+    // Safely access the details
+    const details = filterData?.[0]?.subOrders?.[0]?.orderItems || [];
+
+    console.log("details data", details);
+
     return (
         <Stack className={styles.details}>
             <Typography className={styles.heading}>Orders Details</Typography>
@@ -24,24 +35,23 @@ const Details = ({ stepper,rtrn, bill,data }) => {
                     <Card key={index} refundable={item.refundable} action={item.action} data={item.data} />
                 ))}
             </Stack>
-            <Card refundable={"₹19,990"} action={true} data={data}/>
+            {/* <Card refundable={"₹19,990"} action={true} data={data}/> */}
             
             <Stack direction={"row"} sx={{ justifyContent: 'space-between', paddingTop: '30px' }}>
-                {stepper&&<VerticalLinearStepper title={true} steps={steps} />}
-                {bill&&
+                {stepper && <VerticalLinearStepper title={true} steps={steps} />}
+                {bill && (
                     <Stack style={{ width: '40%' }}>
-                    <Adress />
-                    <Summary />
-                </Stack>
-}
+                        <Adress />
+                        <Summary />
+                    </Stack>
+                )}
             </Stack>
             {rtrn && <Return />}
         </Stack>
-    )
+    );
 }
 
 export default Details;
-
 
 const steps = [
     {

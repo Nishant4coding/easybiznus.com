@@ -47,14 +47,14 @@ export default CheckoutPage;
 const breadcrumbArray = [
   {
     title: "CART",
-    path: "#",
+    path: "/cart",
   },
   {
     title: "SHIPPING",
-    path: "#",
+    path: "/cart",
   },
   {
     title: "PAYMENT",
-    path: "#",
+    path: "/cart",
   },
 ];

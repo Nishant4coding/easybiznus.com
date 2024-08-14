@@ -1,5 +1,6 @@
-import { setCookie, destroyCookie } from 'next-cookies';
 import axios from './axiosInstance';
+import Router from 'next/router';
+
 
 const setAuthToken = (token) => {
   if (token) {
@@ -34,6 +35,20 @@ const refreshToken = async () => {
   } catch (error) {
     handleTokenExpiration(error);
     return null;
+  }
+};
+
+export const isLoggedIn = () => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    return false;
+  }
+  return true;
+};
+
+export const checkAuth = () => {
+  if (!isLoggedIn()) {
+    Router.push('/login');
   }
 };
 

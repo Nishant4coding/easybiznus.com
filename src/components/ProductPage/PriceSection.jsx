@@ -19,19 +19,19 @@ const PriceSection = ({ handleOpen, setPopTitle, data }) => {
 
   const discount = useMemo(() => {
     if (details?.MRP > 0 && details?.salePrice >= 0) {
-      return Math.ceil(((details.MRP - details.salePrice) / details.MRP) * 100);
+      return Math.ceil(((details?.MRP - details?.salePrice) / details?.MRP) * 100);
     }
     return 0;
-  }, [details.MRP, details.salePrice]);
+  }, [details?.MRP, details?.salePrice]);
 
   const sizeArray = useMemo(() => {
     if (details?.Variants) {
       const uniqueSizes = new Set();
-      return details.Variants.reduce((acc, variant) => {
+      return details?.Variants.reduce((acc, variant) => {
         if (!uniqueSizes.has(variant.size)) {
           uniqueSizes.add(variant.size);
           acc.push({
-            size: variant.size,
+            size: variant?.size,
             available: true,
           });
         }
@@ -44,11 +44,11 @@ const PriceSection = ({ handleOpen, setPopTitle, data }) => {
   const colorArray = useMemo(() => {
     if (details?.Variants) {
       const uniqueColors = new Set();
-      return details.Variants.reduce((acc, variant) => {
+      return details?.Variants?.reduce((acc, variant) => {
         if (!uniqueColors.has(variant.color)) {
           uniqueColors.add(variant.color);
           acc.push({
-            color: variant.color,
+            color: variant?.color,
           });
         }
         return acc;
@@ -67,7 +67,7 @@ const PriceSection = ({ handleOpen, setPopTitle, data }) => {
       <Stack direction={"row"} gap={5} sx={{ alignItems: "center" }}>
         <Stack direction={"column"} sx={{ marginBottom: "10px" }}>
           <Typography className={styles.priceheading}>
-            {details.name
+            {details?.name
               ? capitalizeEachWord(details.articalName)
               : "Product Name"}
           </Typography>
@@ -78,11 +78,11 @@ const PriceSection = ({ handleOpen, setPopTitle, data }) => {
             <Typography style={{ fontSize: "14px" }}>MRP:</Typography>
             <Stack direction={"column"} sx={{ alignItems: "center" }} gap={0}>
               <Typography className={styles.sp}>
-                ₹{details.salePrice ? details.salePrice : "15,990"}
+                ₹{details?.salePrice ? details?.salePrice : "15,990"}
               </Typography>
               <Box>
                 <Typography className={styles.mrp}>
-                  ₹{details.MRP ? details.MRP : "19, 990"}
+                  ₹{details?.MRP ? details?.MRP : "19, 990"}
                 </Typography>
                 <Typography className={styles.cutline}></Typography>
               </Box>
@@ -133,7 +133,7 @@ const PriceSection = ({ handleOpen, setPopTitle, data }) => {
       <Stack direction={"column"} sx={{ padding: "10px 0px 10px 25px" }}>
         <Description details={details} />
       </Stack>
-      <Typography className={styles.linebreak}></Typography>
+      {/* <Typography className={styles.linebreak}></Typography> */}
       <Stack direction={"column"} sx={{ padding: "10px 0px 10px 25px" }}>
         <Shipping />
       </Stack>

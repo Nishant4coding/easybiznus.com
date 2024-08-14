@@ -9,18 +9,20 @@ import { documentTextOutline, star } from "ionicons/icons";
 
 const Card = ({refundable, action,data}) => {
 
-    console.log(data)
+    console.log("data",data)
+    const details=data.SellerVariant.SellerProduct.Product;
+    console.log("details",details)
     return (
         <Stack className={styles.card} direction="row">
-            <Image src={Shoe3} alt={"product"} width={160} />
+            <Image src={details.images[0]} alt={"product"} width={160} height={160} />
             <Stack style={{ paddingLeft: "15px", width: "190px" }}>
-                <Typography className={styles.title}>Nike Kiger 9</Typography>
+                <Typography className={styles.title}>{details.artica}</Typography>
                 <Stack style={{ marginBottom: "10px" }}>
                     <Typography className={styles.color}>Color: Orange</Typography>
                     <Typography className={styles.color}>Size: 9</Typography>
                     <Typography className={styles.color}>Seller: REDTAPELIMITED</Typography>
                 </Stack>
-                <Typography className={styles.title}>₹ 12,795</Typography>
+                <Typography className={styles.title}>₹ {details.salePr}</Typography>
                 {refundable&&<Typography className={styles.title} style={{textWrap:'nowrap', fontSize:'20px', color:'#F55E53'}}>Refundable {refundable}</Typography>}
             </Stack>
 
@@ -48,12 +50,9 @@ const Card = ({refundable, action,data}) => {
                         ))
                     }
                 </Typography>
-                <TextField
-                    label="Description"
-                    multiline
-                    rows={4}
-                    sx={input}
-                />
+                <Box>
+                    {details.descri}
+                    </Box>
             </Stack>
         </Stack>
     )

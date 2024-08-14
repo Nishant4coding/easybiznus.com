@@ -10,13 +10,29 @@ import EmptyCart from "@/components/MobileView/EmptyCart/EmptyCart";
 import Cart from "@/components/MobileView/Cart/Cart";
 import { useDispatch, useSelector } from "react-redux";
 import { getCart } from "@/Redux/Features/cart/cartSlice";
+import { checkAuth } from "@/Utility/auth";
+import { useRouter } from "next/navigation";
 
 const CartPage = () => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const { cart, loading, error } = useSelector((state) => state.cart);
 
-
+   const isLoggedIn = () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return false;
+    }
+    return true;
+  };
+  
+   const checkAuth = () => {
+    if (!isLoggedIn()) {
+      router.push('/login');
+    }
+  }
   useEffect(() => {
+    checkAuth(); 
     dispatch(getCart());
   }, [dispatch]);
   

@@ -1,5 +1,5 @@
 "use client";
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Stack } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./checkout.module.css";
@@ -8,6 +8,8 @@ import PlacedPopup from "./PlacedPopup";
 import { RazorCheckout } from "@/Redux/Features/checkout/RazorPay";
 import { getProfile } from "@/Redux/Features/profile/profileSlice";
 import { getCart } from "@/Redux/Features/cart/cartSlice";
+import { checkStock } from "@/Redux/Features/checkout/checkStockSlice";
+import toast from "react-hot-toast";
 
 const CheckoutButton = () => {
   const dispatch = useDispatch();
@@ -25,25 +27,30 @@ const CheckoutButton = () => {
     dispatch(getCart());
   }, [dispatch]);
 
-  // const [states, setState] = useState(profileState);
-  // const [cartStates, setCartState] = useState(getCartState);
-
-  // useEffect(() => {
-  //   setState(profileState);
-  // }, [profileState]);
-
-  // useEffect(() => {
-  //   setCartState(getCartState);
-  // }, [getCartState]);
-
   const userDetails = {
     firstName: profileState?.firstName || "",
     phoneNumber: profileState?.phoneNumber || "",
   };
 
+  const handleCheckout = async () => {
+    try {
+      const response = await dispatch(checkStock()).unwrap();
+      if (response.status === 200) {
+        return 200;
+      } else {
+        toast.error("Some items in your cart have insufficient stock.");
+        return response.status;
+      }
+    } catch (error) {
+      console.error("Error checking stock:", error);
+      toast.error("Failed to check stock. Please try again later.");
+      return 500; 
+    }
+  };
+
   const handlePlaceOrder = async () => {
     const total = getCartState.items
-      .map((ele) => parseFloat(ele.salePrice*ele.quantity))
+      .map((ele) => parseFloat(ele.salePrice * ele.quantity))
       .reduce((partialSum, a) => partialSum + a, 0);
 
     const pricingData = {
@@ -59,12 +66,12 @@ const CheckoutButton = () => {
 
     try {
       await RazorCheckout(pricingData, id, userDetails, () => {
-        console.log("Opening Popup");
         setOpen(true);
         setIsPaymentSuccessful(true);
       });
     } catch (error) {
       console.error("Failed to initiate Razorpay payment:", error);
+      toast.error("Failed to initiate payment. Please try again later.");
     }
   };
 
@@ -74,8 +81,15 @@ const CheckoutButton = () => {
         <Button
           variant="contained"
           className={styles.button}
-          onClick={handlePlaceOrder}
-        >
+          onClick={async () => {
+            const status = await handleCheckout();
+            if (status === 200) {
+              handlePlaceOrder();
+            } else {
+              alert("Some items in your cart have insufficient stock.");
+            }
+          }}
+          >
           PLACE YOUR ORDER
         </Button>
         <Strip />

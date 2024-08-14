@@ -19,10 +19,10 @@ const Service = () => {
         <Box className={styles.button} style={{ width: "100px" }}>
           Returnable
         </Box>
-        <Box className={styles.button} style={{ width: "100px" }}>
+        {/* <Box className={styles.button} style={{ width: "100px" }}>
           <IonIcon icon={star}></IonIcon>
           4.5
-        </Box>
+        </Box> */}
       </Stack>
     </Box>
   );

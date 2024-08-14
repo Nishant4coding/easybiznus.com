@@ -15,7 +15,7 @@ const Container = () => {
     dispatch(fetchOrders());
   }, [dispatch]);
 
-  console.log(orders)
+  console.log("orders", orders);
 
   if (loading) {
     return <p>Loading...</p>;

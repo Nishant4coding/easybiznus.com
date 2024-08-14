@@ -5,7 +5,7 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./product.module.css";
 
 const Size = ({
@@ -16,6 +16,17 @@ const Size = ({
   selectedColor,
   setSelectedColor,
 }) => {
+
+  useEffect(() => {
+    if (!selectedSize && sizeArray.length > 0) {
+      const firstAvailableSize = sizeArray.find((item) => item.available)?.size;
+      setSelectedSize(firstAvailableSize);
+    }
+    if (!selectedColor && colorArray.length > 0) {
+      setSelectedColor(colorArray[0].color);
+    }
+  }, [sizeArray, colorArray, selectedSize, selectedColor, setSelectedSize, setSelectedColor]);
+
   return (
     <Box className={styles.size}>
       <Typography
