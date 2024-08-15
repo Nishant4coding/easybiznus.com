@@ -1,13 +1,18 @@
-import { Stack, Typography } from "@mui/material";
-import Modal from '@mui/material/Modal';
-import styles from './nav.module.css';
-import { User, UserLogo, UserWallet, CartBlack, Chat, Bag } from "@/assets/svg/index";
+import {
+    Bag,
+    Chat,
+    User,
+    UserLogo
+} from "@/assets/svg/index";
+import { getProfile, logout } from "@/Redux/Features/profile/profileSlice";
+import { Box, Stack, Typography } from "@mui/material";
+import Modal from "@mui/material/Modal";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { getProfile } from "@/Redux/Features/profile/profileSlice";
+import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import styles from "./nav.module.css";
 
 const overlayStyle = {
     backgroundColor: "rgba(13, 26, 38, 0.3)",
@@ -16,13 +21,21 @@ const overlayStyle = {
 const UserMenu = ({ userMenu, handleClose }) => {
     const router = useRouter();
     const dispatch = useDispatch();
-    const profileState = useSelector(state => state.profile);
+    const profileState = useSelector((state) => state.profile);
 
-    useEffect(() => {
+    const userData = useMemo(() => {
         if (profileState.profile === null) {
             dispatch(getProfile());
+            return null;
         }
-    }, [dispatch, profileState.profile])
+        if (profileState.profile) return profileState.profile;
+    }, [dispatch, profileState.profile]);
+
+    const loggingout = () => {
+        localStorage.removeItem("token");
+        dispatch(logout());
+        router.push("/login");
+    };
 
     return (
         <Modal
@@ -37,72 +50,97 @@ const UserMenu = ({ userMenu, handleClose }) => {
             }}
         >
             <Stack className={styles.menu}>
-                {profileState ?
+                {userData ? (
                     <>
-                        <Typography className={styles.username} onClick={() => {
-                            handleClose();
-                        }}>
+                        <Typography
+                            className={styles.username}
+                            onClick={() => {
+                                handleClose();
+                            }}
+                        >
                             <Image src={User} alt={"icon"} width={30} />
-                            Hello, {profileState?.firstName}
+                            Hello, {userData?.firstName}
                         </Typography>
 
-                        {
-                            menuArray.map((item, index) => (
-                                <Link onClick={handleClose} href={item.path} key={index} className={styles.menuitem}>
-                                    <Image src={item.icon} alt="icon" />
-                                    {item.title}
-                                </Link>
-                            ))
-                        }
+                        {menuArray.map((item, index) => (
+                            <Link
+                                onClick={handleClose}
+                                href={item.path}
+                                key={index}
+                                className={styles.menuitem}
+                            >
+                                <Image src={item.icon} alt="icon" />
+                                {item.title}
+                            </Link>
+                        ))}
                     </>
-                    :
+                ) : (
                     <>
-                        {
-                            menuArray2.map((item, index) => (
-                                <Link onClick={handleClose} href={item.path} key={index} className={styles.menuitem}>
-                                    <Image src={item.icon} alt="icon" />
-                                    {item.title}
-                                </Link>
-                            ))
-                        }
+                        {menuArray2.map((item, index) => (
+                            <Link
+                                onClick={handleClose}
+                                href={item.path}
+                                key={index}
+                                className={styles.menuitem}
+                            >
+                                <Image src={item.icon} alt="icon" />
+                                {item.title}
+                            </Link>
+                        ))}
                     </>
-
-                }
-                {profileState && <Typography className={styles.linebreak}></Typography>}
-                {profileState && <Link href="#" style={{ display: 'flex', justifyContent: "center" }} className={styles.menuitem} onClick={handleClose}>LOGOUT</Link>}
+                )}
+                {userData && <Typography className={styles.linebreak}></Typography>}
+                {userData && (
+                    <Box
+                        style={{ display: "flex", justifyContent: "center" }}
+                        className={styles.menuitem}
+                        onClick={() => {
+                            loggingout();
+                            handleClose();
+                        }}
+                    >
+                        LOGOUT
+                    </Box>
+                )}
             </Stack>
         </Modal>
-    )
-}
+    );
+};
 
 export default UserMenu;
 
 const menuArray = [
     {
-        title: "My Account", path: "/account",
-        icon: UserLogo
+        title: "My Account",
+        path: "/account",
+        icon: UserLogo,
     },
     {
-        title: "My Orders", path: "/orders",
-        icon: Bag
+        title: "My Orders",
+        path: "/orders",
+        icon: Bag,
     },
+    // {
+    //     title: "Wallet",
+    //     path: "/wallet",
+    //     icon: UserWallet,
+    // },
+    // {
+    //     title: "Try & Buy",
+    //     path: "/trynbuy",
+    //     icon: CartBlack,
+    // },
     {
-        title: "Wallet", path: "/wallet",
-        icon: UserWallet
+        title: "Contact Us",
+        path: "#",
+        icon: Chat,
     },
-    {
-        title: "Try & Buy", path: "/trynbuy",
-        icon: CartBlack
-    },
-    {
-        title: "Contact Us", path: "#",
-        icon: Chat
-    },
-]
+];
 
 const menuArray2 = [
     {
-        title: "LOGIN", path: "#",
-        icon: UserLogo
-    }
-]
+        title: "LOGIN",
+        path: "/login",
+        icon: UserLogo,
+    },
+];
