@@ -19,15 +19,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./account.module.css";
 
 const AccountView = () => {
   const router = useRouter();
   const [select, setSelect] = useState(0);
-  const [address, setAddress] = useState(true);
   const dispatch = useDispatch();
-  const profileState = useSelector((state) => state.profile);
+  const profileState = useSelector((state) => state.profile.profile);
+
+  useEffect(() => {
+    if (profileState) {
+      toast.error("Please Login First");
+      router.push("/login");
+    }
+  });
 
   const loggingout = () => {
     localStorage.removeItem("token");
@@ -36,17 +43,17 @@ const AccountView = () => {
   };
 
   useEffect(() => {
-    if (!profileState.profile) {
+    if (!profileState) {
       dispatch(getProfile());
     }
-  }, [dispatch, profileState.profile]);
+  }, [dispatch, profileState]);
 
   const userData = useMemo(() => {
-    if (profileState.profile) {
-      return profileState.profile;
+    if (profileState) {
+      return profileState;
     }
     return null;
-  }, [profileState.profile]);
+  }, [profileState]);
 
   if (!userData)
     return (

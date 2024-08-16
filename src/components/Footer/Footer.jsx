@@ -1,7 +1,7 @@
 import { Box, Stack } from "@mui/material";
 import styles from './footer.module.css';
 import QuickLink from "./Quick";
-import About from "./About";
+// import About from "./About";
 import Help from "./Help";
 import Logo from "./Logo";
 

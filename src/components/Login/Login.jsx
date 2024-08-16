@@ -75,7 +75,10 @@ const Login = () => {
             sx={inputBoxStyle}
           />
           <Typography className={style.desc_text}>
-            <Link href="#" style={{ textDecoration: "none", color: "black" }}>
+            <Link
+              href="/password"
+              style={{ textDecoration: "none", color: "black" }}
+            >
               Forgot your password?
             </Link>
           </Typography>
