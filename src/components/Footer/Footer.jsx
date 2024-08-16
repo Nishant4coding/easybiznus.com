@@ -11,7 +11,7 @@ const Footer = () => {
         <Stack direction={"row"} className={styles.footer}>
             <Stack direction={'column'} gap={6} className={styles.quickAbout}>
                 <QuickLink />
-                <About />
+                {/* <About /> */}
             </Stack>
             <Box className={styles.help}>
                 <Help />
