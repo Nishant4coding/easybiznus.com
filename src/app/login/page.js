@@ -17,10 +17,14 @@ const LoginPage = () => {
   const profileState = useSelector((state) => state.profile);
 
   useEffect(() => {
-    if (profileState.profile) {
-      toast.error("Already Logged In, Please Logout First");
-      router.push("/");
-    }
+    const timmer = setTimeout(() => {
+      if (profileState.profile) {
+        toast.error("Already Logged In, Please Logout First");
+        router.push("/");
+      }
+    }, 3000);
+
+    return () => clearTimeout(timmer);
   });
 
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { authUser, login } from "@/Redux/Features/auth/authSlice";
+import { login } from "@/Redux/Features/auth/authSlice";
 import { getProfile } from "@/Redux/Features/profile/profileSlice";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import {
@@ -11,21 +11,16 @@ import {
   FormGroup,
   Stack,
   TextField,
-  Typography
+  Typography,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
-import appleIcon from "../../assets/svg/apple_icon.svg";
-import fbIcon from "../../assets/svg/facebook_icon.svg";
-import googleIcon from "../../assets/svg/google_icon.svg";
+import { useDispatch } from "react-redux";
 import style from "../Component.module.css";
-
 
 const Login = () => {
   const router = useRouter();
@@ -43,13 +38,14 @@ const Login = () => {
     e.preventDefault();
     dispatch(login(credentials)).then((res) => {
       if (res.type === "auth/login/fulfilled") {
-       toast.success("Login Successful", {
+        toast.success("Login Successful", {
           duration: 3000,
-        })
-        router.push('/')
-      }
-    })
+        });
+        dispatch(getProfile());
 
+        router.push("/");
+      }
+    });
   };
 
   return (
@@ -138,10 +134,10 @@ const Login = () => {
                   display: "flex",
                   justifyContent: "space-between",
                   color: "white",
-                  '&:hover': {
-                    color: 'black',
-                    backgroundColor: 'white',  // Set the background color to transparent on hover
-                  }
+                  "&:hover": {
+                    color: "black",
+                    backgroundColor: "white", // Set the background color to transparent on hover
+                  },
                 }}
                 onClick={handleLogin}
               >
