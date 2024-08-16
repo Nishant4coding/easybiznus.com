@@ -30,7 +30,7 @@ const AccountView = () => {
   const profileState = useSelector((state) => state.profile.profile);
 
   useEffect(() => {
-    if (profileState) {
+    if (!profileState) {
       toast.error("Please Login First");
       router.push("/login");
     }
