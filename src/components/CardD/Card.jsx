@@ -1,105 +1,153 @@
 "use client";
-import { Box, Button, Stack, Typography } from "@mui/material";
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import styles from './card.module.css';
-import Image from "next/image";
-import { CardD, Pen, Delete } from '@/assets/svg/index';
-import { checkmarkCircleOutline } from "ionicons/icons";
+
+import { addToCart } from "@/Redux/Features/cart/cartSlice";
+import { capitalizeEachWord } from "@/Utility/util";
+import { Delete, Pen } from "@/assets/svg/index";
+import DeleteModal from "@/components/Wishlist/Delete";
 import { IonIcon } from "@ionic/react";
+import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import { checkmarkCircleOutline } from "ionicons/icons";
+import Image from "next/image";
 import { useState } from "react";
-import DeleteModal from "@/components/Cart/Delete";
+import { useDispatch } from "react-redux";
+import styles from "./card.module.css";
 
 const Card = ({ data, edit = true }) => {
-    const { title, color, size, sku_code, price } = data;
-    const [qty, setQty]=useState(1);
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+  const cardData = data?.SellerProduct?.Product;
+  const [qty, setQty] = useState(1);
+  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
-    return (
-        <Stack direction={"row"} gap={2} className={styles.container}>
-            <Stack direction={"column"}>
-                <Image src={CardD} alt={"product"} width={200} />
-                <Typography className={styles.stock}>
-                    <IonIcon icon={checkmarkCircleOutline}></IonIcon>
-                    In-Stock
-                </Typography>
-            </Stack>
-            <Stack direction={"column"} gap={1}>
-                <Stack direction={"column"}>
-                    <Typography className={styles.prodname}>{title}</Typography>
-                    <Typography className={styles.subtitle}>Color:{color}</Typography>
-                    <Typography className={styles.subtitle}>Size: {size}</Typography>
-                    <Typography className={styles.subtitle}>SKU CODE: {sku_code}</Typography>
-                </Stack>
-                <Box sx={{ width: "70px" }}>
-                    <FormControl fullWidth sx={dropdown}>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={qty}
-                            onChange={(e)=>setQty(e.target.value)}
-                        >
-                            <MenuItem value={1}>1</MenuItem>
-                            <MenuItem value={2}>2</MenuItem>
-                            <MenuItem value={3}>3</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Box>
-            </Stack>
-            <Stack direction={"column"} sx={{ width: "30%", alignItems: "flex-end" }}>
-                <Stack direction={"column"} gap={1}>
-                    <Typography className={styles.price}>{price}</Typography>
-                    <Stack direction={"row"} gap={2} sx={{ justifyContent: "flex-end" }}>
-                        {edit && <Image src={Pen} alt={"pen"} style={{ cursor: "pointer" }} />}
-                        <Image src={Delete} alt={"delete"} style={{ cursor: "pointer" }} onClick={handleOpen}/>
-                    </Stack>
-                </Stack>
+  const handleAddToCart = () => {
+    const productDetails = {
+      productId: String(
+        data?.SellerProduct?.Cartons[0]?.id ||
+          data?.SellerProduct?.SellerVariants[0]?.id
+      ),
+      quantity: qty,
+      price: String(data?.SellerProduct?.price),
+      salePrice: String(data?.SellerProduct?.Product?.salePrice),
+      sellerId: String(data?.SellerProduct?.Product?.adminId),
+      AccountId: String(data?.accountId),
+    };
+    dispatch(addToCart(productDetails));
+  };
 
-                {edit &&
-                    <Button variant="contained" className={styles.button}
-                        sx={{
-                            "&:hover": {
-                                backgroundColor: "#0D1A26",
-                            },
-                            marginTop: "40px"
-                        }}
-                    >
-                        ADD TO CART
-                    </Button>
-                }
-
-
-            </Stack>
-            <DeleteModal open={open} handleClose={handleClose} />
+  return (
+    <Stack direction={"row"} gap={2} className={styles.container}>
+      <Stack direction={"column"}>
+        <Image
+          src={cardData?.images[0] || cardData?.primaryImage}
+          alt={"product"}
+          width={200}
+          height={200}
+        />
+        <Typography className={styles.stock}>
+          <IonIcon icon={checkmarkCircleOutline}></IonIcon>
+          In-Stock
+        </Typography>
+      </Stack>
+      <Stack direction={"column"} gap={1}>
+        <Stack direction={"column"}>
+          <Typography className={styles.prodname}>
+            {cardData?.articalName}
+          </Typography>
+          <Typography className={styles.subtitle}>
+            Color: {capitalizeEachWord(cardData?.Variants[0]?.color)}
+          </Typography>
+          <Typography className={styles.subtitle}>
+            Size: {cardData?.Variants[0]?.size}
+          </Typography>
+          <Typography className={styles.subtitle}>
+            SKU CODE: {cardData?.sku}
+          </Typography>
         </Stack>
-    )
-}
+        <Box sx={{ width: "70px" }}>
+          <FormControl fullWidth sx={dropdown}>
+            <TextField
+              id="quantity-input"
+              label="Quantity"
+              type="number"
+              value={qty}
+              onChange={(e) => setQty(e.target.value)}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              inputProps={{
+                min: 1,
+              }}
+            ></TextField>
+          </FormControl>
+        </Box>
+      </Stack>
+      <Stack direction={"column"} sx={{ width: "30%", alignItems: "flex-end" }}>
+        <Stack direction={"column"} gap={1}>
+          <Typography className={styles.price}>
+            ₹ {cardData?.salePrice}
+          </Typography>
+          <Stack direction={"row"} gap={2} sx={{ justifyContent: "flex-end" }}>
+            {edit && (
+              <Image src={Pen} alt={"pen"} style={{ cursor: "pointer" }} />
+            )}
+            <Image
+              src={Delete}
+              alt={"delete"}
+              style={{ cursor: "pointer" }}
+              onClick={handleOpen}
+            />
+          </Stack>
+        </Stack>
+
+        {/* {edit && conditional on location*/}
+        <Button
+          variant="contained"
+          className={styles.button}
+          sx={{
+            "&:hover": {
+              backgroundColor: "#0D1A26",
+            },
+            marginTop: "40px",
+          }}
+          onClick={handleAddToCart}
+        >
+          ADD TO CART
+        </Button>
+        {/* } */}
+      </Stack>
+      <DeleteModal
+        open={open}
+        handleClose={handleClose}
+        wishId={data?.sellerProductId}
+      />
+    </Stack>
+  );
+};
 
 export default Card;
 
 const dropdown = {
-    '& label.Mui-focused': {
-        color: '#0D1A26',
+  "& label.Mui-focused": {
+    color: "#0D1A26",
+  },
+  "& .MuiInput-underline:after": {
+    borderBottomColor: "#0D1A26",
+  },
+  "& .MuiOutlinedInput-root": {
+    borderRadius: "0px",
+    color: "#000",
+    height: "42px",
+    fontSize: "13px",
+    "& fieldset": {
+      border: "1px solid #0D1A26",
     },
-    '& .MuiInput-underline:after': {
-        borderBottomColor: '#0D1A26',
+    "&:hover fieldset": {
+      border: "1px solid #0D1A26",
     },
-    '& .MuiOutlinedInput-root': {
-        borderRadius: "0px",
-        color: "#000",
-        height: "42px",
-        fontSize: "13px",
-        '& fieldset': {
-            border: '1px solid #0D1A26',
-        },
-        '&:hover fieldset': {
-            border: '1px solid #0D1A26',
-        },
-        '&.Mui-focused fieldset': {
-            border: '1px solid #0D1A26',
-        },
+    "&.Mui-focused fieldset": {
+      border: "1px solid #0D1A26",
     },
-}
+  },
+};
