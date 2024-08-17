@@ -28,10 +28,10 @@ const Navlink = ({ search }) => {
         );
         return available
           ? {
-              ...cat,
-              path: `/category/?id=${available?.id}&title=${available?.title}`,
-            }
-          : { ...cat, path: `/category/?id=${cat?.id}&title=${cat?.title}` };
+            ...cat,
+            path: `/category/?${available?.id ? "id=" + available?.id + "&" : ""}title=${available?.title}`,
+          }
+          : { ...cat, path: `/category/?${cat?.id ? "id=" + cat?.id + "&" : ""}title=${cat?.title}` };
       });
       setcatArr(tempcatArr);
     }

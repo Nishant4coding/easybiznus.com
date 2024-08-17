@@ -1,18 +1,21 @@
 import axiosToken from "@/Utility/axiosInstance";
 import BASE_URL from "@/Utility/baseUrl";
+import { getLatLng } from "@/Utility/util";
 
 export const getAll = async (filterArray) => {
   if (!filterArray) {
     filterArray = [];
   }
   try {
+    const {lat, lng} = await getLatLng();
+
     const res = await axiosToken.post(
       `${BASE_URL}/products/product/sellerProduct/filters`,
       {
         filters: filterArray,
-        rangeOff: true,
-        targetLatitude: -77.1025,
-        targetLongitude: 28.7041,
+        rangeOff: lat && lng ? false : true,
+        targetLatitude: lat,
+        targetLongitude: lng,
       }
     );
     return res.data;
