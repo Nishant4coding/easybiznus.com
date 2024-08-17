@@ -1,5 +1,4 @@
 "use client";
-import { Shoe1 } from "@/assets/svg/index";
 import Card from "@/components/CardK/Card";
 import { Box, Stack, Typography } from "@mui/material";
 
@@ -25,7 +24,7 @@ const Products = ({ products }) => {
           ))}
         </Stack>
       ) : (
-        <Typography variant="h6" align="center">
+        <Typography variant="h6" align="center" width="100%">
           No products available
         </Typography>
       )}

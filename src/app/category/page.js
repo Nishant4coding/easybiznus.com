@@ -1,12 +1,12 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Box } from "@mui/material";
 import CategoryView from "@/components/CategoryView/CategoryView";
 import ProductView from "@/components/MobileView/ProductsView/ProductView";
 import global from "@/global.module.css";
 import { getAll } from "@/Redux/Features/product/productApi";
+import { Box } from "@mui/material";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const CategoryPage = () => {
   const searchParams = useSearchParams();
@@ -15,13 +15,21 @@ const CategoryPage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // todo: there is no certain way to get the data of filter into ui to select
+  // 1. provide the data to filter out not only fields to be filtered
+  // 2. from the fields to be filtered, get the data into ui to select
+  // 3. on no selection, make filterfrom ui empty array
+
+  const [filterFromUI, setFilterFromUI] = useState([]);
+
   useEffect(() => {
-    if (id !== undefined) {
+    if (id !== null) {
       const filterArray = [
         {
           name: "category",
-          values: id.length > 0 ? [id] : [],
+          values: id && id.length > 0 ? [id] : [],
         },
+        ...filterFromUI,
       ];
 
       getAll(filterArray)
@@ -43,7 +51,7 @@ const CategoryPage = () => {
     } else {
       setLoading(false);
     }
-  }, [id]);
+  }, [id, filterFromUI]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -52,7 +60,12 @@ const CategoryPage = () => {
   return (
     <>
       <Box className={global.desktop}>
-        <CategoryView products={products} title={title} />
+        <CategoryView
+          products={products}
+          title={title}
+          filterFromUI={filterFromUI}
+          setFilterFromUI={setFilterFromUI}
+        />
       </Box>
       <Box
         className={global.mobile}
