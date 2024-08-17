@@ -1,32 +1,46 @@
 "use client";
-import { useState } from "react";
 import Checkout from "@/components/Cart/Checkout";
 import Container from "@/components/Cart/Container";
-import Frequent from "@/components/Cart/Frequent";
 import Footer from "@/components/Footer/Footer";
-import { Stack, Box } from "@mui/material";
-import global from "@/global.module.css"
-import EmptyCart from "@/components/MobileView/EmptyCart/EmptyCart";
-import Cart from "@/components/MobileView/Cart/Cart";
-
+import global from "@/global.module.css";
+import { getCart } from "@/Redux/Features/cart/cartSlice";
+import { Box, Stack } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 const CartPage = () => {
-    const cartVal = 1;
+  const dispatch = useDispatch();
+  const { cart, loading, error } = useSelector((state) => state.cart);
 
-    return (
-        <>
-            <Box className={global.desktop}>
-                <Stack direction={"row"} sx={{ height: "min-content" }}>
-                    <Container />
-                    <Checkout />
-                </Stack>
-                <Frequent />
-                <Footer />
-            </Box>
-            <Box className={global.mobile}>
-                {!cartVal ? <EmptyCart /> : <Cart />}
-            </Box>
-        </>
-    )
-}
+  useEffect(() => {
+    dispatch(getCart());
+  }, [dispatch]);
+
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    setTotal(
+      cart.items
+        .map((ele) => parseFloat(ele.salePrice * ele.quantity))
+        .reduce((partialSum, a) => partialSum + a, 0)
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cart.items]);
+
+  return (
+    <>
+      <Box className={global.desktop}>
+        <Stack direction={"row"} sx={{ height: "min-content" }}>
+          <Container cart={cart} loading={loading} error={error} />
+          <Checkout total={total} />
+        </Stack>
+        {/* <Frequent /> */}
+        <Footer />
+      </Box>
+      {/* <Box className={global.mobile}>
+        {!cartVal ? <EmptyCart /> : <Cart data={cart} />}
+      </Box> */}
+    </>
+  );
+};
 
 export default CartPage;

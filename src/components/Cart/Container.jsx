@@ -1,41 +1,61 @@
+"use client";
+
+import styles from "@/components/Wishlist/wishlist.module.css";
 import { Stack, Typography } from "@mui/material";
-import Card from "../CardD/Card";
-import styles from '@/components/Wishlist/wishlist.module.css';
+import { useState } from "react";
+import Card from "../CardI/Card";
+import Delete from "./Delete";
 
-const Container = () => {
+const Container = ({ cart, loading, error }) => {
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [selectedCartItemId, setSelectedCartItemId] = useState(null);
 
-    return (
-        <Stack direction={"column"} className={styles.container} gap={3} style={{ marginBottom: "30px" }}>
-            <Typography className={styles.title}>MY SHOPPING CART {prodArray && `[ ${prodArray.length} ]`}</Typography>
-            <Stack direction={"column"} gap={1.8}>
-                {
-                    prodArray.map((item, index) => {
-                        return (
-                            <Card data={item} key={index} edit={false}/>
-                        )
-                    })
-                }
-            </Stack>
+  const handleDeleteOpen = (cartItemId) => {
+    setSelectedCartItemId(cartItemId);
+    setDeleteModalOpen(true);
+  };
 
-        </Stack>
-    )
-}
+  const handleDeleteClose = () => {
+    setDeleteModalOpen(false);
+    setSelectedCartItemId(null);
+  };
+
+  return (
+    <Stack
+      direction={"column"}
+      className={styles.container}
+      gap={3}
+      style={{ marginBottom: "30px" }}
+    >
+      <Typography className={styles.title}>
+        MY SHOPPING CART{" "}
+        {Array.isArray(cart.items) && `[ ${cart.items.length} ]`}
+      </Typography>
+      <Stack direction={"column"} gap={1.8}>
+        {Array.isArray(cart.items) && cart.items.length > 0 ? (
+          cart.items.map((item, index) => (
+            <Card
+              data={item}
+              key={index}
+              edit={true}
+              onDelete={() => handleDeleteOpen(item?.id)}
+            />
+          ))
+        ) : (
+          <Typography>No items in the cart.</Typography>
+        )}
+      </Stack>
+      {loading && <Typography>Loading...</Typography>}
+      {error && (
+        <Typography>Error: {error.message || JSON.stringify(error)}</Typography>
+      )}
+      <Delete
+        open={deleteModalOpen}
+        handleClose={handleDeleteClose}
+        cartItemId={selectedCartItemId}
+      />
+    </Stack>
+  );
+};
 
 export default Container;
-
-const prodArray = [
-    {
-        title: "Mercedes AMG Petronas F1, Wired Run Unisex Sneakers",
-        color: "Warm White Inky-Blue",
-        size: "8",
-        sku_code: "99845_01",
-        price: "₹15,990",
-    },
-    {
-        title: "Mercedes AMG Petronas F1, Wired Run Unisex Sneakers",
-        color: "Warm White Inky-Blue",
-        size: "8",
-        sku_code: "99845_01",
-        price: "₹15,990",
-    }
-]
