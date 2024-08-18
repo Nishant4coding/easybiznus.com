@@ -16,9 +16,10 @@ const createAddress = async (addressData) => {
 
 const updateAddress = async (addressData) => {
   try {
+    const { id, ...data } = addressData;
     const response = await axiosToken.put(
-      `${BASE_URL}/account/profile/addressbook`,
-      addressData
+      `${BASE_URL}/account/profile/addressbook/${data.id}`,
+      data
     );
     return response.data;
   } catch (err) {
@@ -26,7 +27,6 @@ const updateAddress = async (addressData) => {
     throw new Error("Error updating address");
   }
 };
-
 const deleteAddress = async (addressId) => {
   try {
     const response = await axiosToken.delete(

@@ -1,19 +1,34 @@
-import React from 'react'
-import { Stack, Typography } from '@mui/material';
-import Address from './Address';
-import Payment from './Payment';
-import Contact from './Contact';
-import CheckoutButton from './Button';
+"use client";
+import { getProfile } from "@/Redux/Features/profile/profileSlice";
+import { Stack } from "@mui/material";
+import { Suspense, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Address from "./Address";
+import CheckoutButton from "./Button";
+import Contact from "./Contact";
+import Payment from "./Payment";
 
 const LeftBox = () => {
-  return (
-    <Stack style={{ width: '45%', marginBottom:'130px' }} gap={3}>
-      <Address />
-      <Contact/>
-      <Payment />
-      <CheckoutButton/>
-    </Stack>
-  )
-}
+  const profileState = useSelector((state) => state.profile);
+  const dispatch = useDispatch();
 
-export default LeftBox
+  useEffect(() => {
+    if (profileState.profile === null) {
+      dispatch(getProfile());
+    }
+  }, [dispatch, profileState.profile]);
+
+  if (!profileState) return null;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Stack style={{ width: "45%", marginBottom: "130px" }} gap={3}>
+        <Address addressData={profileState.profile} />
+        <Contact contactData={profileState} />
+        <Payment />
+        <CheckoutButton />
+      </Stack>
+    </Suspense>
+  );
+};
+
+export default LeftBox;
