@@ -1,22 +1,22 @@
 "use client";
 import { addToCart } from "@/Redux/Features/cart/cartSlice";
 import {
-    addToWishlist,
-    fetchWishlist,
-    removeFromWishlist,
+  addToWishlist,
+  fetchWishlist,
+  removeFromWishlist,
 } from "@/Redux/Features/wishlist/wishlistSlice";
 import { IonIcon } from "@ionic/react";
 import { Box, Stack, TextField } from "@mui/material";
 import {
-    addOutline,
-    closeCircleOutline,
-    heart,
-    heartOutline,
+  addOutline,
+  closeCircleOutline,
+  heart,
+  heartOutline,
 } from "ionicons/icons";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./product.module.css";
 
 const Quantity = ({
@@ -26,6 +26,8 @@ const Quantity = ({
   selectedSize,
   selectedColor,
 }) => {
+  const profileState = useSelector((state) => state.profile);
+  // console.log("profille", profileState);
   const router = useRouter();
   const qtyRef = useRef(null);
   const [qty, setQty] = useState(1);
@@ -43,19 +45,38 @@ const Quantity = ({
   }, [dispatch, data]);
 
   const handleAddToCart = (productDetails) => {
-    return dispatch(addToCart(productDetails));
+    if (!profileState.profile) {
+      toast.error("Please login first");
+      router.push("/login");
+    }
+
+    dispatch(addToCart(productDetails));
   };
 
-
   const handleWishlistToggle = () => {
-    const productId = data?.SellerVariants[0]?.SellerProductId;
-    if (wish) {
-      dispatch(removeFromWishlist({ productId }));
-      setWish(false);
-    } else {
-      dispatch(addToWishlist({ productId }));
-      setWish(true);
+    if (!profileState.profile) {
+      toast.error("Please login first");
+      router.push("/login");
+      return;
     }
+    const productId = data?.SellerVariants[0]?.SellerProductId;
+    setTimeout(() => {
+      if (wish) {
+        dispatch(removeFromWishlist({ productId }));
+        setWish(false);
+        toast.success("Product removed from Wishlist", {
+          duration: 2000,
+          position: "top-center",
+        });
+      } else {
+        dispatch(addToWishlist({ productId }));
+        setWish(true);
+        toast.success("Product added to Wishlist", {
+          duration: 2000,
+          position: "top-center",
+        });
+      }
+    }, 3000);
   };
 
   return (
@@ -88,7 +109,7 @@ const Quantity = ({
             sx={input}
             value={qty}
             onChange={(e) => {
-              if (e.target.value === "" || !isNaN(parseInt(e.target.value)))
+              if (e.target.value === "" || parseInt(e.target.value) >= 1)
                 setQty(e.target.value);
             }}
           ></TextField>
@@ -110,15 +131,7 @@ const Quantity = ({
           onClick={() => {
             handleWishlistToggle();
             if (!wish) {
-              toast.success("Product added to Wishlist", {
-                duration: 2000,
-                position: "top-center",
-              });
             } else {
-              toast.success("Product removed from Wishlist", {
-                duration: 2000,
-                position: "top-center",
-              });
             }
           }}
         />

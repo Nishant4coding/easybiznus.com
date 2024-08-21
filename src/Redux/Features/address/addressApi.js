@@ -18,8 +18,9 @@ const updateAddress = async (addressData) => {
   try {
     const { id, ...data } = addressData;
     const response = await axiosToken.put(
-      `${BASE_URL}/account/profile/addressbook/${data.id}`,
-      data
+      `${BASE_URL}/account/profile/addressbook/${id}`,
+      // make it form data
+      data ,
     );
     return response.data;
   } catch (err) {

@@ -8,6 +8,7 @@ import cartSlice from "./Features/cart/cartSlice";
 import bannerSlice from "./Features/banner/bannerSlice";
 import dashboardSlice from "./Features/dashboard/dashboardSlice";
 import passwordSlice from "./Features/password/passwordSlice";
+import orderSlice from "./Features/orders/orderSlice";
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     banner: bannerSlice,
     dashboard: dashboardSlice,
     password: passwordSlice,
+    order: orderSlice,
   },
 });
 

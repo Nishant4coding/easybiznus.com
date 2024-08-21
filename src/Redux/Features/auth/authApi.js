@@ -19,7 +19,6 @@ const login = async (credentials) => {
 };
 
 const register = async (userData) => {
-  console.log(`${BASE_URL}/account/register`);
   try {
     const response = await axios.post(`${BASE_URL}/account/register`, userData);
     if (response.data.token) {

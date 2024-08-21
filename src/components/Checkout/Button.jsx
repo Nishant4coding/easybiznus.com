@@ -48,7 +48,7 @@ const CheckoutButton = () => {
 
     try {
       await RazorCheckout(pricingData, id, userDetails, () => {
-        console.log("Opening Popup");
+        // console.log("Opening Popup");
         setOpen(true);
         setIsPaymentSuccessful(true);
       });

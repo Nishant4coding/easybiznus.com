@@ -12,7 +12,6 @@ export const uploadImg = async (files) => {
 
 export const deleteImg = async (files) => {
     try {
-        console.log(files);
         const res = await axios.delete(`${BASE_URL}/assets/remove`,{
             data:{
                 imageUrls:files

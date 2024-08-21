@@ -1,75 +1,39 @@
-import { Stack } from "@mui/material";
-import styles from './order.module.css';
-import Card from "../CardE/Card";
-import { Shoe3, Shoe4 } from "@/assets/svg/index";
+"use client";
 
-const Container = ()=>{
-    return(
-        <Stack className={styles.container}>
-            {
-                cardArray.map((item,index)=>(
-                    <Card data={item} key={index}/>
-                ))
-            }
-        </Stack>
-    )
-}
+import { Stack } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import styles from "./order.module.css";
+import Card from "../CardE/Card";
+import { fetchOrders } from "@/Redux/Features/orders/orderSlice";
+import { useEffect } from "react";
+
+const Container = () => {
+  const dispatch = useDispatch();
+  const { orders, loading, error } = useSelector((state) => state.order);
+
+  useEffect(() => {
+    dispatch(fetchOrders());
+  }, [dispatch]);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+  const subOrders = orders?.flatMap((order) => order.subOrders) || [];
+
+  return (
+    <Stack className={styles.container}>
+      {subOrders.length > 0 ? (
+        subOrders.map((item, index) => <Card data={item} key={index} />)
+      ) : (
+        <p>No items found.</p>
+      )}
+    </Stack>
+  );
+};
 
 export default Container;
-
-const cardArray=[
-    {
-        id:"OD123456789",
-        image:Shoe3,
-        title:"Nike Kiger 9",
-        color:"Orange",
-        price:"12,795",
-        status:0,
-        date:"July 19"
-    },
-    {
-        id:"OD123456123",
-        image:Shoe4,
-        title:"Nike Pegasus 40 Premium",
-        color:"White",
-        price:"12,795",
-        status:1,
-        date:"July 19"
-    },
-    {
-        id:"OD123456124",
-        image:Shoe4,
-        title:"Nike Pegasus 40 Premium",
-        color:"White",
-        price:"12,795",
-        status:1,
-        date:"July 19"
-    },
-    {
-        id:"OD123456125",
-        image:Shoe4,
-        title:"Nike Pegasus 40 Premium",
-        color:"White",
-        price:"12,795",
-        status:1,
-        date:"July 19"
-    },
-    {
-        id:"OD123456126",
-        image:Shoe4,
-        title:"Nike Pegasus 40 Premium",
-        color:"White",
-        price:"12,795",
-        status:1,
-        date:"July 19"
-    },
-    {
-        id:"OD123456127",
-        image:Shoe4,
-        title:"Nike Pegasus 40 Premium",
-        color:"White",
-        price:"12,795",
-        status:1,
-        date:"July 19"
-    }
-]

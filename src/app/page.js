@@ -22,7 +22,6 @@ import Trending from "@/components/MobileView/Trending/Trending";
 import WomensCollections from "@/components/MobileView/WomensCollections/WomensCollections";
 import global from "@/global.module.css";
 import { getAllCategories } from "@/Redux/Features/category/categorySlice";
-import { fetchDashboard } from "@/Redux/Features/dashboard/dashboardSlice";
 import { Stack } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -39,13 +38,12 @@ const HomePage = (props) => {
   const dispatch = useDispatch();
   const categoryState = useSelector((state) => state.category);
   const categories = categoryState.categories.categories;
-  useEffect(() => {
-    dispatch(getAllCategories());
-  }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchDashboard());
-  }, [dispatch]);
+    if (categories && categories?.length === 0) {
+      dispatch(getAllCategories());
+    }
+  }, [dispatch, categories]);
 
   return (
     <>

@@ -12,10 +12,13 @@ import Image from "next/image";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./card.module.css";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const Card = ({ data, edit = true }) => {
+  const router = useRouter();
   const cardData = data?.SellerProduct?.Product;
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState("");
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const handleOpen = () => setOpen(true);
@@ -27,13 +30,25 @@ const Card = ({ data, edit = true }) => {
         data?.SellerProduct?.Cartons[0]?.id ||
           data?.SellerProduct?.SellerVariants[0]?.id
       ),
-      quantity: qty,
+      quantity: parseInt(qty),
       price: String(data?.SellerProduct?.price),
       salePrice: String(data?.SellerProduct?.Product?.salePrice),
       sellerId: String(data?.SellerProduct?.Product?.adminId),
       AccountId: String(data?.accountId),
     };
-    dispatch(addToCart(productDetails));
+
+    if (qty && qty < 1) {
+      toast.error("Quantity cannot be less than 1");
+    }
+    dispatch(addToCart(productDetails)).then((res) => {
+      if (res.type === "cart/addToCart/fulfilled") {
+        toast.success("Added to cart");
+        router.push("/cart");
+      }
+       else if (res.type === "cart/addToCart/rejected") {
+        toast.error("Failed to add to cart");
+      }
+    });
   };
 
   return (
@@ -45,10 +60,10 @@ const Card = ({ data, edit = true }) => {
           width={200}
           height={200}
         />
-        <Typography className={styles.stock}>
+        {/* <Typography className={styles.stock}>
           <IonIcon icon={checkmarkCircleOutline}></IonIcon>
           In-Stock
-        </Typography>
+        </Typography> */}
       </Stack>
       <Stack direction={"column"} gap={1}>
         <Stack direction={"column"}>
@@ -70,9 +85,11 @@ const Card = ({ data, edit = true }) => {
             <TextField
               id="quantity-input"
               label="Quantity"
-              type="number"
               value={qty}
-              onChange={(e) => setQty(e.target.value)}
+              onChange={(e) => {
+                if (e.target.value === "" || parseInt(e.target.value) >= 1)
+                  setQty("" + e.target.value);
+              }}
               InputLabelProps={{
                 shrink: true,
               }}

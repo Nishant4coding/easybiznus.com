@@ -22,18 +22,24 @@ import { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./account.module.css";
+import { updateAddress } from "@/Redux/Features/address/addressSlice";
 
 const AccountView = () => {
   const router = useRouter();
   const [select, setSelect] = useState(0);
+
   const dispatch = useDispatch();
   const profileState = useSelector((state) => state.profile.profile);
 
   useEffect(() => {
-    if (!profileState) {
-      toast.error("Please Login First");
-      router.push("/login");
-    }
+    const time = setInterval(() => {
+      if (!profileState) {
+        toast.error("Please Login First");
+        router.push("/login");
+      }
+    }, 3000);
+
+    return () => clearInterval(time);
   });
 
   const loggingout = () => {
@@ -54,6 +60,32 @@ const AccountView = () => {
     }
     return null;
   }, [profileState]);
+
+  const currPrimaryId = userData?.AddressBooks?.find(
+    (item) => item?.isPrimary
+  )?.id;
+  useEffect(() => {
+    if (!userData) return;
+    setSelect(
+      userData?.AddressBooks?.findIndex((item) => item?.id === currPrimaryId)
+    );
+    const address = userData?.AddressBooks[select];
+    if (currPrimaryId !== address?.id) {
+      dispatch(
+        updateAddress({
+          id: currPrimaryId,
+          isPrimary: true,
+          addressTitle: address?.addressTitle,
+          pincode:
+            typeof address?.pincode === "number"
+              ? parseInt(address?.pincode)
+              : 0,
+        })
+      );
+    }
+
+    // console.log("updated", currPrimaryId, currPrimaryId !== address?.id);
+  }, [currPrimaryId, dispatch, select, userData]);
 
   if (!userData)
     return (
@@ -140,7 +172,7 @@ const AccountView = () => {
               linkicon={addOutline}
               linkpath="/address"
             />
-            <Stack>
+            <Stack sx={{ justifyContent: "center" }}>
               {userData?.AddressBooks?.length > 0 ? (
                 userData?.AddressBooks.map((item, index) => (
                   <AddressCard
@@ -241,7 +273,11 @@ const AddressCard = ({ title, icon, sub, setSelect, select, index }) => {
       gap={2}
       onClick={() => setSelect(index)}
     >
-      <Stack direction={"row"} sx={{ alignItems: "center" }} gap={2}>
+      <Stack
+        direction={"row"}
+        sx={{ alignItems: "center", justifyContent: "center", width: "100%" }}
+        gap={2}
+      >
         {select === index ? (
           <IonIcon
             style={{ fontSize: "19px" }}
@@ -253,19 +289,19 @@ const AddressCard = ({ title, icon, sub, setSelect, select, index }) => {
             icon={radioButtonOffOutline}
           ></IonIcon>
         )}
-        <Stack className={styles.outline} direction={"row"} gap={2}>
+        <Stack
+          className={styles.outline}
+          direction={"row"}
+          gap={2}
+          sx={{ width: "100%" }}
+        >
           <IonIcon icon={icon}></IonIcon>
-          <Stack>
+          <Stack sx={{ width: "100%" }}>
             <Typography sx={{ fontSize: "14px" }}>{title}</Typography>
             <Typography sx={{ fontSize: "10px" }}>{sub}</Typography>
           </Stack>
         </Stack>
       </Stack>
-
-      <Link href="#" className={styles.edit2}>
-        EDIT
-        <Image src={Pen} alt="pen" className={styles.pen} />
-      </Link>
     </Stack>
   );
 };

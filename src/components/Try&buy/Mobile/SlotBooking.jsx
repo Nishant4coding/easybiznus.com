@@ -76,7 +76,7 @@ const SlotCard = () => {
 
 const AddressCard = ({ index, setSelectAddress, selected, data }) => {
     const { title, value } = data;
-    console.log(data);
+    // console.log(data);
     return (
         <Stack onClick={() => setSelectAddress(index)} gap={2} direction={"row"} sx={{ alignItems: 'center', borderRadius: '8px', border: '1px solid #AEAEAE', padding: '10px' }}>
             {

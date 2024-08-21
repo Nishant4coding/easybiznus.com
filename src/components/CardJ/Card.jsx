@@ -26,6 +26,7 @@ const Card = ({ data }) => {
     }
     return 0;
   }, [CatData?.MRP, CatData?.salePrice]);
+  if (!CatData) return <Typography>No Data Available</Typography>;
 
   function capitalizeEachWord(sentence) {
     if (typeof sentence !== "string") {

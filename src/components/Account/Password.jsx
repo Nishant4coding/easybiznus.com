@@ -8,7 +8,7 @@ import {
 import { IonIcon } from "@ionic/react";
 import { Button, Stack, Typography } from "@mui/material";
 import { checkmarkCircleOutline, closeCircleOutline } from "ionicons/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./account.module.css";
@@ -18,6 +18,7 @@ const Password = ({ setForm }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [otp, setOtp] = useState("");
+  const [changeForm, setChangeForm] = useState(false);
   const dispatch = useDispatch();
   const passwordState = useSelector((state) => state.password);
 
@@ -37,15 +38,21 @@ const Password = ({ setForm }) => {
     setOtp(e.target.value);
   };
 
+  // useEffect(() => {
+  //   console.log("otp", otp);
+  // }, [otp]);
+
   const handleRequestOtp = () => {
     dispatch(requestOTPThunk(email)).then((res) => {
       if (res.type === "password/requestOTP/fulfilled") {
-        if (res.payload) {
-          toast.success(`Your OTP is: ${res.payload?.details?.OTP}`, {
-            position: "top-center",
-            autoClose: 10000,
-          });
-        }
+        // if (res.payload) {
+        //   toast.success(`Your OTP is: ${res.payload?.details?.OTP}`, {
+        //     position: "top-center",
+        //     autoClose: 10000,
+        //   });
+        //   setOtp(res.payload?.details?.OTP);
+        // }
+        setChangeForm(true);
       } else {
         toast.error("Failed to request OTP", {
           position: "top-center",
@@ -65,9 +72,9 @@ const Password = ({ setForm }) => {
 
     const data = {
       emailOrMobile: email,
-      otpValue: "",
+      otpValue: otp,
       newPassword: password,
-      id: passwordState.details.id,
+      id: passwordState?.otpId,
     };
 
     dispatch(resetPasswordThunk(data)).then(() => {
@@ -93,7 +100,7 @@ const Password = ({ setForm }) => {
       </Typography>
 
       <Stack sx={{ width: "100%", marginBottom: "160px" }} gap={3}>
-        {otp === "" ? (
+        {!changeForm ? (
           <Stack
             sx={{
               display: "flex",
@@ -105,8 +112,8 @@ const Password = ({ setForm }) => {
             }}
           >
             <Input
-              title={"Email"}
-              placeholder={"Email"}
+              title={"Email / Phone"}
+              placeholder={"Email / Phone"}
               width={"82%"}
               handlePass={handleEmailChange}
             />

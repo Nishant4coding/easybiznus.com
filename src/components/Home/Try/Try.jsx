@@ -10,7 +10,7 @@ const Try = ({ categories }) => {
   const [active, setActive] = useState([]);
 
   useEffect(() => {
-    if (categories && selected) {
+    if (selected) {
       fetchDashboardApi([
         {
           name: "category",
@@ -24,7 +24,7 @@ const Try = ({ categories }) => {
           console.log(err);
         });
     }
-  }, [categories, selected]);
+  }, [ selected]);
 
   return (
     <Stack direction={"column"} className={styles.container} gap={2.5}>

@@ -40,6 +40,7 @@ const initialState = {
   otpRequested: false,
   resetSuccess: false,
   error: null,
+  otpId: null,
 };
 
 const passwordSlice = createSlice({
@@ -51,6 +52,7 @@ const passwordSlice = createSlice({
       state.otpRequested = false;
       state.resetSuccess = false;
       state.error = null;
+      state.otpId = null;
     },
   },
   extraReducers: (builder) => {
@@ -60,9 +62,10 @@ const passwordSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(requestOTPThunk.fulfilled, (state) => {
+      .addCase(requestOTPThunk.fulfilled, (state,action) => {
         state.loading = false;
         state.otpRequested = true;
+         state.otpId = action.payload?.details?.id; 
       })
       .addCase(requestOTPThunk.rejected, (state, action) => {
         state.loading = false;

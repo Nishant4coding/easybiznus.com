@@ -24,6 +24,6 @@ const inactive = [
   },
   {
     title: "Category",
-    path: "/",
+    path: "/category/",
   },
 ];

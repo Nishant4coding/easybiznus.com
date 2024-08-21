@@ -1,7 +1,9 @@
 export function capitalizeEachWord(sentence) {
-  return sentence.replace(/\b\w/g, function (char) {
-    return char.toUpperCase();
-  });
+  return sentence
+    ? sentence.replace(/\b\w/g, function (char) {
+        return char.toUpperCase();
+      })
+    : "";
 }
 export const capitalizeWords = (str) => {
   if (typeof str !== "string") {
@@ -10,7 +12,6 @@ export const capitalizeWords = (str) => {
 
   return str.replace(/\b\w/g, (char) => char.toUpperCase());
 };
-
 
 export const getLatLng = () => {
   // get lat and long from browser
@@ -39,4 +40,4 @@ export const getLatLng = () => {
       }
     );
   });
-}
+};

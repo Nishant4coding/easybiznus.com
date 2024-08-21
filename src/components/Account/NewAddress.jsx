@@ -22,6 +22,7 @@ import { useState, useEffect } from "react";
 const NewAddress = ({ initialData = null }) => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const [primary, setPrimary] = useState(false);
 
   const [formData, setFormData] = useState({
     addressTitle: "",
@@ -34,7 +35,7 @@ const NewAddress = ({ initialData = null }) => {
     city: "",
     pincode: "",
     phoneNumber: "",
-    isPrimary: false,
+    isPrimary: primary,
   });
 
   useEffect(() => {

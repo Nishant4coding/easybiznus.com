@@ -29,9 +29,9 @@ const Navlink = ({ search }) => {
         return available
           ? {
             ...cat,
-            path: `/category/?${available?.id ? "id=" + available?.id + "&" : ""}title=${available?.title}`,
+            path: `/category/${available?.title}`,
           }
-          : { ...cat, path: `/category/?${cat?.id ? "id=" + cat?.id + "&" : ""}title=${cat?.title}` };
+          : { ...cat, path: `/category/${cat?.title}` };
       });
       setcatArr(tempcatArr);
     }
@@ -65,19 +65,19 @@ export default Navlink;
 const navArray = [
   {
     title: "Women",
-    path: `/category?title=women`,
+    path: `/category/women`,
   },
   {
     title: "Men",
-    path: `/category?title=men`,
+    path: `/category/men`,
   },
   {
     title: "Shoes",
-    path: `/category?title=shoes`,
+    path: `/category/shoes`,
   },
   {
-    title: "Sport Shoes",
-    path: `/category?title=sport%20shoes`,
+    title: "Formal shoes",
+    path: `/category/Formal%20shoes`,
   },
   // {
   //     title: "Offers",

@@ -58,8 +58,8 @@ const Register = ({ setLoginSwitch }) => {
       if (res.type === "auth/register/fulfilled") {
         toast.success("Registration Successful", {
           duration: 3000,
-        })
-        router.push('/login')
+        });
+        router.push("/login");
       }
 
       if (res.type === "auth/register/rejected") {
@@ -69,12 +69,6 @@ const Register = ({ setLoginSwitch }) => {
       }
     });
   };
-
-  useEffect(() => {
-    console.log("auth User :", auth);
-    if (auth.isSuccess) {
-    }
-  }, [auth]);
 
   return (
     <>
@@ -248,8 +242,8 @@ const Register = ({ setLoginSwitch }) => {
                     display: "flex",
                     justifyContent: "space-between",
                     color: "black",
-                    '&:hover': {
-                      color: 'white',  // Set the background color to transparent on hover
+                    "&:hover": {
+                      color: "white", // Set the background color to transparent on hover
                     },
                     height: 40,
                     mt: 2,

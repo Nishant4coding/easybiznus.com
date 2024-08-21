@@ -34,7 +34,7 @@ export const RazorCheckout = async (
     }
 
     const options = {
-      key: "rzp_test_SgOKOkoyuPBdtO",
+      key: "rzp_test_E4fVtX6d5p8SvA",
       amount: order?.amount,
       currency: order?.currency,
       name: order?.name,

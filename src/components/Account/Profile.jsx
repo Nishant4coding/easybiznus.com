@@ -1,14 +1,8 @@
 "use client";
 import global from "@/global.module.css";
-import {
-    updateProfile
-} from "@/Redux/Features/profile/profileSlice";
+import { updateProfile } from "@/Redux/Features/profile/profileSlice";
 import { IonIcon } from "@ionic/react";
-import {
-    Button,
-    Stack,
-    Typography
-} from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import { radioButtonOffOutline, radioButtonOnOutline } from "ionicons/icons";
 import { useRouter } from "next/navigation";
 import { useEffect, useLayoutEffect, useState } from "react";
@@ -107,7 +101,7 @@ const Profile = ({}) => {
             <Typography
               sx={{ cursor: "pointer" }}
               onClick={() => {
-                console.log(userData?.gender === "male");
+                // console.log(userData?.gender === "male");
                 setUserData({ ...userData, ["gender"]: "male" });
               }}
             >
@@ -280,7 +274,6 @@ const Inputmm = ({
   data,
 }) => {
   const birthdayHandle = (e) => {
-    console.log("hi");
     if (e.target.value.length <= 2) {
       if (typeof parseInt(e.target.value) === "number") {
         const mm = `${value?.split("-")[0]}-${e.target.value}-${
@@ -331,7 +324,6 @@ const Inputyy = ({
         const yy = `${e.target.value}-${value?.split("-")[1]}-${
           value?.split("-")[2]
         }`;
-        console.log(yy);
         changeValue({ ...data, ["birthday"]: yy });
       } else {
         // e.target.value = '';
