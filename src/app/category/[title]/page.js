@@ -54,6 +54,10 @@ const CategoryPage = () => {
   useEffect(() => {
     if (title !== null && id) {
       const filterArray = [
+        // {
+        //   name: "section",
+        //   values: ["male"],
+        // },
         {
           name: "category",
           values: id && id.length > 0 ? [id] : [],

@@ -1,8 +1,9 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Card from "@/components/CardJ/Card";
 import styles from "./home.module.css";
 
 const Products = ({ prodData }) => {
+  if (prodData?.length == 0) return <Typography>No Data Available</Typography>;
   return (
     <Box direction={"row"} className={styles.products} gap={10}>
       {prodData &&

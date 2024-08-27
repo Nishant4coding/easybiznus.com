@@ -35,6 +35,7 @@ const Quantity = ({
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (!profileState.profile) return;
     dispatch(fetchWishlist()).then((action) => {
       const productId = String(data?.SellerVariants[0]?.SellerProductId);
       const isInWishlist = action.payload.some(
@@ -42,7 +43,7 @@ const Quantity = ({
       );
       setWish(isInWishlist);
     });
-  }, [dispatch, data]);
+  }, [dispatch, data, profileState.profile]);
 
   const handleAddToCart = (productDetails) => {
     if (!profileState.profile) {
@@ -50,7 +51,7 @@ const Quantity = ({
       router.push("/login");
     }
 
-    dispatch(addToCart(productDetails));
+    return dispatch(addToCart(productDetails));
   };
 
   const handleWishlistToggle = () => {

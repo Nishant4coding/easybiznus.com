@@ -46,9 +46,9 @@ const Container = ({ cart, loading, error }) => {
         )}
       </Stack>
       {loading && <Typography>Loading...</Typography>}
-      {error && (
+      {/* {error && (
         <Typography>Error: {error.message || JSON.stringify(error)}</Typography>
-      )}
+      )} */}
       <Delete
         open={deleteModalOpen}
         handleClose={handleDeleteClose}

@@ -5,15 +5,26 @@ import Footer from "@/components/Footer/Footer";
 import global from "@/global.module.css";
 import { getCart } from "@/Redux/Features/cart/cartSlice";
 import { Box, Stack } from "@mui/material";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 const CartPage = () => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const { cart, loading, error } = useSelector((state) => state.cart);
+  const profile = useSelector((state) => state.profile);
 
   useEffect(() => {
+    if (!profile.profile) {
+      const time = setTimeout(() => {
+        toast.error("Please login first");
+        router.push("/login");
+      }, 3000);
+      return () => clearTimeout(time);
+    }
     dispatch(getCart());
-  }, [dispatch]);
+  }, [dispatch, profile.profile, router]);
 
   const [total, setTotal] = useState(0);
 

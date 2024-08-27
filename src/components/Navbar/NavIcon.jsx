@@ -49,13 +49,14 @@ const NavIcon = ({ handleOpen, userMenu }) => {
       },
     ]);
   }, [cartItems, wishItems]);
+  const isLoggedIn = useSelector((state) => state.profile.profile);
 
   useEffect(() => {
-    dispatch(fetchWishlist());
-    dispatch(getCart());
-  }, [dispatch]);
-
-  const isLoggedIn = useSelector((state) => state.profile.profile);
+    if (isLoggedIn) {
+      dispatch(fetchWishlist());
+      dispatch(getCart());
+    }
+  }, [dispatch, isLoggedIn]);
 
   return (
     <Box
@@ -66,50 +67,51 @@ const NavIcon = ({ handleOpen, userMenu }) => {
         alignItems: "center",
       }}
     >
-      {iconsArray.length && iconsArray.map((icon, index) => (
-        <Box
-          sx={{
-            height: "100%",
-            width: "fit-content",
-            cursor: "pointer",
-            padding: "0 10px",
-            visibility:
-              icon.title === "Avatar"
-                ? "visible"
-                : !isLoggedIn
-                ? "hidden"
-                : "visible",
-          }}
-          key={index}
-          onClick={() => {
-            icon.path ? router.push(icon.path) : null;
-            if (index === 2 && userMenu === false) {
-              handleOpen();
-            }
-          }}
-        >
-          {icon.number !== undefined ? (
-            <ThemeProvider theme={theme}>
-              <Badge
-                badgeContent={icon.number}
-                color="primary"
-                sx={{
-                  "& .MuiBadge-badge": {
-                    minWidth: "auto",
-                    height: "auto",
-                    padding: "2px 3px 0 3px",
-                    fontSize: "9px",
-                  },
-                }}
-              >
-                <Image src={icon.asset} alt={"cart"} width={15}></Image>
-              </Badge>
-            </ThemeProvider>
-          ) : (
-            <Image src={icon.asset} alt={"cart"} width={15}></Image>
-          )}
-        </Box>
-      ))}
+      {iconsArray.length &&
+        iconsArray.map((icon, index) => (
+          <Box
+            sx={{
+              height: "100%",
+              width: "fit-content",
+              cursor: "pointer",
+              padding: "0 10px",
+              visibility:
+                icon.title === "Avatar"
+                  ? "visible"
+                  : !isLoggedIn
+                  ? "hidden"
+                  : "visible",
+            }}
+            key={index}
+            onClick={() => {
+              icon.path ? router.push(icon.path) : null;
+              if (index === 2 && userMenu === false) {
+                handleOpen();
+              }
+            }}
+          >
+            {icon.number !== undefined ? (
+              <ThemeProvider theme={theme}>
+                <Badge
+                  badgeContent={icon.number}
+                  color="primary"
+                  sx={{
+                    "& .MuiBadge-badge": {
+                      minWidth: "auto",
+                      height: "auto",
+                      padding: "2px 3px 0 3px",
+                      fontSize: "9px",
+                    },
+                  }}
+                >
+                  <Image src={icon.asset} alt={"cart"} width={15}></Image>
+                </Badge>
+              </ThemeProvider>
+            ) : (
+              <Image src={icon.asset} alt={"cart"} width={15}></Image>
+            )}
+          </Box>
+        ))}
     </Box>
   );
 };

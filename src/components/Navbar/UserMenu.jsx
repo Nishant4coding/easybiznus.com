@@ -26,6 +26,7 @@ const UserMenu = ({ userMenu, handleClose }) => {
 
   const loggingout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userId");
     dispatch(logout());
     router.push("/login");
   };

@@ -17,8 +17,9 @@ const LoginPage = () => {
   const profileState = useSelector((state) => state.profile);
 
   useEffect(() => {
+    const userId = window.localStorage.getItem("userId");
     const timmer = setTimeout(() => {
-      if (profileState.profile) {
+      if (userId) {
         toast.error("Already Logged In, Please Logout First");
         router.push("/");
       }
