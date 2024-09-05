@@ -14,10 +14,9 @@ const Checkout = ({ total }) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-
   const handleCheckout = () => {
     dispatch(checkStock()).then((res) => {
-      if (res.type === "checkout/checkStock/fulfilled") {
+      if (res.type === "cart/checkStock/fulfilled") {
         router.push("/checkout");
       } else {
         toast.error(res?.payload?.message);

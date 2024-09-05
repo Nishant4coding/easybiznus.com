@@ -8,6 +8,7 @@ const nextConfig = {
     domains: [
       "shoemato.s3.ap-south-1.amazonaws.com",
       "shoemato-web.s3.ap-south-1.amazonaws.com",
+      "static.nike.com",
     ],
   },
 };

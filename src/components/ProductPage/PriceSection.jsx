@@ -21,9 +21,9 @@ const PriceSection = ({ handleOpen, setPopTitle, data }) => {
   }, [details?.MRP, details?.salePrice]);
 
   const sizeArray = useMemo(() => {
-    if (details?.Variants) {
+    if (data?.SellerVariants) {
       const uniqueSizes = new Set();
-      return details?.Variants.reduce((acc, variant) => {
+      return data?.SellerVariants.reduce((acc, variant) => {
         if (!uniqueSizes.has(variant?.size)) {
           uniqueSizes.add(variant?.size);
           acc.push({
@@ -35,12 +35,12 @@ const PriceSection = ({ handleOpen, setPopTitle, data }) => {
       }, []);
     }
     return [];
-  }, [details?.Variants]);
+  }, [data?.SellerVariants]);
 
   const colorArray = useMemo(() => {
-    if (details?.Variants) {
+    if (data?.SellerVariants) {
       const uniqueColors = new Set();
-      return details?.Variants.reduce((acc, variant) => {
+      return data?.SellerVariants.reduce((acc, variant) => {
         if (!uniqueColors.has(variant?.color)) {
           uniqueColors.add(variant?.color);
           acc.push({
@@ -51,7 +51,7 @@ const PriceSection = ({ handleOpen, setPopTitle, data }) => {
       }, []);
     }
     return [];
-  }, [details?.Variants]);
+  }, [data?.SellerVariants]);
 
   const [selectedSize, setSelectedSize] = useState(sizeArray[0]?.size);
   const [selectedColor, setSelectedColor] = useState(colorArray[0]?.color);
