@@ -5,8 +5,10 @@ import { Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import Card from "../CardI/Card";
 import Delete from "./Delete";
+import { useSelector } from "react-redux";
 
-const Container = ({ cart, loading, error }) => {
+const Container = () => {
+  const { cart, loading, error } = useSelector((state) => state.cart);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [selectedCartItemId, setSelectedCartItemId] = useState(null);
 

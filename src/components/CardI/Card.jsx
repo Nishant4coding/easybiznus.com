@@ -9,18 +9,22 @@ import { Box, Stack, TextField, Typography } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import { checkmarkCircleOutline } from "ionicons/icons";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./card.module.css";
 
 const Card = ({ data, edit = true }) => {
   const cardData =
     data.Carton?.SellerProduct || data?.SellerVariant?.SellerProduct;
-  const [qty, setQty] = useState(data.quantity || 1);
+  const [qty, setQty] = useState(data?.quantity || 1);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  useEffect(() => {
+    setQty(data?.quantity || 1);
+  }, [data?.quantity]);
 
   const handleQtyChange = (e) => {
     const newQty = e.target.value;

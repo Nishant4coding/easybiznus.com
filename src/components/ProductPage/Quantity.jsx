@@ -27,7 +27,6 @@ const Quantity = ({
   selectedColor,
 }) => {
   const profileState = useSelector((state) => state.profile);
-  // console.log("profille", profileState);
   const router = useRouter();
   const qtyRef = useRef(null);
   const [qty, setQty] = useState(1);
@@ -110,8 +109,8 @@ const Quantity = ({
             sx={input}
             value={qty}
             onChange={(e) => {
-              if (e.target.value === "" || parseInt(e.target.value) >= 1)
-                setQty(e.target.value);
+              if (e?.target?.value !== "" && parseInt(e?.target?.value) >= 0)
+                setQty(parseInt(e?.target?.value));
             }}
           ></TextField>
           <IonIcon

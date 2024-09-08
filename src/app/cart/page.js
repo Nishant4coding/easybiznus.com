@@ -12,7 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 const CartPage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { cart, loading, error } = useSelector((state) => state.cart);
+  const { cart } = useSelector((state) => state.cart);
+
   const profile = useSelector((state) => state.profile);
 
   useEffect(() => {
@@ -22,8 +23,9 @@ const CartPage = () => {
         router.push("/login");
       }, 3000);
       return () => clearTimeout(time);
+    } else {
+      dispatch(getCart());
     }
-    dispatch(getCart());
   }, [dispatch, profile.profile, router]);
 
   const [total, setTotal] = useState(0);
@@ -41,7 +43,7 @@ const CartPage = () => {
     <>
       <Box className={global.desktop}>
         <Stack direction={"row"} sx={{ height: "min-content" }}>
-          <Container cart={cart} loading={loading} error={error} />
+          <Container />
           <Checkout total={total} />
         </Stack>
         {/* <Frequent /> */}

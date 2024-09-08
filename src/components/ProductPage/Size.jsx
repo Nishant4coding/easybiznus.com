@@ -1,9 +1,10 @@
 import {
-    Box,
-    ToggleButton,
-    ToggleButtonGroup,
-    Typography
+  Box,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography,
 } from "@mui/material";
+import { useEffect, useMemo } from "react";
 import styles from "./product.module.css";
 
 const Size = ({
@@ -13,9 +14,43 @@ const Size = ({
   setSelectedSize,
   selectedColor,
   setSelectedColor,
+  sellerVariants,
 }) => {
+  const availableSizes = useMemo(() => {
+    return sizeArray.map((size) => ({
+      ...size,
+      available: sellerVariants.some(
+        (variant) =>
+          variant.size === size.size &&
+          (!selectedColor || variant.color === selectedColor)
+      ),
+    }));
+  }, [selectedColor, sizeArray, sellerVariants]);
+
+  const availableColors = useMemo(() => {
+    return colorArray.map((color) => ({
+      ...color,
+      available: sellerVariants.some(
+        (variant) =>
+          variant.size === selectedSize && variant.color === color.color
+      ),
+    }));
+  }, [selectedSize, colorArray, sellerVariants]);
+
+  useEffect(() => {
+    if (
+      availableColors.length > 0 &&
+      !availableColors.some((c) => c.color === selectedColor && c.available)
+    ) {
+      const firstAvailableColor = availableColors.find((c) => c.available);
+      if (firstAvailableColor) {
+        setSelectedColor(firstAvailableColor.color);
+      }
+    }
+  }, [availableColors, selectedColor, setSelectedColor]);
   return (
     <Box className={styles.size}>
+      {/* Size Selection */}
       <Typography
         className={styles.heading}
         style={{ marginLeft: "2px", marginBottom: "0px", fontSize: "12px" }}
@@ -26,22 +61,28 @@ const Size = ({
         value={selectedSize}
         exclusive
         onChange={(event, newSize) => setSelectedSize(newSize)}
-        aria-label="size selection"
-        sx={{ flexWrap: "wrap" }}
       >
-        {sizeArray.map((item, index) => (
+        {availableSizes.map((item, index) => (
           <ToggleButton
             key={index}
             value={item?.size}
-            className={
-              item.available ? styles.sizebox : styles.unavailablesizebox
-            }
-            disabled={!item.available}
+            sx={{
+              fontSize: "12px",
+              gap: "5px",
+              fontWeight: "400",
+              border: "1px solid #0D1A26",
+              fontWeight: "900",
+              cursor: "pointer",
+              margin: "5px",
+            }}
+            // disabled={!item.available}
           >
             {item?.size}
           </ToggleButton>
         ))}
       </ToggleButtonGroup>
+
+      {/* Color Selection */}
       <Typography
         className={styles.heading}
         style={{
@@ -60,7 +101,7 @@ const Size = ({
         aria-label="color selection"
         sx={{ flexWrap: "wrap" }}
       >
-        {colorArray.map((item, index) => (
+        {availableColors.map((item, index) => (
           <ToggleButton
             key={index}
             value={item?.color}
@@ -71,6 +112,7 @@ const Size = ({
               fontWeight: "900",
               cursor: "pointer",
             }}
+            disabled={!item.available}
           >
             {item.color}
           </ToggleButton>

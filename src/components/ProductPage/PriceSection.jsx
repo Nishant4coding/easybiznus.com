@@ -28,7 +28,6 @@ const PriceSection = ({ handleOpen, setPopTitle, data }) => {
           uniqueSizes.add(variant?.size);
           acc.push({
             size: variant?.size,
-            available: true,
           });
         }
         return acc;
@@ -107,6 +106,7 @@ const PriceSection = ({ handleOpen, setPopTitle, data }) => {
           setSelectedSize={setSelectedSize}
           selectedColor={selectedColor}
           setSelectedColor={setSelectedColor}
+          sellerVariants={data?.SellerVariants}
         />
         <Quantity
           handleOpen={handleOpen}
