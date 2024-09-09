@@ -1,18 +1,19 @@
 "use client";
 import { checkStock } from "@/Redux/Features/checkout/checkStockSlice";
 import { Button, Link, Stack, Typography } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./cart.module.css";
 import Strip from "./Strip";
 import { useRouter } from "next/navigation";
 
 const delivery = 40;
 
-const Checkout = ({ total }) => {
+const Checkout = () => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const { cart, cartTotal } = useSelector((state) => state.cart);
 
   const handleCheckout = () => {
     dispatch(checkStock()).then((res) => {
@@ -44,7 +45,7 @@ const Checkout = ({ total }) => {
           <Typography className={styles.pricing}>Delivery</Typography>
         </Stack>
         <Stack sx={{ width: "auto", alignItems: "flex-end" }}>
-          <Typography className={styles.pricing}>₹ {total}</Typography>
+          <Typography className={styles.pricing}>₹ {cartTotal}</Typography>
           <Typography className={styles.pricing}>₹ {delivery}</Typography>
         </Stack>
       </Stack>
@@ -59,7 +60,7 @@ const Checkout = ({ total }) => {
       >
         <Typography className={styles.finalpricing}>Grand Total</Typography>
         <Typography className={styles.finalpricing}>
-          ₹ {total + delivery}
+          ₹ {cartTotal + delivery}
         </Typography>
       </Stack>
       <Button

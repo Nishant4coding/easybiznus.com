@@ -64,6 +64,7 @@ const initialState = {
     loading: false,
     error: null,
   },
+  cartTotal: 0,
 };
 
 const cartSlice = createSlice({
@@ -93,6 +94,9 @@ const cartSlice = createSlice({
       .addCase(getCart.fulfilled, (state, action) => {
         state.loading = false;
         state.cart = action.payload;
+        state.cartTotal = action.payload.items
+          .map((ele) => parseFloat(ele.salePrice * ele.quantity))
+          .reduce((partialSum, a) => partialSum + a, 0);
       })
       .addCase(getCart.rejected, (state, action) => {
         state.loading = false;
@@ -106,12 +110,17 @@ const cartSlice = createSlice({
       })
       .addCase(editCartItemQuantity.fulfilled, (state, action) => {
         state.loading = false;
-        const index = state.cart.items.findIndex(
-          (item) => item.id === action.payload.id
+
+        var index = state.cart.items.findIndex(
+          (item) => item.id === action.payload.cartItem.id
         );
         if (index !== -1) {
-          state.cart.items[index] = action.payload;
+          state.cart.items[index].quantity = action.payload.cartItem.quantity;
         }
+
+        state.cartTotal = state.cart.items
+          .map((ele) => parseFloat(ele.salePrice * ele.quantity))
+          .reduce((partialSum, a) => partialSum + a, 0);
       })
 
       .addCase(editCartItemQuantity.rejected, (state, action) => {
@@ -126,8 +135,11 @@ const cartSlice = createSlice({
       .addCase(removeCartItem.fulfilled, (state, action) => {
         state.loading = false;
         state.cart.items = state.cart.items.filter(
-          (item) => item.id !== action.payload.cartItemId
+          (item) => item.id !== action.payload.cartItem.Id
         );
+        state.cartTotal = state.cart.items
+          .map((ele) => parseFloat(ele.salePrice * ele.quantity))
+          .reduce((partialSum, a) => partialSum + a, 0);
       })
       .addCase(removeCartItem.rejected, (state, action) => {
         state.loading = false;

@@ -8,8 +8,8 @@ const Card = ({ data }) => {
   const [Pid, setProdId] = useState("");
   const [CatData, setData] = useState("");
 
-  const productData = data?.sellerProducts[0]?.Product?.Product;
-  const sellerProductId = data?.sellerProducts[0]?.id;
+  const productData = data?.Product?.Product;
+  const sellerProductId = data?.id;
 
   useEffect(() => {
     if (productData) {

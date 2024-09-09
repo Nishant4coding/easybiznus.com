@@ -3,15 +3,26 @@ import Card from "@/components/CardJ/Card";
 import styles from "./home.module.css";
 
 const Products = ({ prodData }) => {
-  if (prodData?.length == 0) return <Typography>No Data Available</Typography>;
   return (
     <Box direction={"row"} className={styles.products} gap={10}>
       {prodData &&
-        prodData.map((item, index) => (
-          <Box sx={{ flexShrink: 0 }} key={index}>
-            <Card data={item} />
-          </Box>
-        ))}
+      prodData[0] &&
+      prodData[0].sellerProducts &&
+      prodData[0].sellerProducts.length > 0 ? (
+        prodData?.map((item) =>
+          item.sellerProducts.map((itemData, index) => {
+            return (
+              <Box sx={{ flexShrink: 0 }} key={index}>
+                <Card data={itemData} />
+              </Box>
+            );
+          })
+        )
+      ) : (
+        <Typography sx={{ textAlign: "center", width: "100%" }}>
+          No Data Available
+        </Typography>
+      )}
     </Box>
   );
 };

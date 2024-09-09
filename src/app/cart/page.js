@@ -12,8 +12,6 @@ import { useDispatch, useSelector } from "react-redux";
 const CartPage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { cart } = useSelector((state) => state.cart);
-
   const profile = useSelector((state) => state.profile);
 
   useEffect(() => {
@@ -28,23 +26,12 @@ const CartPage = () => {
     }
   }, [dispatch, profile.profile, router]);
 
-  const [total, setTotal] = useState(0);
-
-  useEffect(() => {
-    setTotal(
-      cart.items
-        .map((ele) => parseFloat(ele.salePrice * ele.quantity))
-        .reduce((partialSum, a) => partialSum + a, 0)
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cart.items]);
-
   return (
     <>
       <Box className={global.desktop}>
         <Stack direction={"row"} sx={{ height: "min-content" }}>
           <Container />
-          <Checkout total={total} />
+          <Checkout />
         </Stack>
         {/* <Frequent /> */}
         <Footer />
