@@ -18,6 +18,7 @@ const Card = ({ data, edit = true }) => {
     data.Carton?.SellerProduct || data?.SellerVariant?.SellerProduct;
   const [qty, setQty] = useState(data?.quantity || 1);
   const [open, setOpen] = useState(false);
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -28,11 +29,25 @@ const Card = ({ data, edit = true }) => {
 
   const handleQtyChange = (e) => {
     const newQty = e.target.value;
+    if (Number(newQty) > data?.SellerVariant?.stock) {
+      setError(
+        `Quantity must be less than or equal to ${data?.SellerVariant?.stock}`
+      );
+    } else {
+      setError("");
+    }
+    setQty(newQty);
     if (newQty > 0) {
-      setQty(newQty);
       dispatch(
         editCartItemQuantity({ cartItemId: data?.id, quantity: newQty })
       );
+    }
+  };
+
+  const handleQtyBlur = () => {
+    if (qty === "" || Number(qty) < 1) {
+      setQty(1);
+      dispatch(editCartItemQuantity({ cartItemId: data?.id, quantity: 1 }));
     }
   };
 
@@ -78,12 +93,20 @@ const Card = ({ data, edit = true }) => {
               type="number"
               inputProps={{
                 min: 1,
+                max: data?.SellerVariant?.stock,
               }}
               value={qty}
               onChange={handleQtyChange}
-            ></TextField>
+              onBlur={handleQtyBlur}
+              error={!!error}
+            />
           </FormControl>
         </Box>
+        {error && (
+          <Typography color="error" variant="caption">
+            {error}
+          </Typography>
+        )}
       </Stack>
       <Stack direction={"column"} sx={{ width: "30%", alignItems: "flex-end" }}>
         <Stack direction={"column"} gap={1}>

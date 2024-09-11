@@ -135,7 +135,7 @@ const cartSlice = createSlice({
       .addCase(removeCartItem.fulfilled, (state, action) => {
         state.loading = false;
         state.cart.items = state.cart.items.filter(
-          (item) => item.id !== action.payload.cartItem.Id
+          (item) => item.id !== action.payload.cartItemId
         );
         state.cartTotal = state.cart.items
           .map((ele) => parseFloat(ele.salePrice * ele.quantity))

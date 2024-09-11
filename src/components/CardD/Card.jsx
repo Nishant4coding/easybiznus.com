@@ -18,12 +18,27 @@ import { useRouter } from "next/navigation";
 const Card = ({ data, edit = true }) => {
   const router = useRouter();
   const cardData = data?.SellerProduct?.Product;
-  const [qty, setQty] = useState("");
+  const [qty, setQty] = useState(1);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const handleQtyChange = (e) => {
+    const newQty = e.target.value;
+
+    if (newQty === "") {
+      setQty("");
+    } else {
+      setQty(Math.max(1, Number(newQty)));
+    }
+  };
+
+  const handleQtyBlur = () => {
+    if (qty === "" || Number(qty) < 1) {
+      setQty(1);
+    }
+  };
   const handleAddToCart = () => {
     const productDetails = {
       productId: String(
@@ -44,8 +59,7 @@ const Card = ({ data, edit = true }) => {
       if (res.type === "cart/addToCart/fulfilled") {
         toast.success("Added to cart");
         router.push("/cart");
-      }
-       else if (res.type === "cart/addToCart/rejected") {
+      } else if (res.type === "cart/addToCart/rejected") {
         toast.error("Failed to add to cart");
       }
     });
@@ -83,27 +97,21 @@ const Card = ({ data, edit = true }) => {
         <Box sx={{ width: "70px" }}>
           <FormControl fullWidth sx={dropdown}>
             <TextField
-              id="quantity-input"
-              label="Quantity"
-              value={qty}
-              onChange={(e) => {
-                if (e.target.value === "" || parseInt(e.target.value) >= 1)
-                  setQty("" + e.target.value);
-              }}
-              InputLabelProps={{
-                shrink: true,
-              }}
+              type="number"
               inputProps={{
                 min: 1,
               }}
-            ></TextField>
+              value={qty}
+              onChange={handleQtyChange}
+              onBlur={handleQtyBlur}
+            />
           </FormControl>
         </Box>
       </Stack>
       <Stack direction={"column"} sx={{ width: "30%", alignItems: "flex-end" }}>
         <Stack direction={"column"} gap={1}>
           <Typography className={styles.price}>
-            ₹ {cardData?.salePrice}
+            ₹ {cardData?.salePrice * qty}
           </Typography>
           <Stack direction={"row"} gap={2} sx={{ justifyContent: "flex-end" }}>
             {edit && (

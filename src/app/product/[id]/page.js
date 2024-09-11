@@ -58,8 +58,8 @@ const ProductPage = ({ params }) => {
               {details && (
                 <>
                   <ImageBox
-                    image={details?.images}
-                    primaryImage={details?.images[0]}
+                    image={details?.images || details?.primaryImage}
+                    primaryImage={details?.images[0] || details?.primaryImage}
                     // primaryImage={details?.primaryImage}
                     //primary image in null right now
                   />
