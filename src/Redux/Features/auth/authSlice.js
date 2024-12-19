@@ -19,7 +19,6 @@ export const login = createAsyncThunk(
 export const register = createAsyncThunk(
     "auth/register",
     async(userData, thunkAPI)=>{
-        console.log(userData);
         try{
             const res = await authApi.register(userData);
             if(!res){

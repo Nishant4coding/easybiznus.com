@@ -1,27 +1,36 @@
-import axios from "@/Utility/axiosInstance";
+import axiosToken from "@/Utility/axiosInstance";
 import BASE_URL from "@/Utility/baseUrl";
+import { getLatLng } from "@/Utility/util";
 
-const getAll = async () => {
-    try {
-        const res = await axios.get(`${BASE_URL}/products/product/seller`);
-        console.log("get all product response: ", res.data);
-        return res.data;
-    } catch (error) {
-        console.log("get all product: ", error.message);
-    }
-}
+export const getAll = async (filterArray) => {
+  if (!filterArray) {
+    filterArray = [];
+  }
+  try {
+    const {lat, lng} = await getLatLng();
 
-const getProdById = async (id) => {
-    try {
-        const res = await axios.get(`${BASE_URL}/products/product/sellerProduct?id=${id}`);
-        console.log("get prod by id response: ", res.data);
-        return res.data;
-    } catch (error) {
-        console.log("gey prod by id: ", error.message);
-    }
-}
+    const res = await axiosToken.post(
+      `${BASE_URL}/products/product/sellerProduct/filters`,
+      {
+        filters: filterArray,
+        rangeOff: lat && lng ? false : true,
+        targetLatitude: lat,
+        targetLongitude: lng,
+      }
+    );
+    return res.data;
+  } catch (error) {
+    console.log("get all product: ", error.message);
+  }
+};
 
-export default {
-    getAll,
-    getProdById
-}
+export const getProductByIdOnly = async (id) => {
+  try {
+    const res = await axiosToken.get(
+      `${BASE_URL}/products/product/sellerProduct/${id}`
+    );
+    return res.data;
+  } catch (error) {
+    console.log("gey prod by id: ", error.message);
+  }
+};

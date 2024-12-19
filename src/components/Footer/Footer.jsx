@@ -1,7 +1,7 @@
 import { Box, Stack } from "@mui/material";
 import styles from './footer.module.css';
 import QuickLink from "./Quick";
-import About from "./About";
+// import About from "./About";
 import Help from "./Help";
 import Logo from "./Logo";
 
@@ -11,7 +11,7 @@ const Footer = () => {
         <Stack direction={"row"} className={styles.footer}>
             <Stack direction={'column'} gap={6} className={styles.quickAbout}>
                 <QuickLink />
-                <About />
+                {/* <About /> */}
             </Stack>
             <Box className={styles.help}>
                 <Help />

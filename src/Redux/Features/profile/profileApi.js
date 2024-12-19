@@ -1,28 +1,31 @@
-import axios from "@/Utility/axiosInstance";
+import axiosToken from "@/Utility/axiosInstance";
 import BASE_URL from "@/Utility/baseUrl";
 
-const getProfile = async () => {
-    try {
-        const res = await axios.get(`${BASE_URL}/account/profile`);
-        console.log('get profile res: ', res.data);
-        return res.data;
-    } catch (error) {
-        console.log("get profile error: ", error.message);
-    }
-}
+export const getProfile = async () => {
+  const userId = window.localStorage.getItem("userId");
+  const token = window.localStorage.getItem("token");
+  if (!userId || !token) {
+    return;
+  }
 
-const updateProfile = async (data) => {
-    try {
-        const userId = window.localStorage.getItem("userId");
-        const res = await axios.put(`${BASE_URL}/account/profile?${userId}`, data);
-        console.log('put profile res: ', res.data);
-        return res.data;
-    } catch (error) {
-        console.log("put profile error: ", error.message);
-    }
-}
+  try {
+    const res = await axiosToken.get(`${BASE_URL}/account/profile`);
+    return res.data;
+  } catch (error) {
+    console.log("get profile error: ", error.message);
+    throw error;
+  }
+};
 
-export default {
-    getProfile,
-    updateProfile
-}
+export const updateProfile = async (data) => {
+  try {
+    const userId = window.localStorage.getItem("userId");
+    const res = await axiosToken.put(
+      `${BASE_URL}/account/profile?${userId}`,
+      data
+    );
+    return res.data;
+  } catch (error) {
+    console.log("put profile error: ", error.message);
+  }
+};

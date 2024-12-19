@@ -1,34 +1,30 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { authUser, register } from "@/Redux/Features/auth/authSlice";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import {
   Box,
   Button,
   Checkbox,
   FormControlLabel,
   FormGroup,
-  Stack,
   Select,
+  Stack,
   TextField,
   Typography,
 } from "@mui/material";
-import style from "./Register.module.css";
-import fbIcon from "../../assets/svg/facebook_icon.svg";
-import appleIcon from "../../assets/svg/apple_icon.svg";
-import googleIcon from "../../assets/svg/google_icon.svg";
-import Image from "next/image";
-import MenuItem from "@mui/material/MenuItem";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
-import Link from "next/link";
+import MenuItem from "@mui/material/MenuItem";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useRouter } from "next/navigation";
-import { register, authUser } from "@/Redux/Features/auth/authSlice";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
+import style from "./Register.module.css";
 
-const Register =({setLoginSwitch,setIsLogin}) => {
+// const Register =({setLoginSwitch,setIsLogin}) => {
+const Register = ({ setLoginSwitch }) => {
   const [userData, setUserData] = useState({
     firstName: "",
-    lastName: "",
     mobile: "",
     role: "user",
     email: "",
@@ -54,19 +50,25 @@ const Register =({setLoginSwitch,setIsLogin}) => {
       updatedUserData.location.coordinates = [latitude, longitude];
       setUserData(updatedUserData);
     });
-  }, []);
+  });
 
   const signupHandler = (e) => {
     e.preventDefault();
-    dispatch(register(userData));
-    setIsLogin(true);
-  };
+    dispatch(register(userData)).then((res) => {
+      if (res.type === "auth/register/fulfilled") {
+        toast.success("Registration Successful", {
+          duration: 3000,
+        });
+        router.push("/login");
+      }
 
-  useEffect(() => {
-    console.log("auth User :",auth);
-    if (auth.isSuccess) {
-    }
-  }, [auth]);
+      if (res.type === "auth/register/rejected") {
+        toast.error(res.payload, {
+          duration: 3000,
+        });
+      }
+    });
+  };
 
   return (
     <>
@@ -78,7 +80,7 @@ const Register =({setLoginSwitch,setIsLogin}) => {
 
           <Typography className={style.title_signup}>Sign up with</Typography>
 
-          <Stack
+          {/* <Stack
             direction="row"
             spacing={3}
             style={{
@@ -104,7 +106,7 @@ const Register =({setLoginSwitch,setIsLogin}) => {
                 <Image src={appleIcon} alt="Apple" className={style.icons} />
               </Link>
             </Box>
-          </Stack>
+          </Stack> */}
 
           <span className={style.divider} />
 
@@ -239,9 +241,9 @@ const Register =({setLoginSwitch,setIsLogin}) => {
                   sx={{
                     display: "flex",
                     justifyContent: "space-between",
-                    color:"black",
-                    '&:hover': {
-                      color: 'white',  // Set the background color to transparent on hover
+                    color: "black",
+                    "&:hover": {
+                      color: "white", // Set the background color to transparent on hover
                     },
                     height: 40,
                     mt: 2,

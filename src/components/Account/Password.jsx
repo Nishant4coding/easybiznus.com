@@ -1,95 +1,220 @@
 "use client";
-import { Button, Stack, Typography, Checkbox, FormControlLabel } from '@mui/material';
-import styles from './account.module.css';
-import { IonIcon } from '@ionic/react';
-import { checkmarkCircleOutline, closeCircleOutline } from 'ionicons/icons';
-import global from '@/global.module.css';
-import { useState } from 'react';
 
-const Profile = ({ setForm }) => {
-    const [password, setPassword] = useState(true);
+import global from "@/global.module.css";
+import {
+  requestOTPThunk,
+  resetPasswordThunk,
+} from "@/Redux/Features/password/passwordSlice";
+import { IonIcon } from "@ionic/react";
+import { Button, Stack, Typography } from "@mui/material";
+import { checkmarkCircleOutline, closeCircleOutline } from "ionicons/icons";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import styles from "./account.module.css";
 
-    const handlePass = (e) => {
-        setPassword(e.target.value);
+const Password = ({ setForm }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [otp, setOtp] = useState("");
+  const [changeForm, setChangeForm] = useState(false);
+  const dispatch = useDispatch();
+  const passwordState = useSelector((state) => state.password);
+
+  const handlePass = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleConfirmPass = (e) => {
+    setConfirmPassword(e.target.value);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleOtpChange = (e) => {
+    setOtp(e.target.value);
+  };
+
+  // useEffect(() => {
+  //   console.log("otp", otp);
+  // }, [otp]);
+
+  const handleRequestOtp = () => {
+    dispatch(requestOTPThunk(email)).then((res) => {
+      if (res.type === "password/requestOTP/fulfilled") {
+        // if (res.payload) {
+        //   toast.success(`Your OTP is: ${res.payload?.details?.OTP}`, {
+        //     position: "top-center",
+        //     autoClose: 10000,
+        //   });
+        //   setOtp(res.payload?.details?.OTP);
+        // }
+        setChangeForm(true);
+      } else {
+        toast.error("Failed to request OTP", {
+          position: "top-center",
+          autoClose: 5000,
+        });
+      }
+    });
+  };
+  const handleSubmit = () => {
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match", {
+        position: "top-right",
+        autoClose: 5000,
+      });
+      return;
     }
 
-    return (
-        <Stack sx={{ width: '80%', alignItems: 'center' }}>
-            <Typography sx={{ paddingBottom: '10px', borderBottom: '1px solid #A0A0A0', width: '82%', fontSize: '23px', fontWeight: '600', marginBottom: '40px' }}>Change Password</Typography>
+    const data = {
+      emailOrMobile: email,
+      otpValue: otp,
+      newPassword: password,
+      id: passwordState?.otpId,
+    };
 
-            <Stack sx={{ width: '100%', marginBottom: '160px' }} gap={3}>
+    dispatch(resetPasswordThunk(data)).then(() => {
+      if (passwordState.resetSuccess) {
+        setForm(false);
+      }
+    });
+  };
 
+  return (
+    <Stack sx={{ width: "80%", alignItems: "center" }}>
+      <Typography
+        sx={{
+          paddingBottom: "10px",
+          borderBottom: "1px solid #A0A0A0",
+          width: "82%",
+          fontSize: "23px",
+          fontWeight: "600",
+          marginBottom: "40px",
+        }}
+      >
+        Change Password
+      </Typography>
 
-                <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
-                    <Input title={"Current Password"} placeholder={"Current Password"} width={"82%"} />
-                </Stack>
-                <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
-                    <Input type={"password"} handlePass={handlePass} title={"New Password"} placeholder={"New Password"} width={"82%"} />
-                </Stack>
+      <Stack sx={{ width: "100%", marginBottom: "160px" }} gap={3}>
+        {!changeForm ? (
+          <Stack
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
 
-                <Stack sx={{ paddingLeft: '9%' }}>
-                    <TextIcon
-                        correct={password.length >= 8 ? true : false}
-                        text="Minimum 8 characters"
-                    />
-                    <TextIcon
-                        correct={password.length <= 15 ? true : false}
-                        text="Maximum 15 characters"
-                    />
-                    <TextIcon
-                        correct={/[a-z]/.test(password) ? true : false}
-                        text="1 lower case"
-                    />
-                    <TextIcon
-                        correct={/[A-Z]/.test(password) ? true : false}
-                        text="1 upper case"
-                    />
-                    <TextIcon
-                        correct={/[0-9]/.test(password) ? true : false}
-                        text="1 digit"
-                    />
-                    <TextIcon
-                        correct={
-                            /[!@#$%^&*(),.?":{}|<>]/.test(password) ? true : false
-                        }
-                        text="1 special character (!@#$%^&*)"
-                    />
-                </Stack>
-
-                <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
-                    <Input type={"password"} title={"Confirm New Password"} placeholder={"Confirm New Password"} width={"82%"} />
-                </Stack>
-
-            </Stack>
-            <Button variant='contained' className={global.button}
-                onClick={() => setForm(false)}
-                style={{padding:'10px 50px', fontSize:'13px'}}
+              gap: "10px",
+            }}
+          >
+            <Input
+              title={"Email / Phone"}
+              placeholder={"Email / Phone"}
+              width={"82%"}
+              handlePass={handleEmailChange}
+            />
+            <Button
+              variant="contained"
+              className={global.button}
+              style={{ padding: "10px 50px", fontSize: "13px" }}
+              onClick={handleRequestOtp}
             >
-                SAVE
+              Request OTP
             </Button>
-        </Stack>
-    )
-}
+          </Stack>
+        ) : (
+          <>
+            <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
+              <Input
+                title={"OTP"}
+                placeholder={"OTP"}
+                width={"82%"}
+                handlePass={handleOtpChange}
+              />
+            </Stack>
 
-export default Profile;
+            <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
+              <Input
+                type={"password"}
+                handlePass={handlePass}
+                title={"New Password"}
+                placeholder={"New Password"}
+                width={"82%"}
+              />
+            </Stack>
 
-const Input = ({ type, handlePass, title, placeholder, width, children, fsize }) => {
-    return (
-        <Stack gap={1} sx={{ width: width ? width : '40%', position: 'relative' }}>
-            <Typography style={{ fontSize: fsize ? fsize : "" }} className={styles.inputhead}>{title}</Typography>
-            <input onChange={handlePass} type={type ? type : "text"} placeholder={placeholder} className={styles.input}></input>
-            {children}
-        </Stack>
-    )
-}
+            <Stack sx={{ paddingLeft: "9%" }}>
+              <TextIcon
+                correct={password.length >= 8}
+                text="Minimum 8 characters"
+              />
+              <TextIcon
+                correct={password.length <= 15}
+                text="Maximum 15 characters"
+              />
+              <TextIcon correct={/[a-z]/.test(password)} text="1 lower case" />
+              <TextIcon correct={/[A-Z]/.test(password)} text="1 upper case" />
+              <TextIcon correct={/[0-9]/.test(password)} text="1 digit" />
+              <TextIcon
+                correct={/[!@#$%^&*(),.?":{}|<>]/.test(password)}
+                text="1 special character (!@#$%^&*)"
+              />
+            </Stack>
 
+            <Stack direction={"row"} gap={2} className={styles.inputcontainer}>
+              <Input
+                type={"password"}
+                handlePass={handleConfirmPass}
+                title={"Confirm New Password"}
+                placeholder={"Confirm New Password"}
+                width={"82%"}
+              />
+            </Stack>
 
-const TextIcon = (props) => {
-    return (
-        <Stack direction={"row"} gap={1} style={{ alignItems: 'center' }}>
-            <IonIcon icon={props.correct ? checkmarkCircleOutline : closeCircleOutline} size={18} style={{ color: props.correct ? "#1BCFB4" : "#F55E53" }} />
-            <Typography style={{ fontSize: '13px' }}>{props.text}</Typography>
-        </Stack>
-    );
+            <Button
+              variant="contained"
+              className={global.button}
+              onClick={handleSubmit}
+              style={{ padding: "10px 50px", fontSize: "13px" }}
+            >
+              SAVE
+            </Button>
+          </>
+        )}
+      </Stack>
+    </Stack>
+  );
 };
 
+export default Password;
+
+const Input = ({ type, handlePass, title, placeholder, width }) => {
+  return (
+    <Stack gap={1} sx={{ width: width ? width : "40%", position: "relative" }}>
+      <Typography className={styles.inputhead}>{title}</Typography>
+      <input
+        onChange={handlePass}
+        type={type ? type : "text"}
+        placeholder={placeholder}
+        className={styles.input}
+      ></input>
+    </Stack>
+  );
+};
+
+const TextIcon = ({ correct, text }) => {
+  return (
+    <Stack direction={"row"} gap={1} style={{ alignItems: "center" }}>
+      <IonIcon
+        icon={correct ? checkmarkCircleOutline : closeCircleOutline}
+        size={18}
+        style={{ color: correct ? "#1BCFB4" : "#F55E53" }}
+      />
+      <Typography style={{ fontSize: "13px" }}>{text}</Typography>
+    </Stack>
+  );
+};
